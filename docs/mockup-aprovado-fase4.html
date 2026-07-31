@@ -1,0 +1,416 @@
+<title>nanoguará.ia | Mockup do site</title>
+<style>
+  :root{
+    --bg:#F7F9F5; --surface:#FFFFFF; --surface-deep:#123B26;
+    --text:#17231B; --text-muted:#55655B;
+    --verde:#2E7D32; --verde-escuro:#1B4D2E;
+    --guarana:#D5382F; --guarana-hover:#B72C24; --creme:#FDF9F0;
+    --borda:#E2E8E0; --chat-in:#FFFFFF; --chat-out:#DFF3D8;
+    --raio-card:16px; --raio-input:10px;
+  }
+  @media (prefers-color-scheme: dark){:root{
+    --bg:#0E1A13; --surface:#16241B; --surface-deep:#0A140E;
+    --text:#EDF3EE; --text-muted:#9DB0A3;
+    --verde:#6FBF73; --verde-escuro:#A5D6A7;
+    --guarana:#EF5A4C; --guarana-hover:#D5382F; --creme:#1E2C22;
+    --borda:#25352B; --chat-in:#1C2B21; --chat-out:#1F3A28;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0E1A13; --surface:#16241B; --surface-deep:#0A140E;
+    --text:#EDF3EE; --text-muted:#9DB0A3;
+    --verde:#6FBF73; --verde-escuro:#A5D6A7;
+    --guarana:#EF5A4C; --guarana-hover:#D5382F; --creme:#1E2C22;
+    --borda:#25352B; --chat-in:#1C2B21; --chat-out:#1F3A28;
+  }
+  :root[data-theme="light"]{
+    --bg:#F7F9F5; --surface:#FFFFFF; --surface-deep:#123B26;
+    --text:#17231B; --text-muted:#55655B;
+    --verde:#2E7D32; --verde-escuro:#1B4D2E;
+    --guarana:#D5382F; --guarana-hover:#B72C24; --creme:#FDF9F0;
+    --borda:#E2E8E0; --chat-in:#FFFFFF; --chat-out:#DFF3D8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:"Geist","Seaford",-apple-system,"Segoe UI",system-ui,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.display{font-family:"Outfit",ui-rounded,"SF Pro Rounded","Avenir Next",-apple-system,system-ui,sans-serif;
+    letter-spacing:-0.02em;line-height:1.15;text-wrap:balance;margin:0}
+  p{margin:0}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+  a{color:var(--verde);text-decoration:none}
+
+  /* ---------- Navbar ---------- */
+  nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--borda)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Outfit",ui-rounded,system-ui;font-weight:700;font-size:1.15rem;color:var(--text)}
+  .brand em{font-style:normal;color:var(--verde)}
+  .nav-links{display:flex;gap:28px;font-size:.95rem}
+  .nav-links a{color:var(--text-muted);font-weight:500}
+  .nav-links a:hover{color:var(--verde)}
+  @media(max-width:820px){.nav-links{display:none}}
+
+  /* ---------- Botões ---------- */
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:600;
+    padding:14px 26px;font-size:1rem;cursor:pointer;border:none;transition:transform .15s ease, background .2s ease;white-space:nowrap}
+  .btn:active{transform:scale(.98)}
+  .btn-primario{background:var(--guarana);color:#fff}
+  .btn-primario:hover{background:var(--guarana-hover)}
+  .btn-secundario{background:transparent;color:var(--verde);border:1.5px solid var(--verde)}
+  .btn-secundario:hover{background:color-mix(in srgb,var(--verde) 10%,transparent)}
+  .btn-sm{padding:10px 20px;font-size:.9rem}
+
+  /* ---------- Herói ---------- */
+  .hero{min-height:calc(100dvh - 68px);display:grid;grid-template-columns:1.1fr .9fr;gap:56px;
+    align-items:center;padding:56px 0 72px;position:relative}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--verde);margin-bottom:18px}
+  .hero h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;color:var(--text)}
+  /* Gradient Shimmer no headline: banda multi-stop da marca varrendo o texto */
+  .hero h1.shimmer{
+    --gs-base:color-mix(in oklab,var(--text) 72%,var(--bg));
+    background-color:var(--gs-base);
+    background-image:linear-gradient(105deg,
+      var(--gs-base) calc(50% - 150px),
+      color-mix(in oklab,var(--gs-base) 42%, #35C95E) calc(50% - 105px),
+      #35C95E calc(50% - 55px),
+      #FFFFFF calc(50% - 8px),
+      #FF9A62 calc(50% + 30px),
+      #EF5A4C calc(50% + 55px),
+      color-mix(in oklab,var(--gs-base) 42%, #EF5A4C) calc(50% + 105px),
+      var(--gs-base) calc(50% + 150px));
+    background-repeat:no-repeat;background-size:100% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  @supports not (background-clip:text){.hero h1.shimmer{background:none;-webkit-text-fill-color:currentColor}}
+  .hero .sub{font-size:1.15rem;color:var(--text-muted);max-width:34rem;margin:20px 0 30px}
+  .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .circuito{position:absolute;right:-40px;top:8%;opacity:.10;pointer-events:none}
+  @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.circuito{display:none}}
+
+  /* ---------- Fundo Etheral Shadow (herói) ---------- */
+  :root{--etheral-a:rgba(46,125,50,.20); --etheral-b:rgba(213,56,47,.07)}
+  @media (prefers-color-scheme: dark){:root{--etheral-a:rgba(111,191,115,.34); --etheral-b:rgba(239,90,76,.12)}}
+  :root[data-theme="dark"]{--etheral-a:rgba(111,191,115,.34); --etheral-b:rgba(239,90,76,.12)}
+  :root[data-theme="light"]{--etheral-a:rgba(46,125,50,.20); --etheral-b:rgba(213,56,47,.07)}
+  header{position:relative;overflow:hidden}
+  .etheral{position:absolute;inset:-90px;filter:url(#etheralFx) blur(4px);pointer-events:none}
+  .etheral .tinta{width:100%;height:100%;background:var(--cor);
+    -webkit-mask-image:url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png');
+    mask-image:url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png');
+    -webkit-mask-size:cover;mask-size:cover;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+    -webkit-mask-position:center;mask-position:center}
+  .etheral.a{--cor:var(--etheral-a)}
+  .etheral.b{--cor:var(--etheral-b)}
+  .hero{position:relative;z-index:1}
+
+  /* ---------- Chat WhatsApp mockup ---------- */
+  .fone{background:var(--surface);border:1px solid var(--borda);border-radius:26px;
+    box-shadow:0 24px 60px color-mix(in srgb,var(--verde-escuro) 14%,transparent);overflow:hidden;max-width:400px;margin-inline:auto;width:100%}
+  .fone-topo{background:var(--surface-deep);color:#EDF3EE;padding:14px 18px;display:flex;align-items:center;gap:12px}
+  .fone-topo .avatar{width:38px;height:38px;flex:none}
+  .fone-topo b{display:block;font-size:.95rem}
+  .fone-topo span{font-size:.78rem;opacity:.75}
+  .chat{padding:18px;display:flex;flex-direction:column;gap:10px;min-height:320px;background:
+    color-mix(in srgb,var(--creme) 60%,var(--bg))}
+  .stamp{align-self:center;font-size:.72rem;color:var(--text-muted);background:var(--surface);
+    border:1px solid var(--borda);border-radius:999px;padding:3px 12px}
+  .msg{max-width:82%;padding:10px 14px;border-radius:14px;font-size:.92rem;line-height:1.45;
+    opacity:0;transform:translateY(10px)}
+  .msg.show{opacity:1;transform:none;transition:opacity .4s ease,transform .4s ease}
+  .msg.in{align-self:flex-start;background:var(--chat-in);border:1px solid var(--borda);border-bottom-left-radius:4px}
+  .msg.out{align-self:flex-end;background:var(--chat-out);border-bottom-right-radius:4px}
+  .msg time{display:block;font-size:.68rem;color:var(--text-muted);margin-top:4px;text-align:right}
+  @media (prefers-reduced-motion: reduce){.msg{opacity:1;transform:none;transition:none}}
+
+  /* ---------- Pra quem é ---------- */
+  .faixa{border-block:1px solid var(--borda);padding:40px 0}
+  .faixa h2{font-size:1.15rem;font-weight:600;color:var(--text-muted);text-align:center;margin-bottom:22px}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .chip{border:1.5px solid var(--borda);background:var(--surface);border-radius:999px;
+    padding:10px 22px;font-weight:500;font-size:.95rem}
+
+  /* ---------- Dores ---------- */
+  .sec-titulo{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;color:var(--text);max-width:34rem}
+  .sec-head{margin-bottom:44px}
+  .dores{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .dor{background:var(--surface);border:1px solid var(--borda);border-radius:var(--raio-card);padding:28px}
+  .dor .antes{color:var(--text-muted);font-size:.95rem;margin-bottom:14px}
+  .dor .antes b{color:var(--text)}
+  .dor .depois{border-top:1px solid var(--borda);padding-top:14px;font-weight:600;color:var(--verde-escuro)}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+  .stat{background:var(--creme);border-radius:var(--raio-card);padding:26px 28px}
+  .stat b{font-family:"Outfit",ui-rounded,system-ui;font-size:2rem;color:var(--guarana);display:block;line-height:1.1}
+  .stat p{font-size:.95rem;color:var(--text-muted);margin-top:6px}
+  .stat cite{font-style:normal;font-size:.78rem;color:var(--text-muted);display:block;margin-top:8px}
+  @media(max-width:900px){.dores,.stats{grid-template-columns:1fr}}
+
+  /* ---------- Deep-dive assistente (seção escura) ---------- */
+  .deep{background:var(--surface-deep);color:#EDF3EE;border-radius:28px;padding:64px 56px;
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+  .deep h2{color:#fff;font-size:clamp(1.7rem,3vw,2.4rem)}
+  .deep ul{list-style:none;padding:0;margin:24px 0 30px;display:grid;gap:14px}
+  .deep li{padding-left:26px;position:relative;color:#CBDCCF}
+  .deep li::before{content:"";position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:50%;background:var(--guarana)}
+  .demo{background:var(--surface);color:var(--text);border-radius:var(--raio-card);overflow:hidden;border:1px solid var(--borda)}
+  .demo-log{height:250px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+  .demo-form{display:flex;border-top:1px solid var(--borda)}
+  .demo-form input{flex:1;border:none;background:transparent;padding:14px 16px;font:inherit;color:var(--text);outline:none}
+  .demo-form button{border:none;background:var(--guarana);color:#fff;font-weight:600;padding:0 22px;cursor:pointer}
+  .demo .msg{opacity:1;transform:none}
+  @media(max-width:900px){.deep{grid-template-columns:1fr;padding:40px 24px}}
+
+  /* ---------- Serviços ---------- */
+  .servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .serv{background:var(--surface);border:1px solid var(--borda);border-radius:var(--raio-card);padding:28px;display:flex;flex-direction:column;gap:10px}
+  .serv h3{font-size:1.15rem}
+  .serv p{color:var(--text-muted);font-size:.95rem;flex:1}
+  .serv a{font-weight:600;font-size:.92rem}
+  .serv.destaque{grid-column:span 3;background:linear-gradient(120deg,var(--creme),var(--surface));
+    display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px}
+  @media(max-width:900px){.servicos{grid-template-columns:1fr}.serv.destaque{grid-template-columns:1fr;grid-column:span 1}}
+
+  /* ---------- Como funciona ---------- */
+  .passos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:passo}
+  .passo{padding:28px;border-top:3px solid var(--verde);background:var(--surface);border-radius:0 0 var(--raio-card) var(--raio-card)}
+  .passo h3{font-size:1.2rem;margin-bottom:8px}
+  .passo p{color:var(--text-muted);font-size:.95rem}
+  @media(max-width:900px){.passos{grid-template-columns:1fr}}
+
+  /* ---------- Formulário ---------- */
+  .fim{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .fim h2{font-size:clamp(1.8rem,3.2vw,2.6rem)}
+  .fim .tag{font-size:1.25rem;color:var(--text-muted);margin-top:16px;font-weight:500}
+  .fim .tag b{color:var(--verde-escuro)}
+  form{background:var(--surface);border:1px solid var(--borda);border-radius:var(--raio-card);padding:32px;display:grid;gap:18px}
+  label{font-weight:600;font-size:.92rem;display:grid;gap:6px}
+  input:not(.demo-form input),select,textarea{border:1.5px solid var(--borda);border-radius:var(--raio-input);
+    padding:12px 14px;font:inherit;background:var(--bg);color:var(--text);width:100%}
+  input:focus-visible,select:focus-visible,textarea:focus-visible,.demo-form input:focus-visible{outline:2px solid var(--verde);outline-offset:1px}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.85rem;color:var(--text-muted)}
+  .consent input{width:auto;margin-top:3px}
+  .turnstile-slot{border:1.5px dashed var(--borda);border-radius:var(--raio-input);padding:14px;text-align:center;font-size:.82rem;color:var(--text-muted)}
+  .ok-msg{display:none;background:color-mix(in srgb,var(--verde) 12%,var(--surface));border:1px solid var(--verde);
+    border-radius:var(--raio-input);padding:14px;font-size:.95rem}
+  @media(max-width:900px){.fim{grid-template-columns:1fr}}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--surface-deep);color:#CBDCCF;padding:56px 0 40px;margin-top:88px}
+  footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+  footer a{color:#CBDCCF}
+  footer a:hover{color:#fff}
+  footer .legal{border-top:1px solid #24513A;padding-top:20px;font-size:.82rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer ul{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px;font-size:.92rem}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.on{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+
+<nav><div class="wrap nav-inner">
+  <span class="brand">
+    <svg class="avatar" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><circle cx="19" cy="22" r="14" fill="#2E7D32"/><circle cx="19" cy="22" r="11" fill="#D5382F"/><ellipse cx="19" cy="22" rx="6.5" ry="5" fill="#FDF9F0"/><ellipse cx="19" cy="22" rx="4.5" ry="3.4" fill="#17231B"/><path d="M19 8 C15 2 8 3 6 7 C12 6 15 8 19 8 Z" fill="#2E7D32"/><g stroke="#2E7D32" stroke-width="1.6" fill="none"><path d="M31 16 h4"/><path d="M32 22 h6"/><path d="M31 28 h4"/></g><circle cx="37" cy="16" r="1.6" fill="#2E7D32"/><circle cx="40" cy="22" r="1.6" fill="#2E7D32" opacity=".01"/><circle cx="37" cy="28" r="1.6" fill="#2E7D32"/></svg>
+    <span>nano<em>guará.ia</em></span>
+  </span>
+  <div class="nav-links">
+    <a href="#assistente">Assistente</a><a href="#servicos">Serviços</a><a href="#como">Como funciona</a><a href="#contato">Contato</a>
+  </div>
+  <button class="btn btn-primario btn-sm">Chamar no WhatsApp</button>
+</div></nav>
+
+<header>
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs>
+    <filter id="etheralFx">
+      <feTurbulence result="undulation" numOctaves="2" baseFrequency="0.0008,0.003" seed="0" type="turbulence"/>
+      <feColorMatrix id="etheralHue" in="undulation" type="hueRotate" values="180"/>
+      <feColorMatrix in="dist" result="circulation" type="matrix" values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"/>
+      <feDisplacementMap in="SourceGraphic" in2="circulation" scale="90" result="dist"/>
+      <feDisplacementMap in="dist" in2="undulation" scale="90" result="output"/>
+    </filter>
+  </defs></svg>
+  <div class="etheral a" aria-hidden="true"><div class="tinta"></div></div>
+  <div class="etheral b" aria-hidden="true"><div class="tinta"></div></div>
+<div class="wrap"><div class="hero">
+  <div>
+    <span class="eyebrow">Atendimento com IA no WhatsApp, 24 horas</span>
+    <h1 class="shimmer" id="heroTitulo">Sua agenda cheia, sem você parar pra responder mensagem.</h1>
+    <p class="sub">São 22h07 e uma paciente quer marcar. A assistente responde na hora, agenda e confirma por você.</p>
+    <div class="ctas">
+      <button class="btn btn-primario">Chamar no WhatsApp</button>
+      <a class="btn btn-secundario" href="#assistente">Ver a IA funcionando</a>
+    </div>
+  </div>
+  <div class="fone" aria-label="Demonstração de conversa no WhatsApp">
+    <div class="fone-topo">
+      <svg class="avatar" width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#FDF9F0"/><circle cx="20" cy="21" r="12" fill="#D5382F"/><ellipse cx="20" cy="21" rx="6.5" ry="5" fill="#FDF9F0"/><ellipse cx="20" cy="21" rx="4.2" ry="3.2" fill="#17231B"/><path d="M20 9 C17 4 11 5 9 8 C14 7 17 9 20 9 Z" fill="#2E7D32"/></svg>
+      <div><b>Consultório Dra. Camila</b><span>assistente nanoguará.ia · online</span></div>
+    </div>
+    <div class="chat" id="chatHero">
+      <span class="stamp">hoje, 22h07, fora do horário comercial</span>
+      <div class="msg in">Oi! Ainda dá pra remarcar minha consulta dessa semana? 🙏<time>22:07</time></div>
+      <div class="msg out">Oi, Mariana! Dá sim. A Dra. Camila tem quinta às 10:15 ou sexta às 16:40. Qual prefere?<time>22:07</time></div>
+      <div class="msg in">Sexta 16:40<time>22:08</time></div>
+      <div class="msg out">Prontinho, remarcado pra sexta às 16:40. Te envio um lembrete um dia antes. Precisa de mais alguma coisa?<time>22:08</time></div>
+    </div>
+  </div>
+</div></div></header>
+
+<div class="faixa"><div class="wrap">
+  <h2>Feita para quem vive de agenda e atende o próprio WhatsApp</h2>
+  <div class="chips">
+    <span class="chip">Médicos</span><span class="chip">Dentistas</span><span class="chip">Advogados</span>
+    <span class="chip">Psicólogos</span><span class="chip">Fisioterapeutas</span><span class="chip">Consultores</span>
+    <span class="chip">Arquitetos</span><span class="chip">Contadores</span>
+  </div>
+</div></div>
+
+<section id="dores"><div class="wrap">
+  <div class="sec-head reveal"><h2 class="sec-titulo">Você atende bem. O problema é tudo que acontece quando você não pode responder.</h2></div>
+  <div class="dores">
+    <div class="dor reveal"><p class="antes"><b>Antes:</b> o cliente manda mensagem às 21h e só recebe resposta no dia seguinte. Muitos já fecharam com outro.</p><p class="depois">Depois: resposta útil em segundos, a qualquer hora.</p></div>
+    <div class="dor reveal"><p class="antes"><b>Antes:</b> agenda furada por esquecimento, horário vago que ninguém preenche.</p><p class="depois">Depois: confirmação e reagendamento automáticos pelo WhatsApp.</p></div>
+    <div class="dor reveal"><p class="antes"><b>Antes:</b> o pós-atendimento e o follow-up nunca saem do papel, porque falta tempo.</p><p class="depois">Depois: a assistente retoma a conversa por você, no tom certo.</p></div>
+  </div>
+  <div class="stats">
+    <div class="stat reveal"><b>62%</b><p>dos brasileiros já desistiram de uma compra pelo WhatsApp depois de uma experiência ruim. Demora na resposta é uma das causas.</p><cite>Fonte: Opinion Box, 2025</cite></div>
+    <div class="stat reveal"><b>1 em 3</b><p>clínicas e consultórios convive com mais de 11% de faltas. O lembrete automático pelo WhatsApp é a medida mais eficiente contra isso.</p><cite>Fonte: Panorama das Clínicas e Hospitais 2025, Doctoralia e Feegow</cite></div>
+  </div>
+</div></section>
+
+<section id="assistente"><div class="wrap">
+  <div class="deep reveal">
+    <div>
+      <h2>Uma IA que responde de verdade. E chama você quando importa.</h2>
+      <ul>
+        <li>Atende, agenda, confirma e reagenda sozinha, no seu tom</li>
+        <li>Faz follow-up e pós-atendimento sem parecer robô</li>
+        <li>Informa valores só na conversa privada, respeitando as regras do seu conselho (CFM, CFO, CFP, OAB)</li>
+        <li>Transfere pra você nas decisões que pedem gente</li>
+      </ul>
+      <button class="btn btn-primario">Chamar no WhatsApp</button>
+    </div>
+    <div class="demo">
+      <div class="demo-log" id="demoLog">
+        <div class="msg in show">Oi! Eu sou a assistente da nanoguará.ia. Pergunta qualquer coisa: como funciona, quanto custa, se serve pro seu consultório. 😊</div>
+      </div>
+      <div class="demo-form">
+        <input id="demoInput" type="text" placeholder="Escreva sua pergunta..." aria-label="Pergunta para a assistente de demonstração">
+        <button id="demoSend" type="button">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="servicos"><div class="wrap">
+  <div class="sec-head reveal"><h2 class="sec-titulo">O assistente é a porta de entrada. A agência cuida do resto.</h2></div>
+  <div class="servicos">
+    <div class="serv destaque reveal">
+      <div><h3>Automação comercial</h3><p>Funil, follow-up e CRM rodando sozinhos, do primeiro contato ao pós-venda, integrados ao seu jeito de trabalhar.</p></div>
+      <button class="btn btn-secundario btn-sm">Quero saber mais</button>
+    </div>
+    <div class="serv reveal"><h3>Criação de sites</h3><p>Sites rápidos e bonitos que convertem visita em conversa no WhatsApp.</p><a href="#contato">Quero saber mais</a></div>
+    <div class="serv reveal"><h3>SEO e GEO</h3><p>Apareça no Google e nas respostas das IAs quando o cliente procura o que você faz.</p><a href="#contato">Quero saber mais</a></div>
+    <div class="serv reveal"><h3>Registro de marcas</h3><p>Sua marca protegida no INPI, da busca prévia ao acompanhamento do processo.</p><a href="#contato">Quero saber mais</a></div>
+    <div class="serv reveal"><h3>Consultoria LGPD</h3><p>Atenda dados de clientes com segurança. Este site é a nossa vitrine de conformidade.</p><a href="#contato">Quero saber mais</a></div>
+    <div class="serv reveal"><h3>Web app p/ Representante Comercial</h3><p>Pedidos, carteira e comissões na palma da mão do seu time externo.</p><a href="#contato">Quero saber mais</a></div>
+    <div class="serv reveal"><h3>Assistente Virtual</h3><p>O carro-chefe: atendimento 24/7 no WhatsApp que agenda, confirma e faz pós-venda.</p><a href="#assistente">Ver funcionando</a></div>
+  </div>
+</div></section>
+
+<section id="como"><div class="wrap">
+  <div class="sec-head reveal"><h2 class="sec-titulo">A gente entra junto, configura junto e acompanha com você.</h2></div>
+  <div class="passos">
+    <div class="passo reveal"><h3>Diagnóstico</h3><p>Uma conversa pra entender sua rotina, seus clientes e onde o atendimento está vazando.</p></div>
+    <div class="passo reveal"><h3>Implantação</h3><p>Montamos e treinamos a assistente com a sua cara, seus horários e as regras do seu conselho.</p></div>
+    <div class="passo reveal"><h3>Acompanhamento</h3><p>Ajustes contínuos olhando conversas reais. Você vê o que a IA respondeu, sempre.</p></div>
+  </div>
+</div></section>
+
+<section id="contato"><div class="wrap fim">
+  <div class="reveal">
+    <h2>Enquanto você atende, ela responde.</h2>
+    <p class="tag">Cuide dos seus clientes. <b>A nanoguará.ia cuida do resto.</b></p>
+    <div style="margin-top:28px"><button class="btn btn-primario">Chamar no WhatsApp</button></div>
+  </div>
+  <form id="leadForm" class="reveal">
+    <label>Nome<input type="text" name="nome" required placeholder="Seu nome"></label>
+    <label>Profissão<select name="profissao" required><option value="">Selecione</option><option>Médico(a)</option><option>Dentista</option><option>Advogado(a)</option><option>Psicólogo(a)</option><option>Consultor(a)</option><option>Outra</option></select></label>
+    <label>WhatsApp<input type="tel" name="whatsapp" required placeholder="(92) 9 8888-7777"></label>
+    <label>Qual é a sua maior dor hoje?<textarea name="dor" rows="3" placeholder="Ex.: perco cliente porque não consigo responder rápido"></textarea></label>
+    <label class="consent"><input type="checkbox" required><span>Autorizo o contato da nanoguará.ia pelos dados informados, conforme a <a href="#">Política de Privacidade</a> (LGPD).</span></label>
+    <div class="turnstile-slot">[ Verificação anti-spam Cloudflare Turnstile ]</div>
+    <button class="btn btn-primario" type="submit">Quero uma conversa</button>
+    <p class="ok-msg" id="okMsg">Recebido! Vamos te chamar no WhatsApp em breve. Se preferir agilizar, clique em "Chamar no WhatsApp".</p>
+  </form>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div>
+      <span class="brand" style="color:#fff"><span>nano<em style="color:#6FBF73">guará.ia</em></span></span>
+      <p style="margin-top:12px;max-width:34ch;font-size:.92rem">Inteligência que gera resultados. Agência brasileira de IA para profissionais liberais.</p>
+    </div>
+    <div><b style="color:#fff">Serviços</b><ul><li><a href="#assistente">Assistente Virtual</a></li><li><a href="#servicos">Automação comercial</a></li><li><a href="#servicos">Sites, SEO e GEO</a></li><li><a href="#servicos">Marcas e LGPD</a></li></ul></div>
+    <div><b style="color:#fff">Contato</b><ul><li><a href="#contato">WhatsApp</a></li><li><a href="#contato">Formulário</a></li><li><a href="#">Política de Privacidade</a></li></ul></div>
+  </div>
+  <div class="legal"><span>© 2026 nanoguará.ia. Todos os direitos reservados.</span><span>Feito no Brasil, com guaraná.</span></div>
+</div></footer>
+
+<script>
+  // Chat do herói: mensagens em sequência (storytelling). Respeita reduced-motion.
+  const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Fundo Etheral Shadow: hue-rotate contínuo (desligado sob reduced-motion)
+  // Gradient Shimmer no headline (Web Animations API; estático sob reduced-motion)
+  const titulo = document.getElementById('heroTitulo');
+  if (titulo && !rm && CSS.supports('background-clip','text') && typeof titulo.animate === 'function') {
+    const SPREAD = 150, DUR = 1450, PAUSA = 1100;
+    let varre = () => {
+      const w = titulo.getBoundingClientRect().width || 600;
+      const layer = w + SPREAD * 2;
+      titulo.style.backgroundSize = layer + 'px 100%';
+      const ini = -SPREAD - layer / 2, fim = w + SPREAD - layer / 2;
+      const anim = titulo.animate(
+        [{ backgroundPosition: ini + 'px center' }, { backgroundPosition: fim + 'px center' }],
+        { duration: DUR, easing: 'cubic-bezier(0.45,0,0.55,1)', fill: 'forwards' });
+      anim.onfinish = () => setTimeout(varre, PAUSA);
+    };
+    varre();
+  }
+
+  const etheralHue = document.getElementById('etheralHue');
+  if (etheralHue && !rm) {
+    const dur = 4000; let t0 = null;
+    requestAnimationFrame(function gira(t){
+      if (t0 === null) t0 = t;
+      etheralHue.setAttribute('values', String(((t - t0) % dur) / dur * 360));
+      requestAnimationFrame(gira);
+    });
+  }
+  const heroMsgs = document.querySelectorAll('#chatHero .msg');
+  if (rm) heroMsgs.forEach(m => m.classList.add('show'));
+  else heroMsgs.forEach((m,i)=>setTimeout(()=>m.classList.add('show'), 800 + i*1100));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:.2});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Demo interativa (respostas roteirizadas no mockup; no site real: Workers AI)
+  const log=document.getElementById('demoLog'), inp=document.getElementById('demoInput');
+  const respostas=[
+    [/pre[çc]o|custa|valor|invest/i,'O investimento depende do tamanho da sua operação. No diagnóstico (gratuito) a gente fecha escopo e valor antes de começar, sem surpresa. Quer que eu te chame no WhatsApp?'],
+    [/agenda|hor[áa]rio|marca/i,'Eu me conecto à sua agenda: marco, confirmo e reagendo sozinha, e te aviso de tudo. Quer ver com a agenda do seu consultório?'],
+    [/m[ée]dic|dentist|advog|psic[óo]/i,'Atendemos profissionais liberais e configuramos a assistente dentro das regras do seu conselho profissional. Posso te mostrar um exemplo da sua área?'],
+    [/lgpd|dado|seguran/i,'Levamos LGPD a sério: consentimento explícito, dados no Brasil-friendly e a agência também presta consultoria LGPD. Esse site mesmo não usa cookies de rastreamento.'],
+    [/.*/,'Boa pergunta! No site real eu respondo com IA de verdade, treinada com as informações da agência. Aqui no mockup sou roteirizada. 😉 Quer conversar com o time? É só chamar no WhatsApp.']
+  ];
+  function bot(t){const d=document.createElement('div');d.className='msg in show';d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;}
+  function envia(){const t=inp.value.trim();if(!t)return;const d=document.createElement('div');d.className='msg out show';d.textContent=t;log.appendChild(d);inp.value='';log.scrollTop=log.scrollHeight;
+    const r=respostas.find(([re])=>re.test(t))[1];setTimeout(()=>bot(r), rm?0:700);}
+  document.getElementById('demoSend').addEventListener('click',envia);
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter')envia();});
+
+  // Formulário (mockup): mostra estado de sucesso
+  document.getElementById('leadForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('okMsg').style.display='block';});
+</script>

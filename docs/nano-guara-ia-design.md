@@ -85,6 +85,13 @@ Regras: contraste WCAG AA em tudo (AAA no herói); vermelho SÓ em CTA/acento (n
 - Limitações deliberadas do mockup: fontes do sistema (produção usa Outfit/Geist self-hosted), logo simplificado em SVG (produção usa os PNGs de `docs/brand/`), Turnstile como slot demarcado, sem fotos reais na faixa de profissões (produção: fotos geradas/reais).
 - Claude Design foi dispensado pelo usuário nesta rodada (sem escrita na conta).
 
+### Efeitos aprovados no herói (decisão do usuário, 2026-07-31: "os dois juntos")
+
+1. **Fundo Etheral Shadow** — sombras orgânicas animadas (filtro SVG feTurbulence + feDisplacementMap + hueRotate em loop) em 2 camadas: verde `--etheral-a` + guaraná sutil `--etheral-b`, theme-aware. Produção: **self-hostar** a máscara e o ruído (hoje vêm do CDN do Framer — bloqueados no artifact e proibidos em produção), fallback estático em `prefers-reduced-motion` e em mobile de GPU fraca (media query de `hover:none` + teste de FPS ou simplesmente versão estática < 768px).
+2. **Gradient Shimmer no H1** — varredura de banda multi-stop da marca (verde vivo → branco → laranja → guaraná) via `background-clip:text` + Web Animations API; base esmaecida (`color-mix` 72% texto/28% fundo); loop 1,45s + pausa 1,1s; estático sob reduced-motion; fallback `@supports not (background-clip:text)`.
+
+Implementação de referência (vanilla, sem React/framer-motion): `scratchpad/nano-guara-mockup.html` versões "fundo-etheral-heroi" e "shimmer-headline". Nota de projeto: os dois efeitos + chat animado convivem no herói por decisão do usuário; a auditoria de web-perf (Fase 6) deve validar o custo de GPU e propor degradações.
+
 ## 5. Motion (motivada, contida)
 
 - Herói: mensagens do chat mockup em sequência (storytelling) + fade-up do headline.
