@@ -9,7 +9,7 @@ Site institucional one-page da agência de IA **nanoguará.ia** — vitrine dos 
 
 Serviços: assistente virtual para profissionais liberais (carro-chefe) · automação comercial · criação de sites · SEO e GEO · registro de marcas · consultoria LGPD · web app para representante comercial.
 
-Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligência que gera resultados", grafia oficial **"nanoguará.ia"** (uma palavra; wordmark bicolor).
+Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligência que gera resultados", grafia oficial **"nanoguará.ia"** (uma palavra; wordmark bicolor). **Asset oficial do site: SVG vetorial** em `docs/brand/marca.svg` + `docs/brand/avatar-chat.svg`, aprovado pelo usuário em 2026-07-31 (dispensou os PNGs originais para o site).
 
 ## Fases
 
@@ -42,7 +42,6 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 
 | Pendência | Bloqueia |
 |-----------|----------|
-| Salvar os 3 PNGs do logo em `docs/brand/` (usuário enviou no chat) | Task 6 |
 | Número de WhatsApp da agência | Tasks 6 e 10 |
 | Domínio `.com.br` registrado (Registro.br) e nameservers na Cloudflare | Task 10 |
 | Confirmar no dashboard que o Cloudflare Registrar não cobre `.br` (premissa, sem doc citável) | Task 10 |

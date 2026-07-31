@@ -60,7 +60,7 @@ Regras: contraste WCAG AA em tudo (AAA no herói); vermelho SÓ em CTA/acento (n
 
 - Ícones: `@phosphor-icons` (weight regular/duotone, stroke consistente) — combina com as formas arredondadas. Uma família só.
 - Imagens: geradas/reais nas seções-chave (herói já tem o mockup de chat; "Pra quem é" usa retratos reais de profissionais — picsum-seed no mock, fotos geradas na implementação). Zero fake-screenshot de divs: **o mockup de chat do herói e a demo são componentes REAIS funcionais** (mini-versão da UI verdadeira).
-- Logo: versões do usuário em `docs/brand/` (pendente); fundo claro usa a versão colorida.
+- **Marca (aprovada pelo usuário em 2026-07-31): SVG vetorial** em `docs/brand/marca.svg` (símbolo guaraná + circuito, para navbar/favicon/og) e `docs/brand/avatar-chat.svg` (variante circular do avatar do assistente). Cores fixas, funciona nos dois temas; inlinado no HTML (zero request, escala sem perda). Os PNGs originais do usuário ficam como referência histórica, não como asset do site.
 
 ## 3. Inventário de componentes
 

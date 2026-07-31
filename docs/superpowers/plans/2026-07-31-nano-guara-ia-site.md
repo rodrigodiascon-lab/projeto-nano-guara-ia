@@ -1008,7 +1008,14 @@ ls -la fx/mask.webp   # alvo: <= 120 KB
 
 **Fontes:** baixar Outfit (600, 700) e Geist (400, 500) em woff2, subsetar para latin com `pyftsubset` (alvo 12-18 KB cada) e salvar em `fonts/`.
 
-**Logo:** copiar os PNGs de `docs/brand/` para `brand/` (se ainda não existirem, pedir ao usuário antes desta task). Gerar `brand/og.png` 1200×630 (JPEG q80 ou PNG otimizado, **≤300 KB**) e `brand/favicon.png`.
+**Marca (decisão do usuário, 2026-07-31):** a marca do site é o **SVG vetorial** aprovado, não PNG. Copiar `docs/brand/marca.svg` e `docs/brand/avatar-chat.svg` para `public/brand/`. Ambos são inlinados no HTML (zero request, escalam sem perda, funcionam nos dois temas).
+
+```bash
+cp ../../docs/brand/marca.svg ../../docs/brand/avatar-chat.svg brand/
+# favicon a partir do SVG (navegadores modernos aceitam SVG direto)
+cp brand/marca.svg brand/favicon.svg
+```
+Gerar `brand/og.png` 1200×630 a partir do SVG + wordmark + slogan (JPEG q80 ou PNG otimizado, **≤300 KB** — o WhatsApp degrada previews acima disso).
 
 - [ ] **Step 2: `index.html` com head completo** (corrige P1-10, P2-10, P2-12, P3-9-logo)
 
@@ -1020,7 +1027,7 @@ ls -la fx/mask.webp   # alvo: <= 120 KB
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>nanoguará.ia | Assistente de IA no WhatsApp para profissionais liberais</title>
   <meta name="description" content="Assistente virtual de IA no WhatsApp para profissionais liberais: atendimento 24 horas, agendamento, confirmação e pós-venda. Agência nanoguará.ia.">
-  <link rel="icon" href="/brand/favicon.png">
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/fonts/outfit-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://challenges.cloudflare.com">
@@ -1035,13 +1042,14 @@ ls -la fx/mask.webp   # alvo: <= 120 KB
 <body>
 ```
 
-Dividir o mockup: `<style>` → `styles.css` (com os `@font-face` no topo), `<script>` → `app.js`, HTML → `index.html`. Trocar a URL do Framer por `/fx/mask.webp`. Trocar o SVG simplificado pelo logo real com **width e height** explícitos e sem alt duplicado:
+Dividir o mockup: `<style>` → `styles.css` (com os `@font-face` no topo), `<script>` → `app.js`, HTML → `index.html`. Trocar a URL do Framer por `/fx/mask.webp`. O SVG da marca é **mantido inline** (é o aprovado); só ajustar a semântica para não duplicar leitura de tela — o `<svg>` recebe `aria-hidden="true"` porque o wordmark ao lado já é texto, e o conjunto vira link para o topo:
 ```html
-<a class="brand" href="#" aria-label="nanoguará.ia, ir para o topo">
-  <img src="/brand/logo.png" width="34" height="34" alt="" loading="eager">
+<a class="brand" href="#topo" aria-label="nanoguará.ia, ir para o topo">
+  <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><!-- marca.svg inline --></svg>
   <span>nano<em>guará.ia</em></span>
 </a>
 ```
+No `<head>`, o favicon aponta para o SVG: `<link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">` (com `<link rel="alternate icon" href="/brand/favicon.png">` opcional para navegadores antigos).
 
 - [ ] **Step 3: Correções de CSS obrigatórias** (corrige P0-6, P1-9, P2-6, P2-9, P2-10, P2-12)
 
