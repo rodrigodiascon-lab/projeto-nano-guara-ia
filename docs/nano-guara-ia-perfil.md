@@ -38,11 +38,21 @@ Médico, dentista, advogado, psicólogo, consultor, arquiteto — quem vive de a
 | Profissão | Pode anunciar preço em público? | Depoimentos? | Vedações-chave |
 |-----------|--------------------------------|--------------|----------------|
 | Médico (CFM 2.336/2023) | Sim (consulta; sem pacotes) | Sem identificar paciente | Sensacionalismo, superlativos |
-| Dentista (CFO-196/2019*) | **Não** — só em orçamento privado | Não (nem repost) | Antes/depois comercial, superlativos |
+| Dentista (Código de Ética, CFO-118/2012 art. 44) | **Não** em publicidade (art. 44, I) — valor no orçamento privado | Antes/depois liberado com regras (CFO-196/2019); depoimento de terceiro não | Publicidade "com preços", modalidades de pagamento, "popular", aliciamento |
 | Advogado (OAB 205/2021) | Com sobriedade (sem "promoção") | Sem casos concretos | Promessa de resultado, mercantilização |
 | Psicólogo (CFP 10/2005 + NT 1/2022) | **Não como propaganda** | Vedado/desaconselhado | Previsão de resultado, cupons/sorteios |
 
-\* Única norma lida só em secundárias consistentes; confirmar no site do CFO antes de citar em material público.
+**Correção de 2026-07-31 (fontes primárias lidas no site do CFO):** a versão anterior deste perfil atribuía a vedação de preço à Resolução CFO-196/2019 — **errado**, e a fonte era um blog comercial. A 196/2019 trata **só de imagens** (selfies e antes/depois). A regra de preço está no **Código de Ética Odontológica (Resolução CFO-118/2012), art. 44, I**, que tipifica como infração "fazer publicidade e propaganda enganosa, abusiva, inclusive com expressões ou imagens de antes e depois, **com preços**, serviços gratuitos, modalidades de pagamento, ou outras formas que impliquem comercialização da Odontologia".
+
+Resumo das três normas de odontologia (todas lidas na fonte oficial):
+
+| Norma | O que diz |
+|-------|-----------|
+| **CFO-118/2012** (Código de Ética), art. 44 | Infração: publicidade com **preços**, formas de pagamento ou serviço gratuito (I); anunciar especialidade que não possui (II); expor "antes, durante e depois" como artifício de propaganda (XII); usar a expressão "popular" e aliciar pacientes (VII); anunciar serviço como prêmio (X). Art. 46: vale também para **clínicas e pessoas jurídicas**. |
+| **CFO-196/2019** (só imagens) | **Autoriza** selfie do dentista (com ou sem paciente) e imagens de **diagnóstico e conclusão** do tratamento, sempre com **TCLE por escrito**. Proíbe: imagens do **transcurso** do procedimento (só em publicação científica), imagens que identifiquem equipamentos/instrumentais/tecidos, e divulgar **caso clínico de terceiro**. Exige **nome + número de inscrição no CRO** em toda publicação. Quem divulga tem que ser **o próprio profissional que executou** — clínica (PJ) não pode. Descumprir é infração ética "de manifesta gravidade". |
+| **CFO-271/2025** | Sob determinação do **CADE**, flexibilizou o mercantil: liberou brindes, sorteios, vale-presente e **cartões de desconto**, e estreitou o art. 44, XIV (aliciamento agora mira telemarketing ativo, caixas de som, plaqueteiros). **Não** mexeu na vedação de preço nem na 196/2019. |
+
+Nota: não somos escritório de advocacia. Antes de publicar material em nome da agência afirmando o que o cliente pode ou não fazer, vale revisão jurídica — a redação do art. 44, I fala em publicidade "enganosa, abusiva, inclusive com preços", e a interpretação dos CROs sobre anúncio de preço puro e simples tem variado, ainda mais depois da pressão do CADE.
 
 **Ouro de posicionamento:** dentista e psicólogo NÃO podem anunciar preço em público — mas podem informar no 1:1 do WhatsApp, exatamente onde o assistente da nanoguará.ia atua. A agência configura o assistente DENTRO das regras do conselho de cada cliente. Nenhum concorrente mapeado explora isso.
 

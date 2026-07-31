@@ -45,7 +45,7 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 | Número de WhatsApp da agência | Tasks 6 e 10 |
 | Domínio `.com.br` registrado (Registro.br) e nameservers na Cloudflare | Task 10 |
 | Confirmar no dashboard que o Cloudflare Registrar não cobre `.br` (premissa, sem doc citável) | Task 10 |
-| Ler a Resolução CFO-196/2019 na fonte primária antes de citar a vedação de preço em material público | copy do site |
+| ~~Ler a CFO-196/2019 na fonte primária~~ ✅ resolvido em 2026-07-31: normas lidas no site do CFO e **erro corrigido** no perfil (a vedação de preço está no Código de Ética CFO-118/2012 art. 44 I, não na 196/2019, que trata só de imagens) | — |
 | Eval de pt-BR e adversarial do modelo (gate de go-live) | Task 9 |
 
 ## Próximo passo
