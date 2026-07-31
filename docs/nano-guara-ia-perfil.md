@@ -1,16 +1,16 @@
-# Perfil — nano guará.ia
+# Perfil — nanoguará.ia
 
 > Fase 2 (Discovery) da /planejar · 2026-07-31 · Insumos: logo enviado pelo usuário + relatório de pesquisa verificada `/Users/rodri/pesquisas/pesquisa-dores-profissionais-liberais-ia-2026-07-31.md`
 
 ## Quem é
 
-**nano guará.ia** — agência de inteligência artificial brasileira (projeto novo, independente da lucrec.ia). Slogan: **"Inteligência que gera resultados"**. Vende IA aplicada como serviço de proximidade: diagnóstico → implantação → acompanhamento.
+**nanoguará.ia** — agência de inteligência artificial brasileira (projeto novo, independente da lucrec.ia). Slogan: **"Inteligência que gera resultados"**. Vende IA aplicada como serviço de proximidade: diagnóstico → implantação → acompanhamento.
 
 **Serviços (7):** ① Assistente Virtual para profissionais liberais (atendimento, agendamento, follow-up, pós-vendas — CARRO-CHEFE) · ② Automação comercial · ③ Criação de sites · ④ SEO e GEO · ⑤ Registro de Marcas · ⑥ Consultoria LGPD · ⑦ Web app para Representante Comercial.
 
 ## Identidade visual (JÁ EXISTENTE — adaptar, não reinventar)
 
-Logo: **fruto de guaraná** estilizado (casca vermelha aberta revelando a "semente-olho" preta com branco) envolvido por folhas verdes, com **traços de circuito eletrônico** verdes saindo do fruto à direita. Wordmark "nano guará.ia" em caixa baixa, tipografia geométrica arredondada com degradê verde-escuro→verde; slogan em caps espaçado.
+Logo: **fruto de guaraná** estilizado (casca vermelha aberta revelando a "semente-olho" preta com branco) envolvido por folhas verdes, com **traços de circuito eletrônico** verdes saindo do fruto à direita. Wordmark "nanoguará.ia" em caixa baixa, tipografia geométrica arredondada com degradê verde-escuro→verde; slogan em caps espaçado.
 
 - **Paleta observada no logo:** verde-escuro (folhas/circuito, ~#1B5E20-#2E7D32), verde-médio (degradê do wordmark), vermelho vivo (casca, ~#D32F2F-#C62828), preto (semente/olho), branco/creme (esclera do "olho", respiros).
 - **Simbologia:** guaraná = energia, Brasil/Amazônia, "olho que tudo vê" (atendimento vigilante 24/7); circuito = tecnologia. Marca calorosa e brasileira — não corporativa fria.
@@ -44,11 +44,11 @@ Médico, dentista, advogado, psicólogo, consultor, arquiteto — quem vive de a
 
 \* Única norma lida só em secundárias consistentes; confirmar no site do CFO antes de citar em material público.
 
-**Ouro de posicionamento:** dentista e psicólogo NÃO podem anunciar preço em público — mas podem informar no 1:1 do WhatsApp, exatamente onde o assistente da nano guará.ia atua. A agência configura o assistente DENTRO das regras do conselho de cada cliente. Nenhum concorrente mapeado explora isso.
+**Ouro de posicionamento:** dentista e psicólogo NÃO podem anunciar preço em público — mas podem informar no 1:1 do WhatsApp, exatamente onde o assistente da nanoguará.ia atua. A agência configura o assistente DENTRO das regras do conselho de cada cliente. Nenhum concorrente mapeado explora isso.
 
 ## Cenário competitivo (resumo)
 
-SaaS self-service no low-end (R$ 147-797/mês: TECHFLIP, Atendente24h), agências generalistas no meio (nFactory: setup ~R$ 3 mil + R$ 500/mês; OGênio: ~R$ 800/mês, 72h), verticais de saúde no topo (CareCode, WorkAI). Âncora de mercado (inferência de preços auto-declarados): **setup R$ 2-8 mil + R$ 500-1.500/mês**. Sinal de tração do setor: dr.consulta declara R$ 1,2M/mês com agentes de IA (Exame — auto-declarado). Espaço da nano guará.ia: serviço personalizado com proximidade + vertical de profissionais liberais + portfólio complementar (site, SEO/GEO, marca, LGPD).
+SaaS self-service no low-end (R$ 147-797/mês: TECHFLIP, Atendente24h), agências generalistas no meio (nFactory: setup ~R$ 3 mil + R$ 500/mês; OGênio: ~R$ 800/mês, 72h), verticais de saúde no topo (CareCode, WorkAI). Âncora de mercado (inferência de preços auto-declarados): **setup R$ 2-8 mil + R$ 500-1.500/mês**. Sinal de tração do setor: dr.consulta declara R$ 1,2M/mês com agentes de IA (Exame — auto-declarado). Espaço da nanoguará.ia: serviço personalizado com proximidade + vertical de profissionais liberais + portfólio complementar (site, SEO/GEO, marca, LGPD).
 
 ## Contexto pro produto (site)
 

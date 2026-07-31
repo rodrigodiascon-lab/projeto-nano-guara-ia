@@ -1,10 +1,10 @@
-# Spec — Site institucional nano guará.ia
+# Spec — Site institucional nanoguará.ia
 
 Data: 2026-07-31 · Fase 1 (Brainstorm) da /planejar · Status: aguardando revisão do usuário
 
 ## Problema e público
 
-Profissionais liberais (médicos, dentistas, advogados, psicólogos, consultores, arquitetos) perdem clientes e receita porque não conseguem responder WhatsApp em tempo, confirmar agenda e fazer follow-up enquanto atendem. A **nano guará.ia** é uma agência de IA que resolve isso — e o site é sua vitrine e máquina de captação de leads.
+Profissionais liberais (médicos, dentistas, advogados, psicólogos, consultores, arquitetos) perdem clientes e receita porque não conseguem responder WhatsApp em tempo, confirmar agenda e fazer follow-up enquanto atendem. A **nanoguará.ia** é uma agência de IA que resolve isso — e o site é sua vitrine e máquina de captação de leads.
 
 - **Público nº 1:** profissionais liberais (decisor = o próprio profissional).
 - **Carro-chefe:** Assistente Virtual (atendimento, agendamento, follow-up, pós-vendas).
@@ -36,7 +36,7 @@ Estrutura clonada/adaptada de **https://www.carecode.ai/pt** (escolha do usuári
 | 5 | Assistente Virtual (deep-dive) | Demo interativa do assistente no site + bullets de capacidade + transferência para humano |
 | 6 | Demais serviços | Grade de 6 cards (Automação comercial · Sites · SEO/GEO · Registro de marcas · LGPD · Web app Rep. Comercial), 1 frase de valor + CTA cada |
 | 7 | Como funciona | 3 passos: diagnóstico → implantação → acompanhamento |
-| 8 | CTA final + formulário | Formulário curto (nome, profissão, WhatsApp, maior dor) + botão WhatsApp + tagline "Cuide dos seus clientes. A nano guará.ia cuida do resto." |
+| 8 | CTA final + formulário | Formulário curto (nome, profissão, WhatsApp, maior dor) + botão WhatsApp + tagline "Cuide dos seus clientes. A nanoguará.ia cuida do resto." |
 | 9 | Footer | Contatos, links, Política de Privacidade/LGPD exemplar (a agência vende consultoria LGPD) |
 
 ## MVP vs futuro

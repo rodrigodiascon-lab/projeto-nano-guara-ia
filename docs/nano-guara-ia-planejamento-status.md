@@ -1,42 +1,54 @@
-# Status do Planejamento — nano guará.ia (site institucional)
+# Status do Planejamento — nanoguará.ia (site institucional)
 
-> Arquivo de estado da skill `/planejar`. Atualizado ao fim de cada fase.
-> Plano aprovado: `/Users/rodri/.claude/plans/projeto-nano-guar-ia-fizzy-nygaard.md`
+> Arquivo de estado da skill `/planejar`. **Planejamento CONCLUÍDO em 2026-07-31** (8 fases).
+> Para executar: `superpowers:subagent-driven-development` apontando para o plano.
 
 ## Produto
 
-Site institucional da agência de IA **nano guará.ia** — vitrine dos 7 serviços com captação de leads. Projeto novo, separado da lucrec.ia. Web app do Representante Comercial fica para um segundo ciclo da `/planejar`.
+Site institucional one-page da agência de IA **nanoguará.ia** — vitrine dos 7 serviços com captação de leads. Projeto novo, separado da lucrec.ia. O web app do Representante Comercial fica para um segundo ciclo da `/planejar`.
 
-Serviços da agência: automação comercial · assistente virtual para profissionais liberais (atendimento, agendamento, follow-up, pós-vendas) · criação de sites · SEO e GEO · registro de marcas · consultoria LGPD · web app para representante comercial.
+Serviços: assistente virtual para profissionais liberais (carro-chefe) · automação comercial · criação de sites · SEO e GEO · registro de marcas · consultoria LGPD · web app para representante comercial.
 
-Identidade visual JÁ PRONTA: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligência que gera resultados". Imagens do logo: pendente salvar em `docs/brand/` (usuário enviou 3 PNGs no chat de 2026-07-31).
+Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligência que gera resultados", grafia oficial **"nanoguará.ia"** (uma palavra; wordmark bicolor).
 
 ## Fases
 
-| Fase | Status | Data | Artefato |
-|------|--------|------|----------|
-| 0 — Preflight/Setup | ✅ concluída | 2026-07-31 | este arquivo |
-| 1 — Brainstorm | ✅ concluída (aguardando revisão da spec pelo usuário) | 2026-07-31 | `docs/superpowers/specs/2026-07-31-nano-guara-ia-site-design.md` |
-| 2 — Discovery (adaptada: marca própria + persona) | ✅ concluída (aguardando confirmação do usuário) | 2026-07-31 | `docs/nano-guara-ia-perfil.md` + `~/pesquisas/pesquisa-dores-profissionais-liberais-ia-2026-07-31.md` |
-| 3 — Pesquisa Técnica (Cloudflare-first) | ✅ concluída (aguardando aprovação da stack pelo usuário) | 2026-07-31 | `docs/nano-guara-ia-stack.md` |
-| 4 — Design (design-taste-frontend + mockup Artifact) | ✅ APROVADA pelo usuário (mockup + design doc + efeitos Etheral/Shimmer no herói) | 2026-07-31 | `docs/nano-guara-ia-design.md` + mockup https://claude.ai/code/artifact/c79e3b5e-4fe5-4e8f-a762-4d168d8bbdfc |
-| 5 — Escrita do Plano | ✅ concluída | 2026-07-31 | `docs/superpowers/plans/2026-07-31-nano-guara-ia-site.md` (10 tasks, TDD, código completo) |
-| 6 — Auditoria | ✅ concluída | 2026-07-31 | `docs/nano-guara-ia-audit.md` (40 achados: 6 P0, 11 P1, 14 P2, 9 P3) |
-| 7 — Correção | ✅ concluída | 2026-07-31 | plano v2 (todos P0/P1/P2 aplicados; 4 P3 registrados como não aplicados) |
-| 8 — Montagem | pendente | | resumo final |
+| Fase | Status | Artefato |
+|------|--------|----------|
+| 0 — Preflight/Setup | ✅ | este arquivo |
+| 1 — Brainstorm | ✅ aprovada | `docs/superpowers/specs/2026-07-31-nano-guara-ia-site-design.md` |
+| 2 — Discovery (marca + persona) | ✅ aprovada | `docs/nano-guara-ia-perfil.md` + `~/pesquisas/pesquisa-dores-profissionais-liberais-ia-2026-07-31.md` |
+| 3 — Pesquisa Técnica (Cloudflare-first) | ✅ aprovada | `docs/nano-guara-ia-stack.md` |
+| 4 — Design | ✅ aprovada | `docs/nano-guara-ia-design.md` + `docs/mockup-aprovado-fase4.html` + [mockup publicado](https://claude.ai/code/artifact/c79e3b5e-4fe5-4e8f-a762-4d168d8bbdfc) |
+| 5 — Escrita do Plano | ✅ | `docs/superpowers/plans/2026-07-31-nano-guara-ia-site.md` |
+| 6 — Auditoria | ✅ | `docs/nano-guara-ia-audit.md` (40 achados: 6 P0, 11 P1, 14 P2, 9 P3) |
+| 7 — Correção | ✅ | plano v2 (P0/P1/P2 aplicados; 4 P3 registrados como não aplicados, com motivo) |
+| 8 — Montagem | ✅ | consistência, grafia normalizada e resumo final |
 
-## Decisões tomadas
+## Decisões que valem para a execução
 
-- 2026-07-31 — **Grafia oficial da marca: "nanoguará.ia"** (uma palavra só, bicolor: "nano" neutro + "guará.ia" verde). Decisão do usuário na revisão do mockup. Normalizar todos os docs e a copy na Fase 8.
+- **Escopo:** site institucional one-page, 9 seções, PT-BR. v2 (fora do MVP): blog, páginas por serviço, cases, na mídia.
+- **Público nº 1:** profissionais liberais. **Carro-chefe:** assistente virtual no WhatsApp.
+- **Captação:** WhatsApp como CTA primário + chat demo com IA real + formulário curto.
+- **Referência estrutural:** carecode.ai/pt (estrutura sim, cores não) — mapa em `docs/referencia-carecode-estrutura.md`.
+- **Sem prova social no MVP:** proibido inventar métricas ou clientes; credibilidade vem da demo ao vivo.
+- **Números permitidos na copy** (com fonte): 62% desistem de compra no WhatsApp (Opinion Box 2025) · 1 em cada 3 clínicas com mais de 11% de faltas (Doctoralia/Feegow 2025) · 59% rejeitam resposta automática genérica (Opinion Box 2025). **Banidos:** "5 minutos" como estatística, "20-30% de faltas", "53% esqueceram", "55-70% das propostas".
+- **Diferencial de posicionamento:** dentista (CFO) e psicólogo (CFP) não podem anunciar preço em público, mas podem no 1:1 do WhatsApp — a agência configura o assistente dentro das regras do conselho de cada cliente.
+- **Stack:** 100% Cloudflare (1 Worker com Static Assets + `/api/lead` + `/api/chat`, D1, Turnstile, Rate Limiting, Email Service, Workers AI `glm-4.7-flash` via AI Gateway, Web Analytics). Saídas só por cobertura: Registro.br (domínio), wa.me (WhatsApp), Gmail (inbox). Custo MVP ≈ R$ 40/ano.
+- **Design:** direção "Guaraná Tech"; efeitos aprovados no herói (fundo Etheral + shimmer no H1) com as degradações obrigatórias da auditoria.
+- **Ferramenta de design:** Claude Design dispensado nesta rodada; mockup navegável em Artifact fez o papel.
 
-- 2026-07-31 — Fase 0: preflight ok; skill `design-sync` NÃO existe no marketplace (verificado via `npx skills find`) → Fase 4 usa a tool `DesignSync` direto, fallback mockup `artifact-design`. Mood board opcional dispensado (sem GEMINI_API_KEY na sessão). Motor de pesquisa: Exa via MCP.
-- 2026-07-31 — Escopo: produto = site institucional (decisão do usuário via AskUserQuestion).
-- 2026-07-31 — Fase 1: público nº1 = profissionais liberais; carro-chefe = Assistente Virtual; captação = WhatsApp (primário) + assistente demo no site + formulário; formato = one-page; SEM prova social no MVP; estrutura clonada/adaptada de carecode.ai/pt (estrutura sim, cores não) → 9 seções aprovadas pelo usuário. Referência: `docs/referencia-carecode-estrutura.md`. Repo git inicializado.
+## Pendências para a execução (bloqueiam tasks específicas)
 
-## Próxima fase
+| Pendência | Bloqueia |
+|-----------|----------|
+| Salvar os 3 PNGs do logo em `docs/brand/` (usuário enviou no chat) | Task 6 |
+| Número de WhatsApp da agência | Tasks 6 e 10 |
+| Domínio `.com.br` registrado (Registro.br) e nameservers na Cloudflare | Task 10 |
+| Confirmar no dashboard que o Cloudflare Registrar não cobre `.br` (premissa, sem doc citável) | Task 10 |
+| Ler a Resolução CFO-196/2019 na fonte primária antes de citar a vedação de preço em material público | copy do site |
+| Eval de pt-BR e adversarial do modelo (gate de go-live) | Task 9 |
 
-**Gate pendente:** usuário aprovar a stack `docs/nano-guara-ia-stack.md`. Depois → **Fase 4 — Design**: `design-taste-frontend` (direção + design system adaptando a marca guaraná) e telas via tool `DesignSync` (Claude Design; confirmar antes de escrever na conta), fallback `artifact-design`. Pendências herdadas: salvar os 3 PNGs do logo em `docs/brand/`; ler CFO-196/2019 na fonte primária; confirmar no dash que Cloudflare Registrar não cobre .br (premissa); eval de pt-BR do modelo `@cf/zai-org/glm-4.7-flash` antes do go-live.
+## Próximo passo
 
-- 2026-07-31 — Fase 3: stack 100% Cloudflare aprovada pela atlas + fact-check adversarial (0 refutados). 1 Worker (Static Assets + /api/lead + /api/chat), D1, Turnstile, Email Service (destino verificado = grátis), Workers AI glm-4.7-flash via AI Gateway (rate limit grátis; streaming não cacheia), Web Analytics. Saídas da Cloudflare só por cobertura: registro .br (Registro.br), WhatsApp (wa.me), inbox (Gmail via Email Routing). Custo MVP ≈ R$ 40/ano (domínio); upgrade opcional Workers Paid US$5/mês. Sem RAG (system prompt basta).
-
-- 2026-07-31 — Fase 2: pesquisa em funil (`/pesquisa -f`, motor Exa) com Phase Gate por subagent independente (2 rodadas de verificação + fixes). Números seguros pra copy: 62% desistem de compra no WhatsApp (Opinion Box 2025), 1 em 3 clínicas com >11% de faltas (Doctoralia/Feegow 2025), 59% rejeitam resposta automática genérica (Opinion Box). Números BANIDOS: "5 minutos" como estatística, "20-30% faltas", "53% esqueceram", "55-70% propostas". Diferencial descoberto: regras de publicidade por conselho (dentista/psicólogo não anunciam preço em público → assistente no 1:1 é o fit).
+Executar o plano com `superpowers:subagent-driven-development` apontando para `docs/superpowers/plans/2026-07-31-nano-guara-ia-site.md`. Nenhum código de produto foi escrito até aqui — o repo contém apenas documentação de planejamento e o mockup aprovado.

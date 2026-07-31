@@ -1,4 +1,4 @@
-# Stack — Site nano guará.ia (Fase 3 /planejar · Cloudflare-first)
+# Stack — Site nanoguará.ia (Fase 3 /planejar · Cloudflare-first)
 
 > 2026-07-31 · Arquitetura via `cloudflare-atlas` (retrieval-first) + fact-check adversarial independente contra docs ao vivo (0 claims refutados; qualificações incorporadas). Pricing verificado em 31/07/2026 — re-verificar antes de implementar.
 

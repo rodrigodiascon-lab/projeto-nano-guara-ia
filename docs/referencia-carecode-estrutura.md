@@ -1,6 +1,6 @@
 # Referência estrutural — CareCode (https://www.carecode.ai/pt)
 
-> Raspado em 2026-07-31 via Firecrawl. Usar a ESTRUTURA, não as cores (âmbar/escuro não combina com a marca nano guará.ia). Referência escolhida pelo usuário na Fase 1.
+> Raspado em 2026-07-31 via Firecrawl. Usar a ESTRUTURA, não as cores (âmbar/escuro não combina com a marca nanoguará.ia). Referência escolhida pelo usuário na Fase 1.
 
 ## Esqueleto da home (ordem das seções)
 

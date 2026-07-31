@@ -1,6 +1,6 @@
-# Design — Site nano guará.ia
+# Design — Site nanoguará.ia
 
-> Fase 4 da /planejar · 2026-07-31 · Direção via `design-taste-frontend` (anti-slop) · Marca existente ACOMODADA, não reinventada. Telas: seção 4 (pendente Claude Design/fallback).
+> Fase 4 da /planejar · 2026-07-31 · Direção via `design-taste-frontend` (anti-slop) · Marca existente ACOMODADA, não reinventada · **Aprovado pelo usuário** (telas na seção 4; efeitos do herói na 4.1).
 
 ## 1. Design Read & Dials
 
@@ -87,10 +87,16 @@ Regras: contraste WCAG AA em tudo (AAA no herói); vermelho SÓ em CTA/acento (n
 
 ### Efeitos aprovados no herói (decisão do usuário, 2026-07-31: "os dois juntos")
 
-1. **Fundo Etheral Shadow** — sombras orgânicas animadas (filtro SVG feTurbulence + feDisplacementMap + hueRotate em loop) em 2 camadas: verde `--etheral-a` + guaraná sutil `--etheral-b`, theme-aware. Produção: **self-hostar** a máscara e o ruído (hoje vêm do CDN do Framer — bloqueados no artifact e proibidos em produção), fallback estático em `prefers-reduced-motion` e em mobile de GPU fraca (media query de `hover:none` + teste de FPS ou simplesmente versão estática < 768px).
-2. **Gradient Shimmer no H1** — varredura de banda multi-stop da marca (verde vivo → branco → laranja → guaraná) via `background-clip:text` + Web Animations API; base esmaecida (`color-mix` 72% texto/28% fundo); loop 1,45s + pausa 1,1s; estático sob reduced-motion; fallback `@supports not (background-clip:text)`.
+1. **Fundo Etheral Shadow** — sombras orgânicas animadas (filtro SVG feTurbulence + feDisplacementMap + hueRotate em loop) em 2 camadas: verde `--etheral-a` + guaraná sutil `--etheral-b`, theme-aware.
+2. **Gradient Shimmer no H1** — varredura de banda multi-stop da marca (verde vivo → branco → laranja → guaraná) via `background-clip:text` + Web Animations API; loop 1,45s + pausa 1,1s.
 
-Implementação de referência (vanilla, sem React/framer-motion): `scratchpad/nano-guara-mockup.html` versões "fundo-etheral-heroi" e "shimmer-headline". Nota de projeto: os dois efeitos + chat animado convivem no herói por decisão do usuário; a auditoria de web-perf (Fase 6) deve validar o custo de GPU e propor degradações.
+Implementação de referência (vanilla, sem React/framer-motion): `docs/mockup-aprovado-fase4.html`.
+
+**Ajustes obrigatórios definidos pela auditoria da Fase 6** (já refletidos no plano de implementação):
+- Máscara do Etheral **self-hosted e otimizada** para WebP ≤120 KB (o PNG do CDN do Framer tem 1,24 MB / 5000px). A camada de ruído **não é usada** pelo mockup aprovado — não baixar.
+- Ambos os loops ficam atrás de `IntersectionObserver` (só rodam com o herói na tela) + throttle de ~30fps; degradação por `(max-width:767px)`, `(hover:none)` e `prefers-reduced-motion`, reavaliada em `change`.
+- Base do shimmer sobe para `color-mix(85% texto)` (AAA no herói) e o **estado padrão do H1 é texto sólido**: o gradiente só entra via classe `.anima` quando a varredura roda, senão o centro do título ficaria branco/invisível.
+- No tema escuro os CTAs mantêm o vermelho escuro (`#D5382F`): o `#EF5A4C` com texto branco reprova WCAG AA.
 
 ## 5. Motion (motivada, contida)
 
