@@ -104,7 +104,7 @@ npm ls vitest   # confirmar par compatível vitest 3.x + pool 0.8.x (peer deps)
     { "name": "NOTIFY", "destination_address": "rodrigodias.consultor@gmail.com" }
   ],
   "vars": {
-    "WHATSAPP_NUMBER": "PREENCHER_NUMERO_DA_AGENCIA",
+    "WHATSAPP_NUMBER": "5592981486875",
     "AI_GATEWAY_ID": "nanoguara",
     "TURNSTILE_HOSTNAME": "PREENCHER_DOMINIO_NA_TASK_10",
     "LEAD_FROM": "PREENCHER_REMETENTE_NA_TASK_10",
@@ -1244,7 +1244,7 @@ No HTML do chat: `<div class="demo-log" id="demoLog" role="log" aria-live="polit
 - [ ] **Step 7: Links WhatsApp e beacon**
 
 ```js
-const WHATS = 'NUMERO_DA_AGENCIA'; // mesmo valor de WHATSAPP_NUMBER, só dígitos
+const WHATS = '5592981486875'; // (92) 98148-6875 em formato internacional, só dígitos
 function linkWhats(msg) { return `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`; }
 ```
 Todos os botões "Chamar no WhatsApp" viram `<a class="btn btn-primario" href="..." target="_blank" rel="noopener">` com mensagem por seção (herói: "Oi! Vi o site da nanoguará.ia e quero saber mais sobre o assistente virtual."; serviços: idem citando o serviço). Antes do `</body>`:
@@ -1567,12 +1567,13 @@ Passos de dashboard (com o usuário):
 4. **Web Analytics** → adicionar site → token no beacon.
 5. **WAF Rate Limiting** → regra por IP em `/api/*` como segunda camada (10/min chat, 5/min lead).
 6. **Domínio** → registrar `.com.br` no Registro.br, nameservers pra Cloudflare, custom domain no Worker.
-7. Preencher `WHATSAPP_NUMBER` (vars) e a constante `WHATS` no `app.js`.
+7. `WHATSAPP_NUMBER` e a constante `WHATS` já estão preenchidos com `5592981486875`. Conferir no smoke que um clique real abre a conversa certa.
 
 - [ ] **Step 2: Verificação anti-placeholder** (corrige P1-8)
 
 ```bash
-grep -rn "PREENCHER\|SEU_DOMINIO\|SITE_KEY_DA_TASK_10\|TOKEN_DA_TASK_10\|NUMERO_DA_AGENCIA" site/ --exclude-dir=node_modules
+grep -rn "PREENCHER\|SEU_DOMINIO\|SITE_KEY_DA_TASK_10\|TOKEN_DA_TASK_10" site/ --exclude-dir=node_modules
+# o número de WhatsApp já está preenchido (5592981486875); conferir que não sobrou placeholder
 ```
 Expected: **nenhuma ocorrência**. Qualquer resultado bloqueia o deploy.
 

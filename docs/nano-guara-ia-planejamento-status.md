@@ -42,11 +42,14 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 
 | Pendência | Bloqueia |
 |-----------|----------|
-| Número de WhatsApp da agência | Tasks 6 e 10 |
 | Domínio `.com.br` registrado (Registro.br) e nameservers na Cloudflare | Task 10 |
 | Confirmar no dashboard que o Cloudflare Registrar não cobre `.br` (premissa, sem doc citável) | Task 10 |
-| ~~Ler a CFO-196/2019 na fonte primária~~ ✅ resolvido em 2026-07-31: normas lidas no site do CFO e **erro corrigido** no perfil (a vedação de preço está no Código de Ética CFO-118/2012 art. 44 I, não na 196/2019, que trata só de imagens) | — |
 | Eval de pt-BR e adversarial do modelo (gate de go-live) | Task 9 |
+
+**Já resolvidas:**
+- ✅ **Marca:** SVG vetorial aprovado (`docs/brand/marca.svg` + `avatar-chat.svg`), dispensa os PNGs originais.
+- ✅ **WhatsApp da agência:** **(92) 98148-6875** → `5592981486875` nos links `wa.me`. Preenchido no plano (var `WHATSAPP_NUMBER` e constante `WHATS`) e ativo no mockup.
+- ✅ **Normas do CFO:** lidas em fonte primária; erro corrigido no perfil (a vedação de preço está no Código de Ética CFO-118/2012, art. 44, I — a 196/2019 trata só de imagens).
 
 ## Próximo passo
 
