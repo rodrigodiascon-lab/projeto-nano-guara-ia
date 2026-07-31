@@ -22,7 +22,7 @@ Identidade visual JÁ PRONTA: logo guaraná + circuito (verde/vermelho/preto/cre
 | 4 — Design (design-taste-frontend + mockup Artifact) | ✅ APROVADA pelo usuário (mockup + design doc + efeitos Etheral/Shimmer no herói) | 2026-07-31 | `docs/nano-guara-ia-design.md` + mockup https://claude.ai/code/artifact/c79e3b5e-4fe5-4e8f-a762-4d168d8bbdfc |
 | 5 — Escrita do Plano | ✅ concluída | 2026-07-31 | `docs/superpowers/plans/2026-07-31-nano-guara-ia-site.md` (10 tasks, TDD, código completo) |
 | 6 — Auditoria | ✅ concluída | 2026-07-31 | `docs/nano-guara-ia-audit.md` (40 achados: 6 P0, 11 P1, 14 P2, 9 P3) |
-| 7 — Correção | pendente | | plano corrigido |
+| 7 — Correção | ✅ concluída | 2026-07-31 | plano v2 (todos P0/P1/P2 aplicados; 4 P3 registrados como não aplicados) |
 | 8 — Montagem | pendente | | resumo final |
 
 ## Decisões tomadas
