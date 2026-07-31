@@ -18,7 +18,7 @@ Identidade visual JÁ PRONTA: logo guaraná + circuito (verde/vermelho/preto/cre
 | 0 — Preflight/Setup | ✅ concluída | 2026-07-31 | este arquivo |
 | 1 — Brainstorm | ✅ concluída (aguardando revisão da spec pelo usuário) | 2026-07-31 | `docs/superpowers/specs/2026-07-31-nano-guara-ia-site-design.md` |
 | 2 — Discovery (adaptada: marca própria + persona) | ✅ concluída (aguardando confirmação do usuário) | 2026-07-31 | `docs/nano-guara-ia-perfil.md` + `~/pesquisas/pesquisa-dores-profissionais-liberais-ia-2026-07-31.md` |
-| 3 — Pesquisa Técnica (Cloudflare-first) | pendente | | tabela de decisão de stack |
+| 3 — Pesquisa Técnica (Cloudflare-first) | ✅ concluída (aguardando aprovação da stack pelo usuário) | 2026-07-31 | `docs/nano-guara-ia-stack.md` |
 | 4 — Design (design-taste-frontend + DesignSync) | pendente | | `docs/nano-guara-ia-design.md` |
 | 5 — Escrita do Plano | pendente | | `docs/superpowers/plans/YYYY-MM-DD-nano-guara-ia-site.md` |
 | 6 — Auditoria | pendente | | `docs/nano-guara-ia-audit.md` |
@@ -33,6 +33,8 @@ Identidade visual JÁ PRONTA: logo guaraná + circuito (verde/vermelho/preto/cre
 
 ## Próxima fase
 
-**Gate pendente:** usuário confirmar o perfil `docs/nano-guara-ia-perfil.md`. Depois → **Fase 3 — Pesquisa Técnica (Cloudflare-first)** via `cloudflare-atlas`: arquitetar o site 100% Cloudflare (Workers+Assets, formulário de leads, Turnstile, demo do assistente via Workers AI/AI Gateway) e montar tabela de decisão. Pendências herdadas: salvar os 3 PNGs do logo em `docs/brand/`; ler a Resolução CFO-196/2019 na fonte primária antes de usar a vedação de preço de dentistas em material público.
+**Gate pendente:** usuário aprovar a stack `docs/nano-guara-ia-stack.md`. Depois → **Fase 4 — Design**: `design-taste-frontend` (direção + design system adaptando a marca guaraná) e telas via tool `DesignSync` (Claude Design; confirmar antes de escrever na conta), fallback `artifact-design`. Pendências herdadas: salvar os 3 PNGs do logo em `docs/brand/`; ler CFO-196/2019 na fonte primária; confirmar no dash que Cloudflare Registrar não cobre .br (premissa); eval de pt-BR do modelo `@cf/zai-org/glm-4.7-flash` antes do go-live.
+
+- 2026-07-31 — Fase 3: stack 100% Cloudflare aprovada pela atlas + fact-check adversarial (0 refutados). 1 Worker (Static Assets + /api/lead + /api/chat), D1, Turnstile, Email Service (destino verificado = grátis), Workers AI glm-4.7-flash via AI Gateway (rate limit grátis; streaming não cacheia), Web Analytics. Saídas da Cloudflare só por cobertura: registro .br (Registro.br), WhatsApp (wa.me), inbox (Gmail via Email Routing). Custo MVP ≈ R$ 40/ano (domínio); upgrade opcional Workers Paid US$5/mês. Sem RAG (system prompt basta).
 
 - 2026-07-31 — Fase 2: pesquisa em funil (`/pesquisa -f`, motor Exa) com Phase Gate por subagent independente (2 rodadas de verificação + fixes). Números seguros pra copy: 62% desistem de compra no WhatsApp (Opinion Box 2025), 1 em 3 clínicas com >11% de faltas (Doctoralia/Feegow 2025), 59% rejeitam resposta automática genérica (Opinion Box). Números BANIDOS: "5 minutos" como estatística, "20-30% faltas", "53% esqueceram", "55-70% propostas". Diferencial descoberto: regras de publicidade por conselho (dentista/psicólogo não anunciam preço em público → assistente no 1:1 é o fit).
