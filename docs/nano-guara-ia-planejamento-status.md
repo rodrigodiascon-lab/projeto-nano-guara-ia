@@ -20,7 +20,7 @@ Identidade visual JÁ PRONTA: logo guaraná + circuito (verde/vermelho/preto/cre
 | 2 — Discovery (adaptada: marca própria + persona) | ✅ concluída (aguardando confirmação do usuário) | 2026-07-31 | `docs/nano-guara-ia-perfil.md` + `~/pesquisas/pesquisa-dores-profissionais-liberais-ia-2026-07-31.md` |
 | 3 — Pesquisa Técnica (Cloudflare-first) | ✅ concluída (aguardando aprovação da stack pelo usuário) | 2026-07-31 | `docs/nano-guara-ia-stack.md` |
 | 4 — Design (design-taste-frontend + mockup Artifact) | ✅ APROVADA pelo usuário (mockup + design doc + efeitos Etheral/Shimmer no herói) | 2026-07-31 | `docs/nano-guara-ia-design.md` + mockup https://claude.ai/code/artifact/c79e3b5e-4fe5-4e8f-a762-4d168d8bbdfc |
-| 5 — Escrita do Plano | pendente | | `docs/superpowers/plans/YYYY-MM-DD-nano-guara-ia-site.md` |
+| 5 — Escrita do Plano | ✅ concluída | 2026-07-31 | `docs/superpowers/plans/2026-07-31-nano-guara-ia-site.md` (10 tasks, TDD, código completo) |
 | 6 — Auditoria | pendente | | `docs/nano-guara-ia-audit.md` |
 | 7 — Correção | pendente | | plano corrigido |
 | 8 — Montagem | pendente | | resumo final |
