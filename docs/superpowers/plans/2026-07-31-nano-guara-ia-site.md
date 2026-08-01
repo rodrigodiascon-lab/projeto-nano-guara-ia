@@ -1343,22 +1343,60 @@ cd /Users/rodri/projeto-nano-guara-ia && git add site && git commit -m "feat(sit
 
 ---
 
-### Task 7: Robots, sitemap e JSON-LD
+### Task 7: Acesso, dados estruturados e mensurabilidade para busca e GEO
+
+> **Ampliada em 2026-08-01 a pedido do dono do projeto.** A versao anterior cobria robots, sitemap e um JSON-LD, o que e SEO tecnico basico e quase nada de GEO. A ampliacao e sustentada por levantamento em fontes primarias (documentacao oficial de OpenAI, Anthropic, Google, Perplexity, Meta, Amazon e Cloudflare) e por tres papers com metodologia publicada. **O que e fato verificado e o que e pratica sem evidencia estao rotulados**, porque este site e a vitrine do servico de SEO e GEO que a agencia vende: recomendar folclore aqui seria vender folclore.
 
 **Files:**
-- Create: `site/public/robots.txt`, `site/public/sitemap.xml`
-- Modify: `site/public/index.html` (JSON-LD)
+- Create: `site/public/robots.txt`, `site/public/sitemap.xml`, `site/public/schema.json`, `site/test/geo.test.ts`
+- Modify: `site/public/index.html` (link do JSON-LD e head), `site/public/_headers` (tipo de conteudo do schema)
 
-- [ ] **Step 1: Arquivos**
+**Interfaces:** nenhuma nova. Consome o `index.html` da Task 6.
 
-`site/public/robots.txt`:
+#### O que a pesquisa mudou no entendimento de GEO
+
+**[FATO]** **Nenhum rastreador de IA relevante executa JavaScript.** Verificado na documentacao oficial de cada fabricante e corroborado por analise independente da Vercel sobre mais de 500 milhoes de fetches reais de GPTBot e ClaudeBot em producao. A unica excecao e a infraestrutura do Google: `Google-Extended` nao tem user-agent proprio, ele reaproveita o Googlebot, que renderiza JS. Consequencia direta: **conteudo que so aparece depois do JS e invisivel para ChatGPT, Claude, Perplexity, Meta e Amazon.** Isso ja foi mitigado na Task 6 com o fallback de `noscript`, e esta task passa a travar isso com teste.
+
+**[FATO]** **A Cloudflare bloqueia rastreadores de IA por padrao em dominios novos desde 01/07/2025.** Anuncio oficial da propria Cloudflare. O dominio `nanoguara.ia.br` foi cadastrado em 01/08/2026, ou seja, **depois** dessa mudanca. Ha risco concreto de o site estar bloqueado para GPTBot, ClaudeBot e afins sem ninguem ter feito nada. **Isso e verificacao obrigatoria antes do go-live** e esta no Step 1.
+
+**[FATO]** A partir de **15/09/2026** entram novos defaults: bots de "Training" e "Agent" bloqueados em paginas com anuncio, "Search" liberado, e crawler de proposito misto bloqueado sob qualquer configuracao de bloqueio. Reavaliar a configuracao depois dessa data.
+
+**[EVIDENCIA FRACA, rotulado de proposito]** A alegacao de que schema.org aumenta citacao em resposta de IA **nao foi confirmada em nenhuma fonte academica revisada por pares**. O estudo mais rigoroso encontrado (preprint nao revisado, N=730 citacoes) mede efeito **nulo** para schema generico depois de controlar pela posicao no ranking organico, que e o preditor dominante. Manter `Organization`/`ProfessionalService` continua valendo por desambiguacao de entidade e por nao ter dano conhecido, **nao** porque "aumenta citacao".
+
+**[FATO]** O rich result de `FAQPage` foi **removido pelo Google em 07/05/2026** para todos os sites. O tipo de schema segue valido e sem penalidade, mas nao gera mais aparencia especial na busca. Portanto: se usarmos `FAQPage`, e por organizacao semantica, nao por promessa de rich result.
+
+**[FATO, tres papers com metodologia publicada]** Aggarwal et al. (KDD 2024, N=10.000 queries) mediu ganho de ate 40% ao citar fontes e adicionar estatisticas. **Mas** Puerto et al. (NeurIPS 2025, C-SEO Bench) replicou em 6 LLMs com cenario competitivo e achou que a **maioria dos metodos de reescrita e ineficaz ou negativa**, com a posicao de recuperacao dominando. E Vishwakarma et al. (SIGIR 2026, N=252.000 trials) achou que **mudanca so de formatacao, como heading e lista, tem impacto minimo isolada**, contrariando o discurso comum de agencia. Sintese honesta: **posicao organica e fato concreto com fonte atribuida pesam; truque de reescrita e formatacao pesam pouco.**
+
+**[EVIDENCIA CONTRARIA]** `llms.txt`: **97% dos arquivos existentes nunca recebem uma requisicao** (Ahrefs, 137 mil dominios, maio/2026), e o Google declarou publicamente que **nao usa**. Nenhum motor grande confirmou consumo. **Decisao: nao implementar.** Fica registrado aqui para nao ser reintroduzido por engano depois, e para a agencia poder explicar ao cliente por que nao vende isso.
+
+- [ ] **Step 1: Verificar se a Cloudflare esta bloqueando os rastreadores de IA (BLOQUEANTE para o go-live)**
+
+No painel, em `nanoguara.ia.br`, abrir **Controle de rastreamento de IA** (AI Crawl Control, gratis em todos os planos). Conferir o estado de cada crawler e **permitir** os de busca e citacao: `OAI-SearchBot`, `ChatGPT-User`, `Claude-SearchBot`, `Claude-User`, `PerplexityBot`, `Perplexity-User`, `Amzn-SearchBot`, mais o `Googlebot` normal.
+
+Decisao sobre os de treino (`GPTBot`, `ClaudeBot`, `Google-Extended`, `Meta-ExternalAgent`, `Amazonbot`, `Bytespider`): **permitir**. Justificativa: a agencia vive de ser encontrada, e restringir treino nao traz beneficio comercial aqui. Registrar a decisao para poder rever.
+
+Depois do deploy, confirmar do lado de fora que o HTML chega mesmo para um rastreador:
+```bash
+curl -sA "GPTBot" https://nanoguara.ia.br/ | grep -c "porta de entrada"
+curl -sA "OAI-SearchBot" https://nanoguara.ia.br/ | grep -c "Chamar no WhatsApp"
+```
+Ambos precisam retornar numero maior que zero. Zero significa bloqueio ou conteudo dependente de JS.
+
+- [ ] **Step 2: `robots.txt` explicito, servido pelo proprio site**
+
+Nao depender do robots.txt gerenciado da conta. `site/public/robots.txt`:
+
 ```
 User-agent: *
 Allow: /
+
 Sitemap: https://nanoguara.ia.br/sitemap.xml
 ```
 
-`site/public/sitemap.xml`:
+Sem `Disallow` de nada: o site inteiro e publico e institucional. Os tokens por fabricante ficam de fora de proposito, porque `User-agent: *` ja cobre todos os que obedecem robots.txt, e listar dezenas de tokens envelhece mal.
+
+- [ ] **Step 3: `sitemap.xml`**
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1367,22 +1405,44 @@ Sitemap: https://nanoguara.ia.br/sitemap.xml
 </urlset>
 ```
 
-- [ ] **Step 2: JSON-LD no index.html (antes do `</body>`)**
+- [ ] **Step 4: JSON-LD como arquivo externo, servido no HTML**
 
-```html
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService",
- "name":"nanoguará.ia","slogan":"Inteligência que gera resultados",
- "description":"Agência brasileira de IA para profissionais liberais: assistente virtual no WhatsApp, automação comercial, sites, SEO e GEO, registro de marcas e consultoria LGPD.",
- "areaServed":"BR","url":"https://nanoguara.ia.br/"}
-</script>
-```
-Nota: JSON-LD é `<script>` sem `src`; a CSP com `script-src 'self'` bloqueia scripts inline. Adicionar o hash do bloco ao `script-src` (`'sha256-...'`, obtido no console do navegador) ou servir o JSON-LD como arquivo externo referenciado por `<link rel="alternate" type="application/ld+json" href="/schema.json">`. **Preferir o arquivo externo** (mais simples de manter).
+A CSP e `script-src 'self'` sem `unsafe-inline`, entao JSON-LD inline seria bloqueado. Servir como arquivo e referenciar:
 
-- [ ] **Step 3: Commit**
+`site/public/schema.json` com um grafo contendo `ProfessionalService` (nome, slogan, descricao, `areaServed: BR`, url, `sameAs` vazio ate existirem perfis reais, `knowsAbout` com os servicos) e `WebSite`. **Proibido inventar** endereco, telefone fixo, nota de avaliacao, numero de clientes ou qualquer `aggregateRating`: o site nao tem prova social no MVP e inventar aqui seria fraude de dado estruturado.
+
+No `index.html`: `<link rel="alternate" type="application/ld+json" href="/schema.json">`.
+
+No `_headers`, garantir o tipo correto para `/schema.json`.
+
+- [ ] **Step 5: Conteudo citavel, com o que a pesquisa sustenta**
+
+Aplicar **somente** o que os papers sustentam, sem inflar:
+- os dois numeros verificados que ja estao na copy continuam com a fonte visivel ao lado, no HTML servido. Fato com fonte atribuida foi o fator que se sustentou nos tres estudos;
+- a pagina precisa responder, em texto simples e no HTML servido, as perguntas que um profissional liberal realmente faz: o que a agencia faz, para quem, como comeca, quanto custa (e a resposta honesta e que o valor sai no diagnostico gratuito, sem preco fechado inventado), e em que cidade e pais atua;
+- **nao** reescrever a copy aprovada em busca de "formato citavel". O estudo mais recente e mais controlado mostra que formatacao isolada rende pouco, e a copy ja foi aprovada pelo dono.
+
+- [ ] **Step 6: Testes que travam o que foi decidido**
+
+`site/test/geo.test.ts`, exercitando o Worker com `SELF.fetch`:
+- `/robots.txt` responde 200, contem `Allow: /` e a linha de `Sitemap:`, e **nao** contem `Disallow: /`;
+- `/sitemap.xml` responde 200 e lista a home;
+- `/schema.json` responde 200, e JSON valido, tem `@type` de `ProfessionalService`, e **nao** contem `aggregateRating` nem `review` (guarda contra prova social inventada);
+- o HTML da home, **como servido**, contem os textos-chave das secoes sem depender de JS (a mesma garantia que o `curl -A GPTBot` faz de fora);
+- o `index.html` referencia `/schema.json`;
+- a CSP continua sem `unsafe-inline`.
+
+- [ ] **Step 7: Mensurar**
+
+**[FATO]** Nenhuma plataforma de IA oferece um Search Console de citacoes. O que existe e conferivel:
+- **Cloudflare AI Crawl Control**, gratis em todos os planos, mostra requisicoes por crawler nomeado, paths, status e violacoes de robots.txt. E a unica fonte de log do lado do servidor. Conferir uma semana apos o go-live: se `OAI-SearchBot` e `PerplexityBot` nao aparecerem, algo esta bloqueando.
+- Probing manual disciplinado: sessao anonima, pelo menos 5 execucoes por pergunta (o modelo nao e deterministico), registrando taxa de mencao e URLs citadas, por plataforma.
+- Ferramentas de terceiros rodam esse probing automatizado. A agencia ja tem acesso ao Ahrefs Brand Radar nesta sessao. **Nao sao logs oficiais**, sao amostragem.
+
+- [ ] **Step 8: Commit**
 
 ```bash
-cd /Users/rodri/projeto-nano-guara-ia && git add site && git commit -m "feat(site): robots, sitemap e dados estruturados"
+cd /Users/rodri/projeto-nano-guara-ia && git add site docs && git commit -m "feat(site): acesso de rastreadores, dados estruturados e testes de conteudo servido"
 ```
 
 ---
