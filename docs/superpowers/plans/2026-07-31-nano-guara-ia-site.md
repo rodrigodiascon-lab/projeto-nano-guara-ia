@@ -978,6 +978,29 @@ Inspecionar o SSE **bruto**: confirmar que os eventos vêm como `data: {"respons
 
 **Registrar o formato observado neste plano antes de seguir para a Task 6** — o parser do frontend depende disso.
 
+
+#### FORMATO OBSERVADO (smoke executado em 2026-08-01, contra a API real)
+
+Medido com `POST /accounts/{id}/ai/run/{modelo}` e `stream:true`, token OAuth do wrangler (escopo `ai:write`).
+
+| Modelo | Eventos | Raciocinio | Resposta visivel | finish_reason | Neurons |
+|---|---|---|---|---|---|
+| `@cf/zai-org/glm-4.7-flash` (max_tokens 80) | 57 | 255 chars | **0 chars** | `length` | 6,19 |
+| `@cf/zai-org/glm-4.7-flash` (max_tokens 600) | 420 | 2.284 chars | **0 chars** | `length` | 44,22 |
+| `@cf/meta/llama-3.3-70b-instruct-fp8-fast` (max_tokens 600) | 43 | 0 | **330 chars** | `stop` | 38,57 |
+
+**O `glm-4.7-flash` foi reprovado.** E um modelo de raciocinio: gasta todo o orcamento de tokens em `delta.reasoning_content` e nao chega a emitir `delta.content`, nem com 600 tokens. Alem disso raciocina em ingles e chines, ignorando a instrucao de responder em portugues. Repassar esse stream cru mostraria tela vazia ao visitante, ou vazaria raciocinio em chines se o parser fosse permissivo.
+
+**Modelo adotado: `@cf/meta/llama-3.3-70b-instruct-fp8-fast`**, o fallback que o proprio plano previa. Responde em pt-BR correto, termina com `finish_reason: stop`, e emite o formato classico que o codigo ja assumia.
+
+**Formato do SSE que o parser da Task 6 deve consumir:**
+- Cada evento e uma linha `data: {json}` seguida de linha em branco.
+- O texto incremental vem no campo de topo **`response`**: `data: {"response":"Nos somos ..."}`. (O mesmo texto tambem aparece em `choices[0].delta.content`; usar `response`, que e mais simples e foi o formato assumido no codigo.)
+- O stream termina com a linha literal `data: [DONE]`.
+- **Nao ha campo de raciocinio neste modelo** (`reasoning_content` sempre ausente), entao NAO e necessario o `TransformStream` de filtragem que este Step previa como contingencia.
+
+**Custo:** 38,57 neurons por resposta curta. Com os 10.000 neurons/dia do Free, da cerca de 259 respostas por dia. O rate limit de 10/min por IP ja protege contra consumo anormal. Reavaliar se o volume crescer.
+
 - [ ] **Step 5: Commit**
 
 ```bash
