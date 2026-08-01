@@ -92,21 +92,45 @@ nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,
 .circuito{position:absolute;right:-40px;top:8%;opacity:.10;pointer-events:none}
 @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.circuito{display:none}}
 
-/* ---------- Fundo Etheral Shadow (herói) ---------- */
-:root{--etheral-a:rgba(46,125,50,.20); --etheral-b:rgba(213,56,47,.07)}
-@media (prefers-color-scheme: dark){:root{--etheral-a:rgba(111,191,115,.34); --etheral-b:rgba(239,90,76,.12)}}
-:root[data-theme="dark"]{--etheral-a:rgba(111,191,115,.34); --etheral-b:rgba(239,90,76,.12)}
-:root[data-theme="light"]{--etheral-a:rgba(46,125,50,.20); --etheral-b:rgba(213,56,47,.07)}
 header{position:relative;overflow:hidden}
+/* ---------- Fundo do heroi: topografia luminosa ---------- */
+/* Curvas de nivel geradas em SVG pelo app.js. Rareiam na area de leitura,
+   derivam em tres profundidades e sao acesas por uma faixa de luz que varre.
+   Substitui o antigo fundo Etheral Shadow. */
+:root{ --topo-acento:var(--verde); --topo-linha:var(--text); }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --topo-acento:#6FBF73; --topo-linha:#EDF3EE; }
+}
+:root[data-theme="dark"]{ --topo-acento:#6FBF73; --topo-linha:#EDF3EE; }
+:root[data-theme="light"]{ --topo-acento:var(--verde); --topo-linha:var(--text); }
+
+.topo{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.topo svg{width:100%;height:100%;display:block}
+.topo .topo-camada{transform-box:fill-box}
+.topo .topo-dim path,.topo .topo-bri path{fill:none;vector-effect:non-scaling-stroke}
+.topo .topo-dim path{stroke:color-mix(in oklab,var(--topo-linha) 22%,transparent)}
+.topo .topo-bri path{stroke:var(--topo-acento)}
+.topo .topo-bri{filter:drop-shadow(0 0 3px color-mix(in oklab,var(--topo-acento) 60%,transparent))}
+
+.topo.anima .topo-camada{animation:topoDeriva var(--dur,18s) ease-in-out infinite alternate;will-change:transform}
+.topo.anima .topo-varre{animation:topoVarre 16s ease-in-out infinite alternate;will-change:transform}
+@keyframes topoDeriva{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--dx,0px),var(--dy,0px),0)}}
+@keyframes topoVarre{from{transform:translateX(-330px)}to{transform:translateX(330px)}}
+
+@media (max-width:767px){
+  .topo .topo-camada[data-i="2"]{display:none}
+  .topo .topo-bri{opacity:.82}
+}
+@media (prefers-reduced-motion: reduce){
+  .topo .topo-camada,.topo .topo-varre{animation:none !important}
+}
+@media (forced-colors: active){
+  .topo .topo-bri{display:none}
+  .topo svg{forced-color-adjust:none}
+  .topo .topo-dim path{stroke:CanvasText !important;stroke-opacity:.5 !important}
+}
+
 .svg-defs{position:absolute;width:0;height:0}
-.etheral{position:absolute;inset:-90px;filter:url(#etheralFx) blur(4px);pointer-events:none}
-.etheral .tinta{width:100%;height:100%;background:var(--cor);
-  -webkit-mask-image:url('/fx/mask.webp');
-  mask-image:url('/fx/mask.webp');
-  -webkit-mask-size:cover;mask-size:cover;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
-  -webkit-mask-position:center;mask-position:center}
-.etheral.a{--cor:var(--etheral-a)}
-.etheral.b{--cor:var(--etheral-b)}
 .hero{position:relative;z-index:1}
 
 /* ---------- Chat WhatsApp mockup ---------- */
@@ -272,7 +296,6 @@ footer .footer-accent{color:#6FBF73}
 
 /* Efeitos degradados por capacidade, não só por largura */
 @media (max-width:767px), (hover:none), (prefers-reduced-motion: reduce){
-  .etheral{ filter:blur(4px); }
   .hero h1.shimmer.anima{ background:none; -webkit-text-fill-color:currentColor; color:var(--text); }
 }
 
