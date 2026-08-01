@@ -17,11 +17,40 @@ function normalizaWhatsapp(bruto: string): string | null {
   return /^\+?\d{10,13}$/.test(limpo) ? limpo : null;
 }
 
+/**
+ * Lê o corpo por stream e corta assim que os bytes acumulados passam do limite.
+ * Content-Length é enviado pelo cliente e não é confiável (pode faltar em envio
+ * chunked, ou vir declarado menor que o corpo real); esta é a checagem que
+ * protege de verdade. Soma o byteLength de cada chunk (bytes), não o tamanho
+ * da string decodificada (que conta unidades UTF-16 e mediria errado corpos
+ * com acento ou emoji). Corpo ausente devolve string vazia, para cair no erro
+ * de JSON inválido já existente em vez de estourar aqui.
+ */
+async function lerCorpoLimitado(request: Request, limiteBytes: number): Promise<string | null> {
+  if (!request.body) return "";
+  const reader = request.body.getReader();
+  const decoder = new TextDecoder();
+  let bytesLidos = 0;
+  let corpo = "";
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    bytesLidos += value.byteLength;
+    if (bytesLidos > limiteBytes) {
+      await reader.cancel();
+      return null;
+    }
+    corpo += decoder.decode(value, { stream: true });
+  }
+  corpo += decoder.decode();
+  return corpo;
+}
+
 export async function handleLead(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   if (!mesmaOrigem(request)) return jsonSeguro({ ok: false, erro: "Origem não permitida" }, 403);
 
-  if (Number(request.headers.get("Content-Length") ?? 0) > LIMITE_BODY)
-    return jsonSeguro({ ok: false, erro: "Mensagem grande demais" }, 413);
+  const raw = await lerCorpoLimitado(request, LIMITE_BODY);
+  if (raw === null) return jsonSeguro({ ok: false, erro: "Mensagem grande demais" }, 413);
 
   const ip = request.headers.get("CF-Connecting-IP") ?? "anon";
   const rl = await env.LEAD_RL.limit({ key: ip });
@@ -30,7 +59,11 @@ export async function handleLead(request: Request, env: Env, ctx: ExecutionConte
 
   let body: Record<string, unknown>;
   try {
-    body = await request.json();
+    const parsed: unknown = JSON.parse(raw);
+    if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+      throw new Error("corpo JSON não é um objeto");
+    }
+    body = parsed as Record<string, unknown>;
   } catch {
     return jsonSeguro({ ok: false, erro: "JSON inválido" }, 400);
   }

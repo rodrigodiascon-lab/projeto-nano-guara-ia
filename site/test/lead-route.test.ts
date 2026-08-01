@@ -84,6 +84,23 @@ describe("POST /api/lead", () => {
     expect(res.status).toBe(413);
   });
 
+  it("corta corpo grande mesmo sem Content-Length (leitura por stream)", async () => {
+    const bytes = new TextEncoder().encode(JSON.stringify({ ...bodyValido, dor: "x".repeat(19000) }));
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(bytes);
+        controller.close();
+      },
+    });
+    const res = await SELF.fetch("https://site.local/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "CF-Connecting-IP": crypto.randomUUID() },
+      body: stream,
+      duplex: "half",
+    } as RequestInit & { duplex: "half" });
+    expect(res.status).toBe(413);
+  });
+
   it("corta no 6o envio seguido do mesmo IP", async () => {
     const ip = "203.0.113.77";
     for (let i = 0; i < 5; i++) turnstileOk();
