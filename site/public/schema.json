@@ -1,0 +1,37 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://nanoguara.ia.br/#organization",
+      "name": "nanoguará.ia",
+      "slogan": "Inteligência que gera resultados",
+      "description": "Assistente virtual de IA no WhatsApp para profissionais liberais: atendimento 24 horas, agendamento, confirmação e pós-venda. Agência nanoguará.ia.",
+      "url": "https://nanoguara.ia.br/",
+      "telephone": "+5592981486875",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "knowsAbout": [
+        "Assistente Virtual",
+        "Automação comercial",
+        "Criação de sites",
+        "SEO e GEO",
+        "Registro de marcas",
+        "Consultoria LGPD",
+        "Web app para Representante Comercial"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nanoguara.ia.br/#website",
+      "name": "nanoguará.ia",
+      "url": "https://nanoguara.ia.br/",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://nanoguara.ia.br/#organization"
+      }
+    }
+  ]
+}
