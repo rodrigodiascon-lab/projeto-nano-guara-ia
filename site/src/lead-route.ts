@@ -1,3 +1,80 @@
+import { insertLead } from "./leads";
+import { verifyTurnstile } from "./turnstile";
+import { renderLeadEmail } from "./email";
+import { jsonSeguro, mesmaOrigem } from "./http";
+
+const LIMITE_BODY = 10_000;
+
+function texto(v: unknown, max: number): string | null {
+  if (typeof v !== "string") return null;
+  const t = v.trim();
+  return t.length > 0 && t.length <= max ? t : null;
+}
+
+/** Aceita "+" só como primeiro caractere; 10 a 13 dígitos. */
+function normalizaWhatsapp(bruto: string): string | null {
+  const limpo = bruto.replace(/[\s\-().]/g, "");
+  return /^\+?\d{10,13}$/.test(limpo) ? limpo : null;
+}
+
 export async function handleLead(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-  throw new Error("não implementado - Task 4");
+  if (!mesmaOrigem(request)) return jsonSeguro({ ok: false, erro: "Origem não permitida" }, 403);
+
+  if (Number(request.headers.get("Content-Length") ?? 0) > LIMITE_BODY)
+    return jsonSeguro({ ok: false, erro: "Mensagem grande demais" }, 413);
+
+  const ip = request.headers.get("CF-Connecting-IP") ?? "anon";
+  const rl = await env.LEAD_RL.limit({ key: ip });
+  if (!rl.success)
+    return jsonSeguro({ ok: false, erro: "Muitos envios seguidos. Tente pelo WhatsApp." }, 429);
+
+  let body: Record<string, unknown>;
+  try {
+    body = await request.json();
+  } catch {
+    return jsonSeguro({ ok: false, erro: "JSON inválido" }, 400);
+  }
+
+  if (body.consentimento !== true)
+    return jsonSeguro({ ok: false, erro: "Consentimento é obrigatório (LGPD)" }, 400);
+
+  const nome = texto(body.nome, 80);
+  const profissao = texto(body.profissao, 40);
+  const whatsappBruto = texto(body.whatsapp, 25);
+  const dor = typeof body.dor === "string" ? body.dor.trim().slice(0, 500) : "";
+  const origem = texto(body.origem, 40) ?? "form";
+  const token = typeof body.turnstileToken === "string" ? body.turnstileToken : "";
+
+  if (!nome || !profissao || !whatsappBruto)
+    return jsonSeguro({ ok: false, erro: "Preencha nome, profissão e WhatsApp" }, 400);
+
+  const whatsapp = normalizaWhatsapp(whatsappBruto);
+  if (!whatsapp) return jsonSeguro({ ok: false, erro: "WhatsApp inválido" }, 400);
+
+  const humano = await verifyTurnstile(
+    env.TURNSTILE_SECRET_KEY,
+    token,
+    request.headers.get("CF-Connecting-IP"),
+    env.TURNSTILE_HOSTNAME
+  );
+  if (!humano) return jsonSeguro({ ok: false, erro: "Verificação anti-spam falhou" }, 403);
+
+  let id: number;
+  try {
+    id = await insertLead(env.DB, { nome, profissao, whatsapp, dor, origem });
+  } catch (e) {
+    console.error(JSON.stringify({ evt: "lead_d1_erro", err: String(e) }));
+    return jsonSeguro({ ok: false, erro: "Não consegui salvar agora. Tente pelo WhatsApp." }, 503);
+  }
+
+  // Notificação minimizada; falha não bloqueia a resposta (lead já está no D1).
+  const { subject, text } = renderLeadEmail({ id, nome, profissao });
+  ctx.waitUntil(
+    env.NOTIFY.send({ to: env.LEAD_TO, from: env.LEAD_FROM, subject, text }).catch((e: unknown) => {
+      const code = (e as { code?: string })?.code ?? "";
+      console.error(JSON.stringify({ evt: "lead_email_falhou", leadId: id, code, err: String(e) }));
+    })
+  );
+
+  return jsonSeguro({ ok: true }, 201);
 }
