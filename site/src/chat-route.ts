@@ -1,6 +1,10 @@
 import { jsonSeguro, mesmaOrigem, lerCorpoLimitado } from "./http";
 
-export const MODELO = "@cf/zai-org/glm-4.7-flash";
+// glm-4.7-flash foi reprovado no smoke de 2026-08-01: gasta todo o orcamento de
+// tokens em raciocinio (reasoning_content) e nunca chega a emitir resposta visivel.
+// llama-3.3-70b-instruct-fp8-fast responde em pt-BR, termina em stop e emite o
+// formato classico (campo "response", terminando em data: [DONE]) sem raciocinio.
+export const MODELO = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 const LIMITE_BODY = 20_000;
 const MAX_CHARS_MSG = 2000;
 
@@ -69,7 +73,7 @@ export async function handleChat(request: Request, env: Env): Promise<Response> 
     stream = await env.AI.run(
       MODELO,
       {
-        messages: montarMensagens(msgs as MsgCliente[]) as ChatCompletionMessageParam[],
+        messages: montarMensagens(msgs as MsgCliente[]),
         stream: true,
         max_tokens: 512,
       },
