@@ -49,7 +49,7 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 - ✅ **Marca:** SVG vetorial aprovado (`docs/brand/marca.svg` + `avatar-chat.svg`), dispensa os PNGs originais.
 - ✅ **WhatsApp da agência:** **(92) 98148-6875** → `5592981486875` nos links `wa.me`. Preenchido no plano (var `WHATSAPP_NUMBER` e constante `WHATS`) e ativo no mockup.
 - ✅ **Normas do CFO:** lidas em fonte primária; erro corrigido no perfil (a vedação de preço está no Código de Ética CFO-118/2012, art. 44, I — a 196/2019 trata só de imagens).
-- ✅ **Domínio escolhido:** **`nanoguara.ia.br`** como endereço oficial (a categoria `.ia.br` foi criada pelo NIC.br em 01/09/2025 para Inteligência Artificial, sem restrição de registro) + `nanoguara.com.br` como defensivo com 301 na Cloudflare. Ambos verificados como livres no Registro.br em 2026-07-31. Já aplicado no plano (robots, sitemap, og:image, JSON-LD, `TURNSTILE_HOSTNAME`).
+- ✅ **Domínio escolhido:** **`nanoguara.ia.br`**, apenas ele (a categoria `.ia.br` foi criada pelo NIC.br em 01/09/2025 para Inteligência Artificial, sem restrição de registro). Verificado livre em 2026-07-31; usuário iniciou o registro no Registro.br na mesma data. Já aplicado no plano (robots, sitemap, og:image, JSON-LD, `TURNSTILE_HOSTNAME`, comandos de smoke). `nanoguara.com.br` estava livre e fica como opção defensiva futura, fora do escopo atual.
 
 ## Próximo passo
 

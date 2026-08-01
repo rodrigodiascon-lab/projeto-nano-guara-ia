@@ -1566,12 +1566,12 @@ Passos de dashboard (com o usuário):
 3. **Email Service** → verificar `rodrigodias.consultor@gmail.com` como destination address; definir `LEAD_FROM` com um remetente permitido pelos routing domains da conta (ou onboardar o domínio).
 4. **Web Analytics** → adicionar site → token no beacon.
 5. **WAF Rate Limiting** → regra por IP em `/api/*` como segunda camada (10/min chat, 5/min lead).
-6. **Domínio** (decisão do usuário, 2026-07-31): **`nanoguara.ia.br` é o oficial**; `nanoguara.com.br` é registro defensivo que redireciona.
-   - Registrar ambos no Registro.br; apontar os nameservers dos dois para a Cloudflare.
+6. **Domínio** (decisão do usuário, 2026-07-31): **apenas `nanoguara.ia.br`**, registrado no Registro.br.
+   - Apontar os nameservers do domínio para a Cloudflare (Add a site → copiar os 2 NS → trocar no painel do Registro.br).
    - Adicionar `nanoguara.ia.br` como custom domain do Worker.
-   - Adicionar `nanoguara.com.br` como zona na Cloudflare e criar uma **Redirect Rule** (Rules → Redirect Rules): quando `hostname` termina em `nanoguara.com.br`, redirecionar **301** para `https://nanoguara.ia.br${path}` preservando path e query. Sem custo, sem Worker.
-   - `www.nanoguara.ia.br` também deve redirecionar 301 para o apex.
-   - No `sitemap.xml`/`robots.txt`/JSON-LD, **só o domínio oficial** aparece (já está assim), e o `<link rel="canonical">` do `index.html` aponta para `https://nanoguara.ia.br/` — evita conteúdo duplicado aos olhos do Google.
+   - `www.nanoguara.ia.br` redireciona 301 para o apex (Redirect Rule, sem custo).
+   - `<link rel="canonical" href="https://nanoguara.ia.br/">` no `index.html`.
+   - *Fora do escopo agora:* `nanoguara.com.br` como registro defensivo (estava livre em 2026-07-31; se registrar depois, criar Redirect Rule 301 preservando path e query).
 7. `WHATSAPP_NUMBER` e a constante `WHATS` já estão preenchidos com `5592981486875`. Conferir no smoke que um clique real abre a conversa certa.
 
 - [ ] **Step 2: Verificação anti-placeholder** (corrige P1-8)
