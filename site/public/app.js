@@ -6,75 +6,105 @@
 // ou de input do usuário. Texto de resposta da IA e mensagens de erro entram
 // sempre por textContent ou por nós criados com createElement + append.
 
-const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// ---------- Gate de efeitos: viewport, capacidade do dispositivo e reduced-motion ----------
+// Ponto único que decide se os efeitos do herói (Etheral e Shimmer) rodam.
+// Consultado pelos dois loops. `rm` é estado mutável: precisa ser reavaliado
+// no evento "change" pra ligar/desligar a degradação no meio da visita.
+let rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mqEfeitos = matchMedia('(min-width: 768px) and (hover: hover)');
+let efeitosAtivos = !rm && mqEfeitos.matches;
+
+const hero = document.querySelector('header');
+const etheralHue = document.getElementById('etheralHue');
+const titulo = document.getElementById('heroTitulo');
+
+let heroVisivel = false, rafEtheral = null, timerShimmer = null, animShimmer = null;
+
+// ---------- Fundo Etheral Shadow: hue-rotate a ~30fps, só com o herói na tela ----------
+const DUR_HUE = 4000;
+let t0Hue = null, ultimoHue = 0;
+function giraHue(t) {
+  if (!etheralHue || !efeitosAtivos || !heroVisivel) { rafEtheral = null; t0Hue = null; return; }
+  if (t - ultimoHue >= 33) { // ~30fps: metade do custo, mesma leitura visual
+    ultimoHue = t;
+    if (t0Hue === null) t0Hue = t;
+    etheralHue.setAttribute('values', String(((t - t0Hue) % DUR_HUE) / DUR_HUE * 360));
+  }
+  rafEtheral = requestAnimationFrame(giraHue);
+}
 
 // ---------- Gradient Shimmer no headline (Web Animations API) ----------
-// Estado padrão do H1 é texto sólido (ver styles.css); o gradiente só aparece
-// quando a classe .anima está presente, adicionada aqui só quando a
-// varredura de fato vai animar.
-const titulo = document.getElementById('heroTitulo');
-if (titulo && !rm && CSS.supports('background-clip', 'text') && typeof titulo.animate === 'function') {
-  const SPREAD = 150, DUR = 1450, PAUSA = 1100;
+// Estado padrão do H1 é texto sólido (ver styles.css); o gradiente só existe
+// com a classe .anima presente, adicionada aqui só enquanto a varredura de
+// fato está rodando, e removida assim que ela para.
+const SPREAD = 150, DUR_SWEEP = 1450, PAUSA = 1100;
+const suportaClip = titulo && (CSS.supports('background-clip', 'text') || CSS.supports('-webkit-background-clip', 'text'));
+function varre() {
+  if (!suportaClip || typeof titulo.animate !== 'function' || !efeitosAtivos || !heroVisivel) return;
   titulo.classList.add('anima');
-  let varre = () => {
-    const w = titulo.getBoundingClientRect().width || 600;
-    const layer = w + SPREAD * 2;
-    titulo.style.backgroundSize = layer + 'px 100%';
-    const ini = -SPREAD - layer / 2, fim = w + SPREAD - layer / 2;
-    const anim = titulo.animate(
-      [{ backgroundPosition: ini + 'px center' }, { backgroundPosition: fim + 'px center' }],
-      { duration: DUR, easing: 'cubic-bezier(0.45,0,0.55,1)', fill: 'forwards' });
-    anim.onfinish = () => setTimeout(varre, PAUSA);
-  };
-  varre();
+  const w = titulo.getBoundingClientRect().width || 600;
+  const layer = w + SPREAD * 2;
+  titulo.style.backgroundSize = layer + 'px 100%';
+  const ini = -SPREAD - layer / 2, fim = w + SPREAD - layer / 2;
+  animShimmer = titulo.animate(
+    [{ backgroundPosition: ini + 'px center' }, { backgroundPosition: fim + 'px center' }],
+    { duration: DUR_SWEEP, easing: 'cubic-bezier(0.45,0,0.55,1)', fill: 'forwards' }
+  );
+  animShimmer.onfinish = () => { timerShimmer = setTimeout(varre, PAUSA); };
+}
+function paraShimmer() {
+  clearTimeout(timerShimmer); timerShimmer = null;
+  if (animShimmer) { animShimmer.cancel(); animShimmer = null; }
+  if (titulo) titulo.classList.remove('anima'); // volta ao texto sólido legível
 }
 
-// ---------- Fundo Etheral Shadow: hue-rotate contínuo ----------
-// Só roda com o herói na tela (IntersectionObserver), com throttle de ~30fps,
-// e para se o usuário ligar "reduzir movimento" durante a visita.
-const etheralHue = document.getElementById('etheralHue');
-if (etheralHue && !rm) {
-  const DUR = 4000, FRAME_MS = 1000 / 30;
-  let t0 = null, ultimoFrame = 0, ativo = false, rodando = false;
-
-  function passo(t) {
-    if (!ativo) { rodando = false; return; }
-    if (t0 === null) t0 = t;
-    if (t - ultimoFrame >= FRAME_MS) {
-      etheralHue.setAttribute('values', String(((t - t0) % DUR) / DUR * 360));
-      ultimoFrame = t;
-    }
-    requestAnimationFrame(passo);
-  }
-  function inicia() {
-    if (rodando) return;
-    rodando = true; t0 = null;
-    requestAnimationFrame(passo);
-  }
-
-  const headerEl = document.querySelector('header');
-  if (headerEl && 'IntersectionObserver' in window) {
-    const ioHero = new IntersectionObserver((entradas) => {
-      entradas.forEach((e) => {
-        ativo = e.isIntersecting;
-        if (ativo) inicia();
-      });
-    }, { threshold: 0 });
-    ioHero.observe(headerEl);
+// ---------- Sincronização: liga/desliga os dois loops a partir do gate ----------
+function sincroniza() {
+  if (efeitosAtivos && heroVisivel) {
+    if (etheralHue && rafEtheral === null) rafEtheral = requestAnimationFrame(giraHue);
+    if (suportaClip && timerShimmer === null && animShimmer === null) varre();
   } else {
-    ativo = true;
-    inicia();
+    if (rafEtheral !== null) { cancelAnimationFrame(rafEtheral); rafEtheral = null; }
+    paraShimmer();
   }
-
-  matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
-    if (e.matches) ativo = false;
-  });
 }
+
+if (hero && 'IntersectionObserver' in window) {
+  new IntersectionObserver(([e]) => { heroVisivel = e.isIntersecting; sincroniza(); }, { threshold: 0 })
+    .observe(hero);
+} else {
+  heroVisivel = true; // sem herói detectável ou sem suporte a IO: sem gate de viewport
+}
+
+mqEfeitos.addEventListener('change', (e) => { efeitosAtivos = !rm && e.matches; sincroniza(); });
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+  rm = e.matches;
+  efeitosAtivos = !rm && mqEfeitos.matches;
+  sincroniza();
+});
+
+// Não disputar a main thread durante o carregamento
+if ('requestIdleCallback' in window) requestIdleCallback(sincroniza);
+else addEventListener('load', sincroniza);
 
 // ---------- Chat mockup do herói: mensagens em sequência (storytelling) ----------
+// Dispara só quando o herói entra na tela, pra não perder a sequência em
+// mobile (onde o herói pode estar fora da viewport no load).
 const heroMsgs = document.querySelectorAll('#chatHero .msg');
-if (rm) heroMsgs.forEach((m) => m.classList.add('show'));
-else heroMsgs.forEach((m, i) => setTimeout(() => m.classList.add('show'), 800 + i * 1100));
+function disparaChatHero() {
+  if (rm) heroMsgs.forEach((m) => m.classList.add('show'));
+  else heroMsgs.forEach((m, i) => setTimeout(() => m.classList.add('show'), 800 + i * 1100));
+}
+if (heroMsgs.length) {
+  if (hero && 'IntersectionObserver' in window) {
+    const ioChatHero = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { disparaChatHero(); ioChatHero.disconnect(); }
+    }, { threshold: 0 });
+    ioChatHero.observe(hero);
+  } else {
+    disparaChatHero();
+  }
+}
 
 // ---------- Reveal on scroll ----------
 const io = new IntersectionObserver((es) => es.forEach((e) => {
