@@ -7,7 +7,7 @@ export function limpo(s: string): string {
  * Notificação MINIMIZADA: só id, nome e profissão.
  * WhatsApp e o texto da "dor" (que pode conter dado sensível de saúde,
  * art. 11 LGPD) ficam no D1 e são consultados por quem tem acesso ao banco.
- * Sem campo `html` — notificação interna em texto puro elimina a classe
+ * Sem campo `html`: notificação interna em texto puro elimina a classe
  * inteira de injeção de HTML/phishing pela caixa de entrada.
  */
 export function renderLeadEmail(dados: { id: number; nome: string; profissao: string }): {
