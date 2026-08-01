@@ -34,7 +34,7 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 - **Sem prova social no MVP:** proibido inventar métricas ou clientes; credibilidade vem da demo ao vivo.
 - **Números permitidos na copy** (com fonte): 62% desistem de compra no WhatsApp (Opinion Box 2025) · 1 em cada 3 clínicas com mais de 11% de faltas (Doctoralia/Feegow 2025) · 59% rejeitam resposta automática genérica (Opinion Box 2025). **Banidos:** "5 minutos" como estatística, "20-30% de faltas", "53% esqueceram", "55-70% das propostas".
 - **Diferencial de posicionamento:** dentista (CFO) e psicólogo (CFP) não podem anunciar preço em público, mas podem no 1:1 do WhatsApp — a agência configura o assistente dentro das regras do conselho de cada cliente.
-- **Stack:** 100% Cloudflare (1 Worker com Static Assets + `/api/lead` + `/api/chat`, D1, Turnstile, Rate Limiting, Email Service, Workers AI `glm-4.7-flash` via AI Gateway, Web Analytics). Saídas só por cobertura: Registro.br (domínio), wa.me (WhatsApp), Gmail (inbox). Custo MVP ≈ R$ 40/ano.
+- **Stack:** 100% Cloudflare (1 Worker com Static Assets + `/api/lead` + `/api/chat`, D1, Turnstile, Rate Limiting, Email Service, Workers AI `llama-3.3-70b-instruct-fp8-fast` via AI Gateway (o `glm-4.7-flash` do planejamento foi reprovado no smoke de 01/08/2026, confirmando o achado P1-4 da auditoria: é modelo de raciocínio e não emite resposta), Web Analytics). Saídas só por cobertura: Registro.br (domínio), wa.me (WhatsApp), Gmail (inbox). Custo MVP ≈ R$ 40/ano.
 - **Design:** direção "Guaraná Tech"; efeitos aprovados no herói (fundo Etheral + shimmer no H1) com as degradações obrigatórias da auditoria.
 - **Ferramenta de design:** Claude Design dispensado nesta rodada; mockup navegável em Artifact fez o papel.
 
