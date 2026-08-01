@@ -42,7 +42,6 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 
 | Pendência | Bloqueia |
 |-----------|----------|
-| **Propagação da delegação de NS** — o Registro.br impõe carência de ~2h para delegar nameservers externos em domínio recém-registrado (aviso na tela em 01/08/2026 00:45). Conferir com `dig NS nanoguara.ia.br` até responder `bob`/`georgia.ns.cloudflare.com`, depois a zona sai de `pending` na Cloudflare. | Task 10 |
 | Eval de pt-BR e adversarial do modelo (gate de go-live) | Task 9 |
 
 **Já resolvidas:**
@@ -53,6 +52,7 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 - ✅ **Domínio registrado** (01/08/2026): titular R. DIAS PIMENTEL (CNPJ 21.091.816/0001-48), expira 31/07/2027, status `published`.
 - ✅ **Zona criada na Cloudflare** (01/08/2026): id `c0e4884bfdf195138510a1f9e8efbaf7`, conta Lucrec.IA (`9ffd8d9ae61880d4421a279c2c8cfc10`), plano Free, status `pending`. NS: `bob.ns.cloudflare.com` / `georgia.ns.cloudflare.com`.
   - A UI "Adicionar site" **não funciona** com `.ia.br`: a pré-checagem `GET /registrar/domains/batch_check` devolve 422 (TLD fora do Cloudflare Registrar) e o `POST /zones` nunca dispara. Caminho que funciona: API Token com `Zona → Zona → Editar` + `Zona → DNS → Editar`, e `POST /zones` via curl.
+- ✅ **Domínio 100% no ar na Cloudflare** (01/08/2026): delegação propagada (`dig NS` responde `bob`/`georgia.ns.cloudflare.com`) e a zona saiu de `pending` para **ativa** — painel confirma "Seu domínio agora está protegido pela Cloudflare", Configuração de DNS `Completo`. Nada mais bloqueia a Task 10 além do código.
 - ✅ **DNSSEC removido + NS trocados no Registro.br** (01/08/2026): o formulário "Alterar servidores DNS" foi salvo com os dois NS da Cloudflare e **sem** acionar `+ DNSSEC`, o que derruba o registro DS junto. Confirmado: `dig DS nanoguara.ia.br` vazio.
 
 ## Próximo passo
