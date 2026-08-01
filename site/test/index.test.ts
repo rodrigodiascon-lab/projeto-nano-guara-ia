@@ -27,4 +27,10 @@ describe("router", () => {
     expect(res.status).toBe(200);
     expect(await res.text()).toContain("nanoguará.ia");
   });
+
+  it("bindings de rate limit disponíveis no ambiente de teste", async () => {
+    const { env } = await import("cloudflare:test");
+    expect(typeof env.LEAD_RL.limit).toBe("function");
+    await expect(env.LEAD_RL.limit({ key: "x" })).resolves.toHaveProperty("success");
+  });
 });

@@ -9,7 +9,13 @@ export default defineWorkersConfig(async () => {
       poolOptions: {
         workers: {
           wrangler: { configPath: "./wrangler.jsonc" },
-          miniflare: { bindings: { TEST_MIGRATIONS: migrations } },
+          miniflare: {
+            bindings: { TEST_MIGRATIONS: migrations },
+            ratelimits: {
+              CHAT_RL: { simple: { limit: 10, period: 60 } },
+              LEAD_RL: { simple: { limit: 5, period: 60 } },
+            },
+          },
         },
       },
     },
