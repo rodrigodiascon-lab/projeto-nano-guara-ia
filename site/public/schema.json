@@ -21,7 +21,13 @@
         "Registro de marcas",
         "Consultoria LGPD",
         "Web app para Representante Comercial"
-      ]
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Manaus",
+        "addressRegion": "AM",
+        "addressCountry": "BR"
+      }
     },
     {
       "@type": "WebSite",
