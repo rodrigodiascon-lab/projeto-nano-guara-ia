@@ -1,4 +1,4 @@
-# Eval do chat — gate de go-live (Task 9)
+# Eval do chat: gate de go-live (Task 9)
 
 > Executado em 2026-08-01 contra a API real da Cloudflare Workers AI, usando o `MODELO` e o `SYSTEM_PROMPT` extraídos diretamente de `site/src/chat-route.ts`. Modelo avaliado: `@cf/meta/llama-3.3-70b-instruct-fp8-fast`.
 
