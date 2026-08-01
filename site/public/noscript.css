@@ -1,0 +1,8 @@
+/* Fallback para quando o JavaScript não roda (rastreadores de IA, leitores
+   que não executam script, navegadores com JS desligado). A classe .reveal
+   em styles.css começa com opacity:0 e só ganha a classe .on via
+   IntersectionObserver no app.js; sem isso o texto fica no HTML mas some da
+   tela. Servido como arquivo próprio (não style inline) porque a CSP em
+   _headers usa style-src 'self' sem unsafe-inline: um <style> dentro de
+   <noscript> seria bloqueado. */
+.reveal{opacity:1;transform:none;transition:none}
