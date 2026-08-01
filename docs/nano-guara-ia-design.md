@@ -98,6 +98,22 @@ Implementação de referência (vanilla, sem React/framer-motion): `docs/mockup-
 - Base do shimmer sobe para `color-mix(85% texto)` (AAA no herói) e o **estado padrão do H1 é texto sólido**: o gradiente só entra via classe `.anima` quando a varredura roda, senão o centro do título ficaria branco/invisível.
 - No tema escuro os CTAs mantêm o vermelho escuro (`#D5382F`): o `#EF5A4C` com texto branco reprova WCAG AA.
 
+## 4.2 Revisão de taste (2026-07-31, skill `design-taste-frontend-v1`)
+
+Análise crítica do mockup aprovado, com medição real no navegador. Três correções aplicadas:
+
+1. **Quebra da monotonia de 3 colunas** (a mesma skill e a auditoria da Fase 6 apontaram independentemente): as três seções centrais tinham grade idêntica de 3 cards.
+   - **Dores** deixou de ser cards: virou **lista com hairlines**, em duas colunas por linha (`Hoje: ...` → seta → resultado), colapsando para uma coluna com seta rotacionada abaixo de 820px. Copy ajustada de "Antes/Depois" para "Hoje:" + afirmação direta.
+   - **Como funciona** deixou de ser cards: virou **trilha horizontal** com marcos numerados (1-2-3) sobre uma linha em degradê, que vira trilha **vertical** no mobile. Lê como processo, não como três itens paralelos.
+   - **Serviços** manteve a grade (é onde ela faz sentido: itens realmente paralelos).
+2. **Ícones nos cards de serviço:** 7 ícones adicionados (gráfico, navegador, lupa, selo, escudo, celular, balão de conversa), desenhados no padrão geométrico do Phosphor (viewBox 256, traço 14-16, pontas arredondadas), em `var(--verde)`. **Na implementação, trocar pelos ícones oficiais do `@phosphor-icons`** — os atuais são equivalentes visuais feitos à mão porque o mockup é standalone, sem build.
+3. **Contraste do número do stat:** novo token `--stat-num` (`#B72C24` no claro, `#FF8A7A` no escuro). Medido: **4,34:1 → 6,37:1** (antes passava só como texto grande; agora passa AA como texto normal).
+
+**Deliberadamente NÃO aplicados:**
+- *Excesso de cards em geral* (regra "anti-card overuse"): **em análise pelo usuário**, decisão pendente.
+- *Fotos reais na faixa "Pra quem é"*: **adiado**, será feito em outra rodada com imagens geradas.
+- *Shimmer no H1 e emojis do chat*: a skill os proíbe, mas são decisões aprovadas do usuário. O shimmer tem mitigação (base sólida, some em mobile/reduced-motion) e os emojis existem só dentro dos balões do WhatsApp, onde são a linguagem nativa do meio.
+
 ## 5. Motion (motivada, contida)
 
 - Herói: mensagens do chat mockup em sequência (storytelling) + fade-up do headline.
