@@ -1566,8 +1566,23 @@ Passos de dashboard (com o usuário):
 3. **Email Service** → verificar `rodrigodias.consultor@gmail.com` como destination address; definir `LEAD_FROM` com um remetente permitido pelos routing domains da conta (ou onboardar o domínio).
 4. **Web Analytics** → adicionar site → token no beacon.
 5. **WAF Rate Limiting** → regra por IP em `/api/*` como segunda camada (10/min chat, 5/min lead).
-6. **Domínio** (decisão do usuário, 2026-07-31): **apenas `nanoguara.ia.br`**, registrado no Registro.br.
-   - Apontar os nameservers do domínio para a Cloudflare (Add a site → copiar os 2 NS → trocar no painel do Registro.br).
+6. **Domínio** — ⚠️ **DOIS BLOQUEIOS REAIS DESCOBERTOS EM 2026-08-01, LEIA ANTES DE MEXER:**
+
+   **(a) DNSSEC ativo no Registro.br.** O whois de `nanoguara.ia.br` mostra `dsrecord: 33150 ECDSA-SHA-256 DEC0548...` com `dsstatus: DSOK`. Trocar os nameservers para a Cloudflare **sem desativar o DNSSEC antes** quebra a validação e o domínio para de resolver para a maioria dos usuários. Ordem obrigatória: (1) desativar DNSSEC no painel do Registro.br; (2) esperar o DS sumir da zona pai, conferindo com `dig DS nanoguara.ia.br @a.dns.br` até vir vazio; (3) só então trocar os nameservers; (4) opcionalmente reativar DNSSEC depois com o DS que a Cloudflare fornecer.
+
+   **(b) A UI de "Conectar um domínio" da Cloudflare TRAVA com `.ia.br`.** Diagnóstico por captura de rede: o fluxo chama `GET /api/v4/accounts/{id}/registrar/domains/batch_check?id=nanoguara.ia.br`, que responde **422** porque `.ia.br` não é TLD revendido pelo Cloudflare Registrar; a UI fica no spinner e **nunca dispara o `POST /zones`**. Esperar não resolve. Também NÃO funcionam (testados): o token OAuth do wrangler não tem `zone.create` — e esse escopo sequer existe no OAuth do wrangler, só `zone:read`; e `POST /api/v4/zones` pela sessão do dashboard retorna 403 por CSRF.
+   **Caminho que funciona:** criar um **API Token** (My Profile → API Tokens → Create Token → Custom) com `Account | Zone | Edit` (cria zonas) + `Zone | DNS | Edit` e `Zone | Zone | Edit` em "All zones from account". Depois:
+   ```bash
+   curl -X POST https://api.cloudflare.com/client/v4/zones \
+     -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+     --data '{"name":"nanoguara.ia.br","account":{"id":"9ffd8d9ae61880d4421a279c2c8cfc10"},"type":"full"}'
+   ```
+   Os nameservers voltam em `result.name_servers`.
+
+   Conta do projeto: **Lucrec.IA**, id `9ffd8d9ae61880d4421a279c2c8cfc10` (já hospeda `lucrec.ia.br`, NS `bob.ns.cloudflare.com` / `georgia.ns.cloudflare.com`).
+
+   Registro confirmado: `nanoguara.ia.br`, titular R. DIAS PIMENTEL, criado 01/08/2026, expira 01/08/2027, `status: published`.
+   - Apontar os nameservers do domínio para a Cloudflare (respeitando a ordem do DNSSEC acima).
    - Adicionar `nanoguara.ia.br` como custom domain do Worker.
    - `www.nanoguara.ia.br` redireciona 301 para o apex (Redirect Rule, sem custo).
    - `<link rel="canonical" href="https://nanoguara.ia.br/">` no `index.html`.
