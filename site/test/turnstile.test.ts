@@ -1,5 +1,5 @@
 import { fetchMock } from "cloudflare:test";
-import { afterEach, beforeAll, describe, expect, it } from "vitest";
+import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { verifyTurnstile } from "../src/turnstile";
 
 beforeAll(() => { fetchMock.activate(); fetchMock.disableNetConnect(); });
@@ -29,12 +29,15 @@ describe("verifyTurnstile", () => {
   });
 
   it("reprova HTTP não-ok sem tentar parsear", async () => {
-    siteverify({}, 500);
+    siteverify({ success: true, hostname: "nanoguara.ia.br" }, 500);
     expect(await verifyTurnstile("s", "tok", null, "nanoguara.ia.br")).toBe(false);
   });
 
   it("reprova token vazio ou gigante sem chamar a rede", async () => {
+    const spy = vi.spyOn(console, "error");
     expect(await verifyTurnstile("s", "", null, "x")).toBe(false);
     expect(await verifyTurnstile("s", "a".repeat(2049), null, "x")).toBe(false);
+    expect(spy).not.toHaveBeenCalled();
+    vi.restoreAllMocks();
   });
 });
