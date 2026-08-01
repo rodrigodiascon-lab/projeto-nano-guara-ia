@@ -42,7 +42,7 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 
 | Pendência | Bloqueia |
 |-----------|----------|
-| **Registrar `nanoguara.ia.br` + `nanoguara.com.br`** no Registro.br e apontar nameservers pra Cloudflare (disponibilidade confirmada em 2026-07-31) | Task 10 |
+| **Propagação da delegação de NS** — o Registro.br impõe carência de ~2h para delegar nameservers externos em domínio recém-registrado (aviso na tela em 01/08/2026 00:45). Conferir com `dig NS nanoguara.ia.br` até responder `bob`/`georgia.ns.cloudflare.com`, depois a zona sai de `pending` na Cloudflare. | Task 10 |
 | Eval de pt-BR e adversarial do modelo (gate de go-live) | Task 9 |
 
 **Já resolvidas:**
@@ -50,6 +50,10 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 - ✅ **WhatsApp da agência:** **(92) 98148-6875** → `5592981486875` nos links `wa.me`. Preenchido no plano (var `WHATSAPP_NUMBER` e constante `WHATS`) e ativo no mockup.
 - ✅ **Normas do CFO:** lidas em fonte primária; erro corrigido no perfil (a vedação de preço está no Código de Ética CFO-118/2012, art. 44, I — a 196/2019 trata só de imagens).
 - ✅ **Domínio escolhido:** **`nanoguara.ia.br`**, apenas ele (a categoria `.ia.br` foi criada pelo NIC.br em 01/09/2025 para Inteligência Artificial, sem restrição de registro). Verificado livre em 2026-07-31; usuário iniciou o registro no Registro.br na mesma data. Já aplicado no plano (robots, sitemap, og:image, JSON-LD, `TURNSTILE_HOSTNAME`, comandos de smoke). `nanoguara.com.br` estava livre e fica como opção defensiva futura, fora do escopo atual.
+- ✅ **Domínio registrado** (01/08/2026): titular R. DIAS PIMENTEL (CNPJ 21.091.816/0001-48), expira 31/07/2027, status `published`.
+- ✅ **Zona criada na Cloudflare** (01/08/2026): id `c0e4884bfdf195138510a1f9e8efbaf7`, conta Lucrec.IA (`9ffd8d9ae61880d4421a279c2c8cfc10`), plano Free, status `pending`. NS: `bob.ns.cloudflare.com` / `georgia.ns.cloudflare.com`.
+  - A UI "Adicionar site" **não funciona** com `.ia.br`: a pré-checagem `GET /registrar/domains/batch_check` devolve 422 (TLD fora do Cloudflare Registrar) e o `POST /zones` nunca dispara. Caminho que funciona: API Token com `Zona → Zona → Editar` + `Zona → DNS → Editar`, e `POST /zones` via curl.
+- ✅ **DNSSEC removido + NS trocados no Registro.br** (01/08/2026): o formulário "Alterar servidores DNS" foi salvo com os dois NS da Cloudflare e **sem** acionar `+ DNSSEC`, o que derruba o registro DS junto. Confirmado: `dig DS nanoguara.ia.br` vazio.
 
 ## Próximo passo
 
