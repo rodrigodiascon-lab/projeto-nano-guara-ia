@@ -106,7 +106,7 @@ npm ls vitest   # confirmar par compatível vitest 3.x + pool 0.8.x (peer deps)
   "vars": {
     "WHATSAPP_NUMBER": "5592981486875",
     "AI_GATEWAY_ID": "nanoguara",
-    "TURNSTILE_HOSTNAME": "PREENCHER_DOMINIO_NA_TASK_10",
+    "TURNSTILE_HOSTNAME": "nanoguara.ia.br",
     "LEAD_FROM": "PREENCHER_REMETENTE_NA_TASK_10",
     "LEAD_TO": "rodrigodias.consultor@gmail.com"
   },
@@ -1034,7 +1034,7 @@ Gerar `brand/og.png` 1200×630 a partir do SVG + wordmark + slogan (JPEG q80 ou 
   <link rel="stylesheet" href="/styles.css">
   <meta property="og:title" content="nanoguará.ia | Inteligência que gera resultados">
   <meta property="og:description" content="Assistente de IA no WhatsApp que atende, agenda e faz follow-up por você.">
-  <meta property="og:image" content="https://SEU_DOMINIO/brand/og.png">
+  <meta property="og:image" content="https://nanoguara.ia.br/brand/og.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <script src="/app.js" defer></script>
@@ -1332,15 +1332,15 @@ cd /Users/rodri/projeto-nano-guara-ia && git add site && git commit -m "feat(sit
 ```
 User-agent: *
 Allow: /
-Sitemap: https://SEU_DOMINIO/sitemap.xml
+Sitemap: https://nanoguara.ia.br/sitemap.xml
 ```
 
 `site/public/sitemap.xml`:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://SEU_DOMINIO/</loc></url>
-  <url><loc>https://SEU_DOMINIO/privacidade.html</loc></url>
+  <url><loc>https://nanoguara.ia.br/</loc></url>
+  <url><loc>https://nanoguara.ia.br/privacidade.html</loc></url>
 </urlset>
 ```
 
@@ -1351,7 +1351,7 @@ Sitemap: https://SEU_DOMINIO/sitemap.xml
 {"@context":"https://schema.org","@type":"ProfessionalService",
  "name":"nanoguará.ia","slogan":"Inteligência que gera resultados",
  "description":"Agência brasileira de IA para profissionais liberais: assistente virtual no WhatsApp, automação comercial, sites, SEO e GEO, registro de marcas e consultoria LGPD.",
- "areaServed":"BR","url":"https://SEU_DOMINIO/"}
+ "areaServed":"BR","url":"https://nanoguara.ia.br/"}
 </script>
 ```
 Nota: JSON-LD é `<script>` sem `src`; a CSP com `script-src 'self'` bloqueia scripts inline. Adicionar o hash do bloco ao `script-src` (`'sha256-...'`, obtido no console do navegador) ou servir o JSON-LD como arquivo externo referenciado por `<link rel="alternate" type="application/ld+json" href="/schema.json">`. **Preferir o arquivo externo** (mais simples de manter).
@@ -1566,14 +1566,19 @@ Passos de dashboard (com o usuário):
 3. **Email Service** → verificar `rodrigodias.consultor@gmail.com` como destination address; definir `LEAD_FROM` com um remetente permitido pelos routing domains da conta (ou onboardar o domínio).
 4. **Web Analytics** → adicionar site → token no beacon.
 5. **WAF Rate Limiting** → regra por IP em `/api/*` como segunda camada (10/min chat, 5/min lead).
-6. **Domínio** → registrar `.com.br` no Registro.br, nameservers pra Cloudflare, custom domain no Worker.
+6. **Domínio** (decisão do usuário, 2026-07-31): **`nanoguara.ia.br` é o oficial**; `nanoguara.com.br` é registro defensivo que redireciona.
+   - Registrar ambos no Registro.br; apontar os nameservers dos dois para a Cloudflare.
+   - Adicionar `nanoguara.ia.br` como custom domain do Worker.
+   - Adicionar `nanoguara.com.br` como zona na Cloudflare e criar uma **Redirect Rule** (Rules → Redirect Rules): quando `hostname` termina em `nanoguara.com.br`, redirecionar **301** para `https://nanoguara.ia.br${path}` preservando path e query. Sem custo, sem Worker.
+   - `www.nanoguara.ia.br` também deve redirecionar 301 para o apex.
+   - No `sitemap.xml`/`robots.txt`/JSON-LD, **só o domínio oficial** aparece (já está assim), e o `<link rel="canonical">` do `index.html` aponta para `https://nanoguara.ia.br/` — evita conteúdo duplicado aos olhos do Google.
 7. `WHATSAPP_NUMBER` e a constante `WHATS` já estão preenchidos com `5592981486875`. Conferir no smoke que um clique real abre a conversa certa.
 
 - [ ] **Step 2: Verificação anti-placeholder** (corrige P1-8)
 
 ```bash
-grep -rn "PREENCHER\|SEU_DOMINIO\|SITE_KEY_DA_TASK_10\|TOKEN_DA_TASK_10" site/ --exclude-dir=node_modules
-# o número de WhatsApp já está preenchido (5592981486875); conferir que não sobrou placeholder
+grep -rn "PREENCHER\|SITE_KEY_DA_TASK_10\|TOKEN_DA_TASK_10" site/ --exclude-dir=node_modules
+# Já preenchidos e NÃO são placeholders: domínio nanoguara.ia.br e WhatsApp 5592981486875.
 ```
 Expected: **nenhuma ocorrência**. Qualquer resultado bloqueia o deploy.
 
@@ -1583,12 +1588,12 @@ Expected: **nenhuma ocorrência**. Qualquer resultado bloqueia o deploy.
 npx wrangler deploy
 ```
 Checklist bloqueante (todos precisam passar):
-- [ ] `curl -sI https://SEU_DOMINIO/ | grep -i content-security-policy` retorna a CSP (confirma que `_headers` foi aplicado)
+- [ ] `curl -sI https://nanoguara.ia.br/ | grep -i content-security-policy` retorna a CSP (confirma que `_headers` foi aplicado)
 - [ ] Formulário real grava: `npx wrangler d1 execute nanoguara-leads --remote --command "SELECT id, nome, criado_em FROM leads ORDER BY id DESC LIMIT 3"`
 - [ ] **E-mail de lead CHEGOU** na caixa (se não chegou, checar `npx wrangler tail` por `lead_email_falhou` e corrigir `LEAD_FROM`)
-- [ ] Teste negativo do Turnstile: `curl -X POST https://SEU_DOMINIO/api/lead -H 'Content-Type: application/json' -d '{"nome":"t","profissao":"t","whatsapp":"92988887777","turnstileToken":"lixo","consentimento":true}'` retorna **403** (garante que o secret de teste não vazou pra produção)
+- [ ] Teste negativo do Turnstile: `curl -X POST https://nanoguara.ia.br/api/lead -H 'Content-Type: application/json' -d '{"nome":"t","profissao":"t","whatsapp":"92988887777","turnstileToken":"lixo","consentimento":true}'` retorna **403** (garante que o secret de teste não vazou pra produção)
 - [ ] Rate limit: 15 POSTs seguidos em `/api/chat` retornam 429 no fim
-- [ ] `node scripts/eval-chat.mjs https://SEU_DOMINIO` sai com código 0 e o conteúdo passa nos 5 critérios
+- [ ] `node scripts/eval-chat.mjs https://nanoguara.ia.br` sai com código 0 e o conteúdo passa nos 5 critérios
 - [ ] Lighthouse mobile: Performance ≥ 90, Acessibilidade ≥ 95, CLS < 0.1
 - [ ] Trace de Performance com a página rolada até o rodapé por 10s: sem tarefas recorrentes do herói
 
@@ -1612,5 +1617,5 @@ cd /Users/rodri/projeto-nano-guara-ia && git add site && git commit -m "chore(si
 ## Self-Review (v2)
 
 1. **Cobertura dos achados:** todos os 6 P0 e 11 P1 têm correção explícita em alguma task (P0-1→T4S1-2, P0-2→T1S3+T5S2, P0-3→T1S1, P0-4→T6S1, P0-5→T8S1, P0-6→T6S3+T8S1; P1-1→T5S2, P1-2→T1S6+T4S4+T5S2, P1-3→T1S4, P1-4→T5S4, P1-5→T5S2+T9S1, P1-6→T4S2, P1-7→T1S6+T6S8, P1-8→T1S3+T10S2-3, P1-9→T6S3, P1-10→T6S2, P1-11→T1S5). Os P2 aplicados estão marcados nos steps; os P3 não aplicados estão na tabela acima com motivo.
-2. **Placeholders:** os únicos "PREENCHER/SEU_DOMINIO/..." são valores de provisionamento, e a Task 10 Step 2 tem um grep bloqueante que impede o deploy com qualquer um deles.
+2. **Placeholders:** sobraram apenas 3 valores que só existem após provisionar (`database_id`, `LEAD_FROM`, site key e token do beacon), e a Task 10 Step 2 tem um grep bloqueante que impede o deploy com qualquer um deles. Domínio (`nanoguara.ia.br`) e WhatsApp (`5592981486875`) já estão preenchidos.
 3. **Consistência de tipos:** `Env` vem só de `worker-configuration.d.ts`; `LeadInput` (T2) = campos usados em T4; `verifyTurnstile(secret, token, ip, hostname)` idêntico em T3/T4; `renderLeadEmail({id, nome, profissao})` idêntico em T4 Step 2 e Step 4; `MODELO`/`SYSTEM_PROMPT`/`montarMensagens` (T5) reusados em T9; `jsonSeguro`/`mesmaOrigem` (T1) usados em T4/T5; o parser SSE do `app.js` (T6S6) depende do formato registrado em T5S4.

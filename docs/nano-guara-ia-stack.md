@@ -31,7 +31,7 @@ Um único Worker serve os assets E as duas rotas de API (padrão documentado: as
 | Proxy/observabilidade IA | **AI Gateway** (na frente do Workers AI via param `gateway` no `env.AI.run`) — analytics, logs e **rate limiting grátis**; streaming não é cacheado por padrão (valor aqui é observabilidade+rate limit, não cache) | — | — |
 | Analytics | **Web Analytics** (beacon, sem cookies — argumento LGPD) | — | — |
 | DNS/TLS/CDN | **Cloudflare DNS + SSL/TLS + cache** | — | — |
-| Registro do domínio `.com.br` | DNS na Cloudflare | **Cobertura:** `.br` não consta nos TLDs do Cloudflare Registrar (premissa — confirmar na busca do dash; sem doc citável) | **Registro.br** (registro) com nameservers da Cloudflare |
+| Domínio: **`nanoguara.ia.br`** (oficial) + `nanoguara.com.br` (redireciona 301) | DNS, TLS e Redirect Rules na Cloudflare | **Cobertura:** `.br` não consta nos TLDs do Cloudflare Registrar | **Registro.br** (registro) com nameservers da Cloudflare |
 | Canal WhatsApp | links `wa.me` com mensagem pré-preenchida por seção | **Cobertura:** WhatsApp é plataforma Meta, não infra | — (sem custo; API oficial WhatsApp só se o assistente de produção entrar em cena — fora do escopo do site) |
 | Caixa de e-mail da agência | — | **Cobertura:** inbox não é produto CF (Email Routing pode encaminhar `contato@dominio` pro Gmail — usar!) | Gmail/e-mail existente da agência |
 
@@ -57,8 +57,8 @@ Premissas: ~500 visitas/dia no início, ~30 conversas de chat/dia (~10 msgs cada
 | Workers AI | 10.000 Neurons/dia | chat demo modesto (validar consumo real por eval) | R$ 0 |
 | AI Gateway | core grátis (Free: 100k logs TOTAIS — monitorar) | — | R$ 0 |
 | Web Analytics / DNS / TLS | grátis | — | R$ 0 |
-| Domínio `.com.br` | — | Registro.br | ~R$ 40/ano |
-| **Total MVP** | | | **~R$ 40/ano (só o domínio)** |
+| Domínios (`nanoguara.ia.br` + `nanoguara.com.br`) | — | Registro.br, 2 domínios | ~R$ 80/ano |
+| **Total MVP** | | | **~R$ 80/ano (só os domínios)** |
 
 Upgrade opcional futuro: **Workers Paid US$5/mês** desbloqueia auto-resposta ao lead por e-mail, modelos IA gated, CPU maior e 10M logs de AI Gateway. Estouro do free de Workers AI: US$0,011/1.000 Neurons.
 
