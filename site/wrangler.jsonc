@@ -5,7 +5,7 @@
   "compatibility_flags": ["nodejs_compat"],
   "assets": { "directory": "./public", "not_found_handling": "404-page" },
   "d1_databases": [
-    { "binding": "DB", "database_name": "nanoguara-leads", "database_id": "PREENCHER_NA_TASK_10", "migrations_dir": "migrations" }
+    { "binding": "DB", "database_name": "nanoguara-leads", "database_id": "38a098a0-1f04-482c-ba77-3a9455c6e5e3", "migrations_dir": "migrations" }
   ],
   "ai": { "binding": "AI" },
   "ratelimits": [
@@ -19,7 +19,7 @@
     "WHATSAPP_NUMBER": "5592981486875",
     "AI_GATEWAY_ID": "nanoguara",
     "TURNSTILE_HOSTNAME": "nanoguara.ia.br",
-    "LEAD_FROM": "PREENCHER_REMETENTE_NA_TASK_10",
+    "LEAD_FROM": "contato@nanoguara.ia.br",
     "LEAD_TO": "rodrigodias.consultor@gmail.com"
   },
   "observability": { "enabled": true, "head_sampling_rate": 1 }
