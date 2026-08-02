@@ -203,8 +203,17 @@ if (hero && 'IntersectionObserver' in window) {
   heroVisivel = true; // sem herói detectável ou sem suporte a IO: sem gate de viewport
 }
 
-mqEfeitos.addEventListener('change', (e) => { efeitosAtivos = !rm && e.matches; sincroniza(); });
-matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+// Safari até 13.1 não implementa addEventListener em MediaQueryList, só o
+// addListener antigo. Sem este fallback a chamada lança TypeError e aborta todo
+// o resto do arquivo: o reveal nunca roda e a página fica praticamente em
+// branco abaixo do herói, com formulário e chat mortos.
+function ouveMq(mq, fn) {
+  if (typeof mq.addEventListener === 'function') mq.addEventListener('change', fn);
+  else if (typeof mq.addListener === 'function') mq.addListener(fn);
+}
+
+ouveMq(mqEfeitos, (e) => { efeitosAtivos = !rm && e.matches; sincroniza(); });
+ouveMq(matchMedia('(prefers-reduced-motion: reduce)'), (e) => {
   rm = e.matches;
   efeitosAtivos = !rm && mqEfeitos.matches;
   sincroniza();
@@ -239,10 +248,17 @@ if (heroMsgs.length) {
 }
 
 // ---------- Reveal on scroll ----------
-const io = new IntersectionObserver((es) => es.forEach((e) => {
-  if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
-}), { threshold: .2 });
-document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+// Sem IntersectionObserver, tudo que é .reveal ficaria com opacity:0 para
+// sempre: o fallback revela de uma vez em vez de esconder o conteúdo.
+const alvosReveal = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  }), { threshold: .2 });
+  alvosReveal.forEach((el) => io.observe(el));
+} else {
+  alvosReveal.forEach((el) => el.classList.add('on'));
+}
 
 // ---------- WhatsApp ----------
 const WHATS = '5592981486875'; // (92) 98148-6875 em formato internacional, só dígitos
@@ -294,10 +310,15 @@ const btnEnviar = document.getElementById('demoSend');
 const historico = [];
 let enviando = false;
 
-function addMsg(tipo, txt) {
+function addMsg(tipo, txt, mudo) {
   const d = document.createElement('div');
   d.className = 'msg ' + tipo + ' show';
   d.textContent = txt;
+  // O #demoLog é uma região aria-live: reescrever o texto do balão a cada
+  // quadro do streaming faria o leitor de tela reanunciar a resposta inteira
+  // repetidas vezes. O balão em construção fica mudo e, no fim, é trocado por
+  // um nó novo, cuja inserção dispara um anúncio único.
+  if (mudo) d.setAttribute('aria-hidden', 'true');
   log.appendChild(d); log.scrollTop = log.scrollHeight;
   return d;
 }
@@ -308,15 +329,22 @@ async function envia() {
   enviando = true; btnEnviar.disabled = true; inp.readOnly = true;
   addMsg('out', t); historico.push({ papel: 'user', texto: t });
   inp.value = '';
-  const balao = addMsg('in', 'digitando...');
-  let texto = '', pendente = null;
+  const balao = addMsg('in', 'digitando...', true);
+  let texto = '', pendente = null, msgErro = '';
   const pintar = () => { balao.textContent = texto; log.scrollTop = log.scrollHeight; pendente = null; };
   try {
     const res = await fetch('/api/chat', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ mensagens: historico.slice(-12) }),
     });
-    if (!res.ok) throw new Error(String(res.status));
+    if (!res.ok) {
+      // O servidor manda um texto próprio em 429 e 400 ("mandou muitas
+      // mensagens seguidas", "mensagem longa demais"). Dizer "estou fora do ar"
+      // nesses casos é informação errada: o serviço está no ar.
+      const corpo = await res.json().catch(() => ({}));
+      msgErro = corpo.erro || '';
+      throw new Error(String(res.status));
+    }
     const reader = res.body.getReader(); const dec = new TextDecoder(); let acc = '';
     for (;;) {
       const { done, value } = await reader.read(); if (done) break;
@@ -330,11 +358,17 @@ async function envia() {
       if (!pendente) pendente = requestAnimationFrame(pintar);
     }
     if (pendente) cancelAnimationFrame(pendente);
-    pintar();
+    balao.remove();
+    addMsg('in', texto);
     historico.push({ papel: 'assistant', texto });
   } catch {
-    balao.innerHTML = '';
-    balao.append('Estou fora do ar agora. ');
+    // A mensagem recusada NÃO pode ficar no histórico: ela seria reenviada em
+    // toda requisição seguinte (slice(-12)), o servidor recusaria de novo e o
+    // chat travaria pelo resto da sessão exibindo erro com o serviço no ar.
+    historico.pop();
+    balao.removeAttribute('aria-hidden');
+    balao.textContent = '';
+    balao.append((msgErro || 'Estou fora do ar agora.') + ' ');
     const a = document.createElement('a');
     a.href = linkWhats('Oi! A demo do site estava fora do ar. Quero falar com alguém.');
     a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Chamar no WhatsApp';

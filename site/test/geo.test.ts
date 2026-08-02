@@ -53,9 +53,33 @@ describe("schema.json", () => {
   });
 });
 
-describe("index.html referencia o schema.json", () => {
-  it("tem <link rel=alternate type=application/ld+json> apontando pra /schema.json", () => {
-    expect(indexHtml).toContain('<link rel="alternate" type="application/ld+json" href="/schema.json">');
+describe("index.html embute o JSON-LD na própria página", () => {
+  // O Google só lê dados estruturados dentro do documento. Entregue por
+  // <link rel="alternate"> o schema era ignorado, e o trabalho de GEO não
+  // chegava a lugar nenhum. Um <script> de tipo não executável é bloco de
+  // dados, então a CSP script-src 'self' não o bloqueia.
+  const bloco = indexHtml.match(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/
+  );
+
+  it("tem um <script type=application/ld+json> inline", () => {
+    expect(bloco).not.toBeNull();
+  });
+
+  it("o conteúdo inline é JSON válido com ProfessionalService e WebSite", () => {
+    const dados = JSON.parse(bloco![1]);
+    const tipos = dados["@graph"].map((n: { "@type": string }) => n["@type"]);
+    expect(tipos).toContain("ProfessionalService");
+    expect(tipos).toContain("WebSite");
+  });
+
+  it("não reintroduz prova social inventada", () => {
+    expect(bloco![1]).not.toContain("aggregateRating");
+    expect(bloco![1]).not.toContain("review");
+  });
+
+  it("não voltou a depender do <link rel=alternate>, que o Google não lê", () => {
+    expect(indexHtml).not.toContain('type="application/ld+json" href="/schema.json"');
   });
 });
 

@@ -1,4 +1,4 @@
-import { jsonSeguro, mesmaOrigem, lerCorpoLimitado } from "./http";
+import { jsonSeguro, mesmaOrigem, lerCorpoLimitado, HEADERS_SEGUROS } from "./http";
 
 // glm-4.7-flash foi reprovado no smoke de 2026-08-01: gasta todo o orcamento de
 // tokens em raciocinio (reasoning_content) e nunca chega a emitir resposta visivel.
@@ -20,6 +20,7 @@ export const SYSTEM_PROMPT = [
   "Se o visitante demonstrar interesse real, quiser preço fechado, ou pedir algo fora do seu alcance, ofereça continuar no WhatsApp da agência.",
   "O único canal de contato da agência é WhatsApp (92) 98148-6875. Sempre que o visitante pedir telefone, e-mail ou endereço, ofereça este número.",
   "NUNCA invente dados de contato: telefone, e-mail, endereço, CNPJ ou perfil de rede social. Se não souber a informação, diga que não tem e ofereça o WhatsApp.",
+  "NUNCA cite número de desempenho, percentual de ganho, prazo de retorno, quantidade de clientes, nome de cliente ou caso de sucesso, nem em estimativa, nem com 'até', 'em média' ou 'cerca de'. A agência não divulga esses dados, e prometer resultado é vedado pelos conselhos dos profissionais que atendemos. Se perguntarem, diga que o resultado é avaliado caso a caso no diagnóstico gratuito e ofereça o WhatsApp.",
   "Nunca finja ser humana: se perguntarem, diga que é a assistente de IA da agência, funcionando como demonstração do produto.",
 ].join(" ");
 
@@ -68,7 +69,13 @@ export async function handleChat(request: Request, env: Env): Promise<Response> 
       return jsonSeguro({ ok: false, erro: "Mensagem longa demais" }, 400);
   }
 
-  const opcoes = env.AI_GATEWAY_ID ? { gateway: { id: env.AI_GATEWAY_ID } } : undefined;
+  // collectLog: false é obrigatório, não opcional. O AI Gateway grava prompt e
+  // resposta por padrão, e a política de privacidade promete que a conversa do
+  // chat não é salva. Sem esta linha a promessa é falsa: o que o visitante
+  // digita (podendo conter dado pessoal) ficaria persistido nos logs.
+  const opcoes = env.AI_GATEWAY_ID
+    ? { gateway: { id: env.AI_GATEWAY_ID, collectLog: false } }
+    : undefined;
 
   let stream: ReadableStream;
   try {
@@ -87,10 +94,6 @@ export async function handleChat(request: Request, env: Env): Promise<Response> 
   }
 
   return new Response(stream, {
-    headers: {
-      "Content-Type": "text/event-stream",
-      "Cache-Control": "no-store",
-      "X-Content-Type-Options": "nosniff",
-    },
+    headers: { ...HEADERS_SEGUROS, "Content-Type": "text/event-stream" },
   });
 }

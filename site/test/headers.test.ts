@@ -50,4 +50,44 @@ describe("fallback sem JavaScript (.reveal)", () => {
     expect(h).toContain("style-src 'self'");
     expect(h).not.toContain("unsafe-inline");
   });
+
+  it("noscript.css também revela as mensagens do chat do herói", async () => {
+    // .msg nasce com opacity:0 e só ganha .show pelo app.js. Sem esta regra o
+    // mockup de conversa do herói aparece vazio para quem não roda script,
+    // justamente o caso dos rastreadores de IA.
+    const css = await (await SELF.fetch("https://site.local/noscript.css")).text();
+    expect(css).toContain(".msg{opacity:1;transform:none;transition:none}");
+  });
+
+  it("noscript.css esconde o formulário e mostra o CTA de WhatsApp", async () => {
+    // Sem JS o submit nativo levaria nome, telefone e o relato da dor para a
+    // query string da URL. Trocar o formulário pelo CTA elimina o vazamento.
+    const css = await (await SELF.fetch("https://site.local/noscript.css")).text();
+    expect(css).toContain("#leadForm{display:none}");
+    expect(css).toContain(".sem-js{display:block}");
+  });
+
+  it("o formulário declara method=post como rede de segurança", () => {
+    expect(indexHtml).toMatch(/<form id="leadForm"[^>]*method="post"/);
+  });
+});
+
+describe("headers de segurança nas respostas do próprio Worker", () => {
+  // public/_headers só vale para assets. Sem estes headers, um visitante cujo
+  // primeiro contato com o domínio fosse uma resposta do Worker não receberia
+  // o HSTS e ficaria sujeito a downgrade para HTTP no acesso seguinte.
+  it.each([
+    ["Strict-Transport-Security", "max-age=31536000; includeSubDomains"],
+    ["X-Frame-Options", "DENY"],
+    ["X-Content-Type-Options", "nosniff"],
+  ])("/api/health responde com %s", async (nome, valor) => {
+    const res = await SELF.fetch("https://site.local/api/health");
+    expect(res.headers.get(nome)).toBe(valor);
+  });
+
+  it("o 405 das rotas POST também carrega HSTS", async () => {
+    const res = await SELF.fetch("https://site.local/api/lead");
+    expect(res.status).toBe(405);
+    expect(res.headers.get("Strict-Transport-Security")).toContain("max-age=31536000");
+  });
 });

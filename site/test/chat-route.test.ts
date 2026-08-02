@@ -57,7 +57,9 @@ describe("handleChat (encanamento, com AI stub)", () => {
     expect(res.headers.get("Content-Type")).toBe("text/event-stream");
     expect(res.headers.get("Cache-Control")).toBe("no-store");
     expect(capturado.modelo).toBe(MODELO);
-    expect(capturado.extra).toEqual({ gateway: { id: "nanoguara" } });
+    // collectLog:false é o que sustenta a promessa da política de privacidade
+    // de que a conversa não é salva. O AI Gateway loga por padrão.
+    expect(capturado.extra).toEqual({ gateway: { id: "nanoguara", collectLog: false } });
     expect(await res.text()).toContain('"response":"Oi"');
   });
 

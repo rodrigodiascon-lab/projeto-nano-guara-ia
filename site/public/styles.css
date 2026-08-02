@@ -302,7 +302,16 @@ footer .footer-accent{color:#6FBF73}
 /* Foco visível em tudo que é interativo */
 .btn:focus-visible, a:focus-visible, .chip:focus-visible, .demo-log:focus-visible{
   outline:2px solid var(--verde); outline-offset:2px; }
-.deep :focus-visible, footer :focus-visible, .btn-primario:focus-visible{ outline-color:#EDF3EE; }
+/* Anel claro só onde o fundo é escuro de verdade. Duas correções: .btn-primario
+   saiu do grupo, porque 4 dos 5 ficam sobre fundo claro, onde #EDF3EE some
+   (contraste perto de 1:1) — dentro de .deep ele segue coberto pelo seletor de
+   descendente; e o card .demo é branco mesmo dentro de .deep, então o foco lá
+   volta ao verde (o #demoLog é parada obrigatória do Tab). */
+.deep :focus-visible, footer :focus-visible{ outline-color:#EDF3EE; }
+.deep .demo :focus-visible{ outline-color:var(--verde); }
+
+/* Aviso que substitui o formulário quando o JS não roda (ver noscript.css). */
+.sem-js{ display:none; }
 
 /* Mensagens do formulário: sucesso e erro distintos e anunciáveis */
 .form-msg{ border-radius:var(--raio-input); padding:14px; font-size:.95rem; }

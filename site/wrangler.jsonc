@@ -3,7 +3,11 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-07-31",
   "compatibility_flags": ["nodejs_compat"],
-  "assets": { "directory": "./public", "not_found_handling": "404-page" },
+  // binding ASSETS: o Worker precisa buscar o 404.html por conta própria, já que
+  // ele atende toda URL que não casa com um asset (ver paginaNaoEncontrada).
+  "assets": { "directory": "./public", "not_found_handling": "404-page", "binding": "ASSETS" },
+  // expurgo diário dos leads vencidos, 05:00 UTC (02:00 em Manaus, UTC-4)
+  "triggers": { "crons": ["0 5 * * *"] },
   "d1_databases": [
     { "binding": "DB", "database_name": "nanoguara-leads", "database_id": "38a098a0-1f04-482c-ba77-3a9455c6e5e3", "migrations_dir": "migrations" }
   ],
