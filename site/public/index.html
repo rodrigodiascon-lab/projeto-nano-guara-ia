@@ -12,13 +12,22 @@
   <link rel="preload" href="/fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://challenges.cloudflare.com">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="alternate" type="application/ld+json" href="/schema.json">
   <noscript><link rel="stylesheet" href="/noscript.css"></noscript>
   <meta property="og:title" content="nanoguará.ia | Inteligência que gera resultados">
   <meta property="og:description" content="Assistente de IA no WhatsApp que atende, agenda e faz follow-up por você.">
   <meta property="og:image" content="https://nanoguara.ia.br/brand/og.png">
+  <meta property="og:url" content="https://nanoguara.ia.br/">
+  <meta property="og:site_name" content="nanoguará.ia">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Dados estruturados embutidos: o Google só lê JSON-LD dentro da página.
+       Entregue por <link rel="alternate"> ele era ignorado. Um <script> de tipo
+       não executável é bloco de dados, então a CSP script-src 'self' não o
+       bloqueia. public/schema.json continua no ar para consumo direto. -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://nanoguara.ia.br/#organization","name":"nanoguará.ia","slogan":"Inteligência que gera resultados","description":"Assistente virtual de IA no WhatsApp para profissionais liberais: atendimento 24 horas, agendamento, confirmação e pós-venda. Agência nanoguará.ia.","url":"https://nanoguara.ia.br/","telephone":"+5592981486875","areaServed":{"@type":"Country","name":"Brasil"},"knowsAbout":["Assistente Virtual","Automação comercial","Criação de sites","SEO e GEO","Registro de marcas","Consultoria LGPD","Web app para Representante Comercial"],"address":{"@type":"PostalAddress","addressLocality":"Manaus","addressRegion":"AM","addressCountry":"BR"}},{"@type":"WebSite","@id":"https://nanoguara.ia.br/#website","name":"nanoguará.ia","url":"https://nanoguara.ia.br/","inLanguage":"pt-BR","publisher":{"@id":"https://nanoguara.ia.br/#organization"}}]}
+  </script>
   <script src="/app.js" defer></script>
 </head>
 <body>
@@ -115,7 +124,7 @@
         <div class="msg in show">Oi! Eu sou a assistente da nanoguará.ia. Pergunta qualquer coisa: como funciona, quanto custa, se serve pro seu consultório. 😊</div>
       </div>
       <div class="demo-form">
-        <input id="demoInput" type="text" placeholder="Escreva sua pergunta..." aria-label="Pergunta para a assistente de demonstração">
+        <input id="demoInput" type="text" maxlength="2000" placeholder="Escreva sua pergunta..." aria-label="Pergunta para a assistente de demonstração">
         <button id="demoSend" type="button">Enviar</button>
       </div>
     </div>
@@ -169,10 +178,15 @@
     <div class="cta-mt"><a class="btn btn-primario" target="_blank" rel="noopener"
       href="https://wa.me/5592981486875?text=Oi!%20Quero%20conversar%20sobre%20o%20que%20a%20nanoguar%C3%A1.ia%20pode%20fazer%20pelo%20meu%20atendimento.">Chamar no WhatsApp</a></div>
   </div>
-  <form id="leadForm" class="reveal">
-    <label>Nome<input type="text" name="nome" required placeholder="Seu nome"></label>
+  <p class="sem-js">O formulário precisa de JavaScript para enviar com segurança.
+    <a target="_blank" rel="noopener"
+       href="https://wa.me/5592981486875?text=Oi!%20Quero%20conversar%20sobre%20o%20que%20a%20nanoguar%C3%A1.ia%20pode%20fazer%20pelo%20meu%20atendimento.">Chamar no WhatsApp</a></p>
+  <!-- method="post" é rede de segurança: se o JS carregar mas o listener falhar,
+       o envio nativo não vira GET com nome e telefone na barra de endereço. -->
+  <form id="leadForm" class="reveal" method="post">
+    <label>Nome<input type="text" name="nome" required autocomplete="name" placeholder="Seu nome"></label>
     <label>Profissão<select name="profissao" required><option value="">Selecione</option><option>Médico(a)</option><option>Dentista</option><option>Advogado(a)</option><option>Psicólogo(a)</option><option>Consultor(a)</option><option>Outra</option></select></label>
-    <label>WhatsApp<input type="tel" name="whatsapp" required placeholder="(92) 9 8888-7777"></label>
+    <label>WhatsApp<input type="tel" name="whatsapp" required autocomplete="tel-national" placeholder="(92) 9 8888-7777"></label>
     <label>Qual é a sua maior dor hoje?<textarea name="dor" rows="3" placeholder="Ex.: perco cliente porque não consigo responder rápido"></textarea></label>
     <div class="consent">
       <input type="checkbox" id="consent" required>

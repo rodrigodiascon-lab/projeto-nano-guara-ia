@@ -28,6 +28,23 @@ describe("router", () => {
     expect(await res.text()).toContain("nanoguará.ia");
   });
 
+  // Antes, o Worker devolvia JSON para toda URL inexistente e o 404.html
+  // caprichado nunca era visto por ninguém: quem seguisse um link quebrado
+  // encontrava {"ok":false,...} cru numa landing page comercial.
+  it("serve a página 404 em HTML para rota inexistente fora de /api", async () => {
+    const res = await SELF.fetch("https://site.local/nao-existe");
+    expect(res.status).toBe(404);
+    expect(res.headers.get("Content-Type")).toContain("text/html");
+    const body = await res.text();
+    expect(body).toContain("nanoguará.ia");
+    expect(body).not.toContain('"ok":false');
+  });
+
+  it("mantém JSON no 404 de rota de API, que não é navegada por gente", async () => {
+    const res = await SELF.fetch("https://site.local/api/nada");
+    expect(res.headers.get("Content-Type")).toContain("application/json");
+  });
+
   it("bindings de rate limit disponíveis no ambiente de teste", async () => {
     const { env } = await import("cloudflare:test");
     expect(typeof env.LEAD_RL.limit).toBe("function");

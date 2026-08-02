@@ -1,7 +1,19 @@
-const HEADERS_SEGUROS = {
+/**
+ * public/_headers só é aplicado pelo Static Assets às respostas de asset. Toda
+ * resposta gerada aqui pelo Worker (JSON das APIs, 405, 404, o SSE do chat)
+ * precisa carregar os mesmos headers, senão um visitante cujo primeiro contato
+ * com o domínio for uma resposta do Worker não recebe o HSTS e fica sujeito a
+ * downgrade para HTTP no próximo acesso digitado. CSP aqui é a mais restritiva
+ * possível: nenhuma dessas respostas carrega recurso algum.
+ */
+export const HEADERS_SEGUROS = {
   "X-Content-Type-Options": "nosniff",
   "Cache-Control": "no-store",
   "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+  "X-Frame-Options": "DENY",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
 } as const;
 
 export function jsonSeguro(data: unknown, status = 200, extra: Record<string, string> = {}): Response {

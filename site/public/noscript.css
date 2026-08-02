@@ -6,3 +6,15 @@
    _headers usa style-src 'self' sem unsafe-inline: um <style> dentro de
    <noscript> seria bloqueado. */
 .reveal{opacity:1;transform:none;transition:none}
+
+/* Mesma armadilha das mensagens do mockup de conversa do herói: nascem com
+   opacity:0 e só ganham .show pelo app.js. Sem esta regra o telefone do herói
+   aparece vazio para quem não executa script, e a demonstração do produto some
+   justamente para os rastreadores de IA. */
+.msg{opacity:1;transform:none;transition:none}
+
+/* O formulário depende do fetch e do Turnstile: sem JS ele não teria como
+   enviar, e o submit nativo levaria nome e telefone para a barra de endereço.
+   Trocamos o formulário pelo CTA de WhatsApp, que funciona sem script. */
+#leadForm{display:none}
+.sem-js{display:block}
