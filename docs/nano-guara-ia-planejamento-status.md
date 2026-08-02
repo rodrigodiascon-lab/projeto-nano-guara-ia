@@ -34,7 +34,7 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 - **Sem prova social no MVP:** proibido inventar métricas ou clientes; credibilidade vem da demo ao vivo.
 - **Números permitidos na copy** (com fonte): 62% desistem de compra no WhatsApp (Opinion Box 2025) · 1 em cada 3 clínicas com mais de 11% de faltas (Doctoralia/Feegow 2025) · 59% rejeitam resposta automática genérica (Opinion Box 2025). **Banidos:** "5 minutos" como estatística, "20-30% de faltas", "53% esqueceram", "55-70% das propostas".
 - **Diferencial de posicionamento:** dentista (CFO) e psicólogo (CFP) não podem anunciar preço em público, mas podem no 1:1 do WhatsApp — a agência configura o assistente dentro das regras do conselho de cada cliente.
-- **Stack:** 100% Cloudflare (1 Worker com Static Assets + `/api/lead` + `/api/chat`, D1, Turnstile, Rate Limiting, Email Service, Workers AI `glm-4.7-flash` via AI Gateway, Web Analytics). Saídas só por cobertura: Registro.br (domínio), wa.me (WhatsApp), Gmail (inbox). Custo MVP ≈ R$ 40/ano.
+- **Stack:** 100% Cloudflare (1 Worker com Static Assets + `/api/lead` + `/api/chat`, D1, Turnstile, Rate Limiting, Email Service, Workers AI `llama-3.3-70b-instruct-fp8-fast` via AI Gateway (o `glm-4.7-flash` do planejamento foi reprovado no smoke de 01/08/2026, confirmando o achado P1-4 da auditoria: é modelo de raciocínio e não emite resposta), Web Analytics). Saídas só por cobertura: Registro.br (domínio), wa.me (WhatsApp), Gmail (inbox). Custo MVP ≈ R$ 40/ano.
 - **Design:** direção "Guaraná Tech"; efeitos aprovados no herói (fundo Etheral + shimmer no H1) com as degradações obrigatórias da auditoria.
 - **Ferramenta de design:** Claude Design dispensado nesta rodada; mockup navegável em Artifact fez o papel.
 
@@ -42,7 +42,6 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 
 | Pendência | Bloqueia |
 |-----------|----------|
-| **Registrar `nanoguara.ia.br` + `nanoguara.com.br`** no Registro.br e apontar nameservers pra Cloudflare (disponibilidade confirmada em 2026-07-31) | Task 10 |
 | Eval de pt-BR e adversarial do modelo (gate de go-live) | Task 9 |
 
 **Já resolvidas:**
@@ -50,6 +49,11 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 - ✅ **WhatsApp da agência:** **(92) 98148-6875** → `5592981486875` nos links `wa.me`. Preenchido no plano (var `WHATSAPP_NUMBER` e constante `WHATS`) e ativo no mockup.
 - ✅ **Normas do CFO:** lidas em fonte primária; erro corrigido no perfil (a vedação de preço está no Código de Ética CFO-118/2012, art. 44, I — a 196/2019 trata só de imagens).
 - ✅ **Domínio escolhido:** **`nanoguara.ia.br`**, apenas ele (a categoria `.ia.br` foi criada pelo NIC.br em 01/09/2025 para Inteligência Artificial, sem restrição de registro). Verificado livre em 2026-07-31; usuário iniciou o registro no Registro.br na mesma data. Já aplicado no plano (robots, sitemap, og:image, JSON-LD, `TURNSTILE_HOSTNAME`, comandos de smoke). `nanoguara.com.br` estava livre e fica como opção defensiva futura, fora do escopo atual.
+- ✅ **Domínio registrado** (01/08/2026): titular R. DIAS PIMENTEL (CNPJ 21.091.816/0001-48), expira 31/07/2027, status `published`.
+- ✅ **Zona criada na Cloudflare** (01/08/2026): id `c0e4884bfdf195138510a1f9e8efbaf7`, conta Lucrec.IA (`9ffd8d9ae61880d4421a279c2c8cfc10`), plano Free, status `pending`. NS: `bob.ns.cloudflare.com` / `georgia.ns.cloudflare.com`.
+  - A UI "Adicionar site" **não funciona** com `.ia.br`: a pré-checagem `GET /registrar/domains/batch_check` devolve 422 (TLD fora do Cloudflare Registrar) e o `POST /zones` nunca dispara. Caminho que funciona: API Token com `Zona → Zona → Editar` + `Zona → DNS → Editar`, e `POST /zones` via curl.
+- ✅ **Domínio 100% no ar na Cloudflare** (01/08/2026): delegação propagada (`dig NS` responde `bob`/`georgia.ns.cloudflare.com`) e a zona saiu de `pending` para **ativa** — painel confirma "Seu domínio agora está protegido pela Cloudflare", Configuração de DNS `Completo`. Nada mais bloqueia a Task 10 além do código.
+- ✅ **DNSSEC removido + NS trocados no Registro.br** (01/08/2026): o formulário "Alterar servidores DNS" foi salvo com os dois NS da Cloudflare e **sem** acionar `+ DNSSEC`, o que derruba o registro DS junto. Confirmado: `dig DS nanoguara.ia.br` vazio.
 
 ## Próximo passo
 

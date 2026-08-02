@@ -27,7 +27,7 @@ Um único Worker serve os assets E as duas rotas de API (padrão documentado: as
 | Banco (leads) | **D1** (tabela `leads`) | — | — |
 | Anti-spam do formulário | **Turnstile** (widget managed) | — | — |
 | Notificação de lead | **Email Service** (binding `send_email` → endereço verificado da agência) | — | — |
-| LLM do chat demo | **Workers AI** — `@cf/zai-org/glm-4.7-flash` (citado nominalmente como disponível no Free no changelog 28/07/2026; qualidade pt-BR = hipótese a validar por eval antes do go-live; fallback: `@cf/meta/llama-3.3-70b-instruct-fp8-fast`) | — | — |
+| LLM do chat demo | **Workers AI** — `@cf/meta/llama-3.3-70b-instruct-fp8-fast`. O `@cf/zai-org/glm-4.7-flash`, escolhido no planejamento, foi **reprovado no smoke de 01/08/2026**: é modelo de raciocínio e gastou todo o orçamento em `reasoning_content` sem emitir nenhuma resposta (0 chars com 80 e com 600 tokens), além de raciocinar em inglês e chinês. O llama responde em pt-BR, termina em `finish_reason: stop` e emite o formato clássico `data: {"response":"..."}`. Custo medido: 38,57 neurons por resposta curta, cerca de 259 respostas/dia dentro do Free. | — | — |
 | Proxy/observabilidade IA | **AI Gateway** (na frente do Workers AI via param `gateway` no `env.AI.run`) — analytics, logs e **rate limiting grátis**; streaming não é cacheado por padrão (valor aqui é observabilidade+rate limit, não cache) | — | — |
 | Analytics | **Web Analytics** (beacon, sem cookies — argumento LGPD) | — | — |
 | DNS/TLS/CDN | **Cloudflare DNS + SSL/TLS + cache** | — | — |
@@ -54,7 +54,7 @@ Premissas: ~500 visitas/dia no início, ~30 conversas de chat/dia (~10 msgs cada
 | D1 | 5M reads/dia, 100k writes/dia | ~10 writes/dia | R$ 0 |
 | Turnstile | ilimitado | — | R$ 0 |
 | Email Service (destino verificado) | grátis em todos os planos | ~10/dia | R$ 0 |
-| Workers AI | 10.000 Neurons/dia | chat demo modesto (validar consumo real por eval) | R$ 0 |
+| Workers AI | 10.000 Neurons/dia | **medido em 01/08/2026: 38,57 neurons por resposta curta** → cerca de 259 respostas/dia no Free. O rate limit de 10/min por IP protege contra consumo anormal; reavaliar se o volume crescer. | R$ 0 |
 | AI Gateway | core grátis (Free: 100k logs TOTAIS — monitorar) | — | R$ 0 |
 | Web Analytics / DNS / TLS | grátis | — | R$ 0 |
 | Domínio (`nanoguara.ia.br`) | — | Registro.br | ~R$ 40/ano |
