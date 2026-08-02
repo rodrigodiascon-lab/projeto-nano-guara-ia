@@ -1,4 +1,4 @@
-import { insertLead } from "./leads";
+import { insertLead, VERSAO_CONSENTIMENTO } from "./leads";
 import { verifyTurnstile } from "./turnstile";
 import { renderLeadEmail } from "./email";
 import { jsonSeguro, mesmaOrigem, lerCorpoLimitado } from "./http";
@@ -65,7 +65,15 @@ export async function handleLead(request: Request, env: Env, ctx: ExecutionConte
 
   let id: number;
   try {
-    id = await insertLead(env.DB, { nome, profissao, whatsapp, dor, origem });
+    id = await insertLead(env.DB, {
+      nome,
+      profissao,
+      whatsapp,
+      dor,
+      origem,
+      consentimento: body.consentimento === true,
+      consentimentoVersao: VERSAO_CONSENTIMENTO,
+    });
   } catch (e) {
     console.error(JSON.stringify({ evt: "lead_d1_erro", err: String(e) }));
     return jsonSeguro({ ok: false, erro: "Não consegui salvar agora. Tente pelo WhatsApp." }, 503);

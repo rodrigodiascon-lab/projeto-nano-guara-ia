@@ -1,9 +1,19 @@
+/**
+ * Identificador do texto de autorização exibido no formulário (index.html,
+ * label do checkbox #consent). MUDE ISTO junto com o texto: é o que permite
+ * provar, depois, a que exatamente cada titular consentiu.
+ */
+export const VERSAO_CONSENTIMENTO = "2026-08-01-contato";
+
 export type LeadInput = {
   nome: string;
   profissao: string;
   whatsapp: string;
   dor: string;
   origem: string;
+  /** Valor que o titular de fato enviou, nunca uma constante do servidor. */
+  consentimento: boolean;
+  consentimentoVersao: string;
 };
 
 /** Retenção declarada na política de privacidade (privacidade.html). */
@@ -23,11 +33,21 @@ export async function expurgaLeadsVencidos(db: D1Database): Promise<number> {
 }
 
 export async function insertLead(db: D1Database, lead: LeadInput): Promise<number> {
+  // consentimento vai por bind, não como literal 1: a camada de persistência
+  // não pode afirmar um consentimento que ela não observou.
   const r = await db
     .prepare(
-      "INSERT INTO leads (nome, profissao, whatsapp, dor, origem, consentimento) VALUES (?, ?, ?, ?, ?, 1)"
+      "INSERT INTO leads (nome, profissao, whatsapp, dor, origem, consentimento, consentimento_versao) VALUES (?, ?, ?, ?, ?, ?, ?)"
     )
-    .bind(lead.nome, lead.profissao, lead.whatsapp, lead.dor, lead.origem)
+    .bind(
+      lead.nome,
+      lead.profissao,
+      lead.whatsapp,
+      lead.dor,
+      lead.origem,
+      lead.consentimento ? 1 : 0,
+      lead.consentimentoVersao
+    )
     .run();
   return Number(r.meta.last_row_id);
 }

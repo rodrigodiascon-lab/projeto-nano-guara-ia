@@ -1,0 +1,11 @@
+-- Prova de consentimento por lead (LGPD art. 8º, §2º: o ônus de demonstrar o
+-- consentimento é do controlador). Antes, a coluna consentimento recebia o
+-- literal 1 em todo INSERT e a própria migration definia DEFAULT 1, então o
+-- valor era idêntico em todas as linhas e não provava nada: se a ANPD ou um
+-- titular pedisse a demonstração, a consulta devolveria 1 inclusive para
+-- registros inseridos por qualquer outro caminho.
+--
+-- A coluna abaixo guarda QUAL texto de autorização foi exibido ao titular no
+-- momento do aceite. Junto com criado_em (data do envio, que é o instante do
+-- aceite), passa a existir um registro auditável do que foi consentido e quando.
+ALTER TABLE leads ADD COLUMN consentimento_versao TEXT NOT NULL DEFAULT '';
