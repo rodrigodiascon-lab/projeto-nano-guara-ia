@@ -55,6 +55,28 @@ Marca: logo guaraná + circuito (verde/vermelho/preto/creme), slogan "Inteligên
 - ✅ **Domínio 100% no ar na Cloudflare** (01/08/2026): delegação propagada (`dig NS` responde `bob`/`georgia.ns.cloudflare.com`) e a zona saiu de `pending` para **ativa** — painel confirma "Seu domínio agora está protegido pela Cloudflare", Configuração de DNS `Completo`. Nada mais bloqueia a Task 10 além do código.
 - ✅ **DNSSEC removido + NS trocados no Registro.br** (01/08/2026): o formulário "Alterar servidores DNS" foi salvo com os dois NS da Cloudflare e **sem** acionar `+ DNSSEC`, o que derruba o registro DS junto. Confirmado: `dig DS nanoguara.ia.br` vazio.
 
+## Execução: CONCLUÍDA (2026-08-02)
+
+As 10 tasks do plano foram executadas e o site está **no ar em https://nanoguara.ia.br**. Tudo em `main`, 76 testes verdes, `tsc` limpo.
+
+Depois do merge rodou uma **revisão completa em 5 dimensões** (segurança, frontend, SEO/GEO, conteúdo/LGPD e produção) com verificação adversarial: 28 achados brutos, 11 confirmados, 3 refutados. Somados aos 4 achados da revisão final de branch, **13 dos 15 foram corrigidos e verificados em produção**. Destaques do que a revisão pegou e nenhum teste pegaria:
+
+- O chat inventava promessa de resultado ("até 30% mais agendamentos"), vedada pelo CFM e CFO. Corrigido no `SYSTEM_PROMPT` e reverificado em produção com 3 perguntas adversariais e a eval completa de 12.
+- A política de privacidade afirmava que a conversa não é salva, mas o AI Gateway loga por padrão. Corrigido com `collectLog: false`, então a frase virou verdade.
+- A purga de 12 meses era promessa sem mecanismo. Agora existe handler `scheduled` com cron diário.
+- O registro de consentimento não provava nada (literal `1` em toda linha). Migration 0002 grava qual texto de autorização o titular aceitou.
+
+Infra de zona fechada em 2026-08-02: **Always Use HTTPS** ligado e **`www`** criado (registro A proxied para o endereço de descarte `192.0.2.1` + Redirect Rule 301 para o apex, preservando caminho e query string). Seis rotas de entrada testadas, todas chegando ao canônico.
+
+### Aberto por decisão do usuário
+
+- **`/api/chat` sem Turnstile.** O gate de `Origin` é fail-open, então `curl` passa. Consequência: consumo da cota de Workers AI por terceiros e histórico forjável. Não é vazamento de dado. Revisitar se o consumo de neurons subir sem explicação.
+
+### Datas a observar
+
+- **~09/08/2026:** conferir no AI Crawl Control se `OAI-SearchBot` e `PerplexityBot` estão passando.
+- **15/09/2026:** a Cloudflare muda as regras padrão de bloqueio de bots.
+
 ## Próximo passo
 
-Executar o plano com `superpowers:subagent-driven-development` apontando para `docs/superpowers/plans/2026-07-31-nano-guara-ia-site.md`. Nenhum código de produto foi escrito até aqui — o repo contém apenas documentação de planejamento e o mockup aprovado.
+O site institucional está entregue. O **web app do Representante Comercial** segue fora de escopo e pede um segundo ciclo da `/planejar`.
