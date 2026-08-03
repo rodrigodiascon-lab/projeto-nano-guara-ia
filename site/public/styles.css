@@ -81,6 +81,20 @@ nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,
 .btn-secundario:hover{background:color-mix(in srgb,var(--verde) 10%,transparent)}
 .btn-sm{padding:10px 20px;font-size:.9rem}
 
+/* Botão primário: no hover o texto cede lugar a uma chamada com seta.
+   Grid com os dois estados na mesma célula evita position:absolute e faz a
+   largura do botão já nascer do maior dos dois textos, sem saltar no hover. */
+.btn-primario{display:inline-grid;grid-template-areas:"conteudo";overflow:hidden;isolation:isolate}
+.btn-primario .btn-texto,.btn-primario .btn-seta{
+  grid-area:conteudo;display:flex;align-items:center;gap:6px;white-space:nowrap;
+  transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .3s ease}
+.btn-primario .btn-seta{opacity:0;transform:translateX(14px);pointer-events:none}
+.btn-primario:hover .btn-texto{transform:translateX(-14px);opacity:0}
+.btn-primario:hover .btn-seta{opacity:1;transform:translateX(0)}
+@media (prefers-reduced-motion: reduce){
+  .btn-primario .btn-texto,.btn-primario .btn-seta{transition:none}
+}
+
 /* ---------- Herói ---------- */
 .hero{min-height:calc(100dvh - 68px);display:grid;grid-template-columns:1.1fr .9fr;gap:56px;
   align-items:center;padding:56px 0 72px;position:relative}

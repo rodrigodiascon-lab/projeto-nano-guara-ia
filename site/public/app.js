@@ -277,7 +277,14 @@ function mostraMsg(texto, tipo) {
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const botao = form.querySelector('button[type="submit"]');
-  botao.disabled = true; botao.textContent = 'Enviando...';
+  // O botão tem dois spans (texto + chamada com seta) para o efeito de hover do
+  // CSS. Reescrever botao.textContent direto apagaria os dois; troca-se o texto
+  // de cada span e restaura-se o original depois, em vez de textContent puro.
+  const botaoTexto = botao.querySelector('.btn-texto');
+  const botaoSeta = botao.querySelector('.btn-seta');
+  const textoOriginal = botaoTexto.textContent;
+  const setaOriginal = botaoSeta.textContent;
+  botao.disabled = true; botaoTexto.textContent = 'Enviando...'; botaoSeta.textContent = 'Enviando...';
   const fd = new FormData(form);
   try {
     const res = await fetch('/api/lead', {
@@ -299,7 +306,7 @@ form.addEventListener('submit', async (e) => {
     mostraMsg('Sem conexão. Tente pelo WhatsApp.', 'erro');
   } finally {
     if (window.turnstile) window.turnstile.reset();
-    botao.disabled = false; botao.textContent = 'Quero uma conversa';
+    botao.disabled = false; botaoTexto.textContent = textoOriginal; botaoSeta.textContent = setaOriginal;
   }
 });
 
