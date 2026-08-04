@@ -45,6 +45,12 @@ describe("router", () => {
     expect(res.headers.get("Content-Type")).toContain("application/json");
   });
 
+  it("serve a página de portfólio", async () => {
+    const res = await SELF.fetch("https://site.local/portfolio");
+    expect(res.status).toBe(200);
+    expect(await res.text()).toContain("GP Representação Comercial");
+  });
+
   it("bindings de rate limit disponíveis no ambiente de teste", async () => {
     const { env } = await import("cloudflare:test");
     expect(typeof env.LEAD_RL.limit).toBe("function");
