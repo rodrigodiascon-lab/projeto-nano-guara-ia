@@ -51,6 +51,7 @@ describe("router", () => {
     const body = await res.text();
     expect(body).toContain("GP Representação Comercial");
     expect(body).toContain("RD Representações");
+    expect(body).toContain("Carla Dias Dermatologia");
   });
 
   it("bindings de rate limit disponíveis no ambiente de teste", async () => {
