@@ -48,7 +48,9 @@ describe("router", () => {
   it("serve a página de portfólio", async () => {
     const res = await SELF.fetch("https://site.local/portfolio");
     expect(res.status).toBe(200);
-    expect(await res.text()).toContain("GP Representação Comercial");
+    const body = await res.text();
+    expect(body).toContain("GP Representação Comercial");
+    expect(body).toContain("RD Representações");
   });
 
   it("bindings de rate limit disponíveis no ambiente de teste", async () => {
