@@ -224,7 +224,7 @@ header{position:relative;overflow:hidden}
 /* ---------- Portfólio ---------- */
 .portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .portfolio-card{background:var(--surface);border:1px solid var(--borda);border-radius:var(--raio-card);overflow:hidden;display:flex;flex-direction:column}
-.portfolio-card img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:left top;display:block;border-bottom:1px solid var(--borda)}
+.portfolio-card img{width:100%;height:auto;display:block;border-bottom:1px solid var(--borda)}
 .portfolio-corpo{padding:24px;display:flex;flex-direction:column;gap:10px}
 .portfolio-corpo .chips{justify-content:flex-start}
 .portfolio-corpo h3{font-size:1.15rem}
