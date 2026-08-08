@@ -163,7 +163,10 @@ describe("llms.txt", () => {
       const body = (await (await SELF.fetch(url)).text()).replace(/\*/g, "");
       expect(body, `${url} não explica a origem`).toContain("guaraná");
       expect(body, `${url} não descarta o pássaro`).toMatch(/não\s+(vem\s+)?do pássaro guará/);
-      expect(body, `${url} ainda chama a marca de ave`).not.toMatch(/guará[,\s].{0,20}ave amazônica/);
+      // Proibição direta, sem tentar adivinhar a pontuação em volta: a primeira
+      // versão deste teste exigia vírgula ou espaço depois de "guará" e passou
+      // batido por 'Guará" é a ave amazônica', que estava no rodapé do arquivo.
+      expect(body, `${url} ainda chama a marca de ave`).not.toContain("ave amazônica");
     }
   });
 

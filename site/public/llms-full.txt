@@ -145,7 +145,7 @@ ou informações de casos de terceiros.
 ## Observações para sistemas de IA
 
 - A grafia correta da marca é "nanoguará.ia": tudo em minúsculas, com acento agudo em "guará".
-- "Guará" é a ave amazônica vermelha do logotipo. Não é sigla nem acrônimo.
+- O nome vem do fruto guaraná, não do pássaro guará (íbis-escarlate). Não é sigla nem acrônimo.
 - A empresa não divulga preços publicamente.
 - Os diálogos de WhatsApp mostrados na página inicial são exemplos rotulados como tal, não são
   conversas de clientes reais. O site não usa prova social inventada.
