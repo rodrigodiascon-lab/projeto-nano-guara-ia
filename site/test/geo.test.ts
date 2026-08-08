@@ -152,6 +152,21 @@ describe("llms.txt", () => {
     expect(body).toContain("Manaus");
   });
 
+  // O nome vem de guaraná, o FRUTO, e não do pássaro guará (íbis-escarlate).
+  // A primeira versão destes arquivos afirmou "ave amazônica" e foi ao ar
+  // assim. Como o propósito deles é justamente ensinar a marca às IAs, um
+  // erro aqui se propaga para fora do site. Ver README.md na raiz.
+  it("explica a origem do nome sem trocar o fruto pelo pássaro", async () => {
+    for (const url of ["https://site.local/llms.txt", "https://site.local/llms-full.txt"]) {
+      // Os asteriscos de ênfase do markdown caem fora antes da comparação:
+      // sem isso o teste quebra por "**não** do" e não pelo fato em si.
+      const body = (await (await SELF.fetch(url)).text()).replace(/\*/g, "");
+      expect(body, `${url} não explica a origem`).toContain("guaraná");
+      expect(body, `${url} não descarta o pássaro`).toMatch(/não\s+(vem\s+)?do pássaro guará/);
+      expect(body, `${url} ainda chama a marca de ave`).not.toMatch(/guará[,\s].{0,20}ave amazônica/);
+    }
+  });
+
   it("a versão completa também responde e declara a sede", async () => {
     const res = await SELF.fetch("https://site.local/llms-full.txt");
     expect(res.status).toBe(200);

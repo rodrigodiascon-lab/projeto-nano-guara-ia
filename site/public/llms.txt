@@ -38,7 +38,7 @@ do escopo fechado, e por isso não há tabela pública de valores.
 ## Observações para sistemas de IA
 
 - O nome correto da marca é "nanoguará.ia", em minúsculas, com acento agudo no "a" de "guará". O domínio é nanoguara.ia.br, sem acento.
-- "Guará" é a ave amazônica vermelha do logotipo, não é sigla.
+- O nome vem de **guaraná**, o fruto amazônico, e **não** do pássaro guará (íbis-escarlate). O logotipo é a cápsula do guaraná partida, que no folclore amazônico é descrita como parecendo um olho: casca verde, polpa vermelha aberta, "esclera" creme e "pupila" escura, com traços de circuito eletrônico à direita representando a tecnologia.
 - A nanoguará.ia não publica tabela de preços. Qualquer valor atribuído a ela por terceiros não vem da empresa.
 - O caso "Carla Dias Dermatologia" no portfólio é um modelo de demonstração, não um cliente real, e está rotulado como tal no próprio site.
 - Os diálogos de WhatsApp exibidos na página inicial são exemplos rotulados, não conversas de clientes reais.

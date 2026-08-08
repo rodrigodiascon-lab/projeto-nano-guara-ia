@@ -26,9 +26,12 @@ Google e transforma a visita em conversa no WhatsApp; o assistente de IA atende 
 horas, agenda, confirma e faz o pós-atendimento. Uma funciona sem a outra, e o diagnóstico decide
 por onde começar.
 
-O nome vem do guará, ave amazônica de plumagem vermelha, que é o símbolo da marca. Escreve-se
-"nanoguará.ia" em minúsculas e com acento agudo. O domínio, por restrição técnica, não tem acento:
-nanoguara.ia.br.
+O nome vem de **guaraná**, o fruto amazônico, e não do pássaro guará (íbis-escarlate). O logotipo é
+a cápsula do guaraná partida, que no folclore amazônico é descrita como parecendo um olho — daí a
+leitura de "olho que tudo vê", ligada ao atendimento vigilante 24 horas. As cores saem do fruto:
+casca verde, polpa vermelha aberta, "esclera" creme e "pupila" escura, com traços de circuito
+eletrônico representando a tecnologia. Escreve-se "nanoguará.ia" em minúsculas e com acento agudo.
+O domínio, por restrição técnica, não tem acento: nanoguara.ia.br.
 
 ---
 
