@@ -2,3 +2,18 @@
 .claude-flow/
 .DS_Store
 .worktrees/
+
+# Mídia gerada dos posts de marketing. Fica de fora porque binário grande não
+# sai mais do histórico do git depois de entrar, e este material é regenerável:
+# o prompts.md e o index.html de cada post continuam versionados ao lado.
+docs/marketing/brand/posts/**/*.png
+docs/marketing/brand/posts/**/*.jpg
+docs/marketing/brand/posts/**/*.mp4
+docs/marketing/brand/posts/**/*.woff2
+
+# Estado local de ferramenta, não código do projeto.
+.superpowers/
+.swarm/
+agentdb.rvf
+agentdb.rvf.lock
+ruvector.db

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>nanoguará.ia — post Instagram 4:5 (clínicas)</title>
+<style>
+  @font-face{font-family:"Outfit";font-weight:700;src:url("file:///Users/rodri/projeto-nano-guara-ia/site/public/fonts/outfit-700.woff2") format("woff2");}
+  @font-face{font-family:"Outfit";font-weight:600;src:url("file:///Users/rodri/projeto-nano-guara-ia/site/public/fonts/outfit-600.woff2") format("woff2");}
+  @font-face{font-family:"Geist";font-weight:400;src:url("file:///Users/rodri/projeto-nano-guara-ia/site/public/fonts/geist-400.woff2") format("woff2");}
+  @font-face{font-family:"Geist";font-weight:500;src:url("file:///Users/rodri/projeto-nano-guara-ia/site/public/fonts/geist-500.woff2") format("woff2");}
+
+  :root{
+    --bg:#123B26;
+    --verde:#2E7D32;
+    --guarana:#EF5A4C;
+    --guarana-escuro:#D5382F;
+    --creme:#FDF9F0;
+    --creme-muted:rgba(253,249,240,.72);
+
+    --pad-x:88px;
+    --type-tag:21px;
+    --type-hook:92px;
+    --type-msg:29px;
+    --type-time:18px;
+    --type-benef:32px;
+    --type-lockup:28px;
+    --type-cta:34px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  .canvas{
+    position:relative;
+    width:1080px;height:1350px;
+    background:var(--bg);
+    overflow:hidden;
+    font-family:"Geist",sans-serif;
+    color:var(--creme);
+  }
+
+  .bleed-mark{
+    position:absolute;
+    top:-140px; right:-260px;
+    width:820px; height:820px;
+    opacity:.10;
+    transform:rotate(-8deg);
+  }
+  .bleed-mark svg{width:100%;height:100%;display:block}
+
+  .conteudo{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    padding:72px var(--pad-x) 84px;
+  }
+
+  .tag{
+    font:600 var(--type-tag)/1 "Outfit","Outfit-fallback",sans-serif;
+    letter-spacing:.06em; text-transform:uppercase;
+    color:var(--creme-muted);
+  }
+
+  .corpo{flex:1; display:flex; flex-direction:column; justify-content:center; gap:52px}
+
+  .hook{
+    font:700 var(--type-hook)/1.08 "Outfit","Outfit-fallback",sans-serif;
+    letter-spacing:-.01em;
+    text-wrap:balance;
+    max-width:800px;
+  }
+  .hook .acento{color:var(--guarana)}
+
+  /* ---- mockup de chat (WhatsApp da clínica) ---- */
+  .mockup{display:flex; flex-direction:column; gap:14px; max-width:640px}
+  .linha{display:flex; flex-direction:column}
+  .linha.in{align-items:flex-start}
+  .linha.out{align-items:flex-end}
+  .bolha{
+    max-width:86%;
+    padding:20px 24px;
+    border-radius:22px;
+    font:400 var(--type-msg)/1.4 "Geist",sans-serif;
+  }
+  .linha.in .bolha{
+    background:rgba(253,249,240,.09);
+    border:1px solid rgba(253,249,240,.16);
+    border-bottom-left-radius:6px;
+    color:var(--creme);
+  }
+  .linha.out .bolha{
+    background:var(--guarana);
+    border-bottom-right-radius:6px;
+    color:var(--creme);
+    font-weight:500;
+  }
+  .hora{
+    margin-top:8px;
+    font:400 var(--type-time)/1 "Geist",sans-serif;
+    color:var(--creme-muted);
+    display:flex; align-items:center; gap:6px;
+  }
+
+  .beneficio{
+    font:400 var(--type-benef)/1.4 "Geist",sans-serif;
+    color:var(--creme-muted);
+    max-width:600px;
+    text-wrap:pretty;
+  }
+
+  .rodape{display:flex; flex-direction:column; gap:36px}
+
+  .lockup{display:flex; align-items:center; gap:14px}
+  .lockup svg{width:40px;height:40px;display:block}
+  .lockup span{font:600 var(--type-lockup)/1 "Outfit","Outfit-fallback",sans-serif}
+  .lockup span b{color:var(--verde);font-weight:600}
+
+  .cta{
+    display:inline-flex; align-items:center; gap:14px;
+    align-self:flex-start;
+    background:var(--guarana);
+    color:var(--creme);
+    font:600 var(--type-cta)/1 "Outfit","Outfit-fallback",sans-serif;
+    padding:26px 44px;
+    border-radius:999px;
+    text-decoration:none;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <div class="bleed-mark">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-hidden="true">
+      <circle cx="19" cy="22" r="14" fill="#2E7D32"/>
+      <circle cx="19" cy="22" r="11" fill="#D5382F"/>
+      <ellipse cx="19" cy="22" rx="6.5" ry="5" fill="#FDF9F0"/>
+      <ellipse cx="19" cy="22" rx="4.5" ry="3.4" fill="#17231B"/>
+      <path d="M19 8 C15 2 8 3 6 7 C12 6 15 8 19 8 Z" fill="#2E7D32"/>
+      <g stroke="#2E7D32" stroke-width="1.6" fill="none">
+        <path d="M31 16 h4"/>
+        <path d="M32 22 h6"/>
+        <path d="M31 28 h4"/>
+      </g>
+      <circle cx="37" cy="16" r="1.6" fill="#2E7D32"/>
+      <circle cx="37" cy="28" r="1.6" fill="#2E7D32"/>
+    </svg>
+  </div>
+
+  <div class="conteudo">
+    <div class="tag">nanoguará.ia · whatsapp para clínicas</div>
+
+    <div class="corpo">
+      <h1 class="hook">Enquanto você atende,<br><span class="acento">ela responde.</span></h1>
+
+      <div class="mockup">
+        <div class="linha in">
+          <div class="bolha">Oi! Consigo marcar uma consulta pra essa semana? 🦷</div>
+          <div class="hora">22:07</div>
+        </div>
+        <div class="linha out">
+          <div class="bolha">Consegui quinta às 14h com a Dra. Ana. Confirma?</div>
+          <div class="hora">22:07 · lida ✓✓</div>
+        </div>
+      </div>
+
+      <p class="beneficio">Marca, confirma e tira dúvida — sem você digitar nada, mesmo fora do horário do consultório.</p>
+
+      <div class="rodape">
+        <div class="lockup">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-hidden="true">
+            <circle cx="19" cy="22" r="14" fill="#2E7D32"/>
+            <circle cx="19" cy="22" r="11" fill="#D5382F"/>
+            <ellipse cx="19" cy="22" rx="6.5" ry="5" fill="#FDF9F0"/>
+            <ellipse cx="19" cy="22" rx="4.5" ry="3.4" fill="#17231B"/>
+            <path d="M19 8 C15 2 8 3 6 7 C12 6 15 8 19 8 Z" fill="#2E7D32"/>
+            <g stroke="#2E7D32" stroke-width="1.6" fill="none">
+              <path d="M31 16 h4"/>
+              <path d="M32 22 h6"/>
+              <path d="M31 28 h4"/>
+            </g>
+            <circle cx="37" cy="16" r="1.6" fill="#2E7D32"/>
+            <circle cx="37" cy="28" r="1.6" fill="#2E7D32"/>
+          </svg>
+          <span>nano<b>guará.ia</b></span>
+        </div>
+
+        <a class="cta" href="#">Link na bio <span class="seta">→</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

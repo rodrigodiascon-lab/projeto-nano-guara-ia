@@ -1,0 +1,2 @@
+file 'atendimento-dia.mp4'
+file 'atendimento-dia-tela.mp4'

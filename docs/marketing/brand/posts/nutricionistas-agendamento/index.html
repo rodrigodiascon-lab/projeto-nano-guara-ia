@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>nanoguará.ia — 5 criativos para nutricionistas</title>
+  <style>
+    @font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "Geist"; src: url("assets/fonts/geist-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Geist"; src: url("assets/fonts/geist-400.woff2") format("woff2"); font-weight: 400; }
+
+    :root {
+      --deep: #123b26;
+      --deep-2: #0b2f1d;
+      --green: #2e7d32;
+      --mint: #dce9dc;
+      --cream: #fdf9f0;
+      --paper: #f4f6f1;
+      --red: #df352d;
+      --ink: #10281b;
+      --muted: #68766d;
+      --line: #d3ded3;
+      --pad: 68px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #cbd2cb; }
+    body { font-family: "Geist", sans-serif; }
+    .creative { position: relative; display: none; width: 1080px; height: 1350px; overflow: hidden; background: var(--cream); color: var(--deep); }
+    .creative.active { display: block; }
+    .topbar { position: absolute; z-index: 30; top: 54px; left: var(--pad); right: var(--pad); display: flex; align-items: center; justify-content: space-between; }
+    .brand-lockup { display: flex; align-items: center; gap: 17px; }
+    .brand-lockup img { width: 49px; height: 49px; }
+    .brand-name { font: 700 29px/1 "Outfit", sans-serif; letter-spacing: -1.2px; }
+    .niche { font: 500 21px/1 "Geist", sans-serif; letter-spacing: 1.6px; text-transform: uppercase; }
+    .headline { margin: 0; font: 700 68px/.98 "Outfit", sans-serif; letter-spacing: -3.9px; }
+    .headline .red { color: var(--red); }
+    .eyebrow { color: var(--red); font: 600 21px/1 "Outfit", sans-serif; letter-spacing: 1.3px; text-transform: uppercase; }
+    .body-copy { color: var(--muted); font: 400 24px/1.34 "Geist", sans-serif; }
+    .cta { display: flex; align-items: center; justify-content: space-between; height: 88px; padding: 0 34px 0 38px; border-radius: 50px; background: var(--red); color: #fff; font: 700 26px/1 "Outfit", sans-serif; box-shadow: 0 18px 40px rgba(223,53,45,.20); }
+    .cta .arrow { font: 400 42px/1 "Geist", sans-serif; transform: translateY(-2px); }
+
+    /* Celular — elemento focal comum a toda a série */
+    .phone-wrap { position: absolute; z-index: 10; }
+    .phone-aura { position: absolute; inset: -55px; border-radius: 120px; background: radial-gradient(circle at 48% 51%, rgba(104,202,112,.42), rgba(81,176,91,.14) 43%, rgba(81,176,91,0) 72%); filter: blur(5px); }
+    .phone { position: relative; width: 100%; height: 100%; padding: 19px; border-radius: 60px; background: #07140d; box-shadow: 0 30px 80px rgba(3,20,11,.31), 0 0 0 10px rgba(105,193,111,.12), 0 0 62px rgba(92,190,101,.36); transform: rotate(-1.6deg); }
+    .phone::before { content: ""; position: absolute; z-index: 4; top: 11px; left: 50%; width: 132px; height: 29px; transform: translateX(-50%); border-radius: 0 0 18px 18px; background: #07140d; }
+    .phone-screen { position: relative; height: 100%; overflow: hidden; padding: 40px 23px 24px; border-radius: 42px; background: #f0f3ef; }
+    .chat-header { display: flex; gap: 13px; align-items: center; padding-bottom: 15px; border-bottom: 1px solid #d8e0d9; }
+    .chat-header img { width: 46px; height: 46px; }
+    .chat-header strong { display: block; color: #1a2c20; font: 600 20px/1.05 "Outfit", sans-serif; }
+    .chat-header span { display: block; margin-top: 5px; color: var(--green); font: 500 15px/1 "Geist", sans-serif; }
+    .chat { display: flex; flex-direction: column; gap: 14px; padding-top: 22px; }
+    .bubble { max-width: 90%; padding: 15px 17px; border-radius: 20px; color: #15261a; font: 400 18px/1.26 "Geist", sans-serif; }
+    .bubble.patient { align-self: flex-start; background: #e3e8e4; border-bottom-left-radius: 5px; }
+    .bubble.ai { align-self: flex-end; background: var(--red); color: #fff; border-bottom-right-radius: 5px; }
+    .booking-status { position: absolute; left: 22px; right: 22px; bottom: 24px; display: grid; grid-template-columns: 35px 1fr; gap: 12px; align-items: center; padding: 14px 15px; border: 1px solid #a7c8ab; border-radius: 18px; background: rgba(220,233,220,.97); color: #194026; box-shadow: 0 10px 26px rgba(46,125,50,.11); }
+    .status-icon { position: relative; width: 33px; height: 33px; border-radius: 50%; background: var(--green); }
+    .status-icon::before { content: ""; position: absolute; left: 10px; top: 8px; width: 10px; height: 6px; border-left: 3px solid #fff; border-bottom: 3px solid #fff; transform: rotate(-45deg); }
+    .booking-status strong { display: block; font: 600 16px/1.05 "Outfit", sans-serif; }
+    .booking-status small { display: block; margin-top: 5px; color: #4e6e55; font: 400 13px/1.05 "Geist", sans-serif; }
+
+    /* 01 — topo: dor percebida em ambiente real */
+    .photo-piece { color: #fff; background: #102f20; }
+    .photo-piece .photo { position: absolute; inset: 0; background: url("assets/nutricionista-base.png") center/cover no-repeat; }
+    .photo-piece .photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,30,18,.77) 0%, rgba(6,30,18,.22) 42%, rgba(6,30,18,.14) 61%, rgba(5,25,15,.84) 100%); }
+    .photo-piece .niche { color: #d9ead8; }
+    .photo-piece .copy { position: absolute; z-index: 5; top: 152px; left: var(--pad); width: 830px; }
+    .photo-piece .headline { color: #fff; font-size: 75px; text-shadow: 0 5px 28px rgba(0,0,0,.18); }
+    .photo-piece .sub { width: 710px; margin-top: 26px; color: rgba(255,255,255,.85); font: 400 24px/1.32 "Geist", sans-serif; }
+    .phone-beacon { position: absolute; z-index: 6; left: 0; bottom: 62px; width: 330px; height: 250px; border-radius: 50%; background: radial-gradient(circle, rgba(114,224,120,.42), rgba(83,190,91,.16) 42%, rgba(58,152,65,0) 72%); filter: blur(4px); }
+    .live-card { position: absolute; z-index: 8; left: 232px; bottom: 132px; width: 420px; padding: 23px 25px; border: 1px solid rgba(199,233,202,.55); border-radius: 25px; background: rgba(9,47,28,.91); color: #fff; box-shadow: 0 24px 70px rgba(0,0,0,.28), 0 0 45px rgba(97,197,105,.23); backdrop-filter: blur(12px); }
+    .live-card .pulse { display: inline-block; width: 12px; height: 12px; margin-right: 9px; border-radius: 50%; background: #78d77d; box-shadow: 0 0 0 7px rgba(120,215,125,.15); }
+    .live-card strong { font: 600 23px/1.1 "Outfit", sans-serif; }
+    .live-card span { display: block; margin-top: 9px; color: #d3e8d4; font: 400 18px/1.25 "Geist", sans-serif; }
+    .photo-piece .micro-cta { position: absolute; z-index: 8; right: 68px; bottom: 88px; width: 350px; padding-bottom: 11px; border-bottom: 3px solid var(--red); color: #fff; font: 600 23px/1 "Outfit", sans-serif; text-align: right; }
+
+    /* 02 — meio: follow-up */
+    .follow-piece { color: #fff; background: var(--deep-2); }
+    .follow-piece::before { content: ""; position: absolute; width: 720px; height: 720px; right: -210px; top: 160px; border: 1px solid rgba(205,232,207,.12); border-radius: 50%; box-shadow: 0 0 0 105px rgba(205,232,207,.025), 0 0 0 220px rgba(205,232,207,.015); }
+    .follow-piece .niche { color: #bfe1c3; }
+    .follow-piece .copy { position: absolute; top: 175px; left: 68px; width: 555px; z-index: 5; }
+    .follow-piece .headline { font-size: 69px; }
+    .follow-piece .lead { width: 470px; margin-top: 25px; color: #cbdacf; font: 400 23px/1.36 "Geist", sans-serif; }
+    .follow-piece .phone-wrap { right: 51px; top: 390px; width: 470px; height: 760px; }
+    .follow-piece .phone { transform: rotate(2deg); }
+    .follow-piece .proof { position: absolute; z-index: 8; left: 68px; bottom: 150px; width: 430px; padding: 25px 0 0; border-top: 1px solid rgba(213,234,215,.25); }
+    .follow-piece .proof strong { display: block; color: #fff; font: 600 24px/1.1 "Outfit", sans-serif; }
+    .follow-piece .proof span { display: block; margin-top: 11px; color: #a9c3ae; font: 400 19px/1.3 "Geist", sans-serif; }
+    .follow-piece .proof .link { margin-top: 22px; color: #fff; font: 600 21px/1 "Outfit", sans-serif; }
+
+    /* 03 — meio: mecanismo completo */
+    .flow-piece { background: var(--cream); }
+    .flow-piece::before { content: ""; position: absolute; right: -270px; top: -290px; width: 830px; height: 830px; border-radius: 50%; border: 1px solid #d9e5d9; box-shadow: 0 0 0 90px rgba(218,231,218,.20); }
+    .flow-piece .copy { position: absolute; z-index: 4; top: 145px; left: 68px; width: 940px; }
+    .flow-piece .headline { width: 920px; font-size: 66px; }
+    .flow-piece .phone-wrap { left: 53px; top: 455px; width: 475px; height: 770px; }
+    .flow-piece .steps { position: absolute; z-index: 8; right: 60px; top: 500px; width: 455px; }
+    .flow-piece .step { display: grid; grid-template-columns: 58px 1fr; gap: 18px; padding: 25px 0; border-bottom: 1px solid #cad8ca; }
+    .flow-piece .step:first-child { border-top: 1px solid #cad8ca; }
+    .flow-piece .num { color: var(--red); font: 700 22px/1.15 "Outfit", sans-serif; }
+    .flow-piece .step strong { display: block; color: var(--deep); font: 600 25px/1.08 "Outfit", sans-serif; }
+    .flow-piece .step span { display: block; margin-top: 8px; color: var(--muted); font: 400 18px/1.28 "Geist", sans-serif; }
+    .flow-piece .cta { margin-top: 34px; }
+
+    /* 04 — objeção: transferência humana */
+    .handoff-piece { color: #fff; background: linear-gradient(135deg, #133f28 0%, #092b1a 100%); }
+    .handoff-piece .niche { color: #bee0c1; }
+    .handoff-piece .copy { position: absolute; z-index: 5; top: 165px; left: 68px; width: 900px; }
+    .handoff-piece .headline { width: 880px; font-size: 72px; }
+    .handoff-piece .lead { width: 700px; margin-top: 24px; color: #c7d7cb; font: 400 23px/1.33 "Geist", sans-serif; }
+    .handoff-piece .phone-wrap { right: 65px; top: 480px; width: 470px; height: 735px; }
+    .handoff-piece .phone { transform: rotate(2.4deg); }
+    .handoff-piece .assurance { position: absolute; z-index: 8; left: 68px; top: 565px; width: 430px; }
+    .handoff-piece .assurance .item { padding: 21px 0; border-top: 1px solid rgba(210,231,213,.22); }
+    .handoff-piece .assurance strong { display: block; color: #fff; font: 600 24px/1.1 "Outfit", sans-serif; }
+    .handoff-piece .assurance span { display: block; margin-top: 8px; color: #a9c0ae; font: 400 18px/1.3 "Geist", sans-serif; }
+    .handoff-piece .assurance .link { margin-top: 29px; padding-bottom: 10px; border-bottom: 3px solid var(--red); color: #fff; font: 600 22px/1 "Outfit", sans-serif; }
+
+    /* 05 — fundo: oferta no modelo aprovado */
+    .offer-piece { background: #f5f7f2; }
+    .offer-piece::before { content: ""; position: absolute; right: -180px; top: -245px; width: 720px; height: 720px; border-radius: 50%; border: 1px solid #d5e2d5; box-shadow: 0 0 0 90px rgba(220,232,220,.23), 0 0 0 180px rgba(220,232,220,.10); }
+    .offer-piece .hook { position: absolute; z-index: 4; top: 145px; left: 68px; width: 910px; }
+    .offer-piece .headline { font-size: 67px; }
+    .offer-piece .blob { position: absolute; left: -180px; top: 325px; width: 680px; height: 800px; border-radius: 48% 52% 46% 54%; background: #0d4328; transform: rotate(8deg); }
+    .offer-piece .phone-wrap { left: 56px; top: 385px; width: 480px; height: 755px; }
+    .offer-piece .right { position: absolute; z-index: 7; top: 400px; right: 68px; width: 450px; }
+    .offer-piece .right h2 { margin: 24px 0 0; color: var(--deep); font: 700 43px/1.03 "Outfit", sans-serif; letter-spacing: -2.2px; }
+    .offer-piece .right .desc { margin: 23px 0 31px; color: var(--muted); font: 400 23px/1.34 "Geist", sans-serif; }
+    .offer-piece .benefit { display: grid; grid-template-columns: 38px 1fr; gap: 17px; padding: 20px 0; border-top: 1px solid #cad8ca; }
+    .offer-piece .benefit b { color: var(--red); font: 700 19px/1.2 "Outfit", sans-serif; }
+    .offer-piece .benefit span { color: var(--deep); font: 600 20px/1.15 "Outfit", sans-serif; }
+    .offer-piece .process { display: flex; align-items: center; justify-content: space-between; margin: 30px 0 28px; color: var(--green); font: 500 14px/1 "Geist", sans-serif; text-transform: uppercase; }
+    .offer-piece .process i { width: 16px; height: 1px; background: #a5b9a7; }
+    .offer-piece .footer-note { margin-top: 12px; color: #77827a; font: 400 15px/1 "Geist", sans-serif; text-align: center; }
+  </style>
+</head>
+<body>
+  <article class="creative photo-piece" data-creative="nutricionista-01">
+    <div class="photo"></div>
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Nutricionistas</span>
+    </header>
+    <section class="copy">
+      <h1 class="headline">Quem responde enquanto <span class="red">você atende?</span></h1>
+      <p class="sub">O primeiro contato pode continuar mesmo enquanto você está em consulta.</p>
+    </section>
+    <div class="phone-beacon"></div>
+    <div class="live-card"><strong><i class="pulse"></i>Atendimento em andamento</strong><span>A dúvida chegou. O assistente já começou a conversa.</span></div>
+    <div class="micro-cta">Veja como o atendimento continua →</div>
+  </article>
+
+  <article class="creative follow-piece" data-creative="nutricionista-02">
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Nutricionistas</span>
+    </header>
+    <section class="copy">
+      <div class="eyebrow">Depois do primeiro contato</div>
+      <h1 class="headline">Quem lembra o paciente <span class="red">depois?</span></h1>
+      <p class="lead">A conversa pode continuar no tempo certo, com contexto e sem sobrecarregar sua rotina.</p>
+    </section>
+    <div class="proof"><strong>Follow-up com contexto</strong><span>O assistente retoma a conversa sem parecer uma mensagem solta.</span><div class="link">Veja o fluxo completo →</div></div>
+    <div class="phone-wrap">
+      <div class="phone-aura"></div>
+      <div class="phone"><div class="phone-screen">
+        <div class="chat-header"><img src="assets/avatar-chat.svg" alt="" /><div><strong>Assistente de atendimento</strong><span>online agora</span></div></div>
+        <div class="chat">
+          <div class="bubble patient">Ainda preciso confirmar um horário.</div>
+          <div class="bubble ai">Sem problema. Posso retomar com você amanhã e verificar os horários.</div>
+          <div class="bubble patient">Pode ser no fim da manhã.</div>
+        </div>
+        <div class="booking-status"><i class="status-icon"></i><span><strong>Follow-up programado</strong><small>Conversa será retomada no horário certo</small></span></div>
+      </div></div>
+    </div>
+  </article>
+
+  <article class="creative flow-piece" data-creative="nutricionista-03">
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Nutricionistas</span>
+    </header>
+    <section class="copy">
+      <div class="eyebrow">Veja o mecanismo</div>
+      <h1 class="headline">Da primeira dúvida ao <span class="red">horário disponível.</span></h1>
+    </section>
+    <div class="phone-wrap">
+      <div class="phone-aura"></div>
+      <div class="phone"><div class="phone-screen">
+        <div class="chat-header"><img src="assets/avatar-chat.svg" alt="" /><div><strong>Assistente de atendimento</strong><span>online agora</span></div></div>
+        <div class="chat">
+          <div class="bubble patient">Quero saber como funciona a primeira consulta.</div>
+          <div class="bubble ai">Posso explicar o primeiro atendimento e verificar horários para você.</div>
+          <div class="bubble patient">Prefiro na quinta à tarde.</div>
+        </div>
+        <div class="booking-status"><i class="status-icon"></i><span><strong>Agendamento em andamento</strong><small>Consultando horários disponíveis</small></span></div>
+      </div></div>
+    </div>
+    <section class="steps">
+      <div class="step"><b class="num">01</b><div><strong>Entende a intenção</strong><span>Organiza o primeiro contato e coleta o contexto necessário.</span></div></div>
+      <div class="step"><b class="num">02</b><div><strong>Orienta sem improvisar</strong><span>Questões nutricionais continuam com a nutricionista.</span></div></div>
+      <div class="step"><b class="num">03</b><div><strong>Avança o atendimento</strong><span>Verifica horários ou chama você quando necessário.</span></div></div>
+      <div class="cta"><span>Ver atendimento completo</span><span class="arrow">→</span></div>
+    </section>
+  </article>
+
+  <article class="creative handoff-piece" data-creative="nutricionista-04">
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Nutricionistas</span>
+    </header>
+    <section class="copy">
+      <div class="eyebrow">Automação com limite claro</div>
+      <h1 class="headline">Quando precisa, <span class="red">você assume.</span></h1>
+      <p class="lead">O assistente cuida do fluxo administrativo e transfere situações que precisam da sua avaliação.</p>
+    </section>
+    <section class="assurance">
+      <div class="item"><strong>Sem fingir ser nutricionista</strong><span>As respostas respeitam o seu papel profissional.</span></div>
+      <div class="item"><strong>Com o histórico da conversa</strong><span>Você recebe o contexto para continuar o atendimento.</span></div>
+      <div class="link">Conheça o atendimento →</div>
+    </section>
+    <div class="phone-wrap">
+      <div class="phone-aura"></div>
+      <div class="phone"><div class="phone-screen">
+        <div class="chat-header"><img src="assets/avatar-chat.svg" alt="" /><div><strong>Assistente de atendimento</strong><span>online agora</span></div></div>
+        <div class="chat">
+          <div class="bubble patient">Tenho uma dúvida sobre minha orientação alimentar.</div>
+          <div class="bubble ai">Vou chamar a nutricionista para continuar com você.</div>
+          <div class="bubble patient">Tudo bem, obrigado.</div>
+        </div>
+        <div class="booking-status"><i class="status-icon"></i><span><strong>Transferindo para a nutricionista</strong><small>Histórico da conversa será enviado</small></span></div>
+      </div></div>
+    </div>
+  </article>
+
+  <article class="creative offer-piece" data-creative="nutricionista-05">
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Nutricionistas</span>
+    </header>
+    <section class="hook"><h1 class="headline">Veja seu assistente de atendimento <span class="red">em ação.</span></h1></section>
+    <div class="blob"></div>
+    <div class="phone-wrap">
+      <div class="phone-aura"></div>
+      <div class="phone"><div class="phone-screen">
+        <div class="chat-header"><img src="assets/avatar-chat.svg" alt="" /><div><strong>Assistente de atendimento</strong><span>online agora</span></div></div>
+        <div class="chat">
+          <div class="bubble patient">Quero marcar uma consulta.</div>
+          <div class="bubble ai">Claro. Posso verificar os horários disponíveis para você.</div>
+          <div class="bubble patient">Pode ser na quinta à tarde?</div>
+          <div class="bubble ai">Vou consultar a agenda agora.</div>
+        </div>
+        <div class="booking-status"><i class="status-icon"></i><span><strong>Agendamento em andamento</strong><small>Consultando horários disponíveis</small></span></div>
+      </div></div>
+    </div>
+    <section class="right">
+      <div class="eyebrow">Demonstração personalizada</div>
+      <h2>Com seus serviços e a rotina do atendimento.</h2>
+      <p class="desc">Visualize como o atendimento funcionaria antes de implantar.</p>
+      <div class="benefit"><b>01</b><span>Respostas alinhadas ao seu atendimento</span></div>
+      <div class="benefit"><b>02</b><span>Transferência para você</span></div>
+      <div class="benefit"><b>03</b><span>Acompanhamento na implantação</span></div>
+      <div class="process"><span>Mapeamento</span><i></i><span>Implantação</span><i></i><span>Acompanhamento</span></div>
+      <div class="cta"><span>Solicitar demonstração</span><span class="arrow">→</span></div>
+      <div class="footer-note">Conversa direta com a nanoguará.ia</div>
+    </section>
+  </article>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const requested = params.get("creative") || "nutricionista-01";
+    const items = [...document.querySelectorAll(".creative")];
+    (items.find(item => item.dataset.creative === requested) || items[0]).classList.add("active");
+  </script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Criativos full-funnel — nanoguará.ia</title>
+  <script>
+    document.documentElement.dataset.screen = new URLSearchParams(location.search).get("creative") || "estetica-topo";
+  </script>
+  <style>
+    @font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "Geist"; src: url("assets/fonts/geist-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Geist"; src: url("assets/fonts/geist-500.woff2") format("woff2"); font-weight: 500; }
+
+    :root {
+      --w: 1080px;
+      --h: 1350px;
+      --deep: #123b26;
+      --deep-2: #0c2d1c;
+      --ink: #17231b;
+      --muted: #5e6e63;
+      --green: #2e7d32;
+      --cream: #fdf9f0;
+      --paper: #f7f9f5;
+      --red: #d5382f;
+      --red-light: #ef5a4c;
+      --line: rgba(253, 249, 240, 0.18);
+      --pad: 68px;
+      --radius: 34px;
+      --type-hook: 86px;
+      --type-title: 76px;
+      --type-body: 31px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; min-height: 100%; background: #08120c; }
+    body { font-family: "Geist", sans-serif; }
+    .creative {
+      position: relative;
+      width: var(--w);
+      height: var(--h);
+      overflow: hidden;
+      isolation: isolate;
+      display: none;
+      background: var(--paper);
+    }
+    html[data-screen="estetica-topo"] #estetica-topo,
+    html[data-screen="estetica-meio"] #estetica-meio,
+    html[data-screen="estetica-fundo"] #estetica-fundo,
+    html[data-screen="fisio-topo"] #fisio-topo,
+    html[data-screen="fisio-meio"] #fisio-meio,
+    html[data-screen="fisio-fundo"] #fisio-fundo { display: block; }
+
+    .brand-lockup { display: flex; align-items: center; gap: 15px; color: inherit; }
+    .brand-lockup img { width: 58px; height: 58px; display: block; }
+    .brand-name { font: 600 30px/1 "Outfit", sans-serif; letter-spacing: -1px; }
+    .niche { font: 500 20px/1 "Geist", sans-serif; letter-spacing: 1.8px; text-transform: uppercase; }
+    .topbar { position: absolute; z-index: 10; left: var(--pad); right: var(--pad); top: 55px; display: flex; justify-content: space-between; align-items: center; }
+    .cta {
+      min-height: 92px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 42px;
+      font: 600 28px/1 "Outfit", sans-serif;
+      letter-spacing: -0.4px;
+      white-space: nowrap;
+    }
+    .cta.red { background: var(--red); color: #fff; }
+    .cta.cream { background: var(--cream); color: var(--deep); }
+    .arrow { width: 30px; height: 30px; margin-left: 18px; position: relative; }
+    .arrow::before { content: ""; position: absolute; width: 22px; height: 2px; background: currentColor; top: 14px; left: 2px; }
+    .arrow::after { content: ""; position: absolute; width: 11px; height: 11px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); top: 9px; right: 3px; }
+
+    /* Topo: fotografia + identificação */
+    .photo-piece { color: var(--cream); background: var(--deep); }
+    .photo-piece .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .photo-piece.estetica .photo { object-position: 50% 45%; }
+    .photo-piece.fisio .photo { object-position: 50% 50%; }
+    .photo-piece::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 20, 12, 0.86) 0%, rgba(5, 20, 12, 0.2) 34%, rgba(5, 20, 12, 0.08) 51%, rgba(5, 20, 12, 0.98) 84%),
+        linear-gradient(90deg, rgba(5, 20, 12, 0.48), transparent 62%);
+    }
+    .photo-piece::after { content: ""; position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 380px; background: linear-gradient(180deg, transparent, var(--deep) 28%); }
+    .photo-piece .topbar { color: var(--cream); }
+    .photo-piece .niche { color: rgba(253, 249, 240, 0.78); }
+    .photo-hook {
+      position: absolute;
+      z-index: 3;
+      left: var(--pad);
+      top: 166px;
+      width: 820px;
+      margin: 0;
+      font: 700 var(--type-hook)/0.95 "Outfit", sans-serif;
+      letter-spacing: -4.8px;
+      text-wrap: balance;
+    }
+    .photo-hook em { color: var(--red-light); font-style: normal; }
+    .photo-bottom { position: absolute; z-index: 4; left: var(--pad); right: var(--pad); bottom: 58px; display: grid; grid-template-columns: 1fr auto; gap: 44px; align-items: end; }
+    .photo-copy { margin: 0; max-width: 590px; color: rgba(253, 249, 240, 0.83); font: 400 31px/1.28 "Geist", sans-serif; text-wrap: pretty; }
+    .stage-marker { display: inline-flex; align-items: center; gap: 13px; margin-bottom: 22px; color: var(--red-light); font: 500 20px/1 "Geist", sans-serif; letter-spacing: 1.8px; text-transform: uppercase; }
+    .stage-marker::before { content: ""; width: 42px; height: 3px; background: currentColor; border-radius: 4px; }
+
+    /* Meio: demonstração concreta */
+    .demo-piece { color: var(--cream); background: var(--deep); }
+    .demo-piece::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 760px;
+      height: 760px;
+      border: 1px solid rgba(111, 191, 115, 0.18);
+      border-radius: 50%;
+      right: -380px;
+      top: 80px;
+      box-shadow: 0 0 0 90px rgba(111, 191, 115, 0.035), 0 0 0 180px rgba(111, 191, 115, 0.025);
+    }
+    .demo-piece .topbar { color: var(--cream); }
+    .demo-piece .niche { color: rgba(253, 249, 240, 0.67); }
+    .demo-head { position: absolute; left: var(--pad); right: var(--pad); top: 154px; }
+    .demo-head h1 { margin: 0; width: 850px; font: 700 var(--type-title)/0.98 "Outfit", sans-serif; letter-spacing: -4px; text-wrap: balance; }
+    .demo-head h1 span { color: var(--red-light); }
+    .demo-head p { margin: 20px 0 0; color: rgba(253, 249, 240, 0.68); font: 400 27px/1.3 "Geist", sans-serif; }
+    .demo-stage { position: absolute; left: var(--pad); right: var(--pad); top: 390px; height: 690px; display: grid; grid-template-columns: 330px 1fr; gap: 34px; }
+    .scene-slice { position: relative; overflow: hidden; border-radius: 34px 10px 34px 10px; background: #1a4b30; }
+    .scene-slice img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.78) contrast(1.03); }
+    .scene-slice.estetica img { object-position: 53% 50%; }
+    .scene-slice.fisio img { object-position: 57% 50%; }
+    .scene-slice::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(6, 28, 17, 0.94)); }
+    .scene-caption { position: absolute; z-index: 2; left: 30px; right: 25px; bottom: 30px; color: var(--cream); font: 600 29px/1.08 "Outfit", sans-serif; }
+    .scene-caption small { display: block; margin-top: 12px; color: rgba(253,249,240,.68); font: 400 20px/1.25 "Geist", sans-serif; }
+    .chat-panel { position: relative; padding: 30px 32px 34px; border-radius: 10px 34px 10px 34px; background: var(--paper); color: var(--ink); box-shadow: 0 28px 80px rgba(0,0,0,.22); }
+    .chat-header { display: flex; align-items: center; gap: 16px; padding-bottom: 21px; border-bottom: 1px solid #dce4dd; }
+    .chat-header img { width: 56px; height: 56px; }
+    .chat-header strong { display: block; font: 600 25px/1 "Outfit", sans-serif; }
+    .chat-header span { display: block; margin-top: 7px; color: var(--green); font: 500 17px/1 "Geist", sans-serif; }
+    .bubbles { display: flex; flex-direction: column; gap: 17px; padding-top: 24px; }
+    .bubble { max-width: 91%; padding: 19px 22px 17px; border-radius: 18px; font: 400 23px/1.32 "Geist", sans-serif; }
+    .bubble.patient { align-self: flex-start; background: #e7ece8; border-bottom-left-radius: 5px; }
+    .bubble.assistant { align-self: flex-end; background: var(--red); color: #fff; border-bottom-right-radius: 5px; }
+    .bubble.safety { align-self: flex-end; background: #dce9dc; color: #194026; border: 1px solid #bcd5bf; border-bottom-right-radius: 5px; }
+    .time { display: block; margin-top: 8px; text-align: right; opacity: .62; font-size: 14px; }
+    .flowline { position: absolute; left: 32px; right: 32px; bottom: 31px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; }
+    .flowline span { position: relative; padding-top: 21px; color: var(--muted); text-align: center; font: 500 16px/1 "Geist", sans-serif; }
+    .flowline span::before { content: ""; position: absolute; top: 0; left: 50%; width: 9px; height: 9px; transform: translateX(-50%); border-radius: 50%; background: var(--green); z-index: 2; }
+    .flowline span:not(:last-child)::after { content: ""; position: absolute; top: 4px; left: 50%; width: 100%; height: 1px; background: #b9c7bc; }
+    .demo-footer { position: absolute; left: var(--pad); right: var(--pad); bottom: 56px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .demo-note { color: rgba(253,249,240,.67); font: 400 23px/1.28 "Geist", sans-serif; max-width: 510px; }
+
+    /* Fundo: oferta e ação */
+    .offer-piece { background: var(--paper); color: var(--ink); }
+    .offer-piece::before { content: ""; position: absolute; left: -240px; top: 320px; width: 780px; height: 780px; border-radius: 50%; background: var(--deep); }
+    .offer-piece::after { content: ""; position: absolute; right: -270px; top: -330px; width: 700px; height: 700px; border: 1px solid rgba(46,125,50,.14); border-radius: 50%; box-shadow: 0 0 0 90px rgba(46,125,50,.025), 0 0 0 180px rgba(46,125,50,.018); }
+    .offer-piece .topbar { color: var(--deep); }
+    .offer-piece .niche { color: var(--green); }
+    .offer-head { position: absolute; z-index: 2; left: var(--pad); right: var(--pad); top: 150px; }
+    .offer-head h1 { margin: 0; width: 900px; color: var(--deep); font: 700 70px/0.98 "Outfit", sans-serif; letter-spacing: -4px; text-wrap: balance; }
+    .offer-head h1 span { color: var(--red); }
+    .offer-main { position: absolute; z-index: 2; left: var(--pad); right: var(--pad); top: 390px; bottom: 62px; display: grid; grid-template-columns: 450px minmax(0, 1fr); gap: 48px; align-items: start; }
+    .phone { position: relative; height: 730px; padding: 20px; border-radius: 58px; background: #08140d; box-shadow: 0 28px 75px rgba(8,20,13,.23), 0 0 0 9px rgba(111,191,115,.10), 0 0 58px rgba(111,191,115,.32); transform: rotate(-1.8deg); }
+    .phone::before { content: ""; position: absolute; top: 12px; left: 50%; width: 130px; height: 27px; transform: translateX(-50%); border-radius: 0 0 18px 18px; background: #08140d; z-index: 3; }
+    .phone-screen { position: relative; height: 100%; overflow: hidden; padding: 40px 24px 25px; border-radius: 42px; background: #f0f3ef; }
+    .phone .chat-header { padding-bottom: 17px; }
+    .phone .chat-header img { width: 48px; height: 48px; }
+    .phone .chat-header strong { font-size: 22px; }
+    .phone .bubble { font-size: 20px; padding: 17px 18px 15px; }
+    .booking-status { position: absolute; left: 24px; right: 24px; bottom: 26px; display: grid; grid-template-columns: 38px 1fr; gap: 13px; align-items: center; padding: 15px 17px; border: 1px solid #a9c9ad; border-radius: 18px; background: rgba(220,233,220,.96); color: #194026; box-shadow: 0 10px 26px rgba(46,125,50,.10); }
+    .booking-status .status-icon { position: relative; width: 34px; height: 34px; border-radius: 50%; background: var(--green); }
+    .booking-status .status-icon::before { content: ""; position: absolute; left: 10px; top: 8px; width: 10px; height: 6px; border-left: 3px solid #fff; border-bottom: 3px solid #fff; transform: rotate(-45deg); }
+    .booking-status strong { display: block; font: 600 17px/1.05 "Outfit", sans-serif; }
+    .booking-status small { display: block; margin-top: 5px; color: #4f6f56; font: 400 14px/1 "Geist", sans-serif; }
+    .offer-copy { min-width: 0; padding-top: 9px; }
+    .offer-label { display: inline-block; color: var(--red); font: 600 21px/1 "Geist", sans-serif; letter-spacing: 1.5px; text-transform: uppercase; }
+    .offer-copy h2 { margin: 20px 0 22px; color: var(--deep); font: 700 45px/1.03 "Outfit", sans-serif; letter-spacing: -2.2px; text-wrap: balance; }
+    .offer-copy > p { margin: 0 0 34px; color: var(--muted); font: 400 25px/1.34 "Geist", sans-serif; text-wrap: pretty; }
+    .benefits { display: flex; flex-direction: column; margin: 0 0 34px; border-top: 1px solid #d6dfd8; }
+    .benefit { display: grid; grid-template-columns: 42px 1fr; gap: 14px; align-items: center; min-height: 70px; border-bottom: 1px solid #d6dfd8; color: var(--deep); font: 500 22px/1.15 "Geist", sans-serif; }
+    .benefit b { color: var(--red); font: 700 20px/1 "Outfit", sans-serif; }
+    .process { display: flex; align-items: center; justify-content: space-between; gap: 7px; margin-bottom: 33px; color: var(--green); font: 500 14px/1 "Geist", sans-serif; text-transform: uppercase; letter-spacing: .35px; }
+    .process i { flex: 0 0 12px; width: 12px; height: 1px; background: #a8b8ab; }
+    .offer-copy .cta { width: 100%; }
+    .micro { margin-top: 15px; color: #768279; text-align: center; font: 400 16px/1.25 "Geist", sans-serif; }
+  </style>
+</head>
+<body>
+  <article class="creative photo-piece estetica" id="estetica-topo">
+    <img class="photo" src="assets/estetica-base.png" alt="" />
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Clínicas de estética</span>
+    </header>
+    <h1 class="photo-hook">Quem responde enquanto você <em>atende?</em></h1>
+    <footer class="photo-bottom">
+      <div>
+        <span class="stage-marker">Atendimento que não para</span>
+        <p class="photo-copy">Enquanto uma paciente recebe atenção, outra tenta agendar pelo WhatsApp.</p>
+      </div>
+      <div class="cta red">Veja como atender as duas<span class="arrow"></span></div>
+    </footer>
+  </article>
+
+  <article class="creative demo-piece" id="estetica-meio">
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Clínicas de estética</span>
+    </header>
+    <section class="demo-head">
+      <h1>Da primeira dúvida ao <span>horário disponível.</span></h1>
+      <p>Uma conversa configurada para a rotina da sua clínica.</p>
+    </section>
+    <section class="demo-stage">
+      <div class="scene-slice estetica">
+        <img src="assets/estetica-base.png" alt="" />
+        <div class="scene-caption">Você cuida da paciente.<small>O atendimento continua no WhatsApp.</small></div>
+      </div>
+      <div class="chat-panel">
+        <div class="chat-header"><img src="assets/avatar-chat.svg" alt="" /><div><strong>Assistente da clínica</strong><span>online agora</span></div></div>
+        <div class="bubbles">
+          <div class="bubble patient">Vocês fazem limpeza de pele?<span class="time">14:32</span></div>
+          <div class="bubble assistant">Sim. Posso explicar como funciona e verificar os horários para uma avaliação.<span class="time">14:32</span></div>
+          <div class="bubble safety">Se a dúvida for clínica, chamo a equipe para continuar.<span class="time">14:33</span></div>
+        </div>
+        <div class="flowline"><span>Responde</span><span>Orienta</span><span>Agenda</span><span>Transfere</span></div>
+      </div>
+    </section>
+    <footer class="demo-footer">
+      <div class="demo-note">Questões clínicas continuam com o profissional.</div>
+      <div class="cta cream">Ver atendimento completo<span class="arrow"></span></div>
+    </footer>
+  </article>
+
+  <article class="creative offer-piece" id="estetica-fundo">
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Clínicas de estética</span>
+    </header>
+    <section class="offer-head"><h1>Veja o assistente da sua clínica <span>em ação.</span></h1></section>
+    <section class="offer-main">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="chat-header"><img src="assets/avatar-chat.svg" alt="" /><div><strong>Assistente da clínica</strong><span>online agora</span></div></div>
+          <div class="bubbles">
+            <div class="bubble patient">Quero saber sobre limpeza de pele.</div>
+            <div class="bubble assistant">Claro. Posso apresentar o atendimento e verificar horários para você.</div>
+            <div class="bubble patient">Pode ser na quinta à tarde?</div>
+            <div class="bubble assistant">Vou consultar os horários disponíveis.</div>
+          </div>
+          <div class="booking-status"><span class="status-icon"></span><span><strong>Agendamento em andamento</strong><small>Consultando horários disponíveis</small></span></div>
+        </div>
+      </div>
+      <div class="offer-copy">
+        <span class="offer-label">Demonstração personalizada</span>
+        <h2>Com os serviços e a rotina da sua clínica.</h2>
+        <p>Visualize como o atendimento funcionaria antes de implantar.</p>
+        <div class="benefits">
+          <div class="benefit"><b>01</b><span>Respostas alinhadas à clínica</span></div>
+          <div class="benefit"><b>02</b><span>Transferência para sua equipe</span></div>
+          <div class="benefit"><b>03</b><span>Acompanhamento após a implantação</span></div>
+        </div>
+        <div class="process"><span>Diagnóstico</span><i></i><span>Implantação</span><i></i><span>Acompanhamento</span></div>
+        <div class="cta red">Solicitar demonstração<span class="arrow"></span></div>
+        <div class="micro">Conversa direta com a nanoguará.ia</div>
+      </div>
+    </section>
+  </article>
+
+  <article class="creative photo-piece fisio" id="fisio-topo">
+    <img class="photo" src="assets/fisioterapia-base.png" alt="" />
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Clínicas de fisioterapia</span>
+    </header>
+    <h1 class="photo-hook">Quem responde enquanto você <em>atende?</em></h1>
+    <footer class="photo-bottom">
+      <div>
+        <span class="stage-marker">Atendimento que não para</span>
+        <p class="photo-copy">Enquanto uma pessoa faz a sessão, outra tenta agendar pelo WhatsApp.</p>
+      </div>
+      <div class="cta red">Veja como atender as duas<span class="arrow"></span></div>
+    </footer>
+  </article>
+
+  <article class="creative demo-piece" id="fisio-meio">
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Clínicas de fisioterapia</span>
+    </header>
+    <section class="demo-head">
+      <h1>Da primeira dúvida ao <span>horário disponível.</span></h1>
+      <p>Uma conversa configurada para a rotina da sua clínica.</p>
+    </section>
+    <section class="demo-stage">
+      <div class="scene-slice fisio">
+        <img src="assets/fisioterapia-base.png" alt="" />
+        <div class="scene-caption">Você cuida da sessão.<small>O atendimento continua no WhatsApp.</small></div>
+      </div>
+      <div class="chat-panel">
+        <div class="chat-header"><img src="assets/avatar-chat.svg" alt="" /><div><strong>Assistente da clínica</strong><span>online agora</span></div></div>
+        <div class="bubbles">
+          <div class="bubble patient">Vocês atendem fisioterapia pós-operatória?<span class="time">10:18</span></div>
+          <div class="bubble assistant">Sim. Posso explicar o primeiro atendimento e verificar os horários disponíveis.<span class="time">10:18</span></div>
+          <div class="bubble safety">Questões clínicas seguem com o fisioterapeuta.<span class="time">10:19</span></div>
+        </div>
+        <div class="flowline"><span>Responde</span><span>Orienta</span><span>Agenda</span><span>Transfere</span></div>
+      </div>
+    </section>
+    <footer class="demo-footer">
+      <div class="demo-note">O assistente não diagnostica nem indica tratamentos.</div>
+      <div class="cta cream">Ver atendimento completo<span class="arrow"></span></div>
+    </footer>
+  </article>
+
+  <article class="creative offer-piece" id="fisio-fundo">
+    <header class="topbar">
+      <div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div>
+      <span class="niche">Clínicas de fisioterapia</span>
+    </header>
+    <section class="offer-head"><h1>Veja o assistente da sua clínica <span>em ação.</span></h1></section>
+    <section class="offer-main">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="chat-header"><img src="assets/avatar-chat.svg" alt="" /><div><strong>Assistente da clínica</strong><span>online agora</span></div></div>
+          <div class="bubbles">
+            <div class="bubble patient">Quero saber sobre a primeira sessão.</div>
+            <div class="bubble assistant">Claro. Posso explicar como funciona e verificar os horários disponíveis.</div>
+            <div class="bubble patient">Tem horário na sexta?</div>
+            <div class="bubble assistant">Vou consultar as opções para você.</div>
+          </div>
+          <div class="booking-status"><span class="status-icon"></span><span><strong>Agendamento em andamento</strong><small>Consultando horários disponíveis</small></span></div>
+        </div>
+      </div>
+      <div class="offer-copy">
+        <span class="offer-label">Demonstração personalizada</span>
+        <h2>Com os serviços e a rotina da sua clínica.</h2>
+        <p>Visualize como o atendimento funcionaria antes de implantar.</p>
+        <div class="benefits">
+          <div class="benefit"><b>01</b><span>Respostas alinhadas à clínica</span></div>
+          <div class="benefit"><b>02</b><span>Transferência para sua equipe</span></div>
+          <div class="benefit"><b>03</b><span>Acompanhamento após a implantação</span></div>
+        </div>
+        <div class="process"><span>Diagnóstico</span><i></i><span>Implantação</span><i></i><span>Acompanhamento</span></div>
+        <div class="cta red">Solicitar demonstração<span class="arrow"></span></div>
+        <div class="micro">Conversa direta com a nanoguará.ia</div>
+      </div>
+    </section>
+  </article>
+</body>
+</html>
