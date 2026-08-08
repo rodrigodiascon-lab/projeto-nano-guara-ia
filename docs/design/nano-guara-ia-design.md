@@ -60,7 +60,7 @@ Regras: contraste WCAG AA em tudo (AAA no herói); vermelho SÓ em CTA/acento (n
 
 - Ícones: `@phosphor-icons` (weight regular/duotone, stroke consistente) — combina com as formas arredondadas. Uma família só.
 - Imagens: geradas/reais nas seções-chave (herói já tem o mockup de chat; "Pra quem é" usa retratos reais de profissionais — picsum-seed no mock, fotos geradas na implementação). Zero fake-screenshot de divs: **o mockup de chat do herói e a demo são componentes REAIS funcionais** (mini-versão da UI verdadeira).
-- **Marca (aprovada pelo usuário em 2026-07-31): SVG vetorial** em `docs/brand/marca.svg` (símbolo guaraná + circuito, para navbar/favicon/og) e `docs/brand/avatar-chat.svg` (variante circular do avatar do assistente). Cores fixas, funciona nos dois temas; inlinado no HTML (zero request, escala sem perda). Os PNGs originais do usuário ficam como referência histórica, não como asset do site.
+- **Marca (aprovada pelo usuário em 2026-07-31): SVG vetorial** em `docs/marketing/brand/marca.svg` (símbolo guaraná + circuito, para navbar/favicon/og) e `docs/marketing/brand/avatar-chat.svg` (variante circular do avatar do assistente). Cores fixas, funciona nos dois temas; inlinado no HTML (zero request, escala sem perda). Os PNGs originais do usuário ficam como referência histórica, não como asset do site.
 
 ## 3. Inventário de componentes
 
@@ -82,7 +82,7 @@ Regras: contraste WCAG AA em tudo (AAA no herói); vermelho SÓ em CTA/acento (n
 
 - **Mockup navegável (v1):** https://claude.ai/code/artifact/c79e3b5e-4fe5-4e8f-a762-4d168d8bbdfc — one-page completo com as 9 seções da spec, direção Guaraná Tech sobre a estrutura CareCode. Fonte: `scratchpad/nano-guara-mockup.html` (descartável — o código de produção nasce na Fase 5, do zero, usando estes tokens).
 - Inclui: chat WhatsApp animado no herói (mensagens em sequência), demo interativa roteirizada (no site real: Workers AI), formulário com estados e consentimento LGPD, dark mode espelhado, reduced-motion.
-- Limitações deliberadas do mockup: fontes do sistema (produção usa Outfit/Geist self-hosted), logo simplificado em SVG (produção usa os PNGs de `docs/brand/`), Turnstile como slot demarcado, sem fotos reais na faixa de profissões (produção: fotos geradas/reais).
+- Limitações deliberadas do mockup: fontes do sistema (produção usa Outfit/Geist self-hosted), logo simplificado em SVG (produção usa os PNGs de `docs/marketing/brand/`), Turnstile como slot demarcado, sem fotos reais na faixa de profissões (produção: fotos geradas/reais).
 - Claude Design foi dispensado pelo usuário nesta rodada (sem escrita na conta).
 
 ### Efeitos aprovados no herói (decisão do usuário, 2026-07-31: "os dois juntos")
@@ -90,7 +90,7 @@ Regras: contraste WCAG AA em tudo (AAA no herói); vermelho SÓ em CTA/acento (n
 1. **Fundo Etheral Shadow** — sombras orgânicas animadas (filtro SVG feTurbulence + feDisplacementMap + hueRotate em loop) em 2 camadas: verde `--etheral-a` + guaraná sutil `--etheral-b`, theme-aware.
 2. **Gradient Shimmer no H1** — varredura de banda multi-stop da marca (verde vivo → branco → laranja → guaraná) via `background-clip:text` + Web Animations API; loop 1,45s + pausa 1,1s.
 
-Implementação de referência (vanilla, sem React/framer-motion): `docs/mockup-aprovado-fase4.html`.
+Implementação de referência (vanilla, sem React/framer-motion): `docs/design/mockup-aprovado-fase4.html`.
 
 **Ajustes obrigatórios definidos pela auditoria da Fase 6** (já refletidos no plano de implementação):
 - Máscara do Etheral **self-hosted e otimizada** para WebP ≤120 KB (o PNG do CDN do Framer tem 1,24 MB / 5000px). A camada de ruído **não é usada** pelo mockup aprovado — não baixar.

@@ -9,12 +9,12 @@ Profissionais liberais (médicos, dentistas, advogados, psicólogos, consultores
 - **Público nº 1:** profissionais liberais (decisor = o próprio profissional).
 - **Carro-chefe:** Assistente Virtual (atendimento, agendamento, follow-up, pós-vendas).
 - **Serviços secundários:** automação comercial, criação de sites, SEO e GEO, registro de marcas, consultoria LGPD, web app para representante comercial.
-- **Marca:** logo pronto (guaraná + circuito; verde/vermelho/preto/creme), slogan "Inteligência que gera resultados". Imagens em `docs/brand/` (pendente salvar).
+- **Marca:** logo pronto (guaraná + circuito; verde/vermelho/preto/creme), slogan "Inteligência que gera resultados". Imagens em `docs/marketing/brand/`.
 - **Prova social:** nenhuma por enquanto — a credibilidade vem da demonstração ao vivo. Proibido inventar métricas ou clientes.
 
 ## Referência estrutural
 
-Estrutura clonada/adaptada de **https://www.carecode.ai/pt** (escolha do usuário) — estrutura sim, cores não. Mapa completo em `docs/referencia-carecode-estrutura.md`. Padrões herdados: H1 de resultado, narrativa de cenário com horário, CTAs pareados (produto + comercial), bullets de capacidade, tagline de fechamento espelhada.
+Estrutura clonada/adaptada de **https://www.carecode.ai/pt** (escolha do usuário) — estrutura sim, cores não. Mapa completo em `docs/referencias/referencia-carecode-estrutura.md`. Padrões herdados: H1 de resultado, narrativa de cenário com horário, CTAs pareados (produto + comercial), bullets de capacidade, tagline de fechamento espelhada.
 
 ## Formato e fluxos
 

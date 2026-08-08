@@ -1,10 +1,10 @@
 # Auditoria do plano — site nanoguará.ia
 
-> Fase 6 da /planejar · 2026-07-31 · 5 auditores independentes em paralelo (Cloudflare Workers, Segurança, Web Performance, Frontend/a11y, Testes) contra `docs/superpowers/plans/2026-07-31-nano-guara-ia-site.md`. Achados deduplicados; a coluna "Fontes" indica quantos auditores levantaram o mesmo ponto (convergência = maior confiança).
+> Fase 6 da /planejar · 2026-07-31 · 5 auditores independentes em paralelo (Cloudflare Workers, Segurança, Web Performance, Frontend/a11y, Testes) contra `docs/historico/planejamento/plans/2026-07-31-nano-guara-ia-site.md`. Achados deduplicados; a coluna "Fontes" indica quantos auditores levantaram o mesmo ponto (convergência = maior confiança).
 
 **Placar:** 6 P0 · 11 P1 · 14 P2 · 9 P3 = **40 achados**. Domínio de testes auditado **sem skill especializada** (boas práticas gerais + docs via context7).
 
-> **Status pós-Fase 7 (2026-07-31):** todos os **6 P0** e **11 P1** corrigidos no plano v2 (`docs/superpowers/plans/2026-07-31-nano-guara-ia-site.md`), assim como os 14 P2. Dos P3, foram aplicados os baratos (imports estáticos, 405 com `Allow`, página 404, `collectLog`, remoção do binding `ASSETS` não usado, contraste AAA do shimmer, alt do logo, placeholder, envio duplo, coalescência do streaming, fallback com link de WhatsApp). **4 achados P3 ficaram deliberadamente de fora** — todos por serem mudanças visuais num mockup já aprovado pelo usuário; motivos registrados na seção "Achados da auditoria deliberadamente NÃO aplicados" do plano.
+> **Status pós-Fase 7 (2026-07-31):** todos os **6 P0** e **11 P1** corrigidos no plano v2 (`docs/historico/planejamento/plans/2026-07-31-nano-guara-ia-site.md`), assim como os 14 P2. Dos P3, foram aplicados os baratos (imports estáticos, 405 com `Allow`, página 404, `collectLog`, remoção do binding `ASSETS` não usado, contraste AAA do shimmer, alt do logo, placeholder, envio duplo, coalescência do streaming, fallback com link de WhatsApp). **4 achados P3 ficaram deliberadamente de fora** — todos por serem mudanças visuais num mockup já aprovado pelo usuário; motivos registrados na seção "Achados da auditoria deliberadamente NÃO aplicados" do plano.
 
 ---
 

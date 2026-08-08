@@ -22,7 +22,7 @@ Faça na ordem. Alguns itens dependem do anterior.
 | Domínio real nos arquivos | `robots.txt`, `sitemap.xml`, `schema.json` e `index.html` |
 | Link canonical | Adicionado apontando para `https://nanoguara.ia.br/` |
 | Formato do SSE do chat | Verificado contra a API real. Modelo `@cf/meta/llama-3.3-70b-instruct-fp8-fast` |
-| Eval do chat | Aprovado. Ver `docs/nano-guara-ia-eval-chat.md` |
+| Eval do chat | Aprovado. Ver `docs/engenharia/nano-guara-ia-eval-chat.md` |
 
 O item 6 do Step 1 do plano (domínio e DNSSEC) está **integralmente concluído**. Os dois bloqueios que ele descreve já foram contornados.
 

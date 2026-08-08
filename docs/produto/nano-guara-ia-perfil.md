@@ -15,7 +15,7 @@ Logo: **fruto de guaraná** estilizado (casca vermelha aberta revelando a "semen
 - **Paleta observada no logo:** verde-escuro (folhas/circuito, ~#1B5E20-#2E7D32), verde-médio (degradê do wordmark), vermelho vivo (casca, ~#D32F2F-#C62828), preto (semente/olho), branco/creme (esclera do "olho", respiros).
 - **Simbologia:** guaraná = energia, Brasil/Amazônia, "olho que tudo vê" (atendimento vigilante 24/7); circuito = tecnologia. Marca calorosa e brasileira — não corporativa fria.
 - **Implicação de design (Fase 4):** fundo claro/creme ou escuro profundo; verde como cor dominante de UI, vermelho como acento de CTA/energia (com parcimônia — vermelho em excesso vira alerta); motivo de circuito como elemento gráfico de seção. NÃO usar o âmbar/escuro da CareCode.
-- Arquivos: 3 PNGs enviados no chat de 2026-07-31 — **pendente salvar em `docs/brand/`** (pedir arquivos ao usuário).
+- Arquivos: 3 PNGs enviados no chat de 2026-07-31 — registro histórico; os assets atuais ficam em `docs/marketing/brand/` e `site/public/brand/`.
 
 ## Tom de voz
 

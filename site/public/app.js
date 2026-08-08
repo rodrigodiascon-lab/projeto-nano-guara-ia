@@ -1,5 +1,5 @@
 // nanoguará.ia: script de produção.
-// Porta o <script> do mockup aprovado (docs/mockup-aprovado-fase4.html) e liga
+// Porta o <script> do mockup aprovado (docs/design/mockup-aprovado-fase4.html) e liga
 // o formulário e o chat de demonstração nas APIs reais (Task 4 e Task 5).
 //
 // Regra de segurança: nenhum innerHTML/insertAdjacentHTML recebe dado de rede
