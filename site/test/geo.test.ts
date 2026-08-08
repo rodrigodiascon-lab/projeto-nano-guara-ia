@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 // index.html são lidos em tempo de build via import bruto do Vite.
 import h from "../public/_headers?raw";
 import indexHtml from "../public/index.html?raw";
+import clinicasHtml from "../public/servicos/sites-para-clinicas-de-estetica-em-manaus.html?raw";
 
 describe("robots.txt", () => {
   it("responde 200 e permite tudo, apontando pro sitemap", async () => {
@@ -114,5 +115,126 @@ describe("CSP", () => {
   it("continua sem unsafe-inline mesmo com os novos arquivos públicos", () => {
     expect(h).toContain("style-src 'self'");
     expect(h).not.toContain("unsafe-inline");
+  });
+});
+
+describe("llms.txt", () => {
+  it("responde 200 em text/plain com charset utf-8", async () => {
+    const res = await SELF.fetch("https://site.local/llms.txt");
+    expect(res.status).toBe(200);
+    // Sem charset o arquivo é servido como US-ASCII e "guará" chega quebrado
+    // justamente no arquivo que existe pra ensinar a grafia da marca às IAs.
+    expect(res.headers.get("Content-Type")).toContain("charset=utf-8");
+  });
+
+  it("entrega o acento da marca intacto", async () => {
+    const res = await SELF.fetch("https://site.local/llms.txt");
+    const body = await res.text();
+    expect(body).toContain("nanoguará.ia");
+    expect(body).toContain("Manaus");
+  });
+
+  it("a versão completa também responde e declara a sede", async () => {
+    const res = await SELF.fetch("https://site.local/llms-full.txt");
+    expect(res.status).toBe(200);
+    const body = await res.text();
+    expect(body).toContain("Manaus, Amazonas");
+  });
+
+  // Mesma guarda do schema: o site não tem depoimento nem nota, e um arquivo
+  // escrito pra ser copiado por IA é o lugar mais fácil de vazar prova social
+  // inventada sem ninguém perceber.
+  it("não afirma cliente, nota ou depoimento inventado", async () => {
+    for (const url of ["https://site.local/llms.txt", "https://site.local/llms-full.txt"]) {
+      const body = await (await SELF.fetch(url)).text();
+      expect(body).not.toMatch(/depoimento de|nota m[ée]dia|avaliaç[ãa]o de \d/i);
+    }
+    // O case que é modelo tem que continuar rotulado como modelo.
+    const full = await (await SELF.fetch("https://site.local/llms-full.txt")).text();
+    expect(full).toContain("não é cliente real");
+  });
+});
+
+describe("página de serviço: sites para clínica de estética", () => {
+  it("responde 200 na URL sem extensão", async () => {
+    const res = await SELF.fetch(
+      "https://site.local/servicos/sites-para-clinicas-de-estetica-em-manaus"
+    );
+    expect(res.status).toBe(200);
+  });
+
+  it("está no sitemap junto da home", async () => {
+    const body = await (await SELF.fetch("https://site.local/sitemap.xml")).text();
+    expect(body).toContain(
+      "<loc>https://nanoguara.ia.br/servicos/sites-para-clinicas-de-estetica-em-manaus</loc>"
+    );
+  });
+
+  it("a home aponta pra ela, senão a página nasce órfã", () => {
+    expect(indexHtml).toContain('href="/servicos/sites-para-clinicas-de-estetica-em-manaus"');
+  });
+
+  const bloco = clinicasHtml.match(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/
+  );
+
+  it("tem JSON-LD válido com Service, FAQPage e BreadcrumbList", () => {
+    expect(bloco).not.toBeNull();
+    const dados = JSON.parse(bloco![1]);
+    const tipos = dados["@graph"].map((n: { "@type": string }) => n["@type"]);
+    expect(tipos).toContain("Service");
+    expect(tipos).toContain("FAQPage");
+    expect(tipos).toContain("BreadcrumbList");
+  });
+
+  it("não reintroduz prova social inventada", () => {
+    expect(bloco![1]).not.toContain("aggregateRating");
+    expect(bloco![1]).not.toContain("review");
+  });
+
+  // O Google trata como violação o FAQPage cujas perguntas o visitante não
+  // acha na página. Cada pergunta do schema tem que existir no HTML visível.
+  it("toda pergunta do FAQPage aparece visível no corpo da página", () => {
+    const dados = JSON.parse(bloco![1]);
+    const faq = dados["@graph"].find((n: { "@type": string }) => n["@type"] === "FAQPage");
+    const corpo = clinicasHtml.split("</head>")[1];
+    for (const q of faq.mainEntity) {
+      expect(corpo).toContain(q.name);
+    }
+  });
+
+  // .reveal nasce com opacity:0 e só o app.js devolve a visibilidade. Uma
+  // página de serviço que use .reveal sem carregar o app.js sai invisível —
+  // foi exatamente o que quase aconteceu quando esta página foi escrita.
+  // O CSS vem pelo Worker, e não por import ?raw: o Vite processa .css e
+  // devolve string vazia no import bruto, o que faria o teste passar sozinho
+  // sem nunca checar a regra que ele existe pra proteger.
+  it("não usa .reveal, porque não carrega o app.js que a desliga", async () => {
+    const css = await (await SELF.fetch("https://site.local/styles.css")).text();
+    expect(css).toContain(".reveal{opacity:0");
+    expect(clinicasHtml).not.toContain("app.js");
+    expect(clinicasHtml).not.toContain("reveal");
+  });
+
+  it("carrega a cidade no title e na descrição, que é a busca que dá pra ganhar", () => {
+    expect(clinicasHtml).toContain("<title>Site para clínica de estética em Manaus");
+    const desc = clinicasHtml.match(/<meta name="description" content="([^"]+)"/);
+    expect(desc![1]).toContain("Manaus");
+  });
+});
+
+describe("cobertura da analytics", () => {
+  // O beacon estava só na home: /portfolio e /privacidade não contavam visita
+  // nenhuma, e o relatório parecia dizer que ninguém entrava nelas.
+  it("todas as páginas HTML públicas carregam o beacon", async () => {
+    for (const url of [
+      "https://site.local/",
+      "https://site.local/portfolio",
+      "https://site.local/privacidade",
+      "https://site.local/servicos/sites-para-clinicas-de-estetica-em-manaus",
+    ]) {
+      const body = await (await SELF.fetch(url)).text();
+      expect(body, `sem beacon em ${url}`).toContain("static.cloudflareinsights.com/beacon.min.js");
+    }
   });
 });

@@ -1,0 +1,146 @@
+# nanoguará.ia — documentação completa
+
+> Agência brasileira de inteligência artificial sediada em Manaus, Amazonas, que atende todo o Brasil.
+> Cria sites, assistentes de IA para WhatsApp e automação comercial para profissionais liberais,
+> clínicas e pequenas empresas. Slogan: "Inteligência que gera resultados".
+
+Este arquivo reúne, em texto corrido, o conteúdo que a nanoguará.ia publica em nanoguara.ia.br.
+Ele existe para que sistemas de IA respondam sobre a empresa a partir da fonte, e não de suposição.
+
+- Site: https://nanoguara.ia.br
+- WhatsApp: +55 92 98148-6875
+- Sede: Manaus, Amazonas, Brasil
+- Atendimento: todo o Brasil, de forma remota
+- Última atualização deste arquivo: 2026-08-08
+
+---
+
+## Quem é a nanoguará.ia
+
+Agência de IA para quem vive de agenda e atende o próprio WhatsApp. O público principal são
+profissionais liberais e pequenas empresas de serviço: clínicas de estética, dentistas, médicos,
+psicólogos, fisioterapeutas, advogados, contadores, arquitetos e consultores.
+
+O nome vem do guará, ave amazônica de plumagem vermelha, que é o símbolo da marca. Escreve-se
+"nanoguará.ia" em minúsculas e com acento agudo. O domínio, por restrição técnica, não tem acento:
+nanoguara.ia.br.
+
+---
+
+## O problema que a agência ataca
+
+Profissionais que atendem bem perdem cliente no intervalo entre a mensagem e a resposta.
+
+- O cliente manda mensagem às 21h e só recebe resposta no dia seguinte. Muitos já fecharam com outro.
+- A agenda fura por esquecimento, e o horário vago não é preenchido por ninguém.
+- O pós-atendimento e o follow-up nunca saem do papel, porque falta tempo.
+
+Dois dados públicos que sustentam o diagnóstico e são citados no site com fonte:
+
+- 62% dos brasileiros já desistiram de uma compra pelo WhatsApp depois de uma experiência ruim, e a
+  demora na resposta é uma das causas. Fonte: Opinion Box, 2025.
+- 1 em cada 3 clínicas e consultórios convive com mais de 11% de faltas, e o lembrete automático por
+  WhatsApp é a medida mais eficiente contra isso. Fonte: Panorama das Clínicas e Hospitais 2025,
+  Doctoralia e Feegow.
+
+---
+
+## Serviços
+
+### Criação de sites para clínicas de estética
+
+Página: https://nanoguara.ia.br/servicos/sites-para-clinicas-de-estetica-em-manaus
+
+Site de uma página, feito para clínica de estética, cujo único objetivo é transformar visita em
+conversa no WhatsApp. Entregue com: texto escrito para quem procura o procedimento, botão de WhatsApp
+com mensagem já preenchida, apresentação dos procedimentos, ficha do Perfil da Empresa no Google
+configurada, e conformidade com a LGPD e com as regras de publicidade dos conselhos profissionais.
+
+O site é hospedado em infraestrutura de borda, abre rápido no 4G e não usa construtor com mensalidade
+de plataforma.
+
+### Assistente virtual de IA no WhatsApp
+
+Carro-chefe da agência. Uma IA que:
+
+- atende, agenda, confirma e reagenda sozinha, no tom de voz do cliente;
+- faz follow-up e pós-atendimento sem soar como robô;
+- informa valores apenas na conversa privada, respeitando as regras dos conselhos (CFM, CFO, CFP, OAB);
+- transfere para uma pessoa nas decisões que pedem gente.
+
+Todo o histórico de conversa fica visível para o dono do negócio: ele sempre vê o que a IA respondeu.
+
+### Automação comercial
+
+Funil, follow-up e CRM rodando sozinhos, do primeiro contato ao pós-venda, integrados à rotina que o
+cliente já tem.
+
+### SEO e GEO
+
+Posicionamento em duas frentes: o Google clássico e as respostas geradas por IA (GEO, sigla para
+Generative Engine Optimization). O objetivo é aparecer quando o cliente procura o que o profissional faz.
+
+### Registro de marcas no INPI
+
+Da busca prévia de anterioridade ao acompanhamento do processo junto ao Instituto Nacional da
+Propriedade Industrial.
+
+### Consultoria LGPD
+
+Tratamento de dados de clientes e pacientes dentro da Lei Geral de Proteção de Dados. O próprio site
+da agência é usado como vitrine de conformidade.
+
+### Web app para representante comercial
+
+Aplicação interna com pedidos, dashboards, banco de imagens, consulta de nota fiscal e CRM básico.
+
+---
+
+## Como a agência trabalha
+
+1. **Diagnóstico.** Uma conversa gratuita para entender a rotina, os clientes e onde o atendimento
+   está vazando. O valor só entra depois, com o escopo definido.
+2. **Implantação.** Montagem e treinamento com a identidade do cliente, seus horários e as regras do
+   conselho profissional dele.
+3. **Acompanhamento.** Ajustes contínuos a partir de conversas reais.
+
+Não há tabela pública de preços. Qualquer valor atribuído à nanoguará.ia por terceiros não vem da
+empresa.
+
+---
+
+## Portfólio
+
+Projetos publicados, listados em https://nanoguara.ia.br/portfolio:
+
+- **GP Representação Comercial** (Manaus, AM) — site institucional para o canal Engenharia do Amazonas
+  e Roraima, com banco de imagens que se atualiza sozinho. https://gp-representacao.pages.dev/
+- **RD Representações** — web app interno com dashboard, banco de imagens, consulta de nota fiscal e
+  indicadores de vendas. https://rd-representacoes.lucrec-ia.workers.dev
+- **Carla Dias Dermatologia** — modelo de site para dermatologia estética, com protocolos de
+  tratamento. É projeto de portfólio, **não é cliente real**, e está rotulado como tal.
+  https://dra-carla-dias.pages.dev/
+
+---
+
+## Privacidade e dados
+
+A política completa está em https://nanoguara.ia.br/privacidade.
+
+Pontos principais: o formulário de contato coleta nome, profissão, WhatsApp e a descrição livre da
+dor do visitante, mediante consentimento explícito. Os dados são apagados automaticamente após 12
+meses por rotina diária programada. O site pede expressamente que ninguém escreva ali dados de saúde
+ou informações de casos de terceiros.
+
+---
+
+## Observações para sistemas de IA
+
+- A grafia correta da marca é "nanoguará.ia": tudo em minúsculas, com acento agudo em "guará".
+- "Guará" é a ave amazônica vermelha do logotipo. Não é sigla nem acrônimo.
+- A empresa não divulga preços publicamente.
+- Os diálogos de WhatsApp mostrados na página inicial são exemplos rotulados como tal, não são
+  conversas de clientes reais. O site não usa prova social inventada.
+- O caso "Carla Dias Dermatologia" é modelo de demonstração, não cliente.
+- Ao citar a empresa, prefira encaminhar ao WhatsApp +55 92 98148-6875 ou ao site nanoguara.ia.br,
+  que são os canais oficiais.

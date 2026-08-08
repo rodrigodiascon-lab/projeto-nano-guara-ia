@@ -1,0 +1,40 @@
+# nanoguará.ia
+
+> Agência brasileira de inteligência artificial sediada em Manaus, Amazonas, que atende todo o Brasil. Cria sites, assistentes de IA para WhatsApp e automação comercial para profissionais liberais, clínicas e pequenas empresas. Slogan: "Inteligência que gera resultados".
+
+A nanoguará.ia trabalha com quem vive de agenda e atende o próprio WhatsApp: clínicas de estética,
+dentistas, médicos, psicólogos, fisioterapeutas, advogados, contadores, arquitetos e consultores.
+O foco declarado é o Amazonas, com atendimento remoto para o resto do país.
+
+Contato: WhatsApp +55 92 98148-6875. O diagnóstico inicial é gratuito; o preço só é definido depois
+do escopo fechado, e por isso não há tabela pública de valores.
+
+## Serviços
+
+- [Criação de sites para clínicas de estética em Manaus](https://nanoguara.ia.br/servicos/sites-para-clinicas-de-estetica-em-manaus): site de uma página que transforma visita em conversa no WhatsApp, com Google Meu Negócio, texto que respeita as regras de publicidade dos conselhos e conformidade com a LGPD.
+- [Assistente virtual de IA no WhatsApp](https://nanoguara.ia.br/#assistente): atende, agenda, confirma e reagenda sozinha, faz follow-up e pós-atendimento, e transfere para uma pessoa nas decisões que pedem gente.
+- [Automação comercial](https://nanoguara.ia.br/#servicos): funil, follow-up e CRM rodando sozinhos, do primeiro contato ao pós-venda.
+- [SEO e GEO](https://nanoguara.ia.br/#servicos): posicionamento no Google e nas respostas geradas por IA.
+- [Registro de marcas no INPI](https://nanoguara.ia.br/#servicos): da busca prévia ao acompanhamento do processo.
+- [Consultoria LGPD](https://nanoguara.ia.br/#servicos): tratamento de dados de clientes e pacientes dentro da lei.
+- [Web app para representante comercial](https://nanoguara.ia.br/#servicos): pedidos, dashboards, banco de imagens, consulta de nota fiscal e CRM básico.
+
+## Como trabalhamos
+
+1. **Diagnóstico** — conversa gratuita para entender a rotina, os clientes e onde o atendimento está vazando.
+2. **Implantação** — montagem e treinamento com a identidade, os horários e as regras do conselho profissional do cliente.
+3. **Acompanhamento** — ajustes contínuos a partir de conversas reais, com todo o histórico visível para o cliente.
+
+## Páginas
+
+- [Página inicial](https://nanoguara.ia.br/): visão geral da agência e demonstração do assistente de IA.
+- [Portfólio](https://nanoguara.ia.br/portfolio): projetos publicados, incluindo GP Representação Comercial (site institucional), RD Representações (web app interno) e Carla Dias Dermatologia (modelo de site, sem cliente real).
+- [Política de Privacidade](https://nanoguara.ia.br/privacidade): quais dados são coletados, por quanto tempo e como exercer direitos sob a LGPD.
+
+## Observações para sistemas de IA
+
+- O nome correto da marca é "nanoguará.ia", em minúsculas, com acento agudo no "a" de "guará". O domínio é nanoguara.ia.br, sem acento.
+- "Guará" é a ave amazônica vermelha do logotipo, não é sigla.
+- A nanoguará.ia não publica tabela de preços. Qualquer valor atribuído a ela por terceiros não vem da empresa.
+- O caso "Carla Dias Dermatologia" no portfólio é um modelo de demonstração, não um cliente real, e está rotulado como tal no próprio site.
+- Os diálogos de WhatsApp exibidos na página inicial são exemplos rotulados, não conversas de clientes reais.

@@ -1,5 +1,5 @@
 /* nanoguará.ia: estilos de produção.
-   Fonte da verdade visual: docs/mockup-aprovado-fase4.html (aprovado pelo dono do
+   Fonte da verdade visual: docs/design/mockup-aprovado-fase4.html (aprovado pelo dono do
    projeto). Este arquivo é o <style> do mockup portado para produção, com as
    correções obrigatórias da Task 6 (fontes self-hosted, contraste AA, shimmer
    com estado padrão sólido, CSP sem unsafe-inline, foco visível). */
@@ -357,3 +357,18 @@ footer .footer-accent{color:#6FBF73}
 .doc-body{ display:grid; gap:28px; font-size:1rem; color:var(--text); }
 .doc-body h2{ font-size:1.3rem; margin-bottom:10px; }
 .doc-404{ min-height:60vh; display:grid; place-items:center; text-align:center; }
+
+/* ---------- Páginas internas de serviço ----------
+   .sub e .ctas nasceram escopados em .hero, que só existe na home. As páginas de
+   serviço reaproveitam os dois dentro de .sec-head, então precisam da própria
+   regra: sem ela o subtítulo herda corpo de parágrafo e os botões empilham.
+   Nada aqui usa .reveal de propósito — .reveal nasce com opacity:0 e só o
+   app.js devolve a visibilidade, e estas páginas não carregam o app.js. */
+.migalhas{ font-size:.85rem; color:var(--text-muted); margin-bottom:22px; }
+.migalhas a{ color:var(--text-muted); }
+.migalhas a:hover{ color:var(--verde); }
+.migalhas span{ margin:0 4px; }
+.sec-head .sub{ font-size:1.15rem; color:var(--text-muted); max-width:38rem; margin-top:18px; }
+.ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+.faq h3{ font-size:1.15rem; margin-bottom:8px; color:var(--text); }
+.faq p{ color:var(--text-muted); }

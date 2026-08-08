@@ -17,3 +17,11 @@
 
 /schema.json
   Content-Type: application/ld+json
+
+# Sem o charset explícito o .txt é servido como US-ASCII e "guará" chega
+# quebrado justamente no arquivo que existe para as IAs lerem a marca certo.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
