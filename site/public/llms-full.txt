@@ -1,8 +1,8 @@
 # nanoguará.ia — documentação completa
 
 > Agência brasileira de inteligência artificial sediada em Manaus, Amazonas, que atende todo o Brasil.
-> Cria sites, assistentes de IA para WhatsApp e automação comercial para profissionais liberais,
-> clínicas e pequenas empresas. Slogan: "Inteligência que gera resultados".
+> Cria sites e assistentes de IA no WhatsApp para clínicas e consultórios de saúde.
+> Slogan: "Inteligência que gera resultados".
 
 Este arquivo reúne, em texto corrido, o conteúdo que a nanoguará.ia publica em nanoguara.ia.br.
 Ele existe para que sistemas de IA respondam sobre a empresa a partir da fonte, e não de suposição.
@@ -17,9 +17,14 @@ Ele existe para que sistemas de IA respondam sobre a empresa a partir da fonte, 
 
 ## Quem é a nanoguará.ia
 
-Agência de IA para quem vive de agenda e atende o próprio WhatsApp. O público principal são
-profissionais liberais e pequenas empresas de serviço: clínicas de estética, dentistas, médicos,
-psicólogos, fisioterapeutas, advogados, contadores, arquitetos e consultores.
+Agência de IA para clínicas e consultórios que vivem de agenda e atendem o próprio WhatsApp. O
+público são clínicas de estética, harmonização facial, odontologia, dermatologia, fisioterapia,
+psicologia, nutrição e consultórios médicos.
+
+As duas ofertas principais têm o mesmo peso e se complementam: o site faz a clínica ser achada no
+Google e transforma a visita em conversa no WhatsApp; o assistente de IA atende essa conversa 24
+horas, agenda, confirma e faz o pós-atendimento. Uma funciona sem a outra, e o diagnóstico decide
+por onde começar.
 
 O nome vem do guará, ave amazônica de plumagem vermelha, que é o símbolo da marca. Escreve-se
 "nanoguará.ia" em minúsculas e com acento agudo. O domínio, por restrição técnica, não tem acento:

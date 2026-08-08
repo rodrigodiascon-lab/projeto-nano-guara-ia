@@ -364,6 +364,23 @@ footer .footer-accent{color:#6FBF73}
    regra: sem ela o subtítulo herda corpo de parágrafo e os botões empilham.
    Nada aqui usa .reveal de propósito — .reveal nasce com opacity:0 e só o
    app.js devolve a visibilidade, e estas páginas não carregam o app.js. */
+/* Mockup de resultado de busca, par visual do mockup de conversa do #assistente:
+   as duas ofertas da home têm peso igual, então precisam de peso visual igual.
+   Vive dentro do .deep, que é escuro, por isso força as cores claras do card. */
+.serp{ background:var(--surface); color:var(--text); border:1px solid var(--borda);
+  border-radius:var(--raio-card); padding:20px; display:grid; gap:14px; }
+/* O .stamp nasceu centralizado dentro do chat; solto num grid ele estica e vira
+   uma barra que o olho lê como campo de formulário, bem ao lado da barra de
+   busca de mentira. Encolhe pro tamanho do texto e perde a caixa. */
+.serp .stamp{ margin:0; justify-self:start; background:transparent; padding:0; }
+.serp-barra{ display:flex; align-items:center; gap:10px; border:1px solid var(--borda);
+  border-radius:999px; padding:10px 16px; font-size:.9rem; color:var(--text-muted); }
+.serp-item{ display:grid; gap:3px; }
+.serp-item.destaque{ border-left:3px solid var(--guarana); padding-left:12px; }
+.serp-url{ font-size:.75rem; color:var(--text-muted); }
+.serp-titulo{ font-size:1rem; font-weight:600; color:var(--verde); }
+.serp-desc{ font-size:.85rem; color:var(--text-muted); }
+
 .migalhas{ font-size:.85rem; color:var(--text-muted); margin-bottom:22px; }
 .migalhas a{ color:var(--text-muted); }
 .migalhas a:hover{ color:var(--verde); }

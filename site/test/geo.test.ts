@@ -82,6 +82,22 @@ describe("index.html embute o JSON-LD na própria página", () => {
   it("não voltou a depender do <link rel=alternate>, que o Google não lê", () => {
     expect(indexHtml).not.toContain('type="application/ld+json" href="/schema.json"');
   });
+
+  // Os dois já divergiram uma vez: o schema embutido foi repositionado para
+  // clínicas e o schema.json continuou dizendo "profissionais liberais".
+  // Como os dois descrevem a mesma organização, a divergência é o bug.
+  it("descreve a organização igual ao schema.json servido", async () => {
+    const embutido = JSON.parse(bloco![1])["@graph"]
+      .find((n: { "@type": string }) => n["@type"] === "ProfessionalService");
+    const servido = ((await (await SELF.fetch("https://site.local/schema.json")).json()) as {
+      "@graph": Array<Record<string, unknown>>;
+    })["@graph"].find((n) => n["@type"] === "ProfessionalService")!;
+
+    for (const campo of ["name", "description", "url", "telephone"]) {
+      expect(servido[campo], `campo ${campo} divergiu`).toEqual(embutido[campo]);
+    }
+    expect(servido.areaServed).toEqual(embutido.areaServed);
+  });
 });
 
 describe("conteúdo citável servido sem JS (o mesmo que um crawler de IA vê)", () => {
@@ -90,20 +106,22 @@ describe("conteúdo citável servido sem JS (o mesmo que um crawler de IA vê)",
     expect(res.status).toBe(200);
     const body = await res.text();
 
-    // O que a agência faz.
-    expect(body).toContain("Sua agenda cheia, sem você parar pra responder mensagem.");
-    expect(body).toContain("O assistente é a porta de entrada. A agência cuida do resto.");
+    // O que a agência faz: as duas ofertas, com o mesmo peso.
+    expect(body).toContain("O site traz a paciente. A IA responde, agenda e confirma.");
+    expect(body).toContain("Peça 1: um site que a paciente acha antes de achar a concorrente.");
+    expect(body).toContain("Peça 2: uma IA que responde de verdade.");
 
     // Pra quem.
-    expect(body).toContain("Feita para quem vive de agenda e atende o próprio WhatsApp");
-    expect(body).toContain("Médicos");
+    expect(body).toContain("Feita para clínicas e consultórios que vivem de agenda");
+    expect(body).toContain("Odontologia");
 
     // Como começa.
     expect(body).toContain("A gente entra junto, configura junto e acompanha com você.");
     expect(body).toContain("Diagnóstico");
 
-    // Onde atua (país; ver ressalva de cidade no relatório da task).
-    expect(body).toContain("Agência brasileira de IA para profissionais liberais.");
+    // Onde atua: cidade e estado, não só país.
+    expect(body).toContain("Agência brasileira de IA para clínicas e consultórios.");
+    expect(body).toContain("De Manaus, Amazonas, atendendo todo o Brasil.");
 
     // Os dois números verificados continuam com a fonte ao lado.
     expect(body).toContain("Fonte: Opinion Box, 2025");

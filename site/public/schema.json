@@ -5,14 +5,28 @@
       "@type": "ProfessionalService",
       "@id": "https://nanoguara.ia.br/#organization",
       "name": "nanoguará.ia",
+      "alternateName": ["nanoguara.ia", "nano guará.ia"],
       "slogan": "Inteligência que gera resultados",
-      "description": "Assistente virtual de IA no WhatsApp para profissionais liberais: atendimento 24 horas, agendamento, confirmação e pós-venda. Agência nanoguará.ia.",
+      "description": "Agência de inteligência artificial em Manaus, Amazonas: criação de sites e assistentes de IA no WhatsApp para clínicas e consultórios, além de automação comercial, SEO e GEO.",
       "url": "https://nanoguara.ia.br/",
       "telephone": "+5592981486875",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Brasil"
+      "image": "https://nanoguara.ia.br/brand/og.png",
+      "logo": "https://nanoguara.ia.br/brand/favicon.png",
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "Clínicas e consultórios de saúde: estética, harmonização facial, odontologia, dermatologia, fisioterapia, psicologia e nutrição"
       },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Manaus",
+        "addressRegion": "AM",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Manaus" },
+        { "@type": "State", "name": "Amazonas" },
+        { "@type": "Country", "name": "Brasil" }
+      ],
       "knowsAbout": [
         "Assistente Virtual",
         "Automação comercial",
@@ -22,11 +36,12 @@
         "Consultoria LGPD",
         "Web app para Representante Comercial"
       ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Manaus",
-        "addressRegion": "AM",
-        "addressCountry": "BR"
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+5592981486875",
+        "contactType": "sales",
+        "areaServed": "BR",
+        "availableLanguage": "Portuguese"
       }
     },
     {

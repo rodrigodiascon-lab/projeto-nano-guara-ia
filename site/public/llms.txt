@@ -1,10 +1,14 @@
 # nanoguará.ia
 
-> Agência brasileira de inteligência artificial sediada em Manaus, Amazonas, que atende todo o Brasil. Cria sites, assistentes de IA para WhatsApp e automação comercial para profissionais liberais, clínicas e pequenas empresas. Slogan: "Inteligência que gera resultados".
+> Agência brasileira de inteligência artificial sediada em Manaus, Amazonas, que atende todo o Brasil. Cria sites e assistentes de IA no WhatsApp para clínicas e consultórios de saúde. Slogan: "Inteligência que gera resultados".
 
-A nanoguará.ia trabalha com quem vive de agenda e atende o próprio WhatsApp: clínicas de estética,
-dentistas, médicos, psicólogos, fisioterapeutas, advogados, contadores, arquitetos e consultores.
-O foco declarado é o Amazonas, com atendimento remoto para o resto do país.
+A nanoguará.ia atende clínicas e consultórios que vivem de agenda: estética, harmonização facial,
+odontologia, dermatologia, fisioterapia, psicologia, nutrição e consultórios médicos. O foco
+declarado é o Amazonas, com atendimento remoto para o resto do país.
+
+As duas ofertas principais têm o mesmo peso e se complementam: o **site** faz a clínica ser achada
+no Google e transforma a visita em conversa no WhatsApp; o **assistente de IA** atende essa conversa
+24 horas, agenda, confirma e faz o pós-atendimento.
 
 Contato: WhatsApp +55 92 98148-6875. O diagnóstico inicial é gratuito; o preço só é definido depois
 do escopo fechado, e por isso não há tabela pública de valores.
