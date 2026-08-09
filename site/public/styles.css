@@ -280,6 +280,16 @@ footer a{color:#CBDCCF}
 footer a:hover{color:#fff}
 footer .legal{border-top:1px solid #24513A;padding-top:20px;font-size:.82rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 footer ul{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px;font-size:.92rem}
+/* Era o único grid do arquivo sem parada no mobile. As três trilhas somavam
+   373px de piso (min-content dos títulos e links, mais 40px de gap duas vezes)
+   e passavam a ditar a largura da página abaixo disso — a home ganhava rolagem
+   horizontal a 360px mesmo com o #contato já corrigido. A marca fica com a
+   linha inteira e as duas listas dividem a de baixo: mais curto que empilhar
+   os três blocos. Ver test/layout.test.ts. */
+@media(max-width:820px){
+  footer .cols{grid-template-columns:1fr 1fr;gap:32px}
+  footer .cols>:first-child{grid-column:1/-1}
+}
 .footer-brand{color:#fff}
 footer .footer-accent{color:#6FBF73}
 .footer-desc{margin-top:12px;max-width:34ch;font-size:.92rem}
