@@ -358,14 +358,20 @@ footer .footer-accent{color:#6FBF73}
 .form-msg.erro{ background:color-mix(in srgb,var(--erro) 12%,var(--surface)); border:1px solid var(--erro); }
 
 ::placeholder{ color:var(--text-muted); opacity:1; }
-/* O widget do Turnstile nasce com 300px fixos, dentro de um shadow root fechado
-   que o nosso CSS não alcança. Como .cf-turnstile é grid item do form, ele herda
-   min-width:auto, e esses 300px viram piso intransponível: o form não desce de
-   300+64 de padding+2 de borda = 366px, enquanto o .wrap oferece 327px a 375px de
-   viewport. O form vazava até x=390 e a home ganhava 15px de rolagem horizontal.
-   min-width:0 dispensa o piso automático — aí o wrapper do Turnstile acompanha a
-   coluna em vez de ditá-la. Ver test/layout.test.ts. */
-.cf-turnstile{ min-height:65px; min-width:0; }
+/* O Turnstile renderiza dentro de um shadow root fechado, que o nosso CSS não
+   alcança: quem manda no tamanho é o data-size no index.html, não daqui.
+
+   No tamanho padrão (300x65) esses 300px não cabiam: como .cf-turnstile é grid
+   item do form, ele herda min-width:auto e os 300px viravam piso intransponível
+   — o form não descia de 300+64 de padding+2 de borda = 366px, enquanto o .wrap
+   oferece 327px a 375px de viewport. Daí os 15px de rolagem horizontal na home.
+   Hoje o widget é compact (150x140), que sobra folga até a 320px.
+
+   min-height reserva a altura do compact pra que o widget não empurre o botão
+   ao carregar. min-width:0 fica de rede: dispensa o piso automático, então nem
+   um estado de erro do widget nem uma volta ao tamanho padrão reabrem a rolagem
+   horizontal — só deixariam de caber dentro do cartão. Ver test/layout.test.ts. */
+.cf-turnstile{ min-height:140px; min-width:0; }
 .msg time{ font-size:.75rem; }
 
 /* ---------- Páginas de documento (privacidade, 404) ---------- */

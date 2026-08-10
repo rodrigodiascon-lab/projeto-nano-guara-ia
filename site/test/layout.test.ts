@@ -32,8 +32,20 @@ const PAGINAS = {
  *   .wrap          327  = 375 - 24*2 de padding   <- só isso estava disponível
  *
  * O form não conseguia descer de 366px, vazava até x=390 e a página inteira
- * ganhava barra de rolagem. min-width:0 dispensa o piso automático: o wrapper
- * do Turnstile passa a acompanhar a coluna em vez de ditá-la.
+ * ganhava barra de rolagem.
+ *
+ * A correção tem duas partes, e as duas precisam continuar de pé:
+ *
+ * 1. data-size="compact" (150x140) no index.html. É o que faz o widget caber:
+ *    o tamanho vem do atributo, porque o widget mora num shadow root fechado
+ *    e nenhum seletor nosso o alcança. Com 150px sobra folga até a 320px.
+ * 2. min-width:0 no CSS, de rede. Dispensa o piso automático, então nem um
+ *    estado de erro do widget nem uma volta ao tamanho padrão reabrem a
+ *    rolagem horizontal — no pior caso ele só deixa de caber no cartão.
+ *
+ * Sem a parte 1, com o padrão de 300px, o widget parava de vazar a página mas
+ * passava a pintar 6px por fora do cartão a 375px, e voltava a rolar abaixo de
+ * 357px. Medido depois das duas: 320px, 360px e 375px sem sobra nenhuma.
  *
  * Não dá para medir layout aqui — o runtime workerd do vitest-pool-workers não
  * tem engine de layout. O que estes testes travam é a regra CSS e a estrutura
@@ -42,11 +54,34 @@ const PAGINAS = {
 describe("#contato não pode voltar a empurrar a home além da viewport", () => {
   const css = async () => (await SELF.fetch("https://site.local/styles.css")).text();
 
+  // Parte 1: o atributo. É ele que decide o tamanho do widget — sem compact
+  // volta o padrão de 300px, que não cabe na coluna do form no celular.
+  it("o widget é pedido no tamanho compact", () => {
+    const div = indexHtml.match(/<div class="cf-turnstile"[^>]*>/);
+    expect(div, "a div .cf-turnstile sumiu do index.html").not.toBeNull();
+    expect(div![0], 'sem data-size="compact" o widget volta aos 300px do padrão')
+      .toMatch(/data-size="compact"/);
+  });
+
+  // Parte 2: a rede.
   it("a regra .cf-turnstile declara min-width:0", async () => {
     const regra = (await css()).match(/\.cf-turnstile\s*\{([^}]*)\}/);
     expect(regra, "a regra .cf-turnstile sumiu do styles.css").not.toBeNull();
-    expect(regra![1], "sem min-width:0 os 300px do Turnstile voltam a ser piso do form")
+    expect(regra![1], "sem min-width:0 a largura do widget volta a ser piso do form")
       .toMatch(/min-width:\s*0/);
+  });
+
+  // O min-height existe pra reservar a altura do widget antes de ele carregar,
+  // senão o botão de enviar salta pra baixo no meio do preenchimento. Se o
+  // data-size mudar e este número ficar para trás, volta o salto — por isso os
+  // dois são checados juntos, e não cada um por si.
+  it("o min-height reservado corresponde à altura do tamanho escolhido", async () => {
+    const alturaPorTamanho: Record<string, number> = { compact: 140, normal: 65, flexible: 65 };
+    const tamanho = indexHtml.match(/<div class="cf-turnstile"[^>]*data-size="(\w+)"/)?.[1] ?? "normal";
+    const regra = (await css()).match(/\.cf-turnstile\s*\{([^}]*)\}/)![1];
+    const reservado = Number(regra.match(/min-height:\s*(\d+)px/)?.[1]);
+    expect(reservado, `min-height não bate com o data-size="${tamanho}"`)
+      .toBe(alturaPorTamanho[tamanho]);
   });
 
   // Sem esta guarda o teste acima vira decoração: se o widget sair de dentro do
@@ -60,10 +95,11 @@ describe("#contato não pode voltar a empurrar a home além da viewport", () => 
       .toMatch(/\bform\s*\{[^}]*display:\s*grid/);
   });
 
-  // O piso só aperta porque .wrap e form gastam 114px dos 375 em padding e
-  // borda (24*2 + 32*2 + 1*2). Se alguém aumentar esses valores, os 300px do
-  // widget deixam de caber de novo mesmo com min-width:0 — aí o widget passa a
-  // pintar por fora do cartão. Trava os números que a conta assume.
+  // .wrap e form gastam 114px da viewport em padding e borda (24*2 + 32*2 +
+  // 1*2). No pior caso que o site atende, 320px, sobram 206px para os 150px do
+  // compact — uma folga de 28px por lado. Quem aumentar esses paddings come a
+  // folga e devolve o widget para fora do cartão, então os números ficam
+  // travados aqui junto da conta que os justifica.
   it("o padding do .wrap e do form seguem nos valores que a conta assume", async () => {
     const folha = await css();
     expect(folha).toMatch(/\.wrap\s*\{[^}]*padding:\s*0 24px/);

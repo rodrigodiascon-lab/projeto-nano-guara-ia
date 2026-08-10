@@ -259,7 +259,9 @@
       <a href="/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>
     </div>
     <p class="aviso-dados">Não escreva aqui dados de saúde nem informações de casos dos seus clientes.</p>
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAAEDw_7_CrCwCFcs_" data-theme="auto"></div>
+    <!-- data-size="compact" (150x140) no lugar do padrão (300x65): os 300px não
+         cabem na coluna do form no celular e vazavam por fora do cartão. -->
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAEDw_7_CrCwCFcs_" data-theme="auto" data-size="compact"></div>
     <button class="btn btn-primario" type="submit">
       <span class="btn-texto">Quero uma conversa</span>
       <span class="btn-seta" aria-hidden="true">Quero uma conversa →</span>
