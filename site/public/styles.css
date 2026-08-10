@@ -380,6 +380,11 @@ footer .footer-accent{color:#6FBF73}
 .doc-body{ display:grid; gap:28px; font-size:1rem; color:var(--text); }
 .doc-body h2{ font-size:1.3rem; margin-bottom:10px; }
 .doc-404{ min-height:60vh; display:grid; place-items:center; text-align:center; }
+/* As seções da home escapam disso por acidente: section{padding:88px 0} sobra
+   mais que os 68px da nav grudada, então o título ainda aparece. Um alvo de
+   âncora dentro do .doc-body não tem essa folga e pararia atrás da nav — foi o
+   que aconteceu com o link para #controlador na política de privacidade. */
+.doc-body [id]{ scroll-margin-top:84px; }
 
 /* ---------- Páginas internas de serviço ----------
    .sub e .ctas nasceram escopados em .hero, que só existe na home. As páginas de

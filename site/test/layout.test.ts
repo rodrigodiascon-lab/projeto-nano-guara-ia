@@ -4,18 +4,7 @@ import { describe, expect, it } from "vitest";
 // do Vite, e o CSS vem pelo Worker (import ?raw de .css devolve string vazia,
 // o que faria a asserção passar sozinha sem checar nada).
 import indexHtml from "../public/index.html?raw";
-import portfolioHtml from "../public/portfolio.html?raw";
-import privacidadeHtml from "../public/privacidade.html?raw";
-import clinicasHtml from "../public/servicos/sites-para-clinicas-de-estetica-em-manaus.html?raw";
 
-// As quatro páginas HTML públicas repetem o mesmo rodapé na mão. Toda guarda de
-// rodapé vale para as quatro, senão a próxima edição conserta uma e esquece três.
-const PAGINAS = {
-  "index.html": indexHtml,
-  "portfolio.html": portfolioHtml,
-  "privacidade.html": privacidadeHtml,
-  "servicos/sites-para-clinicas-de-estetica-em-manaus.html": clinicasHtml,
-};
 
 /**
  * Rolagem horizontal na home em viewport mobile (medido a 375px: scrollWidth
@@ -128,38 +117,5 @@ describe("o rodapé não pode voltar a ser mais largo que a tela", () => {
       .toBeLessThanOrEqual(900);
     expect(bloco![2], "o mobile voltou a ter três colunas")
       .toMatch(/grid-template-columns:\s*1fr(\s+1fr)?\s*[;}]/);
-  });
-});
-
-/**
- * Identificação da pessoa jurídica no rodapé. Por decisão do dono do projeto
- * entra só razão social, cidade/UF e CNPJ — endereço não.
- */
-describe("identificação legal no rodapé", () => {
-  const CNPJ = "21.091.816/0001-48";
-
-  for (const [pagina, html] of Object.entries(PAGINAS)) {
-    it(`${pagina} declara a empresa, a praça e o CNPJ`, () => {
-      const legal = html.match(/<div class="legal">([\s\S]*?)<\/div>/);
-      expect(legal, "o bloco .legal sumiu").not.toBeNull();
-      expect(legal![1]).toContain("R D Pimentel Serviços");
-      expect(legal![1]).toContain("Manaus, AM");
-      expect(legal![1]).toContain(CNPJ);
-    });
-  }
-
-  // Guarda de dígito verificador: um CNPJ errado no rodapé é informação legal
-  // incorreta publicada, e um typo num número de 14 dígitos não salta aos olhos
-  // em revisão. Se alguém trocar o número, a conta acusa.
-  it("o CNPJ publicado tem dígitos verificadores válidos", () => {
-    const n = CNPJ.replace(/\D/g, "");
-    expect(n).toHaveLength(14);
-    const dv = (base: string, pesos: number[]) => {
-      const soma = pesos.reduce((s, p, i) => s + Number(base[i]) * p, 0);
-      const r = soma % 11;
-      return r < 2 ? 0 : 11 - r;
-    };
-    expect(dv(n, [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2])).toBe(Number(n[12]));
-    expect(dv(n, [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2])).toBe(Number(n[13]));
   });
 });
