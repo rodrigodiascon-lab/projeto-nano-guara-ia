@@ -1,5 +1,7 @@
 import { SELF } from "cloudflare:test";
 import { describe, expect, it } from "vitest";
+import assetsIgnore from "../public/.assetsignore?raw";
+import vitestConfig from "../vitest.config.ts?raw";
 
 describe("router", () => {
   it("responde /api/health com ok", async () => {
@@ -52,6 +54,36 @@ describe("router", () => {
     expect(body).toContain("GP Representação Comercial");
     expect(body).toContain("RD Representações");
     expect(body).toContain("Carla Dias Dermatologia");
+  });
+
+  /**
+   * O wrangler publica o diretório public inteiro, lendo do DISCO — o
+   * .gitignore não tem voz nenhuma nisso. O Vite, ao rodar os testes, criava
+   * seu cache de dependências em public/node_modules/.vite (os testes importam
+   * os HTML de public com ?raw), e esse cache era publicado junto: medido em
+   * 200, com content-type application/json, sob /node_modules/.vite/...
+   *
+   * A correção tem duas camadas, porque cada uma sozinha é frágil: o cacheDir
+   * no vitest.config.ts faz o cache nascer fora de public, e o .assetsignore
+   * barra qualquer coisa que ainda apareça lá. Apagar a pasta não conta como
+   * correção — ela volta no `npm test` seguinte.
+   */
+  it("nada sob /node_modules é servido", async () => {
+    for (const p of ["/node_modules/.vite/vitest/x/deps_ssr/package.json", "/node_modules/"]) {
+      const res = await SELF.fetch(`https://site.local${p}`);
+      expect(res.status, `${p} respondeu ${res.status}`).toBe(404);
+    }
+  });
+
+  it("o .assetsignore barra node_modules no deploy dos assets", () => {
+    expect(assetsIgnore.split("\n").map((l) => l.trim()))
+      .toContain("node_modules");
+  });
+
+  it("o cache do Vite é apontado para fora de public", () => {
+    const dir = vitestConfig.match(/cacheDir:\s*path\.join\(__dirname,\s*"([^"]+)"/)?.[1];
+    expect(dir, "cacheDir sumiu do vitest.config.ts").toBeTruthy();
+    expect(dir, "o cache do Vite voltou a cair dentro de public").not.toMatch(/^public\b/);
   });
 
   it("bindings de rate limit disponíveis no ambiente de teste", async () => {

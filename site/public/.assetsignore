@@ -1,0 +1,9 @@
+# Sintaxe de .gitignore. Nada listado aqui sobe no deploy dos assets.
+#
+# O Vite (via vitest) cria um cache de dependências em public/node_modules ao
+# rodar `npm test`, porque os testes importam os HTML daqui com ?raw. O .gitignore
+# esconde isso do repositório, mas o wrangler lê o diretório do DISCO: quem
+# rodasse `npm test` e depois `npm run deploy` publicava o cache junto, servido
+# em 200 sob /node_modules/. Apagar a pasta não resolve — ela volta no teste
+# seguinte. Ver test/index.test.ts.
+node_modules
