@@ -17,3 +17,6 @@ docs/marketing/brand/posts/**/*.woff2
 agentdb.rvf
 agentdb.rvf.lock
 ruvector.db
+
+# Scratch de QA (renders de página, contact sheets) — regenerável, não versiona.
+tmp/
