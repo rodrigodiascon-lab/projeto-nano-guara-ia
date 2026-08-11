@@ -25,3 +25,8 @@ ruvector.db
 
 # Scratch de QA (renders de página, contact sheets) — regenerável, não versiona.
 tmp/
+
+# Saída do Playwright (traces, screenshots, relatório). Regenerável rodando
+# `npm run test:layout` em site/.
+site/test-results/
+site/playwright-report/

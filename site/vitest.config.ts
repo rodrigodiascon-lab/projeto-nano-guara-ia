@@ -12,6 +12,11 @@ export default defineWorkersConfig(async () => {
     // nasce fora de public; o public/.assetsignore cobre o resto.
     cacheDir: path.join(__dirname, "node_modules/.vite"),
     test: {
+      // O padrão do vitest casa *.spec.ts em qualquer lugar, e engoliria a
+      // suíte do Playwright em test-e2e/ — que não roda no workerd e falharia
+      // com erro de import, não com erro de layout. São dois runners, cada um
+      // com o seu diretório: test/ é do Worker, test-e2e/ é do navegador.
+      include: ["test/**/*.test.ts"],
       setupFiles: ["./test/apply-migrations.ts"],
       poolOptions: {
         workers: {
