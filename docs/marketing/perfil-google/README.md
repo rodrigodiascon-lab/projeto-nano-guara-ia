@@ -5,8 +5,12 @@ copiar em cada campo: artifact `7578f54b-d1a7-4436-91c3-45a3fb350e54`.
 
 Decisões tomadas em 2026-08-11 pelo dono do projeto:
 
-- **Sem endereço visível.** Cadastro como negócio de área de atendimento. A rua não
-  aparece; o Google mostra "Manaus e região". Verificação costuma ser por vídeo.
+- **Sem endereço, nem oculto.** Cadastro como negócio de área de atendimento, e o campo
+  de endereço fica em branco: o negócio é home office e o dono não quis informar o
+  endereço nem para o Google. Consequência aceita conscientemente: **perde a verificação
+  por cartão postal** e sobra só a **por vídeo**, que é a que mais reprova. Note que
+  responder "Não" ao local visitável já bastaria para o endereço nunca aparecer no
+  Maps — a decisão aqui foi sobre o Google ter o dado, não sobre exposição pública.
 - **Horário:** segunda a sexta, 08:00 às 18:00. É a janela em que uma **pessoa**
   responde, não o assistente.
 - **Categoria:** o dono pediu "Agência de I.A, Automações e Design". Não existe:
@@ -104,6 +108,33 @@ Geradas a partir de `site/public/brand/marca.svg` com as fontes e cores da marca
 logo é centralizado **no fruto**, não na caixa do desenho: o Google recorta o logo em
 círculo, e centralizar pela caixa joga o guaraná para a esquerda por causa dos traços
 de circuito à direita.
+
+## Roteiro do vídeo de verificação
+
+Uma tomada só, sem cortes e sem pausar. O que o Google quer provar é que o negócio
+existe e que **você** o administra. Como não há fachada nem placa, a prova de gestão
+é o acesso aos sistemas — é ela que sustenta o vídeo.
+
+1. **Comece do lado de fora**, mostrando a placa da rua e o número do prédio. Grava o
+   entorno por uns segundos.
+2. **Entre e caminhe até a mesa**, sem parar a gravação. A continuidade é o que liga
+   o lugar ao trabalho.
+3. **Mostre a estação de trabalho**: computador, monitor, o que existir de equipamento.
+4. **Abra `nanoguara.ia.br` no navegador**, com a barra de endereço visível. Role a
+   página devagar.
+5. **Prove que administra**, um a um, com a tela visível:
+   - painel da Cloudflare com a zona `nanoguara.ia.br`
+   - Search Console mostrando a propriedade verificada
+   - caixa de e-mail de `contato@nanoguara.ia.br`
+6. **Mostre documento do negócio** se houver CNPJ aberto: cartão CNPJ, contrato, nota.
+7. **Encerre** sem cortar.
+
+Regras que reprovam se quebradas: não edite, não pause, não use foto ou vídeo antigo,
+não mostre rosto de terceiros. Narrar em voz alta ajuda. Entre 1 e 3 minutos costuma
+bastar; passar de 5 é desnecessário.
+
+Se reprovar, dá para tentar de novo — não é definitivo. O motivo mais comum é vídeo
+curto demais ou que não amarra o lugar ao negócio.
 
 ## Pendente depois da aprovação
 
