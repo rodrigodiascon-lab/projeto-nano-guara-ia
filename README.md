@@ -63,11 +63,12 @@ O mapa completo e a ordem de leitura ficam em [`docs/README.md`](docs/README.md)
 
 ## Portfólio (`/portfolio`)
 
-3 cases publicados, todos com link externo:
+4 cases publicados, todos com link externo:
 
 1. **GP Representação Comercial** — landing page (Manaus, AM) — `gp-representacao.pages.dev`
 2. **RD Representações** — webapp de uso interno — `rd-representacoes.lucrec-ia.workers.dev`
 3. **Carla Dias Dermatologia** — *modelo de site* (rotulado explicitamente como não-cliente-real) — `dra-carla-dias.pages.dev`
+4. **Clínica Renove** — *modelo de site* (rotulado explicitamente como não-cliente-real) — `clinica-estetica-demo.pages.dev`
 
 ## Pendências e decisões em aberto
 
