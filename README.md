@@ -2,7 +2,7 @@
 
 Site institucional da **nanoguará.ia**, agência de IA para **clínicas e consultórios de saúde** (estética, harmonização facial, odontologia, dermatologia, fisioterapia, psicologia, nutrição e consultórios médicos) baseada em Manaus. Duas ofertas com o mesmo peso: **criação de sites** e **assistente virtual no WhatsApp**. Projeto **separado** da lucrec.ia.
 
-> Reposicionado em 2026-08-08. Antes o site falava a "profissionais liberais" e tratava o assistente como carro-chefe; hoje a home apresenta site e assistente lado a lado, para clínicas.
+> Reposicionado em 2026-08-11. Antes o site falava a "profissionais liberais" e tratava o assistente como carro-chefe; hoje a home apresenta site e assistente lado a lado, para clínicas.
 
 **No ar em produção:** https://nanoguara.ia.br (desde 2026-08-02)
 
@@ -24,7 +24,7 @@ Paleta completa (tema claro / escuro) em [`docs/design/nano-guara-ia-design.md`]
 
 Planejamento e execução do MVP **concluídos** (2026-07-31 a 2026-08-02, ciclo completo `/planejar` de 8 fases + execução via `subagent-driven-development`). 91 testes verdes, deploy manual via Wrangler, produção validada de ponta a ponta (Turnstile real, D1, e-mail de notificação, LGPD).
 
-Trabalho pós-go-live já entregue: página `/portfolio` com 3 cases (2026-08-04); SEO local, `llms.txt`, landing de sites para clínicas e reposicionamento da home (2026-08-08).
+Trabalho pós-go-live já entregue: página `/portfolio` com 3 cases (2026-08-04); SEO local, `llms.txt`, landing de sites para clínicas e reposicionamento da home (2026-08-11).
 
 ## Arquitetura
 
@@ -76,9 +76,10 @@ O mapa completo e a ordem de leitura ficam em [`docs/README.md`](docs/README.md)
 - **~09/08/2026** — conferir no AI Crawl Control se `OAI-SearchBot`/`PerplexityBot` continuam acessando o site.
 - **15/09/2026** — Cloudflare muda os defaults de bloqueio de bots; pode afetar rastreadores de IA.
 - **Web app do Representante Comercial** (7º serviço listado no site) segue fora de escopo — precisa de um novo ciclo `/planejar`.
-- **Mídia dos posts fora do git** (2026-08-08): de `docs/marketing/brand/posts/` versionamos só a receita (README, `prompts.md`, `legendas.md`, `index.html`, filelists, SVG). PNG, JPG, MP4 e as cópias de fonte estão no `.gitignore` — abrir um `index.html` de post num clone limpo mostra imagem quebrada até regenerar.
-- **`site/public/` é servido na web**: qualquer arquivo ali vira URL pública no deploy seguinte, mesmo sem link apontando pra ele. Cinco imagens de Instagram ficaram expostas assim até 2026-08-08 e foram para `docs/marketing/posts-instagram/`. Ao colocar arquivo em `public/`, assuma que ele é público. Hoje `site/public/brand/` guarda só o que o site usa de fato: `og.png` (meta tags), `favicon.svg`, `favicon.png`, e `marca.svg` + `avatar-chat.svg`, que não são requisitados como arquivo porque o SVG é inlinado no HTML — ficam como fonte da marca, duplicados em `docs/marketing/brand/`.
-- **Google Search Console, Perfil da Empresa no Google e Bing Webmaster** seguem sem configurar — dependem de ação manual do dono. Sem eles, o trabalho de SEO local não é medido nem indexado no ritmo que poderia.
+- **Mídia dos posts fora do git** (2026-08-11): de `docs/marketing/brand/posts/` versionamos só a receita (README, `prompts.md`, `legendas.md`, `index.html`, filelists, SVG). PNG, JPG, MP4 e as cópias de fonte estão no `.gitignore` — abrir um `index.html` de post num clone limpo mostra imagem quebrada até regenerar.
+- **`site/public/` é servido na web**: qualquer arquivo ali vira URL pública no deploy seguinte, mesmo sem link apontando pra ele. Cinco imagens de Instagram ficaram expostas assim até 2026-08-11 e foram para `docs/marketing/posts-instagram/`. Ao colocar arquivo em `public/`, assuma que ele é público. Hoje `site/public/brand/` guarda só o que o site usa de fato: `og.png` (meta tags), `favicon.svg`, `favicon.png`, e `marca.svg` + `avatar-chat.svg`, que não são requisitados como arquivo porque o SVG é inlinado no HTML — ficam como fonte da marca, duplicados em `docs/marketing/brand/`.
+- **Google Search Console: verificado em 2026-08-11**, como propriedade de domínio (`sc-domain:nanoguara.ia.br`), pelo registro TXT `google-site-verification=uQX0gU…` no apex da zona da Cloudflare. **Não remova esse TXT** — é ele que mantém a propriedade verificada. Sitemap enviado. Falta pedir indexação das 4 URLs. Atenção: a mesma conta Google tem a propriedade `lucrec.ia.br`, verificada em 2026-07-09; confira o seletor antes de enviar qualquer coisa.
+- **Perfil da Empresa no Google e Bing Webmaster** seguem sem configurar. Textos, categorias e imagens do perfil do Google já estão prontos em [`docs/marketing/perfil-google/`](docs/marketing/perfil-google/); o Bing importa do Search Console num clique.
 - **`sameAs` do schema vazio** — falta a URL do Instagram e do LinkedIn para o Google e as IAs confirmarem a existência da empresa fora do próprio site.
 - **Rolagem horizontal de 15px no mobile** (viewport 375px), originada na seção `#contato`: o `<form>` mede 366px enquanto todos os filhos medem 300px. Pré-existente, confirmado contra produção.
 - Sem CI/CD — deploy é manual via `npm run deploy`.

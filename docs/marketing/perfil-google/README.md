@@ -3,7 +3,7 @@
 Textos e imagens do perfil da nanoguará.ia no Google. Guia navegável com botão de
 copiar em cada campo: artifact `7578f54b-d1a7-4436-91c3-45a3fb350e54`.
 
-Decisões tomadas em 2026-08-08 pelo dono do projeto:
+Decisões tomadas em 2026-08-11 pelo dono do projeto:
 
 - **Sem endereço visível.** Cadastro como negócio de área de atendimento. A rua não
   aparece; o Google mostra "Manaus e região". Verificação costuma ser por vídeo.
@@ -111,4 +111,5 @@ de circuito à direita.
   `site/public/schema.json`, junto com Instagram e LinkedIn. O campo hoje não existe.
 - Pedir avaliação a GP Representação Comercial e RD Representações, os dois clientes
   reais. Sem oferecer nada em troca: o Google remove avaliação incentivada.
-- Search Console e Bing Webmaster continuam sem configurar.
+- Search Console **verificado em 2026-08-11** e sitemap enviado. Falta pedir indexação
+  das 4 URLs e importar tudo para o Bing Webmaster, que puxa do Search Console num clique.
