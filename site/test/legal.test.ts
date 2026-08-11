@@ -101,6 +101,43 @@ describe("a política de privacidade identifica o controlador", () => {
     expect(naPolitica, "a política e o rodapé divergiram no CNPJ").toBe(noRodape);
   });
 
+  /**
+   * O art. 41 da LGPD manda indicar encarregado. O art. 11 da Resolução
+   * CD/ANPD nº 2/2022 dispensa agentes de tratamento de pequeno porte dessa
+   * indicação — mas o § 1º cobra, em troca, um canal de comunicação com o
+   * titular. Rodrigo optou por invocar a dispensa em 2026-08-10; o
+   * enquadramento é declaração dele sobre a própria operação, não algo
+   * verificável a partir do repositório.
+   *
+   * O ponto frágil é a troca: quem remover o canal de contato derruba a
+   * contrapartida e deixa a página invocando uma dispensa que ela deixou de
+   * cumprir. Os dois são checados juntos, por isso.
+   */
+  const dispensa = privacidadeHtml.match(/<div id="encarregado">([\s\S]*?)<\/div>/);
+
+  it("declara o enquadramento e a dispensa com a base normativa certa", () => {
+    expect(dispensa, 'a seção <div id="encarregado"> sumiu').not.toBeNull();
+    expect(dispensa![1], "sumiu o enquadramento como pequeno porte")
+      .toMatch(/agente de tratamento de pequeno porte/);
+    expect(dispensa![1], "sumiu a resolução que embasa a dispensa")
+      .toMatch(/Resolução CD\/ANPD nº 2/);
+    expect(dispensa![1], "sumiu o art. 11, que é o que dispensa a indicação")
+      .toMatch(/art\. 11/);
+  });
+
+  // Cuidado com o escopo: procurar o wa.me no documento inteiro não serve de
+  // guarda nenhuma, porque o botão do WhatsApp na navbar casa com o mesmo
+  // padrão e faz o teste passar mesmo com o canal do titular removido. A
+  // primeira versão desta asserção tinha esse furo e passou batida no ensaio
+  // de remoção. O que precisa valer é a corrente inteira: a seção da dispensa
+  // aponta para a do controlador, e é lá que o canal tem que estar.
+  it("mantém a contrapartida do § 1º: sem encarregado, tem que haver canal", () => {
+    expect(dispensa![1], "a dispensa deixou de apontar para onde está o canal")
+      .toContain('href="#controlador"');
+    expect(secao![1], "a dispensa foi invocada mas o canal do titular sumiu da seção do controlador — o art. 11, § 1º cobra o canal em troca")
+      .toContain("wa.me/5592981486875");
+  });
+
   // Editar o texto de uma política datada sem mexer na data deixa publicado um
   // documento que mente sobre a própria vigência.
   it("a data de atualização acompanhou a última edição do texto", () => {
