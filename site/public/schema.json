@@ -12,6 +12,7 @@
       "telephone": "+5592981486875",
       "image": "https://nanoguara.ia.br/brand/og.png",
       "logo": "https://nanoguara.ia.br/brand/favicon.png",
+      "sameAs": ["https://www.instagram.com/nanoguara.ia/"],
       "audience": {
         "@type": "BusinessAudience",
         "name": "Clínicas e consultórios de saúde: estética, harmonização facial, odontologia, dermatologia, fisioterapia, psicologia e nutrição"
