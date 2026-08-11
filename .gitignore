@@ -10,6 +10,11 @@ docs/marketing/brand/posts/**/*.png
 docs/marketing/brand/posts/**/*.jpg
 docs/marketing/brand/posts/**/*.mp4
 docs/marketing/brand/posts/**/*.woff2
+# .svg e .pdf pela mesma razão, e faltavam: o avatar-chat.svg é cópia do que já
+# está em site/public/brand, e o copys-nanoguara-instagram-v2.pdf é saída do
+# build_pdf.py rodando sobre o copys.md — os dois versionados ao lado dele.
+docs/marketing/brand/posts/**/*.svg
+docs/marketing/brand/posts/**/*.pdf
 
 # Estado local de ferramenta, não código do projeto.
 .superpowers/

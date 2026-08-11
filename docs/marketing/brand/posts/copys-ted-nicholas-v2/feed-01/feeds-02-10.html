@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feeds 02–10 — nanoguará.ia</title>
+  <script>
+    document.documentElement.dataset.feed = new URLSearchParams(location.search).get("feed") || "02";
+  </script>
+  <style>
+    @font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "Geist"; src: url("assets/fonts/geist-500.woff2") format("woff2"); font-weight: 500; }
+
+    :root {
+      --w: 1080px;
+      --h: 1350px;
+      --cream: #fdf9f0;
+      --red: #ef5a4c;
+      --pad-x: 68px;
+      --brand-size: 30px;
+      --niche-size: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; margin: 0; background: #08120c; }
+    body { font-family: "Geist", sans-serif; }
+    .creative { position: relative; width: var(--w); height: var(--h); display: none; overflow: hidden; isolation: isolate; color: var(--cream); background: #123b26; }
+    html[data-feed="02"] #feed-02,
+    html[data-feed="03"] #feed-03,
+    html[data-feed="04"] #feed-04,
+    html[data-feed="05"] #feed-05,
+    html[data-feed="06"] #feed-06,
+    html[data-feed="07"] #feed-07,
+    html[data-feed="08"] #feed-08,
+    html[data-feed="09"] #feed-09,
+    html[data-feed="10"] #feed-10 { display: block; }
+
+    .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--photo-position, 50% 50%); }
+    .creative::before { position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, rgba(5,20,12,.92) 0%, rgba(5,20,12,.70) 32%, rgba(5,20,12,.16) 61%, rgba(5,20,12,.46) 100%), linear-gradient(90deg, rgba(5,20,12,.56) 0%, rgba(5,20,12,.10) 75%); content: ""; }
+    .creative::after { position: absolute; z-index: 2; right: -205px; bottom: -255px; width: 650px; height: 650px; border: 1px solid rgba(111,191,115,.22); border-radius: 50%; box-shadow: 0 0 0 82px rgba(111,191,115,.045), 0 0 0 164px rgba(111,191,115,.025); content: ""; }
+    .topbar { position: absolute; z-index: 4; top: 55px; right: var(--pad-x); left: var(--pad-x); display: flex; align-items: center; justify-content: space-between; }
+    .brand-lockup { display: flex; align-items: center; gap: 15px; }
+    .brand-lockup img { display: block; width: 58px; height: 58px; }
+    .brand-name { font: 600 var(--brand-size)/1 "Outfit", sans-serif; letter-spacing: -1px; }
+    .niche { color: rgba(253,249,240,.78); font: 500 var(--niche-size)/1 "Geist", sans-serif; letter-spacing: 1.8px; text-transform: uppercase; }
+    .headline { position: absolute; z-index: 4; top: 166px; right: var(--pad-x); left: var(--pad-x); max-width: var(--title-width, 900px); }
+    .headline h1 { margin: 0; color: var(--cream); font: 700 var(--hook-size, 74px)/.98 "Outfit", sans-serif; letter-spacing: -4px; text-wrap: balance; }
+    .headline h1 span { color: var(--red); }
+    .feed-02 { --photo-position: 50% 50%; --hook-size: 78px; --title-width: 870px; }
+    .feed-03 { --photo-position: 50% 50%; --hook-size: 78px; --title-width: 850px; }
+    .feed-04 { --photo-position: 50% 48%; --hook-size: 69px; --title-width: 900px; }
+    .feed-05 { --photo-position: 50% 48%; --hook-size: 68px; --title-width: 900px; }
+    .feed-06 { --photo-position: 50% 48%; --hook-size: 61px; --title-width: 910px; }
+    .feed-07 { --photo-position: 50% 50%; --hook-size: 72px; --title-width: 900px; }
+    .feed-08 { --photo-position: 50% 50%; --hook-size: 74px; --title-width: 900px; }
+    .feed-09 { --photo-position: 50% 48%; --hook-size: 70px; --title-width: 900px; }
+    .feed-10 { --photo-position: 50% 50%; --hook-size: 68px; --title-width: 910px; }
+  </style>
+</head>
+<body>
+  <article class="creative feed-02" id="feed-02">
+    <img class="photo" src="assets/feeds/feed-02.png" alt="Profissional encerrando o consultório enquanto outra pessoa espera" />
+    <header class="topbar"><div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div><span class="niche">Clínicas e consultórios</span></header>
+    <section class="headline"><h1>Seu consultório fecha.<br />A intenção de agendar, <span>não.</span></h1></section>
+  </article>
+
+  <article class="creative feed-03" id="feed-03">
+    <img class="photo" src="assets/feeds/feed-03.png" alt="Profissional administrando anotações e conversas pendentes" />
+    <header class="topbar"><div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div><span class="niche">Clínicas e consultórios</span></header>
+    <section class="headline"><h1>Não faltam conversas.<br />Sobram <span>pontas soltas.</span></h1></section>
+  </article>
+
+  <article class="creative feed-04" id="feed-04">
+    <img class="photo" src="assets/feeds/feed-04.png" alt="Equipe assumindo uma conversa quando necessária" />
+    <header class="topbar"><div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div><span class="niche">Clínicas e consultórios</span></header>
+    <section class="headline"><h1>A melhor IA da saúde sabe quando chamar um <span>humano.</span></h1></section>
+  </article>
+
+  <article class="creative feed-05" id="feed-05">
+    <img class="photo" src="assets/feeds/feed-05.png" alt="Profissional dividida entre tarefas administrativas e a pessoa que espera" />
+    <header class="topbar"><div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div><span class="niche">Clínicas e consultórios</span></header>
+    <section class="headline"><h1>Você não abriu um consultório para virar <span>central de mensagens.</span></h1></section>
+  </article>
+
+  <article class="creative feed-06" id="feed-06">
+    <img class="photo" src="assets/feeds/feed-06.png" alt="Pessoa recebendo um próximo passo claro na recepção" />
+    <header class="topbar"><div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div><span class="niche">Clínicas e consultórios</span></header>
+    <section class="headline"><h1>Resposta automática ruim é um beco. Atendimento inteligente <span>abre caminho.</span></h1></section>
+  </article>
+
+  <article class="creative feed-07" id="feed-07">
+    <img class="photo" src="assets/feeds/feed-07.png" alt="Pessoa sendo acolhida na recepção antes da consulta" />
+    <header class="topbar"><div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div><span class="niche">Clínicas e consultórios</span></header>
+    <section class="headline"><h1>Seu atendimento começa antes da <span>primeira consulta.</span></h1></section>
+  </article>
+
+  <article class="creative feed-08" id="feed-08">
+    <img class="photo" src="assets/feeds/feed-08.png" alt="Agenda de papel preenchida diante de uma cadeira de atendimento vazia" />
+    <header class="topbar"><div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div><span class="niche">Clínicas e consultórios</span></header>
+    <section class="headline"><h1>Agenda cheia no papel.<br />Horário vazio na <span>prática.</span></h1></section>
+  </article>
+
+  <article class="creative feed-09" id="feed-09">
+    <img class="photo" src="assets/feeds/feed-09.png" alt="Equipe organizando um fluxo de atendimento confuso" />
+    <header class="topbar"><div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div><span class="niche">Clínicas e consultórios</span></header>
+    <section class="headline"><h1>Mais mensagens não consertam um <span>fluxo quebrado.</span></h1></section>
+  </article>
+
+  <article class="creative feed-10" id="feed-10">
+    <img class="photo" src="assets/feeds/feed-10.png" alt="Profissional avaliando uma demonstração personalizada de atendimento" />
+    <header class="topbar"><div class="brand-lockup"><img src="assets/avatar-chat.svg" alt="" /><span class="brand-name">nanoguará.ia</span></div><span class="niche">Clínicas e consultórios</span></header>
+    <section class="headline"><h1>Veja o assistente atendendo sua rotina antes de <span>decidir.</span></h1></section>
+  </article>
+</body>
+</html>

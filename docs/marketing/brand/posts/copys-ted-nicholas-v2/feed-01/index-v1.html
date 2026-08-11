@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feed 01 — Duas pessoas esperando — nanoguará.ia</title>
+  <style>
+    @font-face {
+      font-family: "Outfit";
+      src: url("assets/fonts/outfit-700.woff2") format("woff2");
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: "Outfit";
+      src: url("assets/fonts/outfit-600.woff2") format("woff2");
+      font-weight: 600;
+    }
+    @font-face {
+      font-family: "Geist";
+      src: url("assets/fonts/geist-400.woff2") format("woff2");
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: "Geist";
+      src: url("assets/fonts/geist-500.woff2") format("woff2");
+      font-weight: 500;
+    }
+
+    :root {
+      --canvas-width: 1080px;
+      --canvas-height: 1350px;
+      --paper: #f7f9f5;
+      --cream: #fdf9f0;
+      --deep: #123b26;
+      --ink: #17231b;
+      --muted: #5e6e63;
+      --green: #2e7d32;
+      --red: #d5382f;
+      --line: #d6dfd8;
+      --pad-x: 68px;
+      --type-brand: 30px;
+      --type-niche: 20px;
+      --type-hook: 66px;
+      --type-title: 44px;
+      --type-body: 25px;
+      --type-chat: 20px;
+      --type-benefit: 22px;
+      --gap-main: 48px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: #08120c;
+    }
+
+    body {
+      font-family: "Geist", sans-serif;
+    }
+
+    .creative {
+      position: relative;
+      width: var(--canvas-width);
+      height: var(--canvas-height);
+      overflow: hidden;
+      isolation: isolate;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    .creative::before {
+      position: absolute;
+      top: 320px;
+      left: -240px;
+      width: 780px;
+      height: 780px;
+      border-radius: 50%;
+      background: var(--deep);
+      content: "";
+    }
+
+    .creative::after {
+      position: absolute;
+      top: -330px;
+      right: -270px;
+      width: 700px;
+      height: 700px;
+      border: 1px solid rgba(46, 125, 50, 0.14);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 90px rgba(46, 125, 50, 0.025),
+        0 0 0 180px rgba(46, 125, 50, 0.018);
+      content: "";
+    }
+
+    .topbar {
+      position: absolute;
+      z-index: 10;
+      top: 55px;
+      right: var(--pad-x);
+      left: var(--pad-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--deep);
+    }
+
+    .brand-lockup img {
+      display: block;
+      width: 58px;
+      height: 58px;
+    }
+
+    .brand-name {
+      font: 600 var(--type-brand)/1 "Outfit", sans-serif;
+      letter-spacing: -1px;
+    }
+
+    .niche {
+      color: var(--green);
+      font: 500 var(--type-niche)/1 "Geist", sans-serif;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      position: absolute;
+      z-index: 2;
+      top: 150px;
+      right: var(--pad-x);
+      left: var(--pad-x);
+    }
+
+    .headline h1 {
+      width: 920px;
+      margin: 0;
+      color: var(--deep);
+      font: 700 var(--type-hook)/0.96 "Outfit", sans-serif;
+      letter-spacing: -3.8px;
+      text-wrap: balance;
+    }
+
+    .headline h1 span {
+      color: var(--red);
+    }
+
+    .main {
+      position: absolute;
+      z-index: 2;
+      top: 402px;
+      right: var(--pad-x);
+      bottom: 62px;
+      left: var(--pad-x);
+      display: grid;
+      grid-template-columns: 450px minmax(0, 1fr);
+      gap: var(--gap-main);
+      align-items: start;
+    }
+
+    .phone {
+      position: relative;
+      height: 730px;
+      padding: 20px;
+      border-radius: 58px;
+      background: #08140d;
+      box-shadow:
+        0 28px 75px rgba(8, 20, 13, 0.23),
+        0 0 0 9px rgba(111, 191, 115, 0.10),
+        0 0 58px rgba(111, 191, 115, 0.32);
+      transform: rotate(-1.8deg);
+    }
+
+    .phone::before {
+      position: absolute;
+      z-index: 3;
+      top: 12px;
+      left: 50%;
+      width: 130px;
+      height: 27px;
+      border-radius: 0 0 18px 18px;
+      background: #08140d;
+      content: "";
+      transform: translateX(-50%);
+    }
+
+    .phone-screen {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      padding: 40px 24px 25px;
+      border-radius: 42px;
+      background: #f0f3ef;
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid #dce4dd;
+    }
+
+    .chat-header img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .chat-header strong {
+      display: block;
+      color: var(--ink);
+      font: 600 22px/1 "Outfit", sans-serif;
+    }
+
+    .chat-header span {
+      display: block;
+      margin-top: 7px;
+      color: var(--green);
+      font: 500 17px/1 "Geist", sans-serif;
+    }
+
+    .bubbles {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 24px;
+    }
+
+    .bubble {
+      max-width: 92%;
+      padding: 17px 18px 15px;
+      border-radius: 18px;
+      font: 400 var(--type-chat)/1.32 "Geist", sans-serif;
+    }
+
+    .bubble.patient {
+      align-self: flex-start;
+      border-bottom-left-radius: 5px;
+      background: #e7ece8;
+      color: var(--ink);
+    }
+
+    .bubble.assistant {
+      align-self: flex-end;
+      border-bottom-right-radius: 5px;
+      background: var(--red);
+      color: #ffffff;
+    }
+
+    .booking-status {
+      position: absolute;
+      right: 24px;
+      bottom: 26px;
+      left: 24px;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 13px;
+      align-items: center;
+      padding: 15px 17px;
+      border: 1px solid #a9c9ad;
+      border-radius: 18px;
+      color: #194026;
+      background: rgba(220, 233, 220, 0.96);
+      box-shadow: 0 10px 26px rgba(46, 125, 50, 0.10);
+    }
+
+    .status-icon {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .status-icon::before {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      width: 10px;
+      height: 6px;
+      border-bottom: 3px solid #ffffff;
+      border-left: 3px solid #ffffff;
+      content: "";
+      transform: rotate(-45deg);
+    }
+
+    .booking-status strong {
+      display: block;
+      font: 600 17px/1.05 "Outfit", sans-serif;
+    }
+
+    .booking-status small {
+      display: block;
+      margin-top: 5px;
+      color: #4f6f56;
+      font: 400 14px/1 "Geist", sans-serif;
+    }
+
+    .copy {
+      min-width: 0;
+      padding-top: 9px;
+    }
+
+    .label {
+      display: inline-block;
+      color: var(--red);
+      font: 600 21px/1 "Geist", sans-serif;
+      letter-spacing: 1.45px;
+      text-transform: uppercase;
+    }
+
+    .copy h2 {
+      margin: 20px 0 22px;
+      color: var(--deep);
+      font: 700 var(--type-title)/1.03 "Outfit", sans-serif;
+      letter-spacing: -2.2px;
+      text-wrap: balance;
+    }
+
+    .copy > p {
+      margin: 0 0 30px;
+      color: var(--muted);
+      font: 400 var(--type-body)/1.34 "Geist", sans-serif;
+      text-wrap: pretty;
+    }
+
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 31px;
+      border-top: 1px solid var(--line);
+    }
+
+    .benefit {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: center;
+      min-height: 70px;
+      border-bottom: 1px solid var(--line);
+      color: var(--deep);
+      font: 500 var(--type-benefit)/1.15 "Geist", sans-serif;
+    }
+
+    .benefit b {
+      color: var(--red);
+      font: 700 20px/1 "Outfit", sans-serif;
+    }
+
+    .process {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 7px;
+      margin-bottom: 30px;
+      color: var(--green);
+      font: 500 14px/1 "Geist", sans-serif;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+    }
+
+    .process i {
+      flex: 0 0 12px;
+      width: 12px;
+      height: 1px;
+      background: #a8b8ab;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 92px;
+      padding: 0 36px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: var(--red);
+      font: 600 28px/1 "Outfit", sans-serif;
+      letter-spacing: -0.4px;
+      white-space: nowrap;
+    }
+
+    .arrow {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      margin-left: 18px;
+    }
+
+    .arrow::before {
+      position: absolute;
+      top: 14px;
+      left: 2px;
+      width: 22px;
+      height: 2px;
+      background: currentcolor;
+      content: "";
+    }
+
+    .arrow::after {
+      position: absolute;
+      top: 9px;
+      right: 3px;
+      width: 11px;
+      height: 11px;
+      border-top: 2px solid currentcolor;
+      border-right: 2px solid currentcolor;
+      content: "";
+      transform: rotate(45deg);
+    }
+
+    .micro {
+      margin-top: 15px;
+      color: #768279;
+      font: 400 16px/1.25 "Geist", sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <article class="creative">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img src="assets/avatar-chat.svg" alt="" />
+        <span class="brand-name">nanoguará.ia</span>
+      </div>
+      <span class="niche">Clínicas e consultórios</span>
+    </header>
+
+    <section class="headline">
+      <h1>Você atende uma pessoa.<br />O WhatsApp não deveria <span>perder outra.</span></h1>
+    </section>
+
+    <section class="main">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="chat-header">
+            <img src="assets/avatar-chat.svg" alt="" />
+            <div>
+              <strong>Assistente da clínica</strong>
+              <span>online agora</span>
+            </div>
+          </div>
+
+          <div class="bubbles">
+            <div class="bubble patient">Oi! Como funciona o primeiro atendimento?</div>
+            <div class="bubble assistant">Posso explicar e verificar os horários disponíveis para você.</div>
+            <div class="bubble patient">Pode ser na quinta à tarde?</div>
+            <div class="bubble assistant">Vou consultar as opções disponíveis.</div>
+          </div>
+
+          <div class="booking-status">
+            <span class="status-icon"></span>
+            <span>
+              <strong>Conversa em andamento</strong>
+              <small>Próximo passo organizado</small>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="copy">
+        <span class="label">Duas pessoas esperando</span>
+        <h2>Você cuida de quem está presente.</h2>
+        <p>O assistente organiza as conversas administrativas de quem chega pelo WhatsApp.</p>
+
+        <div class="benefits">
+          <div class="benefit"><b>01</b><span>Informações aprovadas</span></div>
+          <div class="benefit"><b>02</b><span>Apoio ao agendamento</span></div>
+          <div class="benefit"><b>03</b><span>Equipe assume o clínico</span></div>
+        </div>
+
+        <div class="process">
+          <span>Responde</span>
+          <i></i>
+          <span>Orienta</span>
+          <i></i>
+          <span>Encaminha</span>
+        </div>
+
+        <div class="cta">Solicitar demonstração<span class="arrow"></span></div>
+        <div class="micro">Com as perguntas reais do seu consultório</div>
+      </div>
+    </section>
+  </article>
+</body>
+</html>

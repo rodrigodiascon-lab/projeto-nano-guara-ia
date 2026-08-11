@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feed 01 — Duas pessoas esperando — nanoguará.ia</title>
+  <style>
+    @font-face {
+      font-family: "Outfit";
+      src: url("assets/fonts/outfit-700.woff2") format("woff2");
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: "Outfit";
+      src: url("assets/fonts/outfit-600.woff2") format("woff2");
+      font-weight: 600;
+    }
+    @font-face {
+      font-family: "Geist";
+      src: url("assets/fonts/geist-500.woff2") format("woff2");
+      font-weight: 500;
+    }
+
+    :root {
+      --canvas-width: 1080px;
+      --canvas-height: 1350px;
+      --cream: #fdf9f0;
+      --deep: #123b26;
+      --green: #2e7d32;
+      --red: #ef5a4c;
+      --pad-x: 68px;
+      --type-brand: 30px;
+      --type-niche: 20px;
+      --type-hook: 78px;
+      --gap-hook: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: #08120c;
+    }
+
+    body {
+      font-family: "Geist", sans-serif;
+    }
+
+    .creative {
+      position: relative;
+      width: var(--canvas-width);
+      height: var(--canvas-height);
+      overflow: hidden;
+      isolation: isolate;
+      color: var(--cream);
+      background: var(--deep);
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 45%;
+    }
+
+    .creative::before {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 20, 12, 0.93) 0%, rgba(5, 20, 12, 0.72) 31%, rgba(5, 20, 12, 0.12) 58%, rgba(5, 20, 12, 0.44) 100%),
+        linear-gradient(90deg, rgba(5, 20, 12, 0.52) 0%, rgba(5, 20, 12, 0.10) 72%);
+      content: "";
+    }
+
+    .creative::after {
+      position: absolute;
+      z-index: 2;
+      right: -190px;
+      bottom: -255px;
+      width: 650px;
+      height: 650px;
+      border: 1px solid rgba(111, 191, 115, 0.22);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 82px rgba(111, 191, 115, 0.045),
+        0 0 0 164px rgba(111, 191, 115, 0.025);
+      content: "";
+    }
+
+    .topbar {
+      position: absolute;
+      z-index: 4;
+      top: 55px;
+      right: var(--pad-x);
+      left: var(--pad-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand-lockup img {
+      display: block;
+      width: 58px;
+      height: 58px;
+    }
+
+    .brand-name {
+      font: 600 var(--type-brand)/1 "Outfit", sans-serif;
+      letter-spacing: -1px;
+    }
+
+    .niche {
+      color: rgba(253, 249, 240, 0.78);
+      font: 500 var(--type-niche)/1 "Geist", sans-serif;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      position: absolute;
+      z-index: 4;
+      top: 166px;
+      right: var(--pad-x);
+      left: var(--pad-x);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-hook);
+      max-width: 920px;
+    }
+
+    .headline p {
+      margin: 0;
+      color: var(--cream);
+      font: 700 var(--type-hook)/0.98 "Outfit", sans-serif;
+      letter-spacing: -4.2px;
+      text-wrap: balance;
+    }
+
+    .headline .second span {
+      color: var(--red);
+    }
+
+  </style>
+</head>
+<body>
+  <article class="creative">
+    <img class="scene" src="assets/duas-pessoas.png" alt="Profissional de saúde atendendo uma paciente enquanto um celular aguarda ao fundo" />
+
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img src="assets/avatar-chat.svg" alt="" />
+        <span class="brand-name">nanoguará.ia</span>
+      </div>
+      <span class="niche">Clínicas e consultórios</span>
+    </header>
+
+    <section class="headline" aria-label="Você atende uma pessoa. O WhatsApp não deveria perder outra.">
+      <p>Você atende uma pessoa.</p>
+      <p class="second">O WhatsApp não deveria <span>perder outra.</span></p>
+    </section>
+
+  </article>
+</body>
+</html>
