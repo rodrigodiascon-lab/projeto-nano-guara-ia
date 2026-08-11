@@ -7,3 +7,10 @@
 # em 200 sob /node_modules/. Apagar a pasta não resolve — ela volta no teste
 # seguinte. Ver test/index.test.ts.
 node_modules
+
+# Mesma história, outra ferramenta: o claude-flow guarda estado em
+# public/.claude-flow. O padrão que interessa aqui não é "node_modules", é
+# "ferramenta de desenvolvimento escolhendo sozinha um diretório de trabalho
+# que por acaso é o diretório publicado". Quem for adicionar uma ferramenta
+# nova ao projeto, confira onde ela escreve antes de rodar o deploy.
+.claude-flow

@@ -68,16 +68,27 @@ describe("router", () => {
    * barra qualquer coisa que ainda apareça lá. Apagar a pasta não conta como
    * correção — ela volta no `npm test` seguinte.
    */
-  it("nada sob /node_modules é servido", async () => {
-    for (const p of ["/node_modules/.vite/vitest/x/deps_ssr/package.json", "/node_modules/"]) {
+  it("nenhum cache de ferramenta é servido", async () => {
+    for (const p of [
+      "/node_modules/.vite/vitest/x/deps_ssr/package.json",
+      "/node_modules/",
+      "/.claude-flow/neural/patterns.json",
+      "/.claude-flow/policy/state.json",
+    ]) {
       const res = await SELF.fetch(`https://site.local${p}`);
       expect(res.status, `${p} respondeu ${res.status}`).toBe(404);
     }
   });
 
-  it("o .assetsignore barra node_modules no deploy dos assets", () => {
-    expect(assetsIgnore.split("\n").map((l) => l.trim()))
-      .toContain("node_modules");
+  // Dois casos já apareceram, de ferramentas diferentes: o Vite e o
+  // claude-flow. Ambos escolheram sozinhos escrever dentro de public, e ambos
+  // eram invisíveis no `git status`. É lista de exclusão, não de bons modos:
+  // ferramenta nova no projeto exige conferir onde ela escreve.
+  it("o .assetsignore barra os caches de ferramenta conhecidos", () => {
+    const linhas = assetsIgnore.split("\n").map((l) => l.trim());
+    for (const cache of ["node_modules", ".claude-flow"]) {
+      expect(linhas, `${cache} saiu do .assetsignore`).toContain(cache);
+    }
   });
 
   it("o cache do Vite é apontado para fora de public", () => {
