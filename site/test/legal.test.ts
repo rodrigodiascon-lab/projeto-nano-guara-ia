@@ -6,17 +6,21 @@ import indexHtml from "../public/index.html?raw";
 import portfolioHtml from "../public/portfolio.html?raw";
 import privacidadeHtml from "../public/privacidade.html?raw";
 import clinicasHtml from "../public/servicos/sites-para-clinicas-de-estetica-em-manaus.html?raw";
+import consultoriosHtml from "../public/iaparaconsultorios.html?raw";
+import barbeariasHtml from "../public/guarabot/barbearias.html?raw";
 
 const RAZAO_SOCIAL = "R D Pimentel Serviços";
 const CNPJ = "21.091.816/0001-48";
 
-// As quatro páginas HTML públicas repetem o mesmo rodapé na mão. Toda guarda de
-// rodapé vale para as quatro, senão a próxima edição conserta uma e esquece três.
+// As páginas HTML públicas repetem o mesmo rodapé na mão. Toda guarda de
+// rodapé vale para todas, senão a próxima edição conserta uma e esquece as outras.
 const PAGINAS = {
   "index.html": indexHtml,
   "portfolio.html": portfolioHtml,
   "privacidade.html": privacidadeHtml,
   "servicos/sites-para-clinicas-de-estetica-em-manaus.html": clinicasHtml,
+  "iaparaconsultorios.html": consultoriosHtml,
+  "guarabot/barbearias.html": barbeariasHtml,
 };
 
 /**
@@ -143,7 +147,7 @@ describe("a política de privacidade identifica o controlador", () => {
   it("a data de atualização acompanhou a última edição do texto", () => {
     const data = privacidadeHtml.match(/Última atualização: ([^<.]+)/)?.[1];
     expect(data, "o carimbo de atualização sumiu").toBeTruthy();
-    expect(data, "a data ficou para trás da edição que nomeou o controlador")
-      .toBe("10 de agosto de 2026");
+    expect(data, "a data ficou para trás da edição que incluiu o questionário do guara.bot")
+      .toBe("15 de setembro de 2026");
   });
 });

@@ -27,6 +27,10 @@ const PAGINAS = [
   { nome: "portfólio", url: "/portfolio.html", temFormulario: false },
   { nome: "serviço: clínicas", url: "/servicos/sites-para-clinicas-de-estetica-em-manaus.html", temFormulario: false },
   { nome: "404", url: "/404.html", temFormulario: false },
+  // temFormulario false de propósito: o Turnstile desta página só é renderizado
+  // quando o quiz chega na última etapa, então não existe na primeira tela.
+  { nome: "captura: iaparaconsultorios", url: "/iaparaconsultorios.html", temFormulario: false },
+  { nome: "landing: guarabot barbearias", url: "/guarabot/barbearias.html", temFormulario: false },
 ];
 
 /**
@@ -119,6 +123,51 @@ test.describe("nenhuma página rola na horizontal", () => {
         ).toBe(0);
       });
     }
+  }
+});
+
+/**
+ * A captura /iaparaconsultorios é um quiz: a primeira tela não mostra o que
+ * vaza. A rolagem lateral nasceu na última etapa (botão final com nowrap
+ * alargando a coluna do grid), com a etapa 1 medindo zero. Por isso aqui se
+ * percorre o quiz até o fim e mede lá.
+ */
+test.describe("captura iaparaconsultorios não rola na horizontal na última etapa", () => {
+  for (const largura of [320, 360, 375]) {
+    test(`etapa final a ${largura}px`, async ({ page }) => {
+      await page.setViewportSize({ width: largura, height: 800 });
+      await page.goto("/iaparaconsultorios.html");
+      const escolhe = (nome: string, valor: string) =>
+        page.locator(`input[name="${nome}"][value="${valor}"]`).click({ force: true });
+      await escolhe("segmento", "Odontologia");
+      await escolhe("equipe", "1 a 3 atendentes");
+      await escolhe("volume", "301 a 1.000");
+      await escolhe("integrar", "Sim");
+      await escolhe("software", "Feegow");
+      await expect(page.locator("#etapa6")).toBeVisible();
+
+      const medida = await page.evaluate(() => ({
+        scrollWidth: document.documentElement.scrollWidth,
+        clientWidth: document.documentElement.clientWidth,
+      }));
+      const sobra = medida.scrollWidth - medida.clientWidth;
+      const quem = sobra > 0 ? await culpados(page) : [];
+      expect(sobra, `etapa final a ${largura}px sobrou ${sobra}px. Quem passa da borda: ${JSON.stringify(quem)}`).toBe(0);
+
+      // Rolagem zero não basta: a primeira correção só trocou o vazamento por
+      // texto recortado dentro do botão (overflow:hidden do .btn-primario).
+      const botao = await page.evaluate(() => {
+        const b = document.getElementById("btnFinalizar") as HTMLElement;
+        const t = b.querySelector(".btn-texto") as HTMLElement;
+        const br = b.getBoundingClientRect();
+        const tr = t.getBoundingClientRect();
+        return { botaoEsq: br.left, botaoDir: br.right, textoEsq: tr.left, textoDir: tr.right };
+      });
+      expect(
+        botao.textoEsq >= botao.botaoEsq - 0.5 && botao.textoDir <= botao.botaoDir + 0.5,
+        `texto do botão final recortado a ${largura}px: ${JSON.stringify(botao)}`
+      ).toBe(true);
+    });
   }
 });
 
