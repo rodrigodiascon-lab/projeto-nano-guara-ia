@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <style>
+    @font-face { font-family: Outfit; src: url(01/assets/outfit-700.woff2); font-weight: 700; }
+    @font-face { font-family: Geist; src: url(01/assets/geist-500.woff2); font-weight: 500; }
+    * { box-sizing: border-box; }
+    body { margin: 0; width: 1080px; height: 1350px; overflow: hidden; background: #123b26; color: #fdf9f0; }
+    .page { position: relative; width: 1080px; height: 1350px; padding: 66px 70px; overflow: hidden; background: var(--bg); }
+    .cover-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .cover-shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 43%, #07130b 43%); }
+    .layout { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
+    .brand { display: flex; align-items: center; gap: 14px; color: #fdf9f0; font: 700 28px Outfit; letter-spacing: -.6px; }
+    .brand img { width: 47px; height: 47px; }
+    .eyebrow { margin-top: auto; color: #ef5a4c; font: 500 20px Geist; letter-spacing: 2.2px; }
+    h1 { margin: 22px 0 38px; max-width: 905px; font: 700 67px/.94 Outfit; letter-spacing: -3.6px; text-wrap: balance; }
+    .swipe { color: #d9e2d9; font: 500 20px Geist; letter-spacing: .3px; }
+    .page:not(.inner) .brand { align-self: flex-start; padding: 11px 17px 11px 12px; border-radius: 999px; background: rgba(7, 19, 11, .78); backdrop-filter: blur(8px); }
+    .page:not(.inner) .eyebrow { margin-top: 500px; }
+    .page:not(.inner) h1 { margin-top: 21px; margin-bottom: 26px; font-size: 70px; line-height: .92; letter-spacing: -4px; }
+    .page:not(.inner) .swipe { color: #d9e2d9; }
+    .inner .cover-photo, .inner .cover-shade { display: none; }
+    .inner:before, .inner:after { content: ''; position: absolute; pointer-events: none; }
+    .inner:before { width: 650px; height: 650px; right: -250px; top: -205px; border: 2px solid var(--accent2); border-radius: 50%; box-shadow: 0 0 0 50px color-mix(in srgb, var(--accent2) 18%, transparent), 0 0 0 130px color-mix(in srgb, var(--accent2) 9%, transparent); }
+    .inner:after { width: 220px; height: 220px; left: -85px; bottom: -65px; background: var(--accent); border-radius: 50% 50% 0 50%; transform: rotate(25deg); }
+    .inner .layout { justify-content: center; }
+    .inner .brand { position: absolute; top: 0; left: 0; }
+    .inner .eyebrow { position: absolute; top: 98px; left: 0; margin: 0; }
+    .inner h1 { margin: 105px 0 0; font-size: 83px; line-height: .99; letter-spacing: -4.7px; }
+    .inner .swipe { position: absolute; left: 0; bottom: 2px; max-width: 690px; color: #c7d4c9; }
+    .number { position: absolute; z-index: 3; right: 70px; bottom: 66px; color: var(--accent); font: 700 30px Outfit; letter-spacing: .8px; }
+    .inner.variant-1 { background: linear-gradient(135deg, #0f3421 0%, #15472b 100%); }
+    .inner.variant-2 { background: #fdf9f0; color: #123b26; }
+    .inner.variant-2 .brand { color: #123b26; } .inner.variant-2 .swipe { color: #52665a; }
+    .inner.variant-3 { background: #123b26; }
+    .inner.variant-4 { background: linear-gradient(160deg, #193f2b, #0d291b); }
+    .inner.variant-5 { background: #e94e43; color: #fdf9f0; }
+    .inner.variant-5:after { background: #fdf9f0; } .inner.variant-5:before { border-color: #fdf9f0; box-shadow: 0 0 0 50px #d9443a, 0 0 0 130px #c83e35; }
+    .inner.variant-5 .eyebrow, .inner.variant-5 .number { color: #123b26; } .inner.variant-5 .swipe { color: #fff3ec; }
+    .inner.variant-6 { background: #092116; }
+    .inner.variant-7 { background: linear-gradient(135deg, #fdf9f0, #e7efe5); color: #123b26; }
+    .inner.variant-7 .brand { color: #123b26; } .inner.variant-7 .swipe { color: #52665a; }
+    .inner.variant-8 { background: #2e7d32; }
+    .inner.variant-9 { background: #123b26; }
+    .inner.variant-10 { background: linear-gradient(145deg, #133c27, #286d2e); }
+  </style>
+</head>
+<body>
+  <main class="page"><img class="cover-photo" alt=""><div class="cover-shade"></div><div class="layout"><div class="brand"><img src="01/assets/avatar-chat.svg" alt="">nanoguará.ia</div><div class="eyebrow"></div><h1></h1><div class="swipe"></div></div><div class="number"></div></main>
+  <script>
+    const carousels = {
+      1:{label:'O SEGUNDO EXPEDIENTE INVISÍVEL', cover:'01/assets/capa.png', accent:'#ef5a4c', accent2:'#2e7d32', slides:['O segundo expediente do profissional de saúde começa quando o consultório fecha.','É quando você responde os horários que chegaram durante o atendimento.','Procura a conversa de quem pediu para remarcar.','Confere se alguém ficou esperando uma confirmação.','E tenta lembrar qual mensagem precisava de uma resposta “depois”.','O problema não é o WhatsApp. É carregar sozinho toda a memória do fluxo.','Um assistente pode cuidar do repetível e chamar você quando o assunto exigir decisão humana.','Seu expediente termina melhor quando as conversas não dependem apenas da sua cabeça.']},
+      2:{label:'O QUE A IA RESOLVE E ONDE DEVE PARAR', cover:'02/assets/capa.png', accent:'#ef5a4c', accent2:'#2e7d32', slides:['IA no consultório: o que ela resolve e onde deve parar.','Pode apresentar serviços e explicar como funciona o primeiro atendimento.','Pode informar localização, horários e dados administrativos previamente aprovados.','Pode apoiar agendamentos, confirmações e remarcações conforme o fluxo configurado.','Não deve diagnosticar, interpretar sintomas ou recomendar condutas.','Não deve improvisar quando a pergunta ultrapassa o escopo.','Nessa hora, deve encaminhar a conversa para o profissional ou para a equipe.','Automação responsável não responde tudo. Responde bem o que realmente lhe cabe.']},
+      3:{label:'ANATOMIA DE UM AGENDAMENTO SEM ATRITO', cover:'03/assets/capa.png', accent:'#ef5a4c', accent2:'#2e7d32', slides:['Anatomia de um agendamento que não cansa ninguém.','1. A pessoa pergunta. A conversa entende o que ela procura.','2. Recebe informações claras, sem um bloco de texto genérico.','3. Conhece o próximo passo adequado: avaliação, consulta ou contato com a equipe.','4. Vê opções compatíveis com o fluxo do consultório.','5. Confirma os dados necessários sem repetir tudo para outra pessoa.','6. Se surgir uma questão clínica, o profissional assume com contexto.','Agendar deveria parecer uma conversa organizada, não uma prova de resistência.']},
+      4:{label:'CINCO SINAIS DE GARGALO', cover:'04/assets/capa.png', accent:'#ef5a4c', accent2:'#2e7d32', slides:['5 sinais de que o WhatsApp virou o gargalo do consultório.','1. A mesma pergunta recebe respostas diferentes dependendo de quem atende.','2. Você abre a conversa, é interrompido e esquece de voltar.','3. Mensagens simples esperam porque todas chegam na mesma fila.','4. O histórico só faz sentido para quem acompanhou desde o começo.','5. O expediente termina, mas a caixa de entrada continua na sua cabeça.','Isso não é falta de esforço. É um processo que cresceu sem estrutura.','Automação começa organizando o caminho - não apenas acelerando respostas.']},
+      5:{label:'O PROBLEMA NÃO É SER AUTOMÁTICO', cover:'05/assets/capa.png', accent:'#123b26', accent2:'#fdf9f0', slides:['O paciente não odeia automação. Odeia ficar preso nela.','Odeia escolher opções que não combinam com a pergunta.','Odeia repetir tudo quando finalmente fala com alguém.','Odeia receber “não entendi” depois de explicar com clareza.','Odeia perceber que não existe saída para falar com a equipe.','Boa automação entende o escopo, conduz a conversa e oferece uma passagem humana.','O objetivo não é parecer humano. É tratar a pessoa com inteligência.']},
+      6:{label:'O CUSTO DE RESPONDER TUDO SOZINHO', cover:'06/assets/capa.png', accent:'#ef5a4c', accent2:'#2e7d32', slides:['Quanto custa continuar respondendo tudo sozinho?','Não olhe apenas para dinheiro. Comece pelas interrupções.','Some o tempo de localizar conversas, repetir respostas e lembrar pendências.','Inclua a atenção que sai do atendimento toda vez que o celular vibra.','Acrescente o expediente que continua mentalmente depois que a porta fecha.','Agora compare com o que poderia ser padronizado, organizado ou encaminhado automaticamente.','O preço da solução depende do escopo. O custo da desorganização já existe.','Antes de negociar valor, mapeie o trabalho invisível que você quer recuperar.']},
+      7:{label:'ANTES DE AUMENTAR A EQUIPE', cover:'07/assets/capa.png', accent:'#ef5a4c', accent2:'#2e7d32', slides:['Antes de contratar mais alguém, mapeie estas quatro filas.','FILA 1: perguntas administrativas que se repetem todos os dias.','FILA 2: agendamentos, confirmações e pedidos de remarcação.','FILA 3: exceções que realmente precisam da equipe.','FILA 4: assuntos clínicos que pertencem ao profissional.','Misturar tudo obriga pessoas qualificadas a tratar cada mensagem como única.','Separar as filas mostra o que automatizar, o que apoiar e o que preservar.','Tecnologia não substitui planejamento de equipe. Torna o planejamento mais inteligente.']},
+      8:{label:'SETE MENSAGENS QUE NÃO DEVERIAM INTERROMPER UMA CONSULTA', cover:'08/assets/capa.png', accent:'#ef5a4c', accent2:'#2e7d32', slides:['7 mensagens que não deveriam interromper uma consulta.','Qual é o endereço e como chego aí?','Quais são os horários de atendimento?','Como funciona a primeira consulta?','Quais serviços vocês oferecem?','Tem disponibilidade nesta semana?','Preciso confirmar ou remarcar meu horário.','Com quem falo sobre uma questão clínica? Essa, sim, precisa chegar à pessoa certa.']},
+      9:{label:'PRESENÇA PROTEGIDA', cover:'09/assets/capa.png', accent:'#ef5a4c', accent2:'#2e7d32', slides:['A IA não substitui seu cuidado. Protege o espaço dele.','Quando o celular vibra, uma parte da sua atenção sai da sala.','Mesmo sem responder, sua cabeça registra a pendência.','Ao fim do dia, pequenas pendências viram cansaço sem nome.','O assistente absorve o que é repetível e organiza o que precisa de você.','Assim, a tecnologia fica nos bastidores - e sua presença volta ao centro.','O futuro do atendimento não é menos humano. É menos interrompido.']},
+      10:{label:'TESTE DE PRONTIDÃO', cover:'10/assets/capa.png', accent:'#ef5a4c', accent2:'#2e7d32', slides:['Seu consultório está pronto para um assistente de IA?','Você consegue listar as perguntas administrativas mais frequentes?','As informações oficiais estão atualizadas e aprovadas?','O caminho do primeiro contato até o agendamento está claro?','Sua equipe sabe quais conversas precisam de intervenção humana?','Existe um limite explícito entre administrativo e clínico?','Se respondeu “não” a algo, ótimo: você encontrou o que organizar primeiro.','Uma boa demonstração revela o fluxo - inclusive os pontos que ainda precisam de decisão.']}
+    };
+    const q = new URLSearchParams(location.search), c = Number(q.get('c') || 1), s = Number(q.get('slide') || 1), data = carousels[c];
+    const page = document.querySelector('.page'), photo = document.querySelector('.cover-photo'), title = document.querySelector('h1'), eyebrow = document.querySelector('.eyebrow'), swipe = document.querySelector('.swipe'), number = document.querySelector('.number');
+    page.style.setProperty('--accent', data.accent); page.style.setProperty('--accent2', data.accent2); photo.src = data.cover; title.textContent = data.slides[s-1];
+    if (s === 1) { eyebrow.textContent = `CARROSSEL ${String(c).padStart(2,'0')} · ARRASTE`; swipe.textContent = 'Deslize para entender o fluxo.'; }
+    else { page.classList.add('inner', `variant-${c}`); eyebrow.textContent = data.label; swipe.textContent = s === data.slides.length ? 'nanoguará.ia · automação de WhatsApp para saúde' : 'Continue →'; number.textContent = `${String(s).padStart(2,'0')} / ${String(data.slides.length).padStart(2,'0')}`; }
+  </script>
+</body>
+</html>

@@ -8,6 +8,18 @@ Site institucional da **nanoguará.ia**, agência de IA para **clínicas e consu
 
 > Este README é o ponto de entrada. Os documentos detalhados de cada fase do planejamento ficam em [`docs/`](docs/) — este arquivo indexa e resume, não substitui.
 
+## Mapa rápido do repositório
+
+| Caminho | Conteúdo | Comece por |
+|---|---|---|
+| [`site/`](site/) | Aplicação publicada: Worker, páginas, APIs, testes e deploy | [`site/README.md`](site/README.md) |
+| [`docs/`](docs/) | Produto, engenharia, operação, design, marketing e histórico | [`docs/README.md`](docs/README.md) |
+| [`docs/marketing/`](docs/marketing/) | Marca, campanhas, Meta Ads, Instagram e Perfil da Empresa no Google | [`docs/marketing/README.md`](docs/marketing/README.md) |
+| [`videos/`](videos/) | Projetos-fonte de vídeo e suas configurações de renderização | [`videos/README.md`](videos/README.md) |
+| [`assets/`](assets/) | Arquivos de trabalho e referências que não são publicados pelo site | [`assets/README.md`](assets/README.md) |
+
+Regra prática: tudo em `site/public/` pode se tornar público no próximo deploy. Materiais editáveis e fontes de campanha devem ficar em `docs/marketing/`, `videos/` ou `assets/`, conforme o tipo.
+
 ## Origem do nome e da marca
 
 **nanoguará vem de guaraná** (o fruto amazônico) — não do pássaro guará/íbis-escarlate. O logotipo (`site/public/brand/marca.svg`) representa a cápsula do guaraná partida, que no folclore amazônico é descrita como parecendo um olho:

@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARTRIN — Lixeira com Pedal New Tramontina</title>
+  <style>
+    @font-face {
+      font-family: "Outfit";
+      src: url("../funil-clinicas/assets/fonts/outfit-700.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    @font-face {
+      font-family: "Geist";
+      src: url("../funil-clinicas/assets/fonts/geist-400.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "Geist";
+      src: url("../funil-clinicas/assets/fonts/geist-500.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    :root {
+      --blue: #003087;
+      --blue-deep: #001f59;
+      --blue-soft: #e9eef7;
+      --yellow: #f2b323;
+      --paper: #f6f4ef;
+      --white: #ffffff;
+      --ink: #171a1f;
+      --muted: #606a78;
+      --type-hero: 86px;
+      --type-sub: 34px;
+      --type-body: 24px;
+      --type-small: 19px;
+      --pad-page: 64px;
+      --gap-xl: 46px;
+      --gap-lg: 30px;
+      --gap-md: 20px;
+      --gap-sm: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 1080px;
+      height: 1350px;
+      margin: 0;
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    body {
+      color: var(--ink);
+      font-family: "Geist", sans-serif;
+    }
+
+    .artboard {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(0, 48, 135, 0.035) 1px, transparent 1px) 0 0 / 90px 90px,
+        linear-gradient(rgba(0, 48, 135, 0.035) 1px, transparent 1px) 0 0 / 90px 90px,
+        var(--paper);
+    }
+
+    .artboard::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 388px;
+      height: 846px;
+      background: var(--blue);
+      z-index: 0;
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 122px;
+      padding: 0 var(--pad-page);
+      border-bottom: 2px solid rgba(0, 48, 135, 0.14);
+      background: rgba(246, 244, 239, 0.96);
+    }
+
+    .artrin-logo {
+      width: 224px;
+      height: 64px;
+      background: var(--blue);
+      -webkit-mask: url("assets/artrin-logo.png") center / contain no-repeat;
+      mask: url("assets/artrin-logo.png") center / contain no-repeat;
+    }
+
+    .tramontina-logo {
+      width: 224px;
+      height: auto;
+      display: block;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      height: 724px;
+      padding: 52px var(--pad-page) 0;
+    }
+
+    .copy {
+      position: relative;
+      z-index: 3;
+      width: 608px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 24px;
+      color: var(--blue);
+      font-family: "Outfit", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 42px;
+      height: 8px;
+      background: var(--yellow);
+    }
+
+    h1 {
+      width: 610px;
+      margin: 0;
+      color: var(--blue-deep);
+      font-family: "Outfit", sans-serif;
+      font-size: var(--type-hero);
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .description {
+      width: 520px;
+      margin: 31px 0 0;
+      color: var(--ink);
+      font-size: var(--type-sub);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .description strong {
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    .hero-product {
+      position: absolute;
+      z-index: 2;
+      right: -17px;
+      bottom: 0;
+      width: 542px;
+      height: 690px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: contrast(1.04) drop-shadow(0 28px 24px rgba(0, 18, 51, 0.22));
+    }
+
+    .capacity-badge {
+      position: absolute;
+      z-index: 4;
+      right: 45px;
+      top: 58px;
+      display: grid;
+      place-items: center;
+      width: 154px;
+      height: 154px;
+      border: 5px solid var(--white);
+      border-radius: 50%;
+      background: var(--yellow);
+      color: var(--blue-deep);
+      box-shadow: 0 14px 0 rgba(0, 31, 89, 0.24);
+      transform: rotate(4deg);
+    }
+
+    .capacity-badge strong {
+      display: block;
+      font-family: "Outfit", sans-serif;
+      font-size: 58px;
+      line-height: 0.82;
+      letter-spacing: -0.05em;
+    }
+
+    .capacity-badge span {
+      display: block;
+      margin-top: 4px;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .lineup {
+      position: relative;
+      z-index: 5;
+      height: 316px;
+      padding: 26px var(--pad-page) 22px;
+      background: var(--white);
+      border-top: 8px solid var(--blue);
+    }
+
+    .lineup-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .lineup-title h2 {
+      margin: 0;
+      color: var(--blue-deep);
+      font-family: "Outfit", sans-serif;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    .lineup-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+      gap: 18px;
+      height: 220px;
+    }
+
+    .product {
+      position: relative;
+      display: grid;
+      grid-template-rows: 174px 40px;
+      align-items: end;
+      min-width: 0;
+      border-right: 1px solid #dbe0e8;
+    }
+
+    .product:last-child {
+      border-right: 0;
+    }
+
+    .product img {
+      display: block;
+      justify-self: center;
+      width: 185px;
+      height: 174px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .product:nth-child(1) img {
+      width: 142px;
+    }
+
+    .product:nth-child(2) img {
+      width: 154px;
+    }
+
+    .product:nth-child(3) img {
+      width: 164px;
+    }
+
+    .product:nth-child(4) img {
+      width: 176px;
+    }
+
+    .product-label {
+      align-self: end;
+      color: var(--blue-deep);
+      font-family: "Outfit", sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .product-new {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      padding: 6px 10px 5px;
+      background: var(--yellow);
+      color: var(--blue-deep);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 6;
+      display: grid;
+      grid-template-columns: 1fr 1.43fr;
+      align-items: center;
+      gap: 34px;
+      height: 188px;
+      padding: 24px var(--pad-page) 28px;
+      background: var(--blue-deep);
+      color: var(--white);
+    }
+
+    .social {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .social strong {
+      font-family: "Outfit", sans-serif;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .social span {
+      color: #cbd6e9;
+      font-size: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+      min-height: 98px;
+      padding: 18px 26px 17px;
+      border: 3px solid var(--yellow);
+      background: var(--yellow);
+      color: var(--blue-deep);
+    }
+
+    .cta-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cta-copy span {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-copy strong {
+      font-family: "Outfit", sans-serif;
+      font-size: 31px;
+      line-height: 1;
+      letter-spacing: -0.025em;
+      white-space: nowrap;
+    }
+
+    .whatsapp-mark {
+      display: grid;
+      place-items: center;
+      width: 56px;
+      height: 56px;
+      border: 3px solid var(--blue-deep);
+      border-radius: 50%;
+      font-family: "Outfit", sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main class="artboard" aria-label="Lançamento da linha de lixeiras com pedal New Tramontina">
+    <header class="topbar">
+      <div class="artrin-logo" role="img" aria-label="ARTRIN"></div>
+      <img class="tramontina-logo" src="assets/tramontina-logo.svg" alt="Tramontina" />
+    </header>
+
+    <section class="hero">
+      <div class="copy">
+        <p class="eyebrow">Lançamento</p>
+        <h1>A lixeira<br />que faltava<br /><span>na sua loja</span></h1>
+        <p class="description">Lixeira com Pedal New em <strong>aço inox polido</strong>.</p>
+      </div>
+
+      <img class="hero-product" src="assets/lixeira-30l.jpg" alt="Lixeira com Pedal New Tramontina de 30 litros" />
+      <div class="capacity-badge">
+        <div>
+          <strong>30 L</strong>
+          <span>nova capacidade</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="lineup" aria-label="Capacidades disponíveis">
+      <div class="lineup-title">
+        <h2>Linha completa</h2>
+        <p>4 tamanhos para ampliar o seu mix</p>
+      </div>
+
+      <div class="products">
+        <article class="product">
+          <img src="assets/lixeira-5l.jpg" alt="Lixeira com Pedal New de 5 litros" />
+          <div class="product-label">5 L</div>
+        </article>
+
+        <article class="product">
+          <img src="assets/lixeira-12l.jpg" alt="Lixeira com Pedal New de 12 litros" />
+          <div class="product-label">12 L</div>
+        </article>
+
+        <article class="product">
+          <img src="assets/lixeira-20l.jpg" alt="Lixeira com Pedal New de 20 litros" />
+          <div class="product-label">20 L</div>
+        </article>
+
+        <article class="product">
+          <span class="product-new">Novo</span>
+          <img src="assets/lixeira-30l.jpg" alt="Lixeira com Pedal New de 30 litros" />
+          <div class="product-label">30 L</div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="social">
+        <strong>@artrinonline</strong>
+        <span>Venda exclusiva para CNPJ</span>
+      </div>
+
+      <div class="cta" aria-label="Fale com a ARTRIN pelo WhatsApp no número 92 99432-1123">
+        <div class="cta-copy">
+          <span>Peça pelo WhatsApp</span>
+          <strong>(92) 99432-1123</strong>
+        </div>
+        <div class="whatsapp-mark" aria-hidden="true">›</div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

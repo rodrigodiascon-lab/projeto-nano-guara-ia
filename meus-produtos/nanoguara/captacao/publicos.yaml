@@ -1,0 +1,50 @@
+produto: nanoguara
+conta_anuncios: "act_1678023370148935"
+pixel_id: null
+pixel_validado: false
+instagram_id: "17841414315265034"
+instagram_confirmado: true          # @nanoguara.ia, conferido nas Configurações do negócio em 2026-09-29
+pagina_id: "1272983785891547"
+pagina_confirmada: true             # nanoguara.ia, única Página do portfólio
+via: token
+prospeccao:
+  chave: prospeccao_manaus
+  nicho: barbearias
+  local: Manaus
+  cidade_key: "259014"
+  expansao_local: desativada
+  idade: [25, 45]                   # ajustado pelo usuário em 2026-09-30
+  advantage_audience: 1
+  posicionamentos: advantage_plus
+  sinais_sugeridos: []              # engajamentos ainda abaixo de 1.000 pessoas; entram quando crescerem
+  proibido_conferido: true          # sem work_employers nem work_positions
+  tamanho_estimado: {mau_min: 1100000, mau_max: 1300000, verificado_em: "2026-09-30", aviso: null}
+publicos:
+  - chave: engajamento_ig
+    finalidade: "remarketing e sinal de sugestão"
+    id: "120250364699600113"
+    nome: "[NG] EngajamentoIG-365d"
+    tipo: engajamento
+    janela_dias: 365
+    tamanho_estimado: null          # em preenchimento em 2026-09-30; a Meta marca como pequeno demais por enquanto
+    situacao: preenchendo
+  - chave: engajamento_pagina
+    finalidade: "remarketing e sinal de sugestão"
+    id: "120250364698780113"
+    nome: "[NG] EngajamentoPagina-365d"
+    tipo: engajamento
+    janela_dias: 365
+    tamanho_estimado: null
+    situacao: preenchendo
+exclusoes:
+  - chave: excluir_ja_conversaram
+    componentes: [conversou_whatsapp, base_leads]
+    situacao: pendente
+pendentes:
+  - chave: visitantes_site
+    motivo: "sem pixel no site (conversoes.yaml, pixel ausente); tarefa de instalação com consentimento em andamento"
+  - chave: conversou_whatsapp
+    motivo: "fonte não confirmada pela API, verificar no Gerenciador"
+  - chave: base_leads
+    motivo: "não criada: só com leads do site com consentimento, decisão futura"
+criado_em: "2026-09-30"

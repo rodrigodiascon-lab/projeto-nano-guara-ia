@@ -1,0 +1,62 @@
+{
+  "profile_id": "meta-lucrecia-publi-1678023370148935-v1",
+  "version": 1,
+  "status": "approved",
+  "account_id": "1678023370148935",
+  "account_name": "Lucrec.ia PUBLI",
+  "business_id": "2096976521176335",
+  "currency": "BRL",
+  "timezone": "America/Manaus",
+  "scope": {
+    "brand": "nanoguara.ia",
+    "offer": "guara.bot para barbearias",
+    "objective": "conversas pelo WhatsApp",
+    "region": "Manaus, Amazonas, Brasil"
+  },
+  "assets": {
+    "facebook_page_id": "1272983785891547",
+    "facebook_page_name": "nanoguara.ia",
+    "instagram_actor_id": "17841414315265034",
+    "instagram_name": "nanoguara.ia",
+    "whatsapp_number": "+55 92 8148-6875"
+  },
+  "connector": {
+    "type": "authenticated_browser_session",
+    "read_capability": "verified_on_exact_account",
+    "write_capability": "verified_draft_editor_only",
+    "credentials": "not_stored",
+    "scopes": "not_exposed_by_connector"
+  },
+  "limits": {
+    "daily_budget_brl": 15,
+    "campaign_duration_days": 7,
+    "campaign_cap_brl": 105,
+    "activation": "requires_separate_approval",
+    "pause": "requires_separate_approval",
+    "deletion": "prohibited"
+  },
+  "tracking": {
+    "conversion_location": "WhatsApp",
+    "optimization": "maximize_conversations",
+    "pixel_dataset": "not_applicable_for_message_optimization"
+  },
+  "rights_and_privacy": {
+    "creative_owner": "nanoguara.ia",
+    "contains_pii": false,
+    "custom_audience_allowed": false,
+    "customer_list_allowed": false
+  },
+  "root_authority": {
+    "type": "direct_user_in_authenticated_session",
+    "scope": "profile_activation_and_per_action_approvals"
+  },
+  "sources": [
+    "Meta Ads Manager exact account URL supplied by the user",
+    "Live Meta Ads Manager identity and draft editor state on 2026-09-17",
+    "docs/marketing/meta-ads/aprendizados.md",
+    "docs/marketing/meta-ads/campanha-barbearias-2026-09-17.md"
+  ],
+  "approved_at": "2026-09-17T15:10:00-04:00",
+  "valid_until": "2026-10-17T23:59:59-04:00",
+  "external_mutation": "blocked_until_action_envelope"
+}

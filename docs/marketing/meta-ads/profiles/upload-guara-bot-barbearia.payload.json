@@ -1,0 +1,26 @@
+{
+  "action": "raw_asset_upload",
+  "risk_class": "R2",
+  "profile_id": "meta-lucrecia-publi-1678023370148935-v1",
+  "profile_sha256": "130036b223109587cf85ae9fa4f1bd9c4eceecf8ba052bfb44c518fb9033a7a0",
+  "account_id": "1678023370148935",
+  "business_id": "2096976521176335",
+  "identity": "nanoguara.ia",
+  "destination": "Meta Ads media library for account 1678023370148935",
+  "file": {
+    "path": "docs/marketing/meta-ads/criativos/guara-bot-barbearia-meta-ads.png",
+    "name": "guara-bot-barbearia-meta-ads.png",
+    "sha256": "1f9651239467dd20f21487d52f9c5a2b58da6ac494d3b6ffd50e06fe9b724381",
+    "mime_type": "image/png",
+    "width": 1122,
+    "height": 1402
+  },
+  "current_state": "local_only",
+  "proposed_state": "uploaded_unassociated_asset",
+  "impact": "A imagem ficará armazenada na biblioteca de mídia da conta, sem associação, revisão, publicação ou veiculação.",
+  "worst_case": "Ativo órfão permanecerá na biblioteca da conta.",
+  "containment": "Manter o ativo sem associação e registrar o ID; nenhuma exclusão será prometida.",
+  "valid_from": "2026-09-17T15:10:00-04:00",
+  "valid_until": "2026-09-17T16:10:00-04:00",
+  "single_use": true
+}

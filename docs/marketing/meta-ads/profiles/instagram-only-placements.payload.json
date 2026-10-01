@@ -1,0 +1,36 @@
+{
+  "action": "edit_adset_placements",
+  "risk_class": "R3",
+  "profile_id": "meta-lucrecia-publi-1678023370148935-v1",
+  "profile_sha256": "130036b223109587cf85ae9fa4f1bd9c4eceecf8ba052bfb44c518fb9033a7a0",
+  "account_id": "1678023370148935",
+  "business_id": "2096976521176335",
+  "campaign_id": "120250176391320113",
+  "adset_id": "120250176391330113",
+  "ad_id": "120250176391340113",
+  "object_chain": "campaign 120250176391320113 > adset 120250176391330113 > ad 120250176391340113",
+  "current_state": {
+    "status": "draft_off",
+    "placement_mode": "Advantage+ placements",
+    "platforms": ["Facebook", "Instagram", "Messenger", "Audience Network"]
+  },
+  "proposed_state": {
+    "status": "draft_off",
+    "placement_mode": "manual",
+    "platforms": ["Instagram"],
+    "instagram_placements": ["Feed", "Stories", "Reels", "Explore"]
+  },
+  "unchanged": {
+    "destination": "WhatsApp +55 92 8148-6875",
+    "daily_budget_brl": 15,
+    "location": "Manaus, Amazonas — apenas a cidade atual",
+    "optimization": "maximizar conversas",
+    "activation": false
+  },
+  "impact": "A entrega do conjunto ficará restrita ao Instagram e continuará em rascunho/desativada.",
+  "worst_case": "A restrição pode reduzir alcance e aumentar o custo por conversa em comparação com os posicionamentos Advantage+.",
+  "rollback": "Restaurar Advantage+ placements por meio de um novo envelope e nova aprovação.",
+  "valid_from": "2026-09-17T15:01:59-04:00",
+  "valid_until": "2026-09-17T16:01:59-04:00",
+  "single_use": true
+}

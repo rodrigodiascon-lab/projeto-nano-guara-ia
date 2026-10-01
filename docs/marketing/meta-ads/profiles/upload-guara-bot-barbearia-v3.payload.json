@@ -1,0 +1,38 @@
+{
+  "action": "raw_asset_upload",
+  "risk_class": "R2",
+  "profile_id": "meta-lucrecia-publi-1678023370148935-v1",
+  "profile_sha256": "130036b223109587cf85ae9fa4f1bd9c4eceecf8ba052bfb44c518fb9033a7a0",
+  "account_id": "1678023370148935",
+  "business_id": "2096976521176335",
+  "identity": "nanoguara.ia",
+  "destination": "Meta Ads media library for account 1678023370148935",
+  "files": [
+    {
+      "path": "docs/marketing/meta-ads/criativos/guara-bot-barbearia-instagram-feed-v3-dor-1080x1350.png",
+      "name": "guara-bot-barbearia-instagram-feed-v3-dor-1080x1350.png",
+      "sha256": "3b0576ff21854688c19bf169ab10ff628a93b025463c3ec3cffd754abcfe896a",
+      "mime_type": "image/png",
+      "width": 1080,
+      "height": 1350,
+      "placement_use": "Instagram Feed and Explore"
+    },
+    {
+      "path": "docs/marketing/meta-ads/criativos/guara-bot-barbearia-instagram-story-reels-v3-dor-1080x1920.png",
+      "name": "guara-bot-barbearia-instagram-story-reels-v3-dor-1080x1920.png",
+      "sha256": "db26a40aad00d3a696eeab995df439175e37ce70cae5cf3d96493af73feccb7c",
+      "mime_type": "image/png",
+      "width": 1080,
+      "height": 1920,
+      "placement_use": "Instagram Stories and Reels"
+    }
+  ],
+  "current_state": "local_only",
+  "proposed_state": "uploaded_unassociated_assets",
+  "impact": "Os dois criativos v3 serão armazenados na biblioteca de mídia da conta, ainda sem associação, revisão, publicação ou veiculação.",
+  "worst_case": "Ativos órfãos podem permanecer na biblioteca da conta.",
+  "containment": "Manter os ativos sem associação e registrar os IDs retornados; nenhuma exclusão será prometida.",
+  "valid_from": "2026-09-17T15:22:06-04:00",
+  "valid_until": "2026-09-17T16:22:06-04:00",
+  "single_use": true
+}

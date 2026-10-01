@@ -1,0 +1,41 @@
+ativo: nanoguara
+atualizado_em: "2026-09-30"
+conta_anuncios: "act_1678023370148935"
+via: token
+site:
+  dominio: nanoguara.ia.br
+  pixel_instalado: ausente          # confirmado | nao_confirmado | ausente
+  evidencia:
+    - "API: nenhum pixel na conta act_1678023370148935 nem no portfólio 2096976521176335 (2026-09-30)"
+    - "Repositório: sem fbq nem connect.facebook.net em site/src e site/public (2026-09-30)"
+  pendencia: "Instalar pixel com consentimento de cookies (LGPD) e citar a Meta na política de privacidade. Decisão do usuário: fora de outubro."
+pixel:
+  id: null
+  nome: null
+  ultimo_disparo: null
+eventos_site:
+  page_view_7d: null
+  lead_7d: null
+  lead_definicao: "envio do formulário do site com consentimento"
+otimizacao:
+  principal:
+    objetivo: conversas_whatsapp
+    destino: WHATSAPP
+    meta_de_otimizacao: conversas_iniciadas
+    medicao: "no próprio anúncio, sem pixel"
+    numero_de_destino_conferido: false   # conferido no preview da campanha, nunca gravar o número aqui
+  apoio:
+    evento_padrao: Lead
+    uso: medir_site_e_montar_publico_de_visitantes
+    otimiza_campanha: false
+    status: pendente_sem_pixel
+validacao:
+  status: pendente                  # passou | falhou | pendente
+  data: "2026-09-30"
+  testar_eventos:
+    pageview: nao_testado
+    lead: nao_testado
+  conversas_7d: null                # só existe depois que uma campanha rodou
+  observacoes:
+    - "Campanha de conversas no WhatsApp liberada: não depende de pixel."
+    - "Bloqueado até ter pixel: público de visitantes do site e exclusões por evento do site."

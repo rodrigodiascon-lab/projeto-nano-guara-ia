@@ -1,0 +1,111 @@
+versao: 1
+atualizado_em: "2026-09-29"
+ativo: "nanoguara"
+marca: "nanoguará.ia"
+produto: "guara.bot"
+mes_referencia: "2026-10"
+periodo:
+  inicio: "2026-10-05"
+  fim: "2026-10-31"
+  parcial: true
+dias_do_mes: 27
+conta:
+  id: "act_1678023370148935"
+  nome: "Lucrec.ia PUBLI"
+  moeda: "BRL"
+  fuso: "America/Manaus"
+referencia:
+  custo_por_conversa: null
+  amostra_conversas: null
+  fragil: true
+  fonte: "a medir: usuário optou por não usar o PrimeiroADS (R$ 9,65 com 4 conversas)"
+meta:
+  conversas_mes: null
+  custo_por_conversa_alvo: null
+  orçamento_mes: 1000.0
+  orçamento_dia: 37.04
+  fragil: true
+  caminho: "orçamento primeiro"
+teto:
+  gasto_mes: 1000.0
+  gasto_dia_total: 37.04
+  reserva_escala_mes: 0.0
+nichos:
+  - id: "barbearias"
+    nome: "Barbearias"
+    peso: 1.0
+    status: "ativo"
+    custo_por_conversa_alvo: null
+    meta_conversas_mes: null
+    orçamento_mes: 1000.0
+    orçamento_dia: 37.04
+  - id: "clinicas-estética"
+    nome: "Clínicas de estética"
+    peso: 0.0
+    status: "em_espera"
+    custo_por_conversa_alvo: null
+    meta_conversas_mes: null
+    orçamento_mes: 0
+    orçamento_dia: 0
+  - id: "consultorios-medicos"
+    nome: "Consultórios médicos"
+    peso: 0.0
+    status: "em_espera"
+    custo_por_conversa_alvo: null
+    meta_conversas_mes: null
+    orçamento_mes: 0
+    orçamento_dia: 0
+  - id: "consultorios-odontologicos"
+    nome: "Consultórios odontológicos"
+    peso: 0.0
+    status: "em_espera"
+    custo_por_conversa_alvo: null
+    meta_conversas_mes: null
+    orçamento_mes: 0
+    orçamento_dia: 0
+escala:
+  passo_pct: null
+  intervalo_dias: null
+  minimo_conversas_janela: 15
+  regra: "Sem reserva de escala em outubro (teto igual ao orçamento) e um nicho só, então não há passo de subida nem remanejamento. Revisão do plano: ao chegar a 15 conversas de barbearias na dash, o custo real vira o custo alvo e os blocos 2 e 4 são refeitos. Gasto zero ou quase zero por 2 dias seguidos: pausar e revisar público e criativo."
+funil:
+  taxas:
+    qualificacao: null
+    reuniao: null
+    fechamento: null
+  definicao_qualificada: null
+  projecao:
+    qualificadas: null
+    reunioes: null
+    clientes: null
+  custo_por_etapa:
+    qualificada: null
+    reuniao: null
+    cliente: null
+cenarios:
+  abertura: null
+  itens:
+    - id: "conservador"
+      custo_por_conversa: null
+      orçamento_para_meta: null
+      conversas_com_orçamento: null
+    - id: "base"
+      custo_por_conversa: null
+      orçamento_para_meta: null
+      conversas_com_orçamento: null
+    - id: "otimista"
+      custo_por_conversa: null
+      orçamento_para_meta: null
+      conversas_com_orçamento: null
+  faixa:
+    de: null
+    ate: null
+  enquadramento: null
+  status: "a medir até 15 conversas"
+avisos:
+  - "Mês parcial: 27 dias (5 a 31/10), fora da checagem padrão de 28 a 31 dias."
+  - "Sem referência de custo: meta e cenários a medir até a primeira revisão."
+  - "Três nichos em espera com verba zero: estética, médicos, odonto. Médicos e odonto exigem copy dentro das regras do CFM e do CFO."
+entregavel:
+  painel: "meus-produtos/nanoguara/captacao/painel.html"
+  artefato_url: null

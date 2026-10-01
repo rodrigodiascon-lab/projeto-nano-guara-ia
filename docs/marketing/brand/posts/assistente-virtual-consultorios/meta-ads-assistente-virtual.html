@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <title>Meta Ads — assistente virtual para consultórios</title>
+    <style>
+      :root {
+        --forest: #2e7d32;
+        --forest-dark: #164f22;
+        --guarana: #d5382f;
+        --cream: #fdf9f0;
+        --cream-deep: #eee3d1;
+        --graphite: #17231b;
+        --white: #fffefa;
+        --type-hook: 76px;
+        --type-body: 38px;
+        --type-small: 25px;
+        --pad-x: 82px;
+        --gap-stack: 24px;
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1350px;
+        overflow: hidden;
+        background: var(--cream);
+        font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .creative {
+        position: relative;
+        width: 1080px;
+        height: 1350px;
+        overflow: hidden;
+        isolation: isolate;
+        color: var(--graphite);
+        background:
+          radial-gradient(circle at 88% 14%, rgba(255, 255, 255, .98) 0 12%, rgba(255, 255, 255, 0) 34%),
+          linear-gradient(145deg, #fffdf8 0%, var(--cream) 54%, var(--cream-deep) 100%);
+      }
+
+      .creative::before {
+        content: "";
+        position: absolute;
+        z-index: -4;
+        inset: 0;
+        opacity: .2;
+        background-image: radial-gradient(circle, rgba(23, 35, 27, .18) 0 1px, transparent 1.35px);
+        background-size: 18px 18px;
+        mask-image: linear-gradient(to bottom, #000 0%, transparent 58%);
+      }
+
+      .creative::after {
+        content: "";
+        position: absolute;
+        z-index: 20;
+        inset: 0;
+        pointer-events: none;
+        box-shadow: inset 0 0 0 14px rgba(255, 255, 255, .66);
+      }
+
+      .red-rail {
+        position: absolute;
+        z-index: 12;
+        inset: 0 auto 0 0;
+        width: 24px;
+        background: var(--guarana);
+      }
+
+      .context {
+        position: absolute;
+        top: 60px;
+        left: var(--pad-x);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: var(--forest-dark);
+        font-size: var(--type-small);
+        line-height: 1;
+        letter-spacing: 2.6px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .context::before {
+        content: "";
+        width: 48px;
+        height: 7px;
+        border-radius: 99px;
+        background: var(--forest);
+      }
+
+      .headline {
+        position: absolute;
+        z-index: 10;
+        top: 118px;
+        left: var(--pad-x);
+        width: 910px;
+        margin: 0;
+        font-size: var(--type-hook);
+        line-height: .88;
+        letter-spacing: -5.6px;
+        font-weight: 900;
+        text-transform: uppercase;
+        text-wrap: balance;
+      }
+
+      .headline span { display: block; }
+      .headline .accent { color: var(--guarana); }
+
+      .clinic-field {
+        position: absolute;
+        z-index: -2;
+        top: 420px;
+        right: -98px;
+        width: 660px;
+        height: 720px;
+        border: 2px solid rgba(46, 125, 50, .13);
+        border-radius: 330px 0 0 330px;
+        background:
+          repeating-linear-gradient(90deg, rgba(46, 125, 50, .09) 0 3px, transparent 3px 54px),
+          linear-gradient(90deg, rgba(46, 125, 50, .12), rgba(46, 125, 50, .02));
+      }
+
+      .clinic-field::before {
+        content: "";
+        position: absolute;
+        top: 104px;
+        left: 94px;
+        width: 210px;
+        height: 210px;
+        border: 3px solid rgba(213, 56, 47, .14);
+        border-radius: 50%;
+        box-shadow: 0 0 0 24px rgba(255, 255, 255, .28);
+      }
+
+      .messages {
+        position: absolute;
+        z-index: 8;
+        top: 470px;
+        left: 62px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-stack);
+        width: 550px;
+      }
+
+      .message {
+        position: relative;
+        min-height: 108px;
+        padding: 24px 82px 21px 30px;
+        border: 2px solid rgba(23, 35, 27, .17);
+        border-radius: 28px 28px 28px 7px;
+        background: rgba(255, 254, 250, .97);
+        box-shadow: 0 17px 38px rgba(23, 35, 27, .11);
+        color: var(--graphite);
+        font-size: 31px;
+        line-height: 1.05;
+        letter-spacing: -.8px;
+        font-weight: 800;
+      }
+
+      .message:nth-child(2) {
+        margin-left: 46px;
+        transform: rotate(-1.2deg);
+      }
+
+      .message:nth-child(3) {
+        margin-left: 4px;
+        transform: rotate(1deg);
+      }
+
+      .message::after {
+        content: "";
+        position: absolute;
+        top: 33px;
+        right: 30px;
+        width: 22px;
+        height: 22px;
+        border: 5px solid var(--white);
+        border-radius: 50%;
+        background: var(--guarana);
+        box-shadow: 0 0 0 3px rgba(213, 56, 47, .2);
+      }
+
+      .mascot-wrap {
+        position: absolute;
+        z-index: 7;
+        top: 556px;
+        right: -84px;
+        width: 650px;
+        height: 650px;
+      }
+
+      .mascot-wrap::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 22%;
+        bottom: 4%;
+        width: 63%;
+        height: 8%;
+        border-radius: 50%;
+        background: rgba(23, 35, 27, .20);
+        filter: blur(21px);
+        transform: scaleY(.44);
+      }
+
+      .mascot {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 24px 28px rgba(23, 35, 27, .14));
+      }
+
+      .reframe {
+        position: absolute;
+        z-index: 11;
+        left: var(--pad-x);
+        bottom: 174px;
+        width: 720px;
+        margin: 0;
+        font-size: var(--type-body);
+        line-height: 1.06;
+        letter-spacing: -1.3px;
+        font-weight: 780;
+      }
+
+      .cta {
+        position: absolute;
+        z-index: 12;
+        left: var(--pad-x);
+        bottom: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 520px;
+        min-height: 92px;
+        padding: 0 30px;
+        border-radius: 20px 20px 20px 6px;
+        background: var(--forest-dark);
+        color: var(--white);
+        font-size: 25px;
+        line-height: 1;
+        letter-spacing: .3px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .cta-arrow {
+        color: #b9dfb6;
+        font-size: 39px;
+        line-height: 1;
+      }
+
+      body.square,
+      .creative.square {
+        height: 1080px;
+      }
+
+      .square .context {
+        top: 42px;
+        left: 64px;
+        gap: 12px;
+        font-size: 21px;
+        letter-spacing: 2px;
+      }
+
+      .square .context::before {
+        width: 42px;
+        height: 6px;
+      }
+
+      .square .headline {
+        top: 92px;
+        left: 64px;
+        width: 940px;
+        font-size: 64px;
+        line-height: .9;
+        letter-spacing: -4.4px;
+      }
+
+      .square .clinic-field {
+        top: 292px;
+        right: -80px;
+        width: 560px;
+        height: 610px;
+      }
+
+      .square .messages {
+        top: 326px;
+        left: 52px;
+        width: 500px;
+        gap: 16px;
+      }
+
+      .square .message {
+        min-height: 90px;
+        padding: 20px 70px 18px 26px;
+        border-radius: 24px 24px 24px 7px;
+        font-size: 28px;
+      }
+
+      .square .message::after {
+        top: 27px;
+        right: 26px;
+        width: 20px;
+        height: 20px;
+        border-width: 4px;
+      }
+
+      .square .mascot-wrap {
+        top: 474px;
+        right: -64px;
+        width: 540px;
+        height: 540px;
+      }
+
+      .square .reframe {
+        left: 64px;
+        bottom: 128px;
+        width: 650px;
+        font-size: 30px;
+      }
+
+      .square .cta {
+        left: 64px;
+        bottom: 30px;
+        width: 430px;
+        min-height: 80px;
+        padding: 0 26px;
+        font-size: 22px;
+      }
+
+      body.story,
+      .creative.story {
+        height: 1920px;
+      }
+
+      .story .context {
+        top: 270px;
+        left: 84px;
+      }
+
+      .story .headline {
+        top: 330px;
+        left: 84px;
+        width: 850px;
+        font-size: 78px;
+        line-height: .9;
+        letter-spacing: -5px;
+      }
+
+      .story .clinic-field {
+        top: 610px;
+        right: -110px;
+        width: 700px;
+        height: 990px;
+      }
+
+      .story .messages {
+        top: 680px;
+        left: 72px;
+        width: 530px;
+        gap: 24px;
+      }
+
+      .story .message {
+        min-height: 112px;
+        font-size: 31px;
+      }
+
+      .story .mascot-wrap {
+        top: 870px;
+        right: -65px;
+        width: 730px;
+        height: 730px;
+      }
+
+      .story .reframe {
+        left: 84px;
+        bottom: 440px;
+        width: 720px;
+        font-size: 38px;
+      }
+
+      .story .cta {
+        left: 84px;
+        bottom: 322px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="creative" id="creative" aria-label="Criativo de topo de funil sobre a rotina de atendimento de consultórios">
+      <div class="red-rail" aria-hidden="true"></div>
+      <div class="clinic-field" aria-hidden="true"></div>
+
+      <div class="context">Assistente virtual para consultórios</div>
+
+      <h1 class="headline">
+        <span>Tenha uma</span>
+        <span class="accent">assistente virtual</span>
+        <span>no seu consultório.</span>
+      </h1>
+
+      <section class="messages" aria-label="Mensagens recebidas pelo consultório">
+        <div class="message">Tem horário hoje?</div>
+        <div class="message">Aceita convênio?</div>
+        <div class="message">Qual o valor da consulta?</div>
+      </section>
+
+      <div class="mascot-wrap">
+        <img
+          class="mascot"
+          src="../../guara-bot/poses/08-digitando.png"
+          alt="guara.bot digitando respostas para pacientes"
+        />
+      </div>
+
+      <p class="reframe">Ela atende, agenda e ajuda sua recepção pelo WhatsApp.</p>
+
+      <div class="cta" aria-label="Saiba como funciona">
+        <span>Saiba como funciona</span>
+        <span class="cta-arrow" aria-hidden="true">→</span>
+      </div>
+
+    </main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const format = params.get("format");
+      if (format === "square" || format === "story") {
+        document.body.classList.add(format);
+        document.getElementById("creative").classList.add(format);
+      }
+    </script>
+  </body>
+</html>

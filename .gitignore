@@ -15,6 +15,7 @@ docs/marketing/brand/posts/**/*.woff2
 # build_pdf.py rodando sobre o copys.md — os dois versionados ao lado dele.
 docs/marketing/brand/posts/**/*.svg
 docs/marketing/brand/posts/**/*.pdf
+docs/marketing/brand/posts/**/*.zip
 
 # Estado local de ferramenta, não código do projeto.
 .superpowers/
@@ -30,3 +31,20 @@ tmp/
 # `npm run test:layout` em site/.
 site/test-results/
 site/playwright-report/
+
+# Token do Meta Ads (pacote trafego-pago)
+.env
+
+# Mídia pesada de anúncios, vídeos e mascote (decisão do dono em 2026-10-01).
+# Mesma razão dos posts acima: binário não sai do histórico e é regenerável.
+# As versões que o site usa ficam em site/public e continuam versionadas.
+videos/**/*.mp4
+videos/**/*.wav
+videos/**/.media/
+docs/marketing/meta-ads/**/*.png
+docs/marketing/meta-ads/**/*.jpg
+docs/marketing/meta-ads/**/*.mp4
+docs/marketing/brand/guara-bot/**/*.png
+assets/referencias/**/*.png
+assets/referencias/**/*.jpg
+output/

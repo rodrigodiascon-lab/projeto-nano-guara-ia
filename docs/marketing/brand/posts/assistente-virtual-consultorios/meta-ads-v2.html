@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kit Meta Ads — guara.bot para consultórios</title>
+  <style>
+    :root {
+      --forest: #2e7d32;
+      --forest-dark: #164f22;
+      --guarana: #d5382f;
+      --cream: #fdf9f0;
+      --cream-deep: #f1e8d8;
+      --graphite: #17231b;
+      --white: #fffefa;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      overflow: hidden;
+      background: #d9d5cc;
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .canvas {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      isolation: isolate;
+      color: var(--graphite);
+      background:
+        radial-gradient(circle at 76% 18%, rgba(255, 255, 255, .94) 0 13%, rgba(255, 255, 255, 0) 37%),
+        linear-gradient(142deg, #fffdf7 0%, var(--cream) 44%, #eee3d1 100%);
+    }
+
+    .canvas::before {
+      content: "";
+      position: absolute;
+      z-index: -3;
+      inset: 0;
+      opacity: .23;
+      background-image:
+        radial-gradient(circle, rgba(23, 35, 27, .18) 0 1px, transparent 1.35px);
+      background-size: 18px 18px;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 48%);
+    }
+
+    .canvas::after {
+      content: "";
+      position: absolute;
+      z-index: 20;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 14px rgba(255, 255, 255, .62);
+    }
+
+    .red-rail {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 100%;
+      background: var(--guarana);
+    }
+
+    .clinic-panel {
+      position: absolute;
+      z-index: -2;
+      top: 250px;
+      right: -94px;
+      width: 520px;
+      height: 880px;
+      border-radius: 260px 0 0 260px;
+      background:
+        linear-gradient(90deg, rgba(46, 125, 50, .12), rgba(46, 125, 50, .03)),
+        repeating-linear-gradient(90deg, rgba(46, 125, 50, .09) 0 3px, transparent 3px 52px);
+      border: 2px solid rgba(46, 125, 50, .14);
+    }
+
+    .clinic-panel::before,
+    .clinic-panel::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+    }
+
+    .clinic-panel::before {
+      top: 140px;
+      left: 74px;
+      width: 220px;
+      height: 220px;
+      border: 3px solid rgba(213, 56, 47, .16);
+      box-shadow: 0 0 0 24px rgba(255, 255, 255, .28);
+    }
+
+    .clinic-panel::after {
+      top: 530px;
+      left: 186px;
+      width: 12px;
+      height: 210px;
+      background: rgba(46, 125, 50, .19);
+      box-shadow: -70px 46px 0 -2px rgba(46, 125, 50, .12), 70px -32px 0 -2px rgba(46, 125, 50, .12);
+      transform: rotate(4deg);
+    }
+
+    .headline {
+      position: absolute;
+      z-index: 6;
+      top: 74px;
+      left: 82px;
+      width: 900px;
+      margin: 0;
+      font-size: 98px;
+      line-height: .91;
+      letter-spacing: -5.8px;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .headline-top,
+    .headline-accent {
+      display: block;
+    }
+
+    .headline-accent {
+      margin-top: 8px;
+      color: var(--guarana);
+    }
+
+    .headline .underline {
+      position: absolute;
+      left: 3px;
+      bottom: -28px;
+      display: block;
+      width: 174px;
+      height: 10px;
+      margin: 0;
+      border-radius: 20px;
+      background: var(--forest);
+    }
+
+    .mascot-wrap {
+      position: absolute;
+      z-index: 5;
+      right: -36px;
+      bottom: 72px;
+      width: 790px;
+      height: 790px;
+    }
+
+    .mascot-wrap::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 21%;
+      bottom: 4%;
+      width: 65%;
+      height: 8%;
+      border-radius: 50%;
+      background: rgba(23, 35, 27, .20);
+      filter: blur(23px);
+      transform: scaleY(.46);
+    }
+
+    .mascot {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 24px 26px rgba(23, 35, 27, .14));
+    }
+
+    .proof {
+      position: absolute;
+      z-index: 10;
+      left: 82px;
+      bottom: 240px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      width: 470px;
+      min-height: 132px;
+      padding: 22px 30px 22px 24px;
+      border: 3px solid var(--forest);
+      border-radius: 34px 34px 34px 9px;
+      background: rgba(255, 254, 250, .96);
+      box-shadow: 0 22px 50px rgba(23, 35, 27, .15);
+      transform: rotate(-2deg);
+    }
+
+    .proof-icon {
+      position: relative;
+      flex: 0 0 76px;
+      width: 76px;
+      height: 76px;
+      border-radius: 24px;
+      background: var(--guarana);
+      box-shadow: inset 0 0 0 7px rgba(255,255,255,.16);
+    }
+
+    .proof-icon::before {
+      content: "";
+      position: absolute;
+      left: 21px;
+      top: 18px;
+      width: 31px;
+      height: 18px;
+      border-left: 8px solid var(--white);
+      border-bottom: 8px solid var(--white);
+      transform: rotate(-45deg);
+    }
+
+    .proof-text {
+      font-size: 34px;
+      line-height: 1.02;
+      letter-spacing: -1.2px;
+      font-weight: 850;
+      color: var(--graphite);
+      text-transform: uppercase;
+    }
+
+    .orbit {
+      position: absolute;
+      z-index: 2;
+      left: 49px;
+      bottom: 214px;
+      width: 650px;
+      height: 278px;
+      border: 3px dashed rgba(46, 125, 50, .24);
+      border-radius: 50%;
+      transform: rotate(4deg);
+    }
+
+    .story {
+      height: 1920px;
+      background:
+        radial-gradient(circle at 78% 19%, rgba(255, 255, 255, .96) 0 14%, rgba(255, 255, 255, 0) 35%),
+        linear-gradient(151deg, #fffdf8 0%, var(--cream) 47%, #ede1cd 100%);
+    }
+
+    .story .red-rail { width: 28px; }
+
+    .story .clinic-panel {
+      top: 500px;
+      right: -210px;
+      width: 760px;
+      height: 1150px;
+      border-radius: 380px 0 0 380px;
+    }
+
+    .story .headline {
+      top: 276px;
+      left: 84px;
+      width: 910px;
+      font-size: 110px;
+      line-height: .91;
+      letter-spacing: -6.6px;
+    }
+
+    .story .headline .underline {
+      bottom: -36px;
+      width: 200px;
+      height: 12px;
+    }
+
+    .story .mascot-wrap {
+      right: -40px;
+      bottom: 286px;
+      width: 930px;
+      height: 930px;
+    }
+
+    .story .proof {
+      left: 72px;
+      bottom: 410px;
+      width: 500px;
+      min-height: 145px;
+      padding: 24px 30px 24px 24px;
+    }
+
+    .story .proof-text { font-size: 36px; }
+
+    .story .orbit {
+      left: 32px;
+      bottom: 376px;
+      width: 720px;
+      height: 300px;
+    }
+
+    .canvas[data-angle="faltas"] .headline { font-size: 82px; }
+    .canvas[data-angle="bot"] .headline { font-size: 94px; }
+    .canvas[data-angle="recepcao"] .headline { font-size: 80px; }
+
+    .story[data-angle="faltas"] .headline { font-size: 92px; }
+    .story[data-angle="bot"] .headline { font-size: 104px; }
+    .story[data-angle="recepcao"] .headline { font-size: 90px; }
+
+    .square[data-angle="faltas"] .headline { font-size: 74px; }
+    .square[data-angle="bot"] .headline { font-size: 82px; }
+    .square[data-angle="recepcao"] .headline { font-size: 72px; }
+
+    .square { height: 1080px; }
+
+    .square .clinic-panel {
+      top: 226px;
+      right: -110px;
+      width: 470px;
+      height: 730px;
+    }
+
+    .square .headline {
+      top: 64px;
+      left: 80px;
+      width: 920px;
+      font-size: 86px;
+      line-height: .90;
+      letter-spacing: -5px;
+    }
+
+    .square .headline .underline {
+      bottom: -24px;
+      width: 162px;
+      height: 9px;
+    }
+
+    .square .mascot-wrap {
+      right: -20px;
+      bottom: 26px;
+      width: 700px;
+      height: 700px;
+    }
+
+    .square .proof {
+      left: 78px;
+      bottom: 160px;
+      width: 444px;
+      min-height: 124px;
+      padding: 20px 26px 20px 21px;
+    }
+
+    .square .proof-icon {
+      flex-basis: 68px;
+      width: 68px;
+      height: 68px;
+    }
+
+    .square .proof-icon::before {
+      left: 19px;
+      top: 16px;
+      width: 27px;
+      height: 16px;
+      border-width: 0 0 7px 7px;
+    }
+
+    .square .proof-text { font-size: 31px; }
+
+    .square .orbit {
+      left: 42px;
+      bottom: 128px;
+      width: 610px;
+      height: 250px;
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas" id="creative" aria-label="Anúncio de assistente virtual para consultórios">
+    <div class="red-rail" aria-hidden="true"></div>
+    <div class="clinic-panel" aria-hidden="true"></div>
+
+    <h1 class="headline">
+      <span class="headline-top" id="headline-top">Seu consultório</span>
+      <span class="headline-accent" id="headline-accent">atende 24h.</span>
+      <i class="underline" aria-hidden="true"></i>
+    </h1>
+
+    <div class="orbit" aria-hidden="true"></div>
+
+    <div class="proof" aria-label="Consulta agendada">
+      <div class="proof-icon" aria-hidden="true"></div>
+      <div class="proof-text">Consulta<br />agendada!</div>
+    </div>
+
+    <div class="mascot-wrap">
+      <img
+        class="mascot"
+        src="../../guara-bot/poses/05-confirmacao.png"
+        alt="guara.bot confirma que o agendamento foi concluído"
+      />
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const angles = {
+      controle: ["Seu consultório", "atende 24h."],
+      faltas: ["Sua agenda confirmada", "sem ninguém ligar."],
+      resposta: ["Responda antes", "que ela desista."],
+      bot: ["Não é bot de", "“digite 1”."],
+      recepcao: ["Libere sua recepção", "do WhatsApp."]
+    };
+    const angle = Object.hasOwn(angles, params.get("angle")) ? params.get("angle") : "controle";
+    const [headlineTop, headlineAccent] = angles[angle];
+    const creative = document.getElementById("creative");
+    creative.dataset.angle = angle;
+    document.getElementById("headline-top").textContent = headlineTop;
+    document.getElementById("headline-accent").textContent = headlineAccent;
+
+    if (params.get("format") === "story") {
+      creative.classList.add("story");
+    } else if (params.get("format") === "square") {
+      creative.classList.add("square");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <title>Meta Ads TOFU — outro lado da recepção</title>
+    <style>
+      :root {
+        --forest: #2e7d32;
+        --forest-dark: #164f22;
+        --guarana: #d5382f;
+        --cream: #fdf9f0;
+        --cream-deep: #eee3d1;
+        --graphite: #17231b;
+        --white: #fffefa;
+        --type-hook: 88px;
+        --type-body: 38px;
+        --type-small: 25px;
+        --pad-x: 82px;
+        --gap-stack: 24px;
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1350px;
+        overflow: hidden;
+        background: var(--cream);
+        font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .creative {
+        position: relative;
+        width: 1080px;
+        height: 1350px;
+        overflow: hidden;
+        isolation: isolate;
+        color: var(--graphite);
+        background:
+          radial-gradient(circle at 88% 14%, rgba(255, 255, 255, .98) 0 12%, rgba(255, 255, 255, 0) 34%),
+          linear-gradient(145deg, #fffdf8 0%, var(--cream) 54%, var(--cream-deep) 100%);
+      }
+
+      .creative::before {
+        content: "";
+        position: absolute;
+        z-index: -4;
+        inset: 0;
+        opacity: .2;
+        background-image: radial-gradient(circle, rgba(23, 35, 27, .18) 0 1px, transparent 1.35px);
+        background-size: 18px 18px;
+        mask-image: linear-gradient(to bottom, #000 0%, transparent 58%);
+      }
+
+      .creative::after {
+        content: "";
+        position: absolute;
+        z-index: 20;
+        inset: 0;
+        pointer-events: none;
+        box-shadow: inset 0 0 0 14px rgba(255, 255, 255, .66);
+      }
+
+      .red-rail {
+        position: absolute;
+        z-index: 12;
+        inset: 0 auto 0 0;
+        width: 24px;
+        background: var(--guarana);
+      }
+
+      .context {
+        position: absolute;
+        top: 60px;
+        left: var(--pad-x);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: var(--forest-dark);
+        font-size: var(--type-small);
+        line-height: 1;
+        letter-spacing: 2.6px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .context::before {
+        content: "";
+        width: 48px;
+        height: 7px;
+        border-radius: 99px;
+        background: var(--forest);
+      }
+
+      .headline {
+        position: absolute;
+        z-index: 10;
+        top: 118px;
+        left: var(--pad-x);
+        width: 910px;
+        margin: 0;
+        font-size: var(--type-hook);
+        line-height: .88;
+        letter-spacing: -5.6px;
+        font-weight: 900;
+        text-transform: uppercase;
+        text-wrap: balance;
+      }
+
+      .headline span { display: block; }
+      .headline .accent { color: var(--guarana); }
+
+      .clinic-field {
+        position: absolute;
+        z-index: -2;
+        top: 420px;
+        right: -98px;
+        width: 660px;
+        height: 720px;
+        border: 2px solid rgba(46, 125, 50, .13);
+        border-radius: 330px 0 0 330px;
+        background:
+          repeating-linear-gradient(90deg, rgba(46, 125, 50, .09) 0 3px, transparent 3px 54px),
+          linear-gradient(90deg, rgba(46, 125, 50, .12), rgba(46, 125, 50, .02));
+      }
+
+      .clinic-field::before {
+        content: "";
+        position: absolute;
+        top: 104px;
+        left: 94px;
+        width: 210px;
+        height: 210px;
+        border: 3px solid rgba(213, 56, 47, .14);
+        border-radius: 50%;
+        box-shadow: 0 0 0 24px rgba(255, 255, 255, .28);
+      }
+
+      .messages {
+        position: absolute;
+        z-index: 8;
+        top: 518px;
+        left: 62px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-stack);
+        width: 550px;
+      }
+
+      .message {
+        position: relative;
+        min-height: 108px;
+        padding: 24px 82px 21px 30px;
+        border: 2px solid rgba(23, 35, 27, .17);
+        border-radius: 28px 28px 28px 7px;
+        background: rgba(255, 254, 250, .97);
+        box-shadow: 0 17px 38px rgba(23, 35, 27, .11);
+        color: var(--graphite);
+        font-size: 31px;
+        line-height: 1.05;
+        letter-spacing: -.8px;
+        font-weight: 800;
+      }
+
+      .message:nth-child(2) {
+        margin-left: 46px;
+        transform: rotate(-1.2deg);
+      }
+
+      .message:nth-child(3) {
+        margin-left: 4px;
+        transform: rotate(1deg);
+      }
+
+      .message::after {
+        content: "";
+        position: absolute;
+        top: 33px;
+        right: 30px;
+        width: 22px;
+        height: 22px;
+        border: 5px solid var(--white);
+        border-radius: 50%;
+        background: var(--guarana);
+        box-shadow: 0 0 0 3px rgba(213, 56, 47, .2);
+      }
+
+      .mascot-wrap {
+        position: absolute;
+        z-index: 7;
+        top: 595px;
+        right: -84px;
+        width: 650px;
+        height: 650px;
+      }
+
+      .mascot-wrap::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 22%;
+        bottom: 4%;
+        width: 63%;
+        height: 8%;
+        border-radius: 50%;
+        background: rgba(23, 35, 27, .20);
+        filter: blur(21px);
+        transform: scaleY(.44);
+      }
+
+      .mascot {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 24px 28px rgba(23, 35, 27, .14));
+      }
+
+      .reframe {
+        position: absolute;
+        z-index: 11;
+        left: var(--pad-x);
+        bottom: 174px;
+        width: 720px;
+        margin: 0;
+        font-size: var(--type-body);
+        line-height: 1.06;
+        letter-spacing: -1.3px;
+        font-weight: 780;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="creative" id="creative" aria-label="Criativo de topo de funil sobre a rotina de atendimento de consultórios">
+      <div class="red-rail" aria-hidden="true"></div>
+      <div class="clinic-field" aria-hidden="true"></div>
+
+      <div class="context">Rotina de consultório</div>
+
+      <h1 class="headline">
+        <span>O consultório</span>
+        <span class="accent">lotou.</span>
+        <span>E o WhatsApp</span>
+        <span class="accent">também.</span>
+      </h1>
+
+      <section class="messages" aria-label="Mensagens recebidas pelo consultório">
+        <div class="message">Tem horário hoje?</div>
+        <div class="message">Aceita convênio?</div>
+        <div class="message">Qual o valor da consulta?</div>
+      </section>
+
+      <div class="mascot-wrap">
+        <img
+          class="mascot"
+          src="../../guara-bot/poses/08-digitando.png"
+          alt="guara.bot digitando respostas para pacientes"
+        />
+      </div>
+
+      <p class="reframe">Nem toda espera acontece na sala de espera.</p>
+
+    </main>
+  </body>
+</html>

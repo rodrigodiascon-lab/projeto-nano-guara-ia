@@ -17,7 +17,7 @@ Este diretório reúne decisões, operação, identidade e histórico do projeto
 | [`engenharia/`](engenharia/) | Arquitetura, auditoria técnica e avaliação do chat |
 | [`design/`](design/) | Sistema visual e mockup aprovado |
 | [`operacoes/`](operacoes/) | Procedimentos de publicação e verificação |
-| [`marketing/`](marketing/) | Marca, peças e materiais de campanha |
+| [`marketing/`](marketing/) | Marca, peças, campanhas, Meta Ads e canais de aquisição; veja o [`índice de marketing`](marketing/README.md) |
 | [`referencias/`](referencias/) | Referências externas usadas nas decisões |
 | [`historico/`](historico/) | Especificações e planos originais, preservados para rastreabilidade |
 

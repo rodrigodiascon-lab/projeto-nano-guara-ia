@@ -1,0 +1,18 @@
+{
+  "action": "activate_read_only_profile",
+  "account_id": "1678023370148935",
+  "business_id": "2096976521176335",
+  "candidate_profile_sha256": "c32a9122b5207fe981fa01dbfca62210f037582e4d2c603966b2eb365702a097",
+  "current_state": "draft",
+  "proposed_state": "approved_read_only",
+  "authority_released": ["R0", "R1"],
+  "external_mutation": "blocked",
+  "impact": "Permite leitura, diagnóstico e preparação local somente para a conta indicada.",
+  "worst_case": "Leitura ou preparação local usando metadados incorretos; nenhuma publicação, ativação ou gasto é autorizado.",
+  "containment": "Marcar perfil como stale, invalidar envelopes pendentes e interromper o trabalho.",
+  "valid_from": "2026-09-17T00:00:00-04:00",
+  "valid_until": "2026-10-17T23:59:59-04:00",
+  "single_use": true
+  ,"consumed_at": "2026-09-17T15:10:00-04:00"
+  ,"resulting_profile_sha256": "130036b223109587cf85ae9fa4f1bd9c4eceecf8ba052bfb44c518fb9033a7a0"
+}
