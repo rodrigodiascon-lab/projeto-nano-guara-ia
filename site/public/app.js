@@ -298,6 +298,9 @@ form.addEventListener('submit', async (e) => {
     if (res.status === 201) {
       mostraMsg('Recebido! Vamos te chamar no WhatsApp em breve.', 'sucesso');
       form.reset();
+      // Só um aviso, sem dado nenhum do formulário. Quem decide se vira evento
+      // Lead da Meta é o consentimento.js, e só com o pixel aceito.
+      document.dispatchEvent(new CustomEvent('ng:lead'));
     } else {
       const { erro } = await res.json().catch(() => ({ erro: '' }));
       mostraMsg(erro || 'Não consegui enviar. Tente pelo WhatsApp.', 'erro');

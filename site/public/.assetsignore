@@ -14,3 +14,7 @@ node_modules
 # que por acaso é o diretório publicado". Quem for adicionar uma ferramenta
 # nova ao projeto, confira onde ela escreve antes de rodar o deploy.
 .claude-flow
+
+# O ruflo/claude-flow também grava o banco vetorial ruvector.db na pasta onde
+# roda. Ignorado no git, mas o wrangler o publicaria (1,5 MB) sem esta linha.
+ruvector.db
