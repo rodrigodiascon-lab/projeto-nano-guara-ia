@@ -79,8 +79,8 @@ export async function handleLead(request: Request, env: Env, ctx: ExecutionConte
     return jsonSeguro({ ok: false, erro: "Não consegui salvar agora. Tente pelo WhatsApp." }, 503);
   }
 
-  // Notificação minimizada; falha não bloqueia a resposta (lead já está no D1).
-  const { subject, text } = renderLeadEmail({ id, nome, profissao });
+  // Falha no email não bloqueia a resposta: o lead já está no D1.
+  const { subject, text } = renderLeadEmail({ id, nome, profissao, whatsapp, dor, origem, recebidoEm: new Date() });
   ctx.waitUntil(
     env.NOTIFY.send({ to: env.LEAD_TO, from: env.LEAD_FROM, subject, text }).catch((e: unknown) => {
       const code = (e as { code?: string })?.code ?? "";

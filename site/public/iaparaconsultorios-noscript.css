@@ -1,0 +1,6 @@
+/* Mesmo padrão de /noscript.css: arquivo próprio porque a CSP é style-src
+   'self' sem unsafe-inline (um <style> dentro de <noscript> seria bloqueado).
+   Sem JS o quiz não tem como avançar passo nem enviar por fetch, então some
+   inteiro e dá lugar ao link direto de WhatsApp em .sem-js. */
+#quiz{display:none}
+.sem-js{display:block}

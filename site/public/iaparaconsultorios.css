@@ -1,0 +1,209 @@
+/* Página guara.bot (captura via quiz). Reaproveita tokens, .btn, form e
+   rodapé de /styles.css; aqui só o que é específico desta página.
+   Nenhuma regra depende de style inline nem de JS mexendo em .style: a CSP do
+   site é style-src 'self' sem unsafe-inline. Estado visual (etapa ativa,
+   progresso) vai por atributo [data-*] + seletor.
+   Os nomes são .etapa, e não .passo, porque styles.css já usa .passo na seção
+   "Como funciona" da home e as regras vazariam para cá. */
+
+/* Sem isto, no tema escuro os radios e o checkbox nativos ficam brancos e
+   parecem já marcados. */
+:root{color-scheme:light dark}
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark}
+
+.topo-simples{padding:20px 0}
+/* .nav-inner da base tem height:68px, pensado para a navbar com links da home.
+   Somado ao padding, o topo desta página chegava a 92px só para o logo. */
+.topo-simples .wrap{display:flex;align-items:center;height:auto}
+/* A marca não é link: página de um propósito só, sem rota de saída antes do fim. */
+.topo-simples .brand{cursor:default}
+
+/* padding-block, nunca o atalho "padding": .wrap já dá a margem lateral de
+   24px e o atalho a zeraria, colando o conteúdo na borda do celular.
+   minmax(0, ...): sem ele a coluna do grid não encolhe abaixo do conteúdo
+   mais largo (botão com nowrap na última etapa) e a página rola de lado. */
+.layout-captura{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;padding-block:4px 0}
+@media(min-width:900px){
+  .layout-captura{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start;gap:56px;padding-block-start:32px}
+}
+
+/* Teto de 2.2rem: com 2.5rem a coluna de ~574px no desktop quebrava o título
+   em 3 linhas ("WhatsApp marca em outro lugar." não cabe numa linha só). */
+.hero-captura h1{font-size:clamp(1.6rem,4.4vw,2.2rem);line-height:1.16;margin:0 0 16px}
+.badge-produto{display:inline-flex;align-items:center;gap:8px;background:var(--surface);
+  border:1.5px solid var(--borda);border-radius:999px;padding:8px 16px;font-weight:600;
+  font-size:.85rem;color:var(--verde-escuro);margin-bottom:18px}
+.hero-captura .sub{font-size:1.05rem;color:var(--text-muted);max-width:58ch;margin:0}
+
+/* Área de toque do link de privacidade: 22px de altura sozinho, 44px com o
+   padding. justify-self:start: sem ele a caixa esticava na coluna e 79px de
+   vazio abriam a política (target _blank tira a pessoa do quiz no Instagram).
+   Margem de cima -4px, e não -8px, para não invadir o label do consentimento. */
+.quiz .consent a{display:inline-block;justify-self:start;padding-block:11px;margin-block:-4px -8px}
+
+.quiz{background:var(--surface);border:1px solid var(--borda);border-radius:var(--raio-card);padding:24px;min-width:0}
+@media(min-width:900px){.quiz{padding:32px;position:sticky;top:24px}}
+.quiz .btn{font-family:inherit}
+.quiz .btn-sm{min-height:44px}
+/* Abaixo de 16px o iPhone dá zoom ao tocar no campo. */
+.quiz input:not([type="radio"]):not([type="checkbox"]){font-size:16px}
+
+.quiz-progresso{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+/* Largura fixa do rótulo e espaço do Voltar sempre reservado: sem isso a
+   barra encolhia ao trocar "4 de 6" por "Último passo" (e ao surgir o Voltar),
+   e o verde diminuía justo quando o progresso subia. */
+.quiz-progresso .contagem{font-size:.82rem;color:var(--text-muted);white-space:nowrap;order:3;min-width:6.6em;text-align:right}
+.barra-fundo{flex:1;min-width:24px;height:6px;background:var(--borda);border-radius:999px;overflow:hidden;order:2}
+.barra-preenchida{display:block;height:100%;background:var(--verde);border-radius:999px;width:0%}
+
+.quiz-voltar{order:1;background:none;border:none;color:var(--text-muted);font:inherit;font-weight:600;
+  font-size:.85rem;cursor:pointer;padding:12px 8px 12px 0;margin-block:-12px;display:flex;
+  align-items:center;gap:2px;white-space:nowrap}
+.quiz-voltar:hover{color:var(--text)}
+.quiz-voltar:focus-visible{outline:2px solid var(--verde);outline-offset:2px}
+.quiz-voltar[hidden]{display:flex;visibility:hidden}
+
+/* 11 estágios fixos de 10 em 10%: cobre as duas trilhas sem style inline. */
+.quiz[data-progress="0"] .barra-preenchida{width:2%}
+.quiz[data-progress="10"] .barra-preenchida{width:10%}
+.quiz[data-progress="20"] .barra-preenchida{width:20%}
+.quiz[data-progress="30"] .barra-preenchida{width:30%}
+.quiz[data-progress="40"] .barra-preenchida{width:40%}
+.quiz[data-progress="50"] .barra-preenchida{width:50%}
+.quiz[data-progress="60"] .barra-preenchida{width:60%}
+.quiz[data-progress="70"] .barra-preenchida{width:70%}
+.quiz[data-progress="80"] .barra-preenchida{width:80%}
+.quiz[data-progress="90"] .barra-preenchida{width:90%}
+.quiz[data-progress="100"] .barra-preenchida{width:100%}
+
+#quizForm{display:contents}
+.etapa{border:none;padding:0;margin:0;min-width:0}
+.etapa[hidden]{display:none}
+
+.pergunta{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding:0;width:100%}
+.pergunta img{width:52px;height:52px;flex:none}
+.pergunta h2{font-size:1.2rem;line-height:1.32;margin:0;min-width:0}
+
+.opcoes{display:grid;gap:10px}
+.opcoes-scroll{max-height:52vh;overflow-y:auto;overscroll-behavior:contain;padding:2px 4px;margin:0 -4px}
+
+.opcao-radio{display:flex;align-items:center;gap:12px;background:var(--bg);
+  border:1.5px solid var(--borda);border-radius:var(--raio-input);padding:14px 16px;
+  font-weight:600;font-size:.98rem;cursor:pointer;transition:border-color .15s ease,background .15s ease}
+/* Só onde existe mouse: no toque o :hover "gruda" na opção que surge no mesmo
+   lugar da pergunta seguinte e parece pré-marcada. */
+@media (hover:hover){.opcao-radio:hover{border-color:var(--verde)}}
+/* [type="radio"] eleva a especificidade acima de styles.css
+   "input:not(.demo-form input){width:100%}". Sem isso o radio estica e
+   empurra o texto do label pro canto direito do card. */
+.opcao-radio input[type="radio"]{width:auto;margin:0;accent-color:var(--verde);flex:none}
+.opcao-radio:has(input:checked){border-color:var(--verde);background:var(--chat-out)}
+.opcao-radio:has(input:focus-visible){outline:2px solid var(--verde);outline-offset:1px}
+/* Mesmo retorno de toque do .btn da base: a opção "afunda" ao ser tocada. */
+@media (prefers-reduced-motion:no-preference){
+  .opcao-radio{transition:border-color .15s ease,background .15s ease,transform .1s ease}
+  .opcao-radio:active{transform:scale(.98)}
+}
+
+.campo-outro{margin-top:12px}
+.campo-outro[hidden]{display:none}
+
+.quiz-acoes{display:flex;justify-content:flex-end;margin-top:16px}
+.quiz-acoes[hidden]{display:none}
+/* O .btn da base tem white-space:nowrap no botão E nos spans do efeito de
+   hover (.btn-texto/.btn-seta), com overflow:hidden. Só liberar o botão fazia
+   o texto ser recortado em 320px em vez de quebrar. Libera os três, em todo
+   botão do quiz, para um rótulo novo mais longo não repetir o recorte. */
+.quiz .btn-primario,.quiz .btn-primario .btn-texto,.quiz .btn-primario .btn-seta{white-space:normal;text-align:center}
+.quiz-acoes-final .btn{width:100%;justify-content:center}
+
+/* O hover da base troca o texto do botão por uma cópia com seta. No toque o
+   :hover gruda depois do tap: se a validação falha, o CTA fica parado no meio
+   da troca. Onde não há mouse, o botão não anima. */
+@media (hover:none){
+  .quiz .btn-primario:hover{background:var(--guarana-btn)}
+  .quiz .btn-primario:hover .btn-texto{transform:none;opacity:1}
+  .quiz .btn-primario:hover .btn-seta{opacity:0;transform:translateX(14px)}
+}
+
+/* O anel verde de foco da base (input:focus-visible) cobria a borda vermelha:
+   o campo com erro recebia o foco e parecia "verde", sem sinal de problema. */
+.quiz input[aria-invalid="true"]{border-color:var(--erro)}
+.quiz input[aria-invalid="true"]:focus-visible{outline-color:var(--erro)}
+.quiz .consent input[aria-invalid="true"]{outline:2px solid var(--erro);outline-offset:2px}
+
+#etapa6 > label{margin-bottom:14px}
+#etapa6 .opcional{font-weight:400;color:var(--text-muted)}
+/* O .consent da home é flex com wrap: num card estreito o texto não cabe ao
+   lado do checkbox e cai para a linha de baixo. Aqui vira grade de 2 colunas.
+   Sem column-gap: o espaço vira padding do label, e o toque ali também marca. */
+.quiz .consent{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:0;row-gap:4px;align-items:start}
+.quiz .consent label{padding-left:10px}
+.quiz .consent a{grid-column:2;padding-left:10px}
+.consent input[type="checkbox"]{width:20px;height:20px;flex:none;margin:1px 0 0;accent-color:var(--verde)}
+/* Fica entre o email e o consentimento: margem só embaixo, igual à dos
+   labels de cima (14px), para não colar no checkbox. */
+.quiz .aviso-dados{margin:0 0 14px}
+.quiz .cf-turnstile{min-height:0}
+/* O JS põe a mensagem logo abaixo do campo com erro (label já tem 14px de
+   margem embaixo) ou acima do botão final. */
+.quiz .form-msg{margin:0 0 14px}
+.quiz .consent + .form-msg{margin-top:12px}
+.quiz .consent label{min-height:44px}
+.micro-nota{font-size:.82rem;color:var(--text-muted);margin:10px 0 0;text-align:center}
+.micro-nota[hidden]{display:none}
+.link-whats{display:grid;place-items:center;width:100%;margin-top:12px}
+.link-whats[hidden]{display:none}
+
+/* O rodapé da base tem margin-top de 88px, pensado para a home longa; aqui
+   deixava um vão vazio grande logo abaixo do quiz. */
+body > footer{margin-top:56px}
+
+/* ---------- Mascote oficial guara.bot ----------
+   Poses de docs/marketing/brand/guara-bot/poses (v3 aprovado), convertidas
+   para WebP sem recolorir nem recortar. O manual permite sombra só na
+   composição final, para comunicar levitação. Sombra no verde profundo da
+   marca, não em preto puro, para não sujar o fundo claro. Sem selo "Consulta
+   agendada!" por cima: o produto ainda não tem cliente e o selo simulava prova. */
+.mascote-hero{display:none}
+@media(min-width:900px){
+  .mascote-hero{display:flex;margin-top:28px}
+  .mascote-hero img{width:260px;height:260px;filter:drop-shadow(0 18px 18px rgb(18 59 38 / .24))}
+}
+
+/* ---------- Celular ----------
+   No fim do arquivo de propósito: mesma especificidade das regras base acima,
+   então só vencem se vierem depois. Antes ficavam no topo e .quiz, .pergunta
+   e .opcao-radio anulavam o ajuste em silêncio. */
+@media(max-width:899px){
+  .topo-simples{padding:12px 0}
+  /* O nome guara.bot já está no subtítulo; o selo só empurrava o quiz para
+     baixo da dobra em telas pequenas (iPhone SE mostrava 2 opções). */
+  .badge-produto{display:none}
+  .hero-captura h1{margin-bottom:10px}
+  .hero-captura .sub{font-size:1rem}
+  .layout-captura{gap:20px}
+  .opcao-radio{padding-block:12px}
+  .quiz-progresso{margin-bottom:16px}
+  .pergunta{margin-bottom:14px}
+  .pergunta img{width:40px;height:40px}
+  .pergunta h2{font-size:1.1rem}
+  /* Lista de sistemas sem rolagem própria no celular: com max-height e
+     overscroll contain, o arraste ficava preso dentro dela e as últimas
+     opções ("Outro" inclusive) ficavam abaixo da dobra sem jeito de chegar. */
+  .opcoes-scroll{max-height:none;overflow:visible;padding:0;margin:0}
+}
+/* O widget de desafio do Turnstile tem 300px fixos; abaixo de 360px o card
+   tem ~252px úteis e a página rolava de lado quando a Cloudflare pedia desafio.
+   transform não mexe no layout e a rolagem conta a caixa já reduzida. */
+@media(max-width:359px){
+  .quiz .cf-turnstile{transform:scale(.84);transform-origin:left top}
+}
+/* Celular estreito: margem lateral de 16px (e não 24px) e card mais justo,
+   para a pergunta não quebrar em 5 linhas ao lado do mascote em 320px.
+   padding-inline, nunca o atalho "padding", no elemento que também é .wrap. */
+@media(max-width:420px){
+  .wrap{padding-inline:16px}
+  .quiz{padding:18px}
+}
