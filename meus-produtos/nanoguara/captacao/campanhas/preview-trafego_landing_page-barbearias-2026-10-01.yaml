@@ -1,0 +1,92 @@
+etapa: trafego_landing_page
+nicho: barbearias
+torre: 1
+de_torres: 1
+conta:
+  id: act_1678023370148935
+  nome: Lucrec.ia PUBLI
+pagina:
+  id: '1272983785891547'
+  nome: nanoguara.ia
+instagram:
+  id: '17841414315265034'
+  username: nanoguara.ia
+campanha:
+  name: NG | guara.bot | Barbearias | Landing page | Manaus
+  objective: OUTCOME_TRAFFIC
+  status: PAUSED
+  special_ad_categories: []
+  daily_budget: 3704
+  bid_strategy: LOWEST_COST_WITHOUT_CAP
+  start_time: 2026-10-05T00:00:00-0400
+  stop_time: 2026-11-01T00:00:00-0400
+conjunto:
+  name: Manaus | Barbearias | Cliques landing page
+  status: ACTIVE
+  optimization_goal: LINK_CLICKS
+  billing_event: IMPRESSIONS
+  destination_type: WEBSITE
+  targeting:
+    geo_locations:
+      cities:
+      - key: '259014'
+      location_types:
+      - home
+      - recent
+    age_min: 25
+    age_max: 45
+    targeting_automation:
+      advantage_audience: 1
+    publisher_platforms:
+    - facebook
+    - instagram
+    - messenger
+  posicionamentos: 'facebook, instagram, messenger (sem Audience Network: otimização por clique sem pixel)'
+  proibidos_conferidos:
+  - work_employers
+  - work_positions
+  motivo_link_clicks: sem pixel no site, LANDING_PAGE_VIEWS indisponível; trocar quando o pixel for validado
+anuncios:
+- nome: AD01 | Imagem 4:5 | Dor
+  arquivo: guara-bot-barbearia-instagram-feed-v4-sem-cta-1080x1350.png
+  texto: Sua barbearia precisa de atenção na cadeira e no WhatsApp. 💈 Enquanto você cuida do corte, o guara.bot ajuda no atendimento de quem procura sua barbearia. Conheça seu recepcionista digital.
+  titulo: Recepcionista digital para barbearias
+  link: https://nanoguara.ia.br/guarabot/barbearias?utm_source=meta&utm_medium=paid&utm_campaign=barbearias-2026-10&utm_content=ad01
+- nome: AD02 | Imagem 4:5 | Beneficio corte
+  arquivo: guara-bot-barbearia-manaus-corte-v6-feed-1080x1350.png
+  texto: Cada corte pede atenção. Enquanto você atende seu cliente na cadeira, o guara.bot ajuda a atender quem chama no WhatsApp. Quer ver como funciona para a sua barbearia em Manaus? Veja os detalhes na página.
+  titulo: WhatsApp atendido na sua barbearia
+  link: https://nanoguara.ia.br/guarabot/barbearias?utm_source=meta&utm_medium=paid&utm_campaign=barbearias-2026-10&utm_content=ad02
+- nome: AD03 | Imagem 4:5 | Beneficio Manaus
+  arquivo: guara-bot-barbearia-manaus-v10-azul-vermelho-feed-1080x1350.png
+  texto: Cada corte pede atenção. Enquanto você atende seu cliente na cadeira, o guara.bot ajuda a atender quem chama no WhatsApp. Quer ver como funciona para a sua barbearia em Manaus? Veja os detalhes na página.
+  titulo: WhatsApp atendido na sua barbearia
+  link: https://nanoguara.ia.br/guarabot/barbearias?utm_source=meta&utm_medium=paid&utm_campaign=barbearias-2026-10&utm_content=ad03
+- nome: AD04 | Imagem 4:5 | Espelho escuro
+  arquivo: guara-bot-barbearia-topo-funil-espelho-v3-feed-1080x1350.png
+  texto: Enquanto o corte acontece, outra conversa pode começar no WhatsApp. O guara.bot ajuda sua barbearia a atender mensagens, consultar horários, agendar, remarcar e informar. Conheça como funciona na sua rotina.
+  titulo: Atendimento da barbearia no WhatsApp
+  link: https://nanoguara.ia.br/guarabot/barbearias?utm_source=meta&utm_medium=paid&utm_campaign=barbearias-2026-10&utm_content=ad04
+- nome: AD05 | Imagem 4:5 | Espelho recepcao
+  arquivo: guara-bot-barbearia-topo-funil-recepcao-v5-feed-1080x1350.png
+  texto: Enquanto o corte acontece, outra conversa pode começar no WhatsApp. O guara.bot ajuda sua barbearia a atender mensagens, consultar horários, agendar, remarcar e informar. Conheça como funciona na sua rotina.
+  titulo: Atendimento da barbearia no WhatsApp
+  link: https://nanoguara.ia.br/guarabot/barbearias?utm_source=meta&utm_medium=paid&utm_campaign=barbearias-2026-10&utm_content=ad05
+cta:
+  type: LEARN_MORE
+multi_anunciantes: desativado
+conferencias:
+  marca: ok
+  copy:
+    numeros_sem_fonte: 0
+    promessa_resultado: 0
+    prova_social: 0
+    travessao: 0
+    cta_unico: true
+destino: landing page https://nanoguara.ia.br/guarabot/barbearias
+medicao:
+  meta: cliques no link (custo por clique)
+  conversas: contagem manual no WhatsApp pela mensagem pronta da landing page ("quero testar o guara.bot por 15 dias")
+aprovado:
+  em: '2026-10-01'
+  resposta: SIM com os ajustes

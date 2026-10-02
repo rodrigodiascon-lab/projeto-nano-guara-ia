@@ -67,7 +67,7 @@ escala:
   passo_pct: null
   intervalo_dias: null
   minimo_conversas_janela: 15
-  regra: "Sem reserva de escala em outubro (teto igual ao orçamento) e um nicho só, então não há passo de subida nem remanejamento. Revisão do plano: ao chegar a 15 conversas de barbearias na dash, o custo real vira o custo alvo e os blocos 2 e 4 são refeitos. Gasto zero ou quase zero por 2 dias seguidos: pausar e revisar público e criativo."
+  regra: "Sem reserva de escala em outubro (teto igual ao orçamento) e um nicho só, então não há passo de subida nem remanejamento. Revisão do plano: ao chegar a 15 conversas de barbearias (contadas à mão no WhatsApp pela mensagem pronta da landing page, já que a campanha otimiza por clique sem pixel), o custo real vira o custo alvo e os blocos 2 e 4 são refeitos. Gasto zero ou quase zero por 2 dias seguidos: pausar e revisar público e criativo."
 funil:
   taxas:
     qualificacao: null

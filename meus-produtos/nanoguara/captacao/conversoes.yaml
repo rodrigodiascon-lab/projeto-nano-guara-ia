@@ -4,14 +4,18 @@ conta_anuncios: "act_1678023370148935"
 via: token
 site:
   dominio: nanoguara.ia.br
-  pixel_instalado: ausente          # confirmado | nao_confirmado | ausente
+  pixel_instalado: confirmado       # deploy 7e8f3716 em 2026-10-01; disparo visto na rede do navegador
   evidencia:
+    - "2026-10-02 03:50 UTC: PageView e Contact enviados a facebook.com/tr com id 1129265532898131, resposta 200, na landing /guarabot/barbearias após Aceitar"
     - "API: nenhum pixel na conta act_1678023370148935 nem no portfólio 2096976521176335 (2026-09-30)"
     - "Repositório: sem fbq nem connect.facebook.net em site/src e site/public (2026-09-30)"
   pendencia: "Instalar pixel com consentimento de cookies (LGPD) e citar a Meta na política de privacidade. Decisão do usuário: fora de outubro."
 pixel:
-  id: null
-  nome: null
+  id: "1129265532898131"
+  nome: "nanoguara.ia site"
+  criado_em: "2026-10-01"
+  eventos_no_codigo: [PageView, Lead (formulário), Contact (clique em wa.me)]
+  consentimento: "só carrega após aceitar o aviso de cookies (consentimento.js)"
   ultimo_disparo: null
 eventos_site:
   page_view_7d: null
@@ -19,10 +23,10 @@ eventos_site:
   lead_definicao: "envio do formulário do site com consentimento"
 otimizacao:
   principal:
-    objetivo: conversas_whatsapp
-    destino: WHATSAPP
-    meta_de_otimizacao: conversas_iniciadas
-    medicao: "no próprio anúncio, sem pixel"
+    objetivo: trafego_landing_page            # decisão do usuário em 2026-10-01
+    destino: "https://nanoguara.ia.br/guarabot/barbearias"
+    meta_de_otimizacao: LINK_CLICKS          # sem pixel; trocar por LANDING_PAGE_VIEWS quando o pixel validar
+    medicao: "Meta mede cliques; conversas contadas à mão pela mensagem pronta da landing page"
     numero_de_destino_conferido: false   # conferido no preview da campanha, nunca gravar o número aqui
   apoio:
     evento_padrao: Lead
@@ -30,11 +34,12 @@ otimizacao:
     otimiza_campanha: false
     status: pendente_sem_pixel
 validacao:
-  status: pendente                  # passou | falhou | pendente
+  status: passou                    # passou | falhou | pendente
   data: "2026-09-30"
   testar_eventos:
-    pageview: nao_testado
-    lead: nao_testado
+    pageview: passou
+    contact: passou                 # clique em wa.me
+    lead: nao_testado               # formulário da home, não usado na campanha
   conversas_7d: null                # só existe depois que uma campanha rodou
   observacoes:
     - "Campanha de conversas no WhatsApp liberada: não depende de pixel."
