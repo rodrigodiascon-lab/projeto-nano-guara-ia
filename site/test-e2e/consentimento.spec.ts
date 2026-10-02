@@ -148,3 +148,16 @@ test("clique no WhatsApp da landing de barbearias vira Contact só com o pixel a
   const chamadas = await page.evaluate(() => (window as any).__fbq);
   expect(chamadas).toContainEqual(["track", "Contact"]);
 });
+
+test("o aviso tem respiro lateral também na landing de barbearias", async ({ page }) => {
+  await prepara(page);
+  for (const url of ["/index.html", "/guarabot/barbearias.html"]) {
+    await page.goto(url);
+    const pad = await banner(page).evaluate((el) => {
+      const c = getComputedStyle(el);
+      return [c.paddingLeft, c.paddingTop].map(parseFloat);
+    });
+    expect(pad[0], url).toBeGreaterThanOrEqual(14);
+    expect(pad[1], url).toBeLessThanOrEqual(24);
+  }
+});

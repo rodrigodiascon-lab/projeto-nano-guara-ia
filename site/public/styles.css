@@ -433,6 +433,10 @@ footer .footer-accent{color:#6FBF73}
 .aviso-cookies .btn{ min-width:120px; justify-content:center; min-height:44px; }
 .aviso-cookies :focus-visible{ outline:2px solid var(--verde); outline-offset:2px; }
 body.com-aviso-cookies{ padding-bottom:260px; }
+/* O aviso é um <section> e algumas páginas zeram o padding lateral de toda
+   seção (ex.: .gb section{padding:96px 0} na landing de barbearias), com o mesmo
+   peso e carregadas depois deste arquivo. Este seletor é mais específico. */
+body > section.aviso-cookies{ padding:20px; }
 /* Botão do rodapé com cara de link, igual aos vizinhos da lista. */
 .link-cookies{ background:none; border:0; padding:0; font:inherit; color:#CBDCCF;
   cursor:pointer; text-align:left; }
@@ -441,6 +445,7 @@ body.com-aviso-cookies{ padding-bottom:260px; }
 [data-preferencias-cookies][hidden]{ display:none; }
 @media (max-width:479px){
   .aviso-cookies{ left:8px; right:8px; bottom:8px; padding:14px 16px; gap:8px; }
+  body > section.aviso-cookies{ padding:14px 16px; }
   .aviso-cookies p{ font-size:.84rem; line-height:1.45; }
   .aviso-cookies-acoes .btn{ flex:1; min-width:0; }
 }
