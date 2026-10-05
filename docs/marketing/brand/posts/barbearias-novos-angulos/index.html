@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>guara.bot barbearias: falta e conversa</title>
+<!--
+  Fonte editável de duas peças de Meta Ads (barbearias, Manaus).
+  Uso: index.html?peca=falta|conversa&formato=feed|story
+  Feed 1080x1350 (4:5), story 1080x1920 (9:16). Render: node render.mjs
+  Regras de copy da marca: sem travessão, sem número sem fonte, sem promessa de
+  resultado, CTA único. Horários nas conversas são exemplo de uso, como na landing.
+-->
+<style>
+@font-face{font-family:Outfit;src:url(assets/outfit-700.woff2) format("woff2");font-weight:700}
+@font-face{font-family:Outfit;src:url(assets/outfit-600.woff2) format("woff2");font-weight:600}
+@font-face{font-family:Geist;src:url(assets/geist-400.woff2) format("woff2");font-weight:400}
+@font-face{font-family:Geist;src:url(assets/geist-500.woff2) format("woff2");font-weight:500}
+:root{
+  --verde:#2E7D32; --verde-claro:#8FD19A; --vermelho:#D5382F; --creme:#FDF9F0;
+  --grafite:#17231B; --fundo:#1D2A21; --cartao:#24342A; --linha:#33493A;
+  --bolha-cliente:#2C3E33; --bolha-bot:#2E7D32;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--grafite)}
+.peca{width:1080px;height:1350px;position:relative;overflow:hidden;color:var(--creme);
+  font-family:Geist,system-ui,sans-serif;
+  background:
+    radial-gradient(900px 700px at 85% 15%, rgba(46,125,50,.28), transparent 60%),
+    radial-gradient(800px 600px at 0% 100%, rgba(213,56,47,.16), transparent 60%),
+    var(--fundo);
+  padding:84px 84px 0;display:flex;flex-direction:column}
+.story .peca{height:1920px;padding-top:250px}
+.selo{display:inline-flex;align-self:flex-start;font:600 26px/1 Outfit;letter-spacing:.22em;
+  color:var(--verde-claro);border-bottom:3px solid var(--verde);padding-bottom:12px;text-transform:uppercase}
+h1{font:700 86px/1.02 Outfit;letter-spacing:-.02em;margin-top:40px}
+h1 em{font-style:normal;color:var(--vermelho)}
+.sub{font:400 35px/1.35 Geist;color:#C9D6CC;margin-top:24px;max-width:880px}
+.sub b{color:var(--creme);font-weight:500}
+.palco{position:relative;flex:1;margin-top:40px;margin-bottom:130px}
+.story .palco{margin-top:80px;flex:0 0 880px;margin-bottom:0}
+.mascote{position:absolute;right:-60px;bottom:-40px;width:380px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+.story .mascote{width:440px;right:-50px;bottom:-40px}
+.assinatura{position:absolute;left:84px;right:84px;bottom:56px;display:flex;justify-content:flex-start;gap:18px;
+  align-items:center;font:500 28px/1 Geist;color:#9FB3A5}
+.story .assinatura{bottom:280px}
+.assinatura b{font:700 34px/1 Outfit;color:var(--creme)}
+.assinatura b span{color:var(--verde-claro)}
+/* conversa */
+.chat{width:600px;display:flex;flex-direction:column;gap:22px}
+.msg{max-width:560px;padding:20px 26px;border-radius:28px;font:400 32px/1.3 Geist;position:relative}
+.msg small{display:block;text-align:right;font:400 22px/1 Geist;opacity:.7;margin-top:10px}
+.cli{align-self:flex-start;background:var(--bolha-cliente);border-bottom-left-radius:8px}
+.bot{align-self:flex-end;background:var(--bolha-bot);border-bottom-right-radius:8px;color:#fff}
+.quem{font:600 22px/1 Outfit;letter-spacing:.08em;text-transform:uppercase;color:var(--verde-claro);margin-bottom:-10px}
+.quem.d{align-self:flex-end}
+/* agenda */
+.agenda{width:600px;background:var(--cartao);border:2px solid var(--linha);border-radius:28px;padding:30px 34px}
+.agenda h3{font:600 28px/1 Outfit;color:#9FB3A5;letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px}
+.slot{display:flex;align-items:center;gap:20px;padding:16px 0;border-top:2px solid var(--linha);font:500 34px/1 Geist}
+.slot .h{font:700 36px/1 Outfit;width:120px}
+.slot.falta{color:#E99A94}
+.slot.falta .n{text-decoration:line-through;text-decoration-thickness:3px}
+.tag{margin-left:auto;font:600 22px/1 Outfit;letter-spacing:.06em;text-transform:uppercase;
+  padding:10px 14px;border-radius:999px;background:rgba(213,56,47,.18);color:#F0A49E}
+.tag.ok{background:rgba(143,209,154,.16);color:var(--verde-claro)}
+.lembrete{margin-top:26px;width:600px}
+.story .lembrete{margin-top:40px}
+</style>
+</head>
+<body>
+<div id="raiz"></div>
+<script>
+const q=new URLSearchParams(location.search);
+const peca=q.get('peca')||'falta', formato=q.get('formato')||'feed';
+if(formato==='story') document.body.classList.add('story');
+const assinatura='<div class="assinatura"><b>nano<span>guará.ia</span></b><span>Manaus, AM</span></div>';
+const pecas={
+falta:`<div class="peca">
+  <span class="selo">Para barbearias</span>
+  <h1>O cliente marcou.<br><em>E não apareceu.</em></h1>
+  <p class="sub">Horário vazio é corte que não volta. O <b>guara.bot</b> lembra o cliente na véspera, pelo WhatsApp.</p>
+  <div class="palco">
+    <div class="agenda">
+      <h3>Agenda de sábado</h3>
+      <div class="slot"><span class="h">09h00</span><span>Corte</span><span class="tag ok">confirmado</span></div>
+      <div class="slot falta"><span class="h">10h30</span><span class="n">Corte e barba</span><span class="tag">não veio</span></div>
+    </div>
+    <div class="chat lembrete">
+      <span class="quem d">guara.bot, na véspera</span>
+      <div class="msg bot">Oi! Passando para lembrar do seu corte amanhã às 10h30. Confirma?<small>18:00</small></div>
+      <div class="msg cli">Confirmo, valeu!<small>18:02</small></div>
+    </div>
+    <img class="mascote" src="assets/05-confirmacao.png" alt="">
+  </div>
+  ${assinatura}
+</div>`,
+conversa:`<div class="peca">
+  <span class="selo">Para barbearias</span>
+  <h1>Veja o guara.bot<br><em>atendendo.</em></h1>
+  <p class="sub">Ele responde no WhatsApp, mostra os <b>horários livres de verdade</b> e agenda. Enquanto você corta.</p>
+  <div class="palco">
+    <div class="chat">
+      <div class="msg cli">Tem horário sábado?<small>21:14</small></div>
+      <div class="msg bot">Tenho 9h, 10h30 e 14h. Qual fica melhor pra você?<small>21:14</small></div>
+      <div class="msg cli">10h30<small>21:15</small></div>
+      <div class="msg bot">Fechado! Seu corte está marcado para sábado às 10h30.<small>21:15</small></div>
+    </div>
+    <img class="mascote" src="assets/08-digitando.png" alt="">
+  </div>
+  ${assinatura}
+</div>`};
+document.getElementById('raiz').innerHTML=pecas[peca];
+</script>
+</body>
+</html>
