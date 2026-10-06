@@ -37,7 +37,7 @@
     <span>nano<em>guará.ia</em></span>
   </a>
   <div class="nav-links">
-    <a href="#como-funciona">Como funciona</a><a href="#preco">Preço</a><a href="#perguntas">Perguntas</a>
+    <a href="#caminho">Como funciona</a><a href="#preco">Preço</a><a href="#perguntas">Perguntas</a>
   </div>
   <a class="btn btn-primario btn-sm gb-nav-cta" target="_blank" rel="noopener"
      href="https://wa.me/5592981486875?text=Oi%2C%20tenho%20uma%20barbearia%20e%20quero%20testar%20o%20guara.bot%20por%2015%20dias.">
@@ -149,6 +149,73 @@
       <p class="gb-msg in">Valeu, tô lá!</p>
     </div>
   </div>
+</div></section>
+
+<!-- 3b. TRILHA: o caminho de uma mensagem (fluxo real da instalação piloto) -->
+<section class="gb-trilha" id="caminho" aria-labelledby="trilha-titulo"><div class="wrap">
+  <div class="gb-trilha-head">
+    <h2 class="sec-titulo" id="trilha-titulo">O caminho de uma mensagem</h2>
+    <p>Do "oi" até o horário marcado, sem você largar a máquina.</p>
+  </div>
+
+  <ol class="gb-fluxo">
+    <li class="gb-no gb-no-entrada">
+      <b>O cliente manda mensagem no WhatsApp</b>
+      <span>texto ou áudio, a qualquer hora</span>
+    </li>
+
+    <li class="gb-no gb-no-bot">
+      <img src="/brand/guara-bot/03-pensando-256.webp" width="256" height="256" loading="lazy" decoding="async" alt="">
+      <div><b>O guara.bot entende o pedido</b><span>e decide o que fazer</span></div>
+    </li>
+
+    <li class="gb-decisao">
+      <div class="gb-saida gb-saida-quieto">
+        <span class="gb-rotulo">propaganda ou conversa pessoal</span>
+        <div class="gb-no gb-no-cinza"><b>Fica quieto</b><span>a conversa é sua</span></div>
+      </div>
+      <div class="gb-no gb-no-pergunta"><b>É assunto da barbearia?</b></div>
+      <div class="gb-saida gb-saida-voce">
+        <span class="gb-rotulo">pediu você ou ele não sabe</span>
+        <div class="gb-no gb-no-vermelho"><b>Passa para você</b><span>e te avisa</span></div>
+      </div>
+    </li>
+
+    <li class="gb-ramos-wrap">
+      <span class="gb-rotulo gb-rotulo-sim">sim</span>
+      <ul class="gb-ramos">
+        <li class="gb-ramo">
+          <div class="gb-no gb-no-titulo"><b>Quer saber algo</b></div>
+          <div class="gb-no"><span class="gb-forte">Preço, endereço, horário de funcionamento</span><span>responde na hora</span></div>
+        </li>
+        <li class="gb-ramo">
+          <div class="gb-no gb-no-titulo"><b>Quer marcar</b></div>
+          <div class="gb-no"><span class="gb-forte">Olha a agenda de verdade</span></div>
+          <div class="gb-no"><span class="gb-forte">Oferece só horário livre</span></div>
+          <div class="gb-no"><span class="gb-forte">Confere de novo e confirma com o cliente</span></div>
+          <div class="gb-no gb-no-verde"><b>Marca o horário</b><span>agenda + Google Agenda + e-mail para você</span></div>
+        </li>
+        <li class="gb-ramo">
+          <div class="gb-no gb-no-titulo"><b>Quer remarcar ou cancelar</b></div>
+          <div class="gb-no"><span class="gb-forte">Confirma qual horário</span></div>
+          <div class="gb-no gb-no-verde"><b>Muda ou cancela e te avisa</b><span>só o horário dele</span></div>
+          <div class="gb-no"><span class="gb-forte">Oferece outro horário</span></div>
+        </li>
+      </ul>
+    </li>
+
+    <li class="gb-no gb-no-auto">
+      <img src="/brand/guara-bot/05-confirmacao-256.webp" width="256" height="256" loading="lazy" decoding="async" alt="">
+      <div><b>Na véspera: lembrete automático</b><span>com o horário e o endereço, sem o cliente pedir</span></div>
+    </li>
+  </ol>
+
+  <ul class="gb-legenda" aria-label="Legenda">
+    <li><i class="gb-cor-verde" aria-hidden="true"></i>marca e te avisa</li>
+    <li><i class="gb-cor-vermelho" aria-hidden="true"></i>sai do automático e vai para você</li>
+    <li><i class="gb-cor-cinza" aria-hidden="true"></i>ele não responde</li>
+    <li><i class="gb-cor-tracejado" aria-hidden="true"></i>acontece sozinho</li>
+  </ul>
 </div></section>
 
 <!-- 4. E O MEU WHATSAPP? -->
