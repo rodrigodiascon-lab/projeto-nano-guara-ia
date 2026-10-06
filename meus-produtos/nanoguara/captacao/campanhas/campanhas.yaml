@@ -32,6 +32,12 @@ campanhas:
       - {id: "120250426921550113", nome: "AD06 | Imagem 4:5 | Falta lembrete", criativo: "2352254365515441", imagem: "falta-lembrete-v1", utm_content: ad06, entrou_em: "2026-10-05"}
       - {id: "120250426922710113", nome: "AD07 | Imagem 4:5 | Conversa prova", criativo: "1038783622512427", imagem: "conversa-prova-v1", utm_content: ad07, entrou_em: "2026-10-05"}
     revisao_meta: "5 anúncios aprovados e ACTIVE em 2026-10-05"
+    formatos:
+      desde: "2026-10-05"
+      tipo: "feed 4:5 + story/reels 9:16 no mesmo anúncio (asset_feed_spec + asset_customization_rules)"
+      criativos_combinados: {AD01: "4386033251660324", AD02: "1417044243868047", AD04: "1625989505696301", AD06: "2317528642120069", AD07: "1830695534594191"}
+      regras: "story: facebook story/reels, instagram story/reels/profile_reels/ig_search/explore_home, messenger story; feed: facebook feed/marketplace/video_feeds/search/profile_feed/notification/instream_video, instagram stream/explore/profile_feed, messenger_home"
+      preview_conferido: "MOBILE_FEED_STANDARD usa 4:5; INSTAGRAM_STORY e INSTAGRAM_REELS usam 9:16"
     falhas:
       - {nivel: conjunto, motivo: "idade 25 a 45 como limite recusada com Advantage+; refeito com 25 a 65 e sugestão 25 a 45"}
 nao_usado:
