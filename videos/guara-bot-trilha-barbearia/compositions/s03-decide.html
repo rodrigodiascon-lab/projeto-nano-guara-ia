@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s03-root { position: absolute; inset: 0; overflow: hidden; font-family: Geist, sans-serif; color: #17231b;
+                    background: radial-gradient(900px 700px at 100% 0%, rgba(46, 125, 50, .35), transparent 60%),
+                                radial-gradient(800px 700px at 0% 100%, rgba(213, 56, 47, .12), transparent 60%), #123b26; }
+        #s03-palco { position: absolute; inset: 0; }
+        .s03-seg { position: absolute; left: 536px; width: 9px; border-radius: 9px; background: #8fd19a; }
+        #s03-seg1 { top: 0; height: 300px; }
+        #s03-seg2 { top: 470px; height: 140px; }
+        #s03-seg3 { top: 790px; height: 120px; }
+        #s03-seg4 { top: 1130px; height: 420px; }
+        .s03-h { position: absolute; top: 1150px; height: 8px; border-radius: 8px; }
+        #s03-hesq { left: 250px; width: 290px; background: #8fa396; }
+        #s03-hdir { left: 540px; width: 290px; background: #ff6f5f; }
+        .s03-v { position: absolute; top: 1150px; width: 8px; height: 70px; border-radius: 8px; }
+        #s03-vesq { left: 246px; background: #8fa396; }
+        #s03-vdir { left: 826px; background: #ff6f5f; }
+        .s03-caixa { position: absolute; left: 0; right: 0; margin: 0 auto; width: max-content; max-width: 900px;
+                     background: #fdf9f0; border: 6px solid #17231b; border-radius: 40px; padding: 30px 48px;
+                     text-align: center; font: 700 52px/1.1 Outfit; box-shadow: 0 24px 50px rgba(0, 0, 0, .3); }
+        #s03-n1 { top: 300px; }
+        #s03-n1 em { display: block; font: 500 36px/1.2 Geist; color: #55655b; font-style: normal; margin-top: 10px; }
+        #s03-n2 { top: 610px; display: flex; align-items: center; gap: 22px; padding: 14px 48px 14px 18px;
+                  background: #e8f3e6; border-color: #2e7d32; }
+        #s03-n2 img { width: 150px; height: 150px; display: block; }
+        #s03-n3 { top: 910px; font-size: 64px; padding: 36px 56px; background: #fff; }
+        .s03-lado { position: absolute; top: 1220px; width: 420px; border-radius: 34px; padding: 26px 24px; text-align: center; font: 700 46px/1.1 Outfit; }
+        .s03-lado em { display: block; font: 500 30px/1.25 Geist; font-style: normal; margin-top: 12px; }
+        #s03-quieto { left: 36px; border: 5px dashed #8fa396; color: #cbdccf; background: rgba(13, 44, 28, .7); }
+        #s03-quieto em { color: #8fa396; }
+        #s03-voce { left: 624px; border: 6px solid #d5382f; background: #3a1714; color: #ff8a7a; }
+        #s03-voce em { color: #ffc9c2; }
+        #s03-sim { position: absolute; top: 1440px; left: 566px; font: 700 40px/1 Outfit; color: #8fd19a; }
+      </style>
+
+      <div data-hf-id="hf-z5zs" id="s03-root" data-composition-id="s03" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-ngt9" id="s03-palco">
+          <div data-hf-id="hf-d5cv" id="s03-seg1" class="s03-seg"></div>
+          <div data-hf-id="hf-4hh0" id="s03-seg2" class="s03-seg"></div>
+          <div data-hf-id="hf-594t" id="s03-seg3" class="s03-seg"></div>
+          <div data-hf-id="hf-o0ui" id="s03-seg4" class="s03-seg"></div>
+          <div data-hf-id="hf-dw61" id="s03-hesq" class="s03-h"></div>
+          <div data-hf-id="hf-8j6p" id="s03-hdir" class="s03-h"></div>
+          <div data-hf-id="hf-vgq1" id="s03-vesq" class="s03-v"></div>
+          <div data-hf-id="hf-0zkh" id="s03-vdir" class="s03-v"></div>
+          <div data-hf-id="hf-dc1k" id="s03-n1" class="s03-caixa">O cliente manda mensagem<em data-hf-id="hf-hmny">"Tem horário sábado?"</em></div>
+          <div data-hf-id="hf-0hdx" id="s03-n2" class="s03-caixa"><img data-hf-id="hf-ni5c" id="s03-guara" src="assets/guara-03-pensando.webp" alt="">Entende o pedido</div>
+          <div data-hf-id="hf-fex8" id="s03-n3" class="s03-caixa">É assunto da barbearia?</div>
+          <div data-hf-id="hf-e37b" id="s03-quieto" class="s03-lado">Fica quieto<em data-hf-id="hf-wu11">"Promoção imperdível!"</em></div>
+          <div data-hf-id="hf-w14f" id="s03-voce" class="s03-lado">Passa para você<em data-hf-id="hf-fa61">"Quero falar com o barbeiro"</em></div>
+          <div data-hf-id="hf-jx4s" id="s03-sim">sim</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // Entrada casada com a saída da cena 2: vem de baixo, desfoque limpando.
+          tl.fromTo("#s03-palco", { y: 280, filter: "blur(18px)" }, { y: 0, filter: "blur(0px)", duration: 0.42, ease: "power3.out" }, 0);
+          // A linha DESENHA para baixo e cada caixa ACENDE quando ela chega.
+          const desce = (sel, t, d) => tl.fromTo(sel, { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: d, ease: "none" }, t);
+          const acende = (sel, t) => tl.fromTo(sel, { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: "back.out(2)" }, t);
+          desce("#s03-seg1", 0.1, 0.32); acende("#s03-n1", 0.4);
+          desce("#s03-seg2", 0.68, 0.26); acende("#s03-n2", 0.95);
+          tl.fromTo("#s03-guara", { rotation: -8 }, { rotation: 6, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.0);
+          desce("#s03-seg3", 1.18, 0.2); acende("#s03-n3", 1.36);
+          // As duas saídas DISPARAM para os lados ao mesmo tempo.
+          tl.fromTo("#s03-hesq", { scaleX: 0, transformOrigin: "100% 50%" }, { scaleX: 1, duration: 0.22, ease: "power2.out" }, 1.66);
+          tl.fromTo("#s03-hdir", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.22, ease: "power2.out" }, 1.66);
+          tl.fromTo(".s03-v", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.12, ease: "none" }, 1.86);
+          tl.fromTo("#s03-quieto", { x: -120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 1.88);
+          tl.fromTo("#s03-voce", { x: 120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 1.88);
+          tl.fromTo("#s03-voce", { rotation: -3 }, { rotation: 0, duration: 0.3, ease: "elastic.out(1, 0.3)", immediateRender: false }, 2.18);
+          // "sim": a trilha segue para baixo.
+          desce("#s03-seg4", 2.2, 0.45);
+          tl.fromTo("#s03-sim", { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 2.3);
+          // Saída: a câmera continua descendo.
+          tl.to("#s03-palco", { y: -280, filter: "blur(18px)", duration: 0.28, ease: "power2.in" }, 2.72);
+          window.__timelines["s03"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

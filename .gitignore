@@ -48,3 +48,9 @@ docs/marketing/brand/guara-bot/**/*.png
 assets/referencias/**/*.png
 assets/referencias/**/*.jpg
 output/
+
+# Caches e capturas do HyperFrames: regeneráveis (preview, snapshot, waveform).
+videos/**/.thumbnails/
+videos/**/.waveform-cache/
+videos/**/.hyperframes/
+videos/**/snapshots/

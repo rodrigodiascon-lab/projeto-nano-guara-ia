@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s07-root { position: absolute; inset: 0; overflow: hidden; background: #123b26; color: #fff; font-family: Geist, sans-serif; }
+        /* Íris: o vermelho guaraná abre a partir do ponto onde a linha da trilha termina. */
+        #s07-iris { position: absolute; inset: 0;
+                    background: radial-gradient(900px 900px at 85% 10%, rgba(255, 255, 255, .12), transparent 60%), #d5382f; }
+        #s07-titulo { position: absolute; top: 98px; left: 84px; width: 912px; font: 700 128px/1.06 Outfit; letter-spacing: -3px; }
+        #s07-titulo span { display: block; }
+        #s07-guara { position: absolute; left: 20px; top: 539px; width: 560px; filter: drop-shadow(0 40px 50px rgba(80, 10, 6, .45)); }
+        #s07-texto { position: absolute; left: 590px; top: 671px; width: 420px; }
+        #s07-desc { font: 700 50px/1.12 Outfit; }
+        #s07-marca { margin-top: 44px; font: 700 76px/1 Outfit; letter-spacing: -1px; }
+        #s07-traco { width: 120px; height: 10px; border-radius: 10px; background: #fff; margin-top: 30px; }
+      </style>
+
+      <div data-hf-id="hf-1wjc" id="s07-root" data-composition-id="s07" data-width="1080" data-height="1350">
+        <div data-hf-id="hf-xyox" id="s07-iris">
+          <h1 data-hf-id="hf-9lxp" id="s07-titulo"><span data-hf-id="hf-hsj6">15 dias grátis,</span><span data-hf-id="hf-zx2e">sem cartão.</span></h1>
+          <img data-hf-id="hf-jg99" id="s07-guara" src="assets/guara-12-apontando-cta.webp" alt="">
+          <div data-hf-id="hf-i1jo" id="s07-texto">
+            <div data-hf-id="hf-kthw" id="s07-desc">Assistente de IA no WhatsApp para barbearias de Manaus.</div>
+            <div data-hf-id="hf-ruul" id="s07-traco"></div>
+            <div data-hf-id="hf-3wex" id="s07-marca">guara.bot</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s07-iris", { clipPath: "circle(0% at 50% 86%)" }, { clipPath: "circle(150% at 50% 86%)", duration: 0.55, ease: "power3.inOut" }, 0);
+          // Um movimento de entrada por elemento, e depois o quadro fica parado de propósito.
+          tl.fromTo("#s07-titulo", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 0.4);
+          tl.fromTo("#s07-guara", { x: -220, opacity: 0, rotation: -6 }, { x: 0, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, 0.55);
+          tl.fromTo("#s07-texto", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 0.75);
+          tl.fromTo("#s07-traco", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 0.9);
+          window.__timelines["s07"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

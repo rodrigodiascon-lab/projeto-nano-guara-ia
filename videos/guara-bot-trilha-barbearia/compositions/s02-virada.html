@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s02-root { position: absolute; inset: 0; overflow: hidden; background: #123b26; font-family: Geist, sans-serif; color: #fff; }
+        #s02-palco { position: absolute; inset: 0; }
+        #s02-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 0% 50%;
+                  filter: blur(14px) brightness(.3) saturate(1.1); transform: scale(1.02); }
+        #s02-vinheta { position: absolute; inset: 0;
+                       background: radial-gradient(900px 1100px at 50% 55%, rgba(46, 125, 50, .18), rgba(8, 20, 13, .8) 100%); }
+        #s02-titulo { position: absolute; top: 270px; left: 84px; width: 912px; font: 700 110px/1.02 Outfit; letter-spacing: -2px; }
+        #s02-titulo span { display: block; }
+        #s02-t2 { color: #8fd19a; }
+        .s02-bolha { position: absolute; background: #fff; color: #17231b; font: 500 44px/1.2 Geist; padding: 26px 36px;
+                     border-radius: 34px 34px 34px 10px; box-shadow: 0 18px 40px rgba(0, 0, 0, .4); white-space: nowrap; }
+        #s02-b1 { left: 64px; top: 800px; }
+        #s02-b2 { right: 56px; top: 960px; }
+        #s02-b3 { left: 150px; top: 1115px; }
+        #s02-b4 { right: 100px; top: 1260px; }
+        #s02-b5 { left: 60px; top: 1400px; }
+        #s02-guara { position: absolute; left: 230px; top: 640px; width: 620px; filter: drop-shadow(0 40px 50px rgba(0, 0, 0, .5)); }
+        #s02-linha { position: absolute; left: 536px; top: 1440px; width: 9px; height: 520px; border-radius: 9px; background: #8fd19a; }
+      </style>
+
+      <div data-hf-id="hf-8xyg" id="s02-root" data-composition-id="s02" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-w024" id="s02-palco">
+          <img data-hf-id="hf-mdro" id="s02-bg" src="assets/barbearia.webp" alt="">
+          <div data-hf-id="hf-7vha" id="s02-vinheta"></div>
+          <div data-hf-id="hf-1u4h" id="s02-linha"></div>
+          <div data-hf-id="hf-w4dg" id="s02-b1" class="s02-bolha">Tem horário sábado?</div>
+          <div data-hf-id="hf-d4jp" id="s02-b2" class="s02-bolha">Quanto é a barba?</div>
+          <div data-hf-id="hf-rtql" id="s02-b3" class="s02-bolha">Amanhã dá?</div>
+          <div data-hf-id="hf-a7gr" id="s02-b4" class="s02-bolha">Tá aberto hoje?</div>
+          <div data-hf-id="hf-xefu" id="s02-b5" class="s02-bolha">Ainda tem vaga?</div>
+          <img data-hf-id="hf-4by2" id="s02-guara" src="assets/guara-01-boas-vindas.webp" alt="">
+          <h1 data-hf-id="hf-w1t6" id="s02-titulo"><span data-hf-id="hf-u6hy" id="s02-t1">Deixa com o</span><span data-hf-id="hf-2rxn" id="s02-t2">guara.bot.</span></h1>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // As bolhas começam onde a cena 1 as deixou.
+          tl.set(".s02-bolha", { scale: 1.05 }, 0);
+          tl.set("#s02-b1", { rotation: -5 }, 0); tl.set("#s02-b2", { rotation: 4 }, 0); tl.set("#s02-b3", { rotation: 3 }, 0);
+          tl.set("#s02-b4", { rotation: -4 }, 0); tl.set("#s02-b5", { rotation: -2 }, 0);
+          // O guara.bot SOBE de baixo com massa: chega, passa um pouco e assenta.
+          tl.fromTo("#s02-guara", { y: 1300, rotation: -6 }, { y: -40, rotation: 2, duration: 0.5, ease: "power3.out" }, 0.0);
+          tl.to("#s02-guara", { y: 0, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 0.5);
+          // Colisão: ele EMPURRA as bolhas para fora da tela.
+          const empurra = [["#s02-b1", -760, -22], ["#s02-b2", 760, 20], ["#s02-b3", -720, 16], ["#s02-b4", 720, -18], ["#s02-b5", -760, -14]];
+          empurra.forEach(([sel, x, r], i) => {
+            tl.to(sel, { x: x, y: 60 - i * 10, rotation: r, duration: 0.5, ease: "power2.out" }, 0.34 + i * 0.03);
+          });
+          tl.fromTo("#s02-t1", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.55);
+          tl.fromTo("#s02-t2", { scale: 1.35, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.32, ease: "back.out(2.4)" }, 0.75);
+          // Da base dele nasce a linha verde da trilha.
+          tl.fromTo("#s02-linha", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.55, ease: "power2.in" }, 1.1);
+          tl.to("#s02-guara", { y: -12, duration: 0.6, ease: "sine.inOut" }, 1.0);
+          // Saída: a câmera desce (o palco sobe com desfoque).
+          tl.to("#s02-palco", { y: -280, filter: "blur(18px)", duration: 0.28, ease: "power2.in" }, 1.72);
+          window.__timelines["s02"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

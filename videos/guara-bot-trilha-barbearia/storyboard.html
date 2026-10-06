@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>guara.bot: o caminho de uma mensagem · storyboard v1</title>
+<style>
+@font-face{font-family:"Outfit";src:url("assets/outfit-700.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Outfit";src:url("assets/outfit-600.woff2") format("woff2");font-weight:600}
+@font-face{font-family:"Geist";src:url("assets/geist-400.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Geist";src:url("assets/geist-500.woff2") format("woff2");font-weight:500}
+:root{--fundo:#123B26;--fundo2:#0D2C1C;--creme:#FDF9F0;--verde:#2E7D32;--verde-claro:#6FBF73;--guarana:#D5382F;--grafite:#17231B;--cinza:#8FA396}
+*{box-sizing:border-box}
+body{margin:0;background:#0b1a11;color:#EDF3EE;font-family:"Geist",system-ui,sans-serif;padding:40px 32px 80px}
+header{max-width:1500px;margin:0 auto 32px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+header h1{font-family:"Outfit";font-size:34px;margin:0;letter-spacing:-.02em}
+header p{margin:6px 0 0;color:#9DB0A3;font-size:16px}
+.tag{border:1px solid #2c4a37;border-radius:999px;padding:6px 14px;font-size:13px;color:#CBDCCF}
+.grade{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+@media(max-width:1100px){.grade{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.celula{display:flex;flex-direction:column;gap:10px}
+.quadro{aspect-ratio:9/16;container-type:inline-size;position:relative;overflow:hidden;border-radius:14px;background:var(--fundo);font-family:"Geist"}
+.rotulo{display:flex;justify-content:space-between;font-size:12px;color:#9DB0A3;letter-spacing:.04em}
+.rotulo b{color:#EDF3EE}
+.nota{font-size:13px;line-height:1.45;color:#CBDCCF;margin:0}
+.nota b{color:#fff}
+.chip{align-self:flex-start;font-size:11px;border:1px solid #2c4a37;border-radius:999px;padding:3px 10px;color:#9DB0A3}
+/* zona segura do Reels: faixas que a interface cobre */
+.seguro::before,.seguro::after{content:"";position:absolute;left:0;right:0;z-index:20;pointer-events:none;
+  background:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 1cqw,transparent 1cqw 2cqw);border:0 dashed rgba(255,255,255,.25)}
+.seguro::before{top:0;height:13cqh;height:23.1cqw;border-bottom-width:1px}
+.seguro::after{bottom:0;height:35.2cqw;border-top-width:1px}
+/* elementos */
+.titulo{position:absolute;left:7cqw;right:7cqw;font-family:"Outfit";font-weight:700;color:#fff;font-size:8.6cqw;line-height:1.05;letter-spacing:-.02em;margin:0}
+.bolha{position:absolute;background:#fff;color:var(--grafite);border-radius:3.2cqw 3.2cqw 3.2cqw .8cqw;padding:2.2cqw 3.4cqw;font-size:3.9cqw;font-weight:500;box-shadow:0 1.5cqw 3cqw rgba(0,0,0,.35);white-space:nowrap}
+.bolha.out{background:#DFF3D8;border-radius:3.2cqw 3.2cqw .8cqw 3.2cqw}
+.caixa{position:absolute;left:50%;transform:translateX(-50%);background:var(--creme);color:var(--grafite);border:.5cqw solid var(--grafite);border-radius:3cqw;padding:2.6cqw 4cqw;text-align:center;font-family:"Outfit";font-weight:700;font-size:4.4cqw;line-height:1.15;white-space:nowrap}
+.caixa small{display:block;font-family:"Geist";font-weight:400;font-size:3cqw;color:#55655B;margin-top:.6cqw}
+.linha{position:absolute;left:50%;width:.9cqw;margin-left:-.45cqw;background:var(--verde-claro);border-radius:1cqw}
+.guara{position:absolute}
+.guara img{width:100%;display:block}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>guara.bot: o caminho de uma mensagem <span style="color:#6FBF73">v1</span></h1>
+    <p>Do "oi" ao horário marcado, sem você largar a máquina. Esboços parados de cada cena; a animação vem depois.</p>
+  </div>
+  <span class="tag">1080x1920 · ~20,5 s · 7 cenas · sem narração · faixas listradas = zona coberta pelo Instagram</span>
+</header>
+
+<main class="grade">
+
+<!-- 01 -->
+<section class="celula" id="frame-01">
+  <div class="quadro seguro">
+    <img src="assets/barbearia.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0% 50%;filter:blur(1.2cqw) brightness(.38)">
+    <p class="titulo" style="top:26cqw">Você no meio do corte.<br><span style="color:#FFD6D2">O WhatsApp não para.</span></p>
+    <div style="position:absolute;left:24cqw;top:72cqw;width:52cqw;height:96cqw;border-radius:7cqw;background:#0e1712;border:1.4cqw solid #22302a;box-shadow:0 3cqw 8cqw rgba(0,0,0,.5)"></div>
+    <span class="bolha" style="left:8cqw;top:84cqw;transform:rotate(-4deg)">Tem horário sábado?</span>
+    <span class="bolha" style="right:6cqw;top:102cqw;transform:rotate(3deg)">Quanto é a barba?</span>
+    <span class="bolha" style="left:14cqw;top:120cqw;transform:rotate(2deg)">Amanhã dá?</span>
+    <span class="bolha" style="right:10cqw;top:136cqw;transform:rotate(-3deg)">Tá aberto hoje?</span>
+    <span class="bolha" style="left:6cqw;top:150cqw;transform:rotate(-2deg)">Ainda tem vaga?</span>
+  </div>
+  <div class="rotulo"><b>01 · ENXURRADA</b><span>overwhelm-surround · 0–3,0 s</span></div>
+  <p class="nota"><b>Primeiro move:</b> as bolhas CAEM uma por batida, com ping, empilhando sobre o celular; o título entra em dois golpes.</p>
+  <span class="chip">entra: corte seco</span>
+</section>
+
+<!-- 02 -->
+<section class="celula" id="frame-02">
+  <div class="quadro seguro">
+    <img src="assets/barbearia.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0% 50%;filter:blur(1.2cqw) brightness(.3)">
+    <span class="bolha" style="left:-10cqw;top:70cqw;transform:rotate(-14deg);opacity:.75">Tem horário sábado?</span>
+    <span class="bolha" style="right:-12cqw;top:96cqw;transform:rotate(12deg);opacity:.75">Quanto é a barba?</span>
+    <span class="bolha" style="left:-8cqw;top:140cqw;transform:rotate(9deg);opacity:.75">Amanhã dá?</span>
+    <div class="guara" style="left:16cqw;top:60cqw;width:68cqw"><img src="assets/guara-01-boas-vindas.webp" alt=""></div>
+    <p class="titulo" style="top:26cqw">Deixa com o<br><span style="color:var(--verde-claro)">guara.bot.</span></p>
+    <div class="linha" style="top:128cqw;height:34cqw"></div>
+  </div>
+  <div class="rotulo"><b>02 · VIRADA</b><span>ticker-takeover · 3,0–5,0 s</span></div>
+  <p class="nota"><b>Primeiro move:</b> o guara.bot SOBE de baixo e EMPURRA as bolhas para fora (colisão, whoosh + impacto). Da base dele nasce a linha verde.</p>
+  <span class="chip">sai: empurra para cima</span>
+</section>
+
+<!-- 03 -->
+<section class="celula" id="frame-03">
+  <div class="quadro seguro">
+    <div class="linha" style="top:0;height:150cqw"></div>
+    <div class="caixa" style="top:26cqw">O cliente manda mensagem<small>"Tem horário sábado?"</small></div>
+    <div class="caixa" style="top:52cqw;display:flex;align-items:center;gap:3cqw;padding-left:2cqw;border-color:var(--verde);background:#E8F3E6">
+      <img src="assets/guara-03-pensando.webp" alt="" style="width:16cqw">Entende o pedido</div>
+    <div class="caixa" style="top:86cqw;font-size:5.4cqw;background:#fff;padding:3.4cqw 5cqw">É assunto da<br>barbearia?</div>
+    <div style="position:absolute;top:110cqw;left:3cqw;width:30cqw;border:.4cqw dashed var(--cinza);border-radius:3cqw;padding:2cqw;text-align:center;color:#CBDCCF;font-family:Outfit;font-weight:700;font-size:4cqw">Fica quieto<div style="font-family:Geist;font-weight:400;font-size:2.6cqw;color:var(--cinza)">"Promoção imperdível!"</div></div>
+    <div style="position:absolute;top:110cqw;right:3cqw;width:32cqw;border:.5cqw solid var(--guarana);background:#3a1714;border-radius:3cqw;padding:2cqw;text-align:center;color:#FF8A7A;font-family:Outfit;font-weight:700;font-size:4cqw">Passa para você<div style="font-family:Geist;font-weight:400;font-size:2.6cqw;color:#FFC9C2">"Quero falar com o barbeiro"</div></div>
+    <div style="position:absolute;top:106cqw;left:33cqw;width:9cqw;border-top:.6cqw solid var(--cinza)"></div>
+    <div style="position:absolute;top:106cqw;right:35cqw;width:9cqw;border-top:.6cqw solid var(--guarana)"></div>
+    <span style="position:absolute;top:139cqw;left:52cqw;color:var(--verde-claro);font-weight:500;font-size:3.4cqw">sim</span>
+  </div>
+  <div class="rotulo"><b>03 · ENTENDE E DECIDE</b><span>camera-journey · 5,0–8,0 s</span></div>
+  <p class="nota"><b>Primeiro move:</b> a linha DESENHA para baixo e cada caixa acende ao ser tocada; as duas saídas DISPARAM para os lados juntas.</p>
+  <span class="chip">sai: empurra para cima</span>
+</section>
+
+<!-- 04 -->
+<section class="celula" id="frame-04">
+  <div class="quadro seguro">
+    <div class="linha" style="top:0;height:30cqw"></div>
+    <p class="titulo" style="top:26cqw;font-size:7cqw">Oferece só<br><span style="color:var(--verde-claro)">horário livre.</span></p>
+    <div style="position:absolute;left:8cqw;right:8cqw;top:56cqw;background:var(--creme);border-radius:4cqw;padding:4cqw;display:grid;gap:2cqw">
+      <div style="font-family:Outfit;font-weight:700;color:var(--grafite);font-size:4.6cqw">Sábado</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2cqw;font-family:Outfit;font-weight:700;font-size:4.6cqw">
+        <span style="padding:2.4cqw;border-radius:2.4cqw;background:#E6E9E4;color:#A4ADA6;text-decoration:line-through">8h</span>
+        <span style="padding:2.4cqw;border-radius:2.4cqw;background:#DFF3D8;color:var(--verde);border:.5cqw solid var(--verde)">9h</span>
+        <span style="padding:2.4cqw;border-radius:2.4cqw;background:var(--verde);color:#fff;position:relative">10h30<span style="position:absolute;right:-3cqw;top:-4cqw;transform:rotate(-12deg);background:#fff;color:var(--verde);border:.6cqw solid var(--verde);border-radius:1.6cqw;padding:.6cqw 1.6cqw;font-size:3.4cqw">Marcado</span></span>
+        <span style="padding:2.4cqw;border-radius:2.4cqw;background:#E6E9E4;color:#A4ADA6;text-decoration:line-through">11h</span>
+        <span style="padding:2.4cqw;border-radius:2.4cqw;background:#DFF3D8;color:var(--verde);border:.5cqw solid var(--verde)">14h</span>
+        <span style="padding:2.4cqw;border-radius:2.4cqw;background:#E6E9E4;color:#A4ADA6;text-decoration:line-through">15h</span>
+      </div>
+    </div>
+    <div class="guara" style="right:2cqw;top:104cqw;width:34cqw"><img src="assets/guara-05-confirmacao.webp" alt=""></div>
+    <div style="position:absolute;left:8cqw;top:112cqw;display:grid;gap:1.6cqw;font-size:3.4cqw;font-weight:500">
+      <span style="background:#1e4a30;border-radius:999px;padding:1.4cqw 3cqw">agenda</span>
+      <span style="background:#1e4a30;border-radius:999px;padding:1.4cqw 3cqw">Google Agenda</span>
+      <span style="background:#1e4a30;border-radius:999px;padding:1.4cqw 3cqw">e-mail para você</span>
+    </div>
+  </div>
+  <div class="rotulo"><b>04 · MARCA DE VERDADE</b><span>cursor-ui-demo · 8,0–12,5 s</span></div>
+  <p class="nota"><b>Primeiro move:</b> ocupados riscam, livres ACENDEM um por batida (pop); o guara.bot toca o 10h30 e o carimbo "Marcado" BATE (chime). Título troca de "Olha a agenda de verdade." para este.</p>
+  <span class="chip">sai: chicote para cima</span>
+</section>
+
+<!-- 05 -->
+<section class="celula" id="frame-05">
+  <div class="quadro seguro">
+    <div class="linha" style="top:0;height:100%"></div>
+    <div style="position:absolute;left:7cqw;right:7cqw;top:26cqw;height:38cqw;background:#0D2C1C;border-radius:4cqw;padding:4cqw">
+      <span class="bolha" style="position:static;display:inline-block">Quanto é o corte?</span>
+      <div style="font-family:Outfit;font-weight:700;font-size:6.4cqw;margin-top:4cqw">Responde na hora.</div>
+    </div>
+    <div style="position:absolute;left:7cqw;right:7cqw;top:68cqw;height:38cqw;background:#0D2C1C;border-radius:4cqw;padding:4cqw">
+      <div style="display:flex;align-items:center;gap:3cqw;font-family:Outfit;font-weight:700;font-size:4.6cqw">
+        <span style="background:#E6E9E4;color:#A4ADA6;padding:2cqw 3cqw;border-radius:2cqw;text-decoration:line-through">sáb 10h30</span>→
+        <span style="background:var(--verde);color:#fff;padding:2cqw 3cqw;border-radius:2cqw">seg 16h</span></div>
+      <div style="font-family:Outfit;font-weight:700;font-size:6.4cqw;margin-top:4cqw">Remarca.</div>
+    </div>
+    <div style="position:absolute;left:7cqw;right:7cqw;top:110cqw;height:38cqw;background:#0D2C1C;border-radius:4cqw;padding:4cqw">
+      <svg style="width:10cqw;height:10cqw" viewBox="0 0 24 24" fill="none" stroke="#FF8A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+      <div style="font-family:Outfit;font-weight:700;font-size:6.4cqw;margin-top:3cqw">Cancelou? Te avisa.</div>
+    </div>
+  </div>
+  <div class="rotulo"><b>05 · RAMOS</b><span>kinetic-type-beats · 12,5–15,0 s</span></div>
+  <p class="nota"><b>Esboço junta os 3 quadros;</b> no vídeo cada um ocupa a tela sozinho por ~0,8 s, em corte seco no tempo da música (whoosh curto).</p>
+  <span class="chip">sai: empurra para cima</span>
+</section>
+
+<!-- 06 -->
+<section class="celula" id="frame-06">
+  <div class="quadro seguro">
+    <div style="position:absolute;inset:42cqw 10cqw 80cqw;opacity:.9">
+      <div class="linha" style="top:4%;height:86%"></div>
+      <div class="caixa" style="top:2%;font-size:2.4cqw;padding:1.2cqw 2.4cqw">Mensagem</div>
+      <div class="caixa" style="top:14%;font-size:2.4cqw;padding:1.2cqw 2.4cqw;border-color:var(--verde)">Entende</div>
+      <div class="caixa" style="top:26%;font-size:2.4cqw;padding:1.2cqw 2.4cqw">Assunto da barbearia?</div>
+      <div style="position:absolute;top:40%;left:0;right:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2cqw;font-family:Outfit;font-weight:700;font-size:2.2cqw;color:var(--grafite);text-align:center">
+        <span style="background:var(--creme);border-radius:1.6cqw;padding:1.2cqw">Saber</span>
+        <span style="background:#DFF3D8;border:.4cqw solid var(--verde);border-radius:1.6cqw;padding:1.2cqw">Marca</span>
+        <span style="background:var(--creme);border-radius:1.6cqw;padding:1.2cqw">Remarca</span>
+      </div>
+    </div>
+    <div style="position:absolute;left:7cqw;right:7cqw;top:104cqw;background:var(--fundo);border:.6cqw dashed #CBDCCF;border-radius:4cqw;padding:3cqw 4cqw;display:flex;align-items:center;gap:3cqw">
+      <img src="assets/guara-05-confirmacao.webp" alt="" style="width:22cqw">
+      <div style="font-family:Outfit;font-weight:700;font-size:5.4cqw;line-height:1.1">Na véspera, ele lembra o cliente.</div>
+    </div>
+    <p class="titulo" style="top:26cqw;font-size:6.6cqw;text-align:center;background:rgba(18,59,38,.85);padding:2cqw 0">Do "oi" ao horário marcado.</p>
+  </div>
+  <div class="rotulo"><b>06 · VÉSPERA</b><span>zoom-out-workspace-reveal · 15,0–17,5 s</span></div>
+  <p class="nota"><b>Primeiro move:</b> o lembrete acende (sparkle); depois UM afastamento contínuo (riser) mostra a trilha inteira acesa atrás, como na landing.</p>
+  <span class="chip">sai: íris do fim da linha</span>
+</section>
+
+<!-- 07 -->
+<section class="celula" id="frame-07">
+  <div class="quadro seguro" style="background:var(--guarana)">
+    <div class="guara" style="left:2cqw;top:64cqw;width:50cqw"><img src="assets/guara-12-apontando-cta.webp" alt=""></div>
+    <p class="titulo" style="top:28cqw;font-size:11cqw;line-height:1">15 dias grátis,<br>sem cartão.</p>
+    <p style="position:absolute;left:52cqw;right:7cqw;top:84cqw;font-family:Outfit;font-weight:700;font-size:5cqw;line-height:1.15;color:#fff;margin:0">Assistente de IA no WhatsApp para barbearias de Manaus.</p>
+    <p style="position:absolute;left:52cqw;right:7cqw;top:116cqw;font-family:Outfit;font-weight:700;font-size:6cqw;color:#fff;margin:0">guara.bot</p>
+  </div>
+  <div class="rotulo"><b>07 · OFERTA</b><span>titlecard-reveal · 17,5–20,5 s</span></div>
+  <p class="nota"><b>Quadro parado de propósito:</b> um movimento de entrada (impacto) e 1,5 s imóvel. Sem link e sem botão: o botão "Enviar mensagem" é do anúncio.</p>
+  <span class="chip">fim</span>
+</section>
+
+<!-- mapa de transições + tokens -->
+<section class="celula">
+  <div class="quadro" style="background:#0D2C1C"><div style="position:absolute;inset:0;padding:7cqw;display:flex;flex-direction:column;gap:3.4cqw;font-size:3.6cqw">
+    <div style="font-family:Outfit;font-weight:700;font-size:5.4cqw">Transições</div>
+    <div>01 → 02 · corte seco no impacto</div>
+    <div>02 → 03 · empurra para cima, a linha puxa</div>
+    <div>03 → 04 · empurra para cima</div>
+    <div>04 → 05 · chicote para cima</div>
+    <div>05 a, b, c · cortes secos na batida</div>
+    <div>05 → 06 · empurra para cima</div>
+    <div>06 → 07 · íris abrindo do fim da linha</div>
+    <div style="font-family:Outfit;font-weight:700;font-size:5.4cqw;margin-top:3cqw">Marca</div>
+    <div style="display:flex;gap:2cqw">
+      <span style="width:10cqw;height:10cqw;border-radius:2cqw;background:#123B26;border:1px solid #2c4a37"></span>
+      <span style="width:10cqw;height:10cqw;border-radius:2cqw;background:#FDF9F0"></span>
+      <span style="width:10cqw;height:10cqw;border-radius:2cqw;background:#2E7D32"></span>
+      <span style="width:10cqw;height:10cqw;border-radius:2cqw;background:#D5382F"></span>
+      <span style="width:10cqw;height:10cqw;border-radius:2cqw;background:#17231B;border:1px solid #2c4a37"></span>
+    </div>
+    <div>Outfit 700 títulos · Geist 500 texto</div>
+    <div style="color:#9DB0A3">Sem neon, sem degradê em texto, sem números, sem logo do Google, sem emoji.</div>
+  </div></div>
+  <div class="rotulo"><b>MAPA E MARCA</b><span>direção única: desce</span></div>
+</section>
+
+</main>
+</body>
+</html>

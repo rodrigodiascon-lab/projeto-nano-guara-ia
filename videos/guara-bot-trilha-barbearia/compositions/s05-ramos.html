@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s05-root { position: absolute; inset: 0; overflow: hidden; font-family: Geist, sans-serif; color: #fff;
+                    background: radial-gradient(800px 800px at 50% 40%, rgba(46, 125, 50, .3), transparent 65%), #123b26; }
+        #s05-palco { position: absolute; inset: 0; }
+        #s05-linha { position: absolute; left: 536px; top: 0; width: 9px; height: 1920px; border-radius: 9px; background: #8fd19a; opacity: .55; }
+        .s05-quadro { position: absolute; left: 70px; right: 70px; top: 560px; height: 760px; border-radius: 52px;
+                      background: #0d2c1c; border: 4px solid #1e4a30; padding: 64px 60px; }
+        .s05-grande { position: absolute; left: 60px; right: 60px; bottom: 70px; font: 700 104px/1 Outfit; letter-spacing: -2px; }
+        .s05-grande .acento { color: #8fd19a; }
+        .s05-bolha { display: block; width: max-content; font: 500 46px/1.2 Geist; padding: 26px 36px; border-radius: 34px; }
+        #s05-cli { background: #fff; color: #17231b; border-bottom-left-radius: 10px; }
+        #s05-bot { background: #2e7d32; color: #fff; border-bottom-right-radius: 10px; margin: 26px 0 0 auto; }
+        #s05-chips { display: flex; align-items: center; gap: 28px; margin-top: 40px; font: 700 60px/1 Outfit; }
+        .s05-chip { position: relative; padding: 26px 34px; border-radius: 26px; }
+        #s05-velho { background: #e1e4df; color: #a4ada6; }
+        #s05-velho i { position: absolute; left: 22px; right: 22px; top: 50%; height: 7px; margin-top: -3px; border-radius: 6px; background: #a4ada6; }
+        #s05-novo { background: #2e7d32; color: #fff; }
+        #s05-seta { color: #8fd19a; }
+        #s05-sino { width: 230px; height: 230px; display: block; margin-top: 10px; }
+        #s05-qb, #s05-qc { opacity: 0; }
+      </style>
+
+      <div data-hf-id="hf-w4i8" id="s05-root" data-composition-id="s05" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-h447" id="s05-palco">
+          <div data-hf-id="hf-9crq" id="s05-linha"></div>
+          <div data-hf-id="hf-ykf4" id="s05-qa" class="s05-quadro">
+            <span data-hf-id="hf-x5nq" id="s05-cli" class="s05-bolha">Que horas abre amanhã?</span>
+            <span data-hf-id="hf-3s9i" id="s05-bot" class="s05-bolha">Amanhã a partir das 9h.</span>
+            <div data-hf-id="hf-yvnt" class="s05-grande" id="s05-ga">Responde <span data-hf-id="hf-2ppc" class="acento">na hora.</span></div>
+          </div>
+          <div data-hf-id="hf-9fwr" id="s05-qb" class="s05-quadro">
+            <div data-hf-id="hf-sgo3" id="s05-chips"><span data-hf-id="hf-wp59" class="s05-chip" id="s05-velho">sáb 10h30<i data-hf-id="hf-akv6" id="s05-risco"></i></span><span data-hf-id="hf-ykzi" id="s05-seta">→</span><span data-hf-id="hf-fsan" class="s05-chip" id="s05-novo">seg 16h</span></div>
+            <div data-hf-id="hf-f9dy" class="s05-grande" id="s05-gb"><span data-hf-id="hf-utc4" class="acento">Remarca.</span></div>
+          </div>
+          <div data-hf-id="hf-5hsq" id="s05-qc" class="s05-quadro">
+            <svg data-hf-id="hf-n7v8" id="s05-sino" viewBox="0 0 24 24" fill="none" stroke="#ff8a7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path data-hf-id="hf-6a25" d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path data-hf-id="hf-mu5i" d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
+            <div data-hf-id="hf-zq92" class="s05-grande" id="s05-gc">Cancelou? <span data-hf-id="hf-2cjo" class="acento">Te avisa.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // Entrada em chicote, casada com a saída da cena 4.
+          tl.fromTo("#s05-palco", { y: 340, filter: "blur(24px)" }, { y: 0, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0);
+          // (a) Responde na hora.
+          tl.fromTo("#s05-cli", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 0.08);
+          tl.fromTo("#s05-bot", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 0.3);
+          tl.fromTo("#s05-ga", { scale: 1.25, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.2)" }, 0.42);
+          // Corte seco para (b).
+          tl.set("#s05-qa", { opacity: 0 }, 0.82);
+          tl.set("#s05-qb", { opacity: 1 }, 0.82);
+          tl.fromTo("#s05-qb", { y: 60 }, { y: 0, duration: 0.18, ease: "power3.out" }, 0.82);
+          tl.fromTo("#s05-risco", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.16, ease: "power2.out" }, 0.95);
+          tl.fromTo("#s05-novo", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.24, ease: "back.out(2)" }, 1.02);
+          tl.fromTo("#s05-gb", { scale: 1.25, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.2)" }, 1.18);
+          // Corte seco para (c).
+          tl.set("#s05-qb", { opacity: 0 }, 1.67);
+          tl.set("#s05-qc", { opacity: 1 }, 1.67);
+          tl.fromTo("#s05-qc", { y: 60 }, { y: 0, duration: 0.18, ease: "power3.out" }, 1.67);
+          tl.fromTo("#s05-sino", { rotation: -22, transformOrigin: "50% 8%" }, { rotation: 18, duration: 0.14, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.72);
+          tl.fromTo("#s05-gc", { scale: 1.25, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.2)" }, 1.84);
+          // Saída: empurra para cima.
+          tl.to("#s05-palco", { y: -280, filter: "blur(18px)", duration: 0.25, ease: "power2.in" }, 2.25);
+          window.__timelines["s05"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s01-root { position: absolute; inset: 0; overflow: hidden; background: #123b26; font-family: Geist, sans-serif; color: #fff; }
+        #s01-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 0% 50%;
+                  filter: blur(14px) brightness(.36) saturate(1.1); }
+        #s01-vinheta { position: absolute; inset: 0;
+                       background: radial-gradient(900px 1100px at 50% 55%, transparent 40%, rgba(8, 20, 13, .75) 100%); }
+        #s01-titulo { position: absolute; top: 270px; left: 84px; width: 912px; font: 700 94px/1.02 Outfit; letter-spacing: -2px; }
+        #s01-titulo span { display: block; }
+        #s01-l2 { color: #ff8a7a; margin-top: 14px; }
+        #s01-fone { position: absolute; left: 270px; top: 720px; width: 540px; height: 860px; border-radius: 72px;
+                    background: #0e1712; border: 14px solid #24342b; box-shadow: 0 40px 90px rgba(0, 0, 0, .55); }
+        #s01-fone i { position: absolute; top: 26px; left: 50%; margin-left: -60px; width: 120px; height: 26px; border-radius: 20px; background: #24342b; }
+        .s01-bolha { position: absolute; background: #fff; color: #17231b; font: 500 44px/1.2 Geist; padding: 26px 36px;
+                     border-radius: 34px 34px 34px 10px; box-shadow: 0 18px 40px rgba(0, 0, 0, .4); white-space: nowrap; }
+        #s01-b1 { left: 64px; top: 800px; }
+        #s01-b2 { right: 56px; top: 960px; }
+        #s01-b3 { left: 150px; top: 1115px; }
+        #s01-b4 { right: 100px; top: 1260px; }
+        #s01-b5 { left: 60px; top: 1400px; }
+      </style>
+
+      <div data-hf-id="hf-hv00" id="s01-root" data-composition-id="s01" data-width="1080" data-height="1920">
+        <img data-hf-id="hf-uyfd" id="s01-bg" src="assets/barbearia.webp" alt="">
+        <div data-hf-id="hf-0plp" id="s01-vinheta"></div>
+        <div data-hf-id="hf-ib1o" id="s01-fone"><i data-hf-id="hf-wt6k"></i></div>
+        <div data-hf-id="hf-kzke" id="s01-b1" class="s01-bolha">Tem horário sábado?</div>
+        <div data-hf-id="hf-fanv" id="s01-b2" class="s01-bolha">Quanto é a barba?</div>
+        <div data-hf-id="hf-uunv" id="s01-b3" class="s01-bolha">Amanhã dá?</div>
+        <div data-hf-id="hf-l4lp" id="s01-b4" class="s01-bolha">Tá aberto hoje?</div>
+        <div data-hf-id="hf-47j0" id="s01-b5" class="s01-bolha">Ainda tem vaga?</div>
+        <h1 data-hf-id="hf-m5pn" id="s01-titulo"><span data-hf-id="hf-3dnh" id="s01-l1">Você no meio do corte.</span><span data-hf-id="hf-wnpu" id="s01-l2">O WhatsApp não para.</span></h1>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // Fundo: a barbearia respira devagar, de perto para o normal.
+          tl.fromTo("#s01-bg", { scale: 1.14 }, { scale: 1.02, duration: 3, ease: "none" }, 0);
+          tl.fromTo("#s01-fone", { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0);
+          tl.fromTo("#s01-l1", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 0.08);
+          // Bolhas CAEM uma por batida, cada uma com seu ângulo.
+          const bolhas = [["#s01-b1", -5, 0.3], ["#s01-b2", 4, 0.65], ["#s01-b3", 3, 0.95], ["#s01-b4", -4, 1.25], ["#s01-b5", -2, 1.55]];
+          bolhas.forEach(([sel, rot, t]) => {
+            tl.fromTo(sel, { y: -260, rotation: rot * 4, opacity: 0, scale: 0.8 },
+                           { y: 0, rotation: rot, opacity: 1, scale: 1, duration: 0.34, ease: "back.out(1.7)" }, t);
+            // O celular vibra a cada notificação.
+            tl.fromTo("#s01-fone", { x: -10 }, { x: 0, duration: 0.18, ease: "elastic.out(1, 0.3)" }, t + 0.05);
+          });
+          // Segundo golpe do título.
+          tl.fromTo("#s01-l2", { scale: 1.3, opacity: 0, transformOrigin: "0% 50%" },
+                               { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 1.45);
+          // Pressão: a pilha cresce até o corte.
+          tl.fromTo(".s01-bolha", { scale: 1 }, { scale: 1.05, duration: 1.1, ease: "power1.in", stagger: 0.02 }, 1.9);
+          window.__timelines["s01"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
