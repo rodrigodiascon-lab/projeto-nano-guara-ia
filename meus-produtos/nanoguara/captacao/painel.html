@@ -134,7 +134,7 @@ window.PAINEL_DATA = {
       "passo_pct": null,
       "intervalo_dias": null,
       "minimo_conversas_janela": 15,
-      "regra": "Sem reserva de escala em outubro (teto igual ao orçamento) e um nicho só, então não há passo de subida nem remanejamento. Revisão do plano: ao chegar a 15 conversas de barbearias na dash, o custo real vira o custo alvo e os blocos 2 e 4 são refeitos. Gasto zero ou quase zero por 2 dias seguidos: pausar e revisar público e criativo."
+      "regra": "Sem reserva de escala em outubro (teto igual ao orçamento) e um nicho só, então não há passo de subida nem remanejamento. Revisão do plano: ao chegar a 15 conversas de barbearias (contadas à mão no WhatsApp pela mensagem pronta da landing page, já que a campanha otimiza por clique sem pixel), o custo real vira o custo alvo e os blocos 2 e 4 são refeitos. Gasto zero ou quase zero por 2 dias seguidos: pausar e revisar público e criativo."
     },
     "funil": {
       "taxas": {
@@ -193,13 +193,49 @@ window.PAINEL_DATA = {
       "artefato_url": null
     }
   },
-  "diario": [],
+  "diario": [
+    {
+      "dia": "2026-10-05",
+      "nicho": "barbearias",
+      "investimento": 26.04,
+      "conversas": null,
+      "impressoes": 6828,
+      "cliques": 125
+    }
+  ],
   "meta": {
-    "gerado_em": "2026-09-29",
-    "fonte_investimento": "plano",
-    "aviso_dados": "Plano sem realizado. Custo e meta a medir até 15 conversas."
+    "gerado_em": "2026-10-05",
+    "fonte_investimento": "Meta insights da campanha 120250381096980113",
+    "aviso_dados": "Menos de 12 h de veiculação. Conversas contadas à mão, ainda não informadas."
   },
-  "insights": null
+  "insights": {
+    "gerado_em": "2026-10-05",
+    "destaques": [
+      {
+        "tipo": "entrega",
+        "texto": "Entrega saudável: R$ 26,04 no primeiro dia parcial, 125 cliques, 74 visitas."
+      },
+      {
+        "tipo": "amostra",
+        "texto": "Amostra pequena: menos de 12 h. Sem conclusão de custo nem de criativo."
+      }
+    ],
+    "blocos": [
+      {
+        "titulo": "Acompanhar o público 65+",
+        "paragrafos": [
+          "Teve 26% dos cliques com 19% do gasto. Pouco provável que seja dono de barbearia.",
+          "Reavaliar na leitura de 48 a 72 h, sem mexer agora."
+        ],
+        "acoes": [
+          {
+            "texto": "Próxima leitura",
+            "comando": "/trafego-pago-dash"
+          }
+        ]
+      }
+    ]
+  }
 };
 /*DADOS_FIM*/
 
