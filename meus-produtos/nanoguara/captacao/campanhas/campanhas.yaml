@@ -28,7 +28,7 @@ campanhas:
       - {id: "120250381147540113", nome: "AD02 | Imagem 4:5 | Beneficio corte", criativo: "1569790564352796", imagem: "v6", utm_content: ad02}
       - {id: "120250381147950113", nome: "AD03 | Imagem 4:5 | Beneficio Manaus", criativo: "1119255900443291", imagem: "v10", utm_content: ad03, status: PAUSED, motivo: "clone da AD02; pausado em 2026-10-05"}
       - {id: "120250381148350113", nome: "AD04 | Imagem 4:5 | Espelho escuro", criativo: "969721706186590", imagem: "v3", utm_content: ad04}
-      - {id: "120250381149030113", nome: "AD05 | Imagem 4:5 | Espelho recepcao", criativo: "1098557225869867", imagem: "v5", utm_content: ad05, status: PAUSED, motivo: "clone da AD04; pausado em 2026-10-05"}
+      - {id: "120250381149030113", nome: "AD05 | Imagem 4:5 | Espelho recepcao", criativo: "1098557225869867", imagem: "v5", utm_content: ad05, status: PAUSED, motivo: "clone da AD04; pausado em 2026-10-05, reativado no Gerenciador às 18h30 e pausado de novo a pedido às 22h45"}
       - {id: "120250426921550113", nome: "AD06 | Imagem 4:5 | Falta lembrete", criativo: "2352254365515441", imagem: "falta-lembrete-v1", utm_content: ad06, entrou_em: "2026-10-05"}
       - {id: "120250426922710113", nome: "AD07 | Imagem 4:5 | Conversa prova", criativo: "1038783622512427", imagem: "conversa-prova-v1", utm_content: ad07, entrou_em: "2026-10-05"}
     revisao_meta: "5 anúncios aprovados e ACTIVE em 2026-10-05"
