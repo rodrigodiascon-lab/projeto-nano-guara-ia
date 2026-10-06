@@ -210,3 +210,15 @@
   .gb .btn,.gb .btn-primario .btn-texto,.gb .btn-primario .btn-seta{white-space:normal;text-align:center}
 }
 @media (prefers-reduced-motion: reduce){.gb-btn-claro:hover{transform:none}}
+
+/* Caixa amarela de visita do consultor (pedido do dono, 2026-10-06). Amarelo
+   fora da paleta de propósito, para destacar. Texto escuro fixo nos dois temas. */
+.gb-visita{display:flex;align-items:center;gap:12px;margin-top:22px;max-width:34rem;
+  background:#FFE066;border:2px solid #E0B400;border-radius:14px;padding:14px 18px;
+  color:#17231B;font-weight:600;line-height:1.35;text-decoration:none;
+  transition:background .2s ease,transform .15s ease}
+.gb-visita:hover{background:#FFD633;transform:translateY(-1px)}
+.gb-visita svg{flex:none}
+.gb-visita-seta{margin-left:auto;font-size:1.2rem}
+.gb-visita:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.gb-visita{transition:none}.gb-visita:hover{transform:none}}
