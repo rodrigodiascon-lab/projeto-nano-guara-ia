@@ -22,7 +22,7 @@ e sons de notificação, texto grande legível no mudo.
 
 - ../../site/public/brand/guara-bot/*.webp e ../../docs/marketing/brand/guara-bot/poses/*.png — poses oficiais do guara.bot (v3). Não recolorir, não recortar.
 - ../../site/public/brand/guara-bot/barbearia-hero-1080.webp — cenário da barbearia (recorte sem texto do criativo v10).
-- assets/musica.wav — música do catálogo HeyGen (bgm_002, 129 BPM), virada alinhada à entrada do guara.bot.
+- assets/musica.wav — música do catálogo HeyGen (bgm_002, 129 BPM). NÃO usada: o dono tirou a música em 2026-10-06 e preferiu só os sons.
 
 ## Customizations
 
@@ -36,3 +36,7 @@ e sons de notificação, texto grande legível no mudo.
 - Proibido: números de resultado, depoimentos, citar a Garcia Barbearia, pagamento automático, "de manhã"/"uma vez só" no lembrete.
 - Grafia: sempre "guara.bot" minúsculo. Mascote é fruto do guaraná, não pássaro. Zero travessão e zero emoji no texto.
 - Paleta e fontes da nanoguará: verde #2E7D32, guaraná #D5382F, creme #FDF9F0, grafite #17231B; Outfit 700 + Geist.
+
+## Áudio (2026-10-06)
+
+- O dono tirou a música no Studio ("eu tirei a musica... deixa só os sons que estão agora"). Os dois formatos ficam só com os sons de notificação. As versões com música ficaram guardadas em renders/*-com-musica.mp4.

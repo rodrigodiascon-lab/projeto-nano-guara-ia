@@ -22,7 +22,7 @@ e sons de notificação, texto grande legível no mudo.
 
 - ../../site/public/brand/guara-bot/*.webp e ../../docs/marketing/brand/guara-bot/poses/*.png — poses oficiais do guara.bot (v3). Não recolorir, não recortar.
 - ../../site/public/brand/guara-bot/barbearia-hero-1080.webp — cenário da barbearia (recorte sem texto do criativo v10).
-- assets/musica.wav — música do catálogo HeyGen (bgm_002, 129 BPM), virada alinhada à entrada do guara.bot.
+- assets/musica.wav — música do catálogo HeyGen (bgm_002, 129 BPM). NÃO usada: o dono tirou a música em 2026-10-06 e preferiu só os sons.
 
 ## Customizations
 
@@ -42,3 +42,7 @@ e sons de notificação, texto grande legível no mudo.
 - Projeto novo copiado de ../guara-bot-trilha-barbearia (vertical 9:16, já aprovado e renderizado), a pedido do dono: "faz a versão 4:5 para o feed".
 - Mesmo roteiro, cenas, música e sons; só o layout foi refeito para 1080x1350, com margem de 60 px em cima e embaixo.
 - Fundo das cenas 1 e 2 usa assets/barbearia-esq.webp (só a metade da barbearia), porque no 4:5 o enquadramento mostrava o guara.bot antes da entrada dele.
+
+## Áudio (2026-10-06)
+
+- O dono tirou a música no Studio ("eu tirei a musica... deixa só os sons que estão agora"). Os dois formatos ficam só com os sons de notificação. As versões com música ficaram guardadas em renders/*-com-musica.mp4.
