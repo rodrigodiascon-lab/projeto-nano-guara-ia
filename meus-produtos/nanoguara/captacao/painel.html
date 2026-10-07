@@ -81,7 +81,9 @@ window.PAINEL_DATA = {
       "orçamento_mes": 1000.0,
       "orçamento_dia": 37.04,
       "fragil": true,
-      "caminho": "orçamento primeiro"
+      "caminho": "orçamento primeiro",
+      "orcamento_mes": 1000.0,
+      "orcamento_dia": 37.04
     },
     "teto": {
       "gasto_mes": 1000.0,
@@ -97,7 +99,9 @@ window.PAINEL_DATA = {
         "custo_por_conversa_alvo": null,
         "meta_conversas_mes": null,
         "orçamento_mes": 1000.0,
-        "orçamento_dia": 37.04
+        "orçamento_dia": 37.04,
+        "orcamento_mes": 1000.0,
+        "orcamento_dia": 37.04
       },
       {
         "id": "clinicas-estética",
@@ -107,7 +111,9 @@ window.PAINEL_DATA = {
         "custo_por_conversa_alvo": null,
         "meta_conversas_mes": null,
         "orçamento_mes": 0,
-        "orçamento_dia": 0
+        "orçamento_dia": 0,
+        "orcamento_mes": 0,
+        "orcamento_dia": 0
       },
       {
         "id": "consultorios-medicos",
@@ -117,7 +123,9 @@ window.PAINEL_DATA = {
         "custo_por_conversa_alvo": null,
         "meta_conversas_mes": null,
         "orçamento_mes": 0,
-        "orçamento_dia": 0
+        "orçamento_dia": 0,
+        "orcamento_mes": 0,
+        "orcamento_dia": 0
       },
       {
         "id": "consultorios-odontologicos",
@@ -127,7 +135,9 @@ window.PAINEL_DATA = {
         "custo_por_conversa_alvo": null,
         "meta_conversas_mes": null,
         "orçamento_mes": 0,
-        "orçamento_dia": 0
+        "orçamento_dia": 0,
+        "orcamento_mes": 0,
+        "orcamento_dia": 0
       }
     ],
     "escala": {
@@ -161,26 +171,32 @@ window.PAINEL_DATA = {
           "id": "conservador",
           "custo_por_conversa": null,
           "orçamento_para_meta": null,
-          "conversas_com_orçamento": null
+          "conversas_com_orçamento": null,
+          "orcamento_para_meta": null,
+          "conversas_com_orcamento": null
         },
         {
           "id": "base",
           "custo_por_conversa": null,
           "orçamento_para_meta": null,
-          "conversas_com_orçamento": null
+          "conversas_com_orçamento": null,
+          "orcamento_para_meta": null,
+          "conversas_com_orcamento": null
         },
         {
           "id": "otimista",
           "custo_por_conversa": null,
           "orçamento_para_meta": null,
-          "conversas_com_orçamento": null
+          "conversas_com_orçamento": null,
+          "orcamento_para_meta": null,
+          "conversas_com_orcamento": null
         }
       ],
       "faixa": {
         "de": null,
         "ate": null
       },
-      "enquadramento": null,
+      "enquadramento": "2026-10-07: sem cenário; 0 conversas em R$ 82,63 (417 cliques, 254 visitas). Conjunto reconfigurado hoje, leitura recomeça em 10/10",
       "status": "a medir até 15 conversas"
     },
     "avisos": [
@@ -199,49 +215,78 @@ window.PAINEL_DATA = {
       "nicho": "barbearias",
       "investimento": 26.51,
       "conversas": 0,
-      "impressoes": 6990,
+      "impressoes": 6992,
       "cliques": 129
     },
     {
       "dia": "2026-10-06",
       "nicho": "barbearias",
-      "investimento": 29.93,
-      "conversas": null,
-      "impressoes": 7463,
-      "cliques": 142
+      "investimento": 50.56,
+      "conversas": 0,
+      "impressoes": 13179,
+      "cliques": 256
+    },
+    {
+      "dia": "2026-10-07",
+      "nicho": "barbearias",
+      "investimento": 5.56,
+      "conversas": 0,
+      "impressoes": 1654,
+      "cliques": 32
     }
   ],
   "meta": {
-    "gerado_em": "2026-10-06",
-    "fonte_investimento": "Meta insights da campanha 120250381096980113",
-    "aviso_dados": "Cerca de 30 h de veiculação. 6/10 parcial até 18h; conversas do dia não informadas."
+    "gerado_em": "2026-10-07",
+    "fonte_investimento": "Graph API insights",
+    "aviso_dados": "Cerca de 45 h de veiculação; 7/10 parcial até 9h. Conjunto reconfigurado hoje às 8h50 (só homens 25 a 54, Advantage+ desligado, otimização por visita). Conversas contadas pelo dono: nenhuma."
   },
   "insights": {
-    "gerado_em": "2026-10-06",
+    "gerado_em": "2026-10-07",
     "destaques": [
       {
         "tipo": "entrega",
-        "texto": "Entrega saudável: R$ 56,44 acumulados, 271 cliques, 160 visitas."
+        "texto": "Entrega saudável: R$ 77,07 de R$ 74,08 previstos em 5 e 6/10 (104%)."
       },
       {
         "tipo": "custo",
-        "texto": "0 cliques no WhatsApp em 160 visitas: o clique barato não está virando conversa."
+        "texto": "0 conversas e 0 toques no WhatsApp em 417 cliques e 254 visitas. Ausência de sinal, não amostra pequena."
       },
       {
-        "tipo": "entrega",
-        "texto": "65+ com 26% do gasto; 45+ somado é 49%."
+        "tipo": "amostra",
+        "texto": "Conjunto e landing mudaram hoje. A leitura recomeça: próxima em 10/10."
       }
     ],
     "blocos": [
       {
-        "titulo": "Trocar o que a Meta otimiza",
+        "titulo": "Esperar até 10/10 sem mexer",
         "paragrafos": [
-          "A campanha otimiza por clique e a Meta acha quem clica, não quem chama no WhatsApp.",
-          "Decidir até 7/10: clique-para-WhatsApp ou visualização da página com idade travada."
+          "Motivo: público, otimização e topo da landing mudaram hoje. Outra troca agora mistura as variáveis.",
+          "Risco: esperar custa cerca de R$ 110 até a leitura."
+        ],
+        "acoes": []
+      },
+      {
+        "titulo": "Contar as mensagens à mão",
+        "paragrafos": [
+          "Motivo: o pixel só conta quem aceita cookies; a contagem no WhatsApp pelos textos prontos da landing é a medida real.",
+          "Risco: sem contagem não dá para decidir em 10/10."
         ],
         "acoes": [
           {
-            "texto": "Executar com preview",
+            "texto": "Passo manual seu: anotar quantas mensagens chegam com os textos prontos",
+            "comando": ""
+          }
+        ]
+      },
+      {
+        "titulo": "Plano B em 10/10: clique para WhatsApp",
+        "paragrafos": [
+          "Motivo: se seguir sem conversa e sem toque no WhatsApp, otimizar direto por conversa.",
+          "Risco: campanha nova reinicia o aprendizado e precisa do WhatsApp Business ligado à Página."
+        ],
+        "acoes": [
+          {
+            "texto": "Montar o preview da campanha de mensagens",
             "comando": "/trafego-pago-campanhas"
           }
         ]
