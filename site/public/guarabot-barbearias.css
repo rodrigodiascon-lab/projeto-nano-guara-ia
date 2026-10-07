@@ -329,3 +329,20 @@
   .gb-no-bot img{width:84px;height:84px;margin:-10px 0 -10px -4px}
   .gb-no-auto img{width:64px;height:64px;margin:-6px 0}
 }
+
+/* Topo no celular (2026-10-07): 0 toques no WhatsApp em ~60% de visitas pagas.
+   O botão do menu volta em versão curta e o hero encolhe para o CTA principal
+   aparecer acima do aviso de cookies na primeira tela. */
+.gb-nav-curto{display:none}
+@media(max-width:820px){
+  .gb-nav-cta{display:inline-flex;padding:8px 14px;min-height:40px}
+  .gb-nav-cta .btn-texto,.gb-nav-cta .btn-seta{display:none}
+  .gb-nav-curto{display:inline}
+}
+@media(max-width:600px){
+  .gb-hero-grid{padding-block:14px 40px;gap:28px}
+  .gb-selo{font-size:.74rem;padding:4px 10px}
+  .gb-hero h1{font-size:1.85rem;line-height:1.12;margin-top:10px}
+  .gb-sub{font-size:1rem;line-height:1.5;margin:12px 0 18px}
+  .gb-hero .ctas .btn-primario{width:100%;justify-content:center}
+}

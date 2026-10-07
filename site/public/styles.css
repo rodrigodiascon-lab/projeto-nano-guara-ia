@@ -444,8 +444,10 @@ body > section.aviso-cookies{ padding:20px; }
 .link-cookies:focus-visible{ outline:2px solid #EDF3EE; outline-offset:2px; }
 [data-preferencias-cookies][hidden]{ display:none; }
 @media (max-width:479px){
-  .aviso-cookies{ left:8px; right:8px; bottom:8px; padding:14px 16px; gap:8px; }
-  body > section.aviso-cookies{ padding:14px 16px; }
-  .aviso-cookies p{ font-size:.84rem; line-height:1.45; }
-  .aviso-cookies-acoes .btn{ flex:1; min-width:0; }
+  .aviso-cookies{ left:8px; right:8px; bottom:8px; padding:12px 14px; gap:6px; }
+  body > section.aviso-cookies{ padding:12px 14px; }
+  .aviso-cookies h2{ font-size:.95rem; }
+  .aviso-cookies p{ font-size:.76rem; line-height:1.4; }
+  .aviso-cookies-acoes .btn{ flex:1; min-width:0; min-height:42px; padding-block:8px; }
+  body.com-aviso-cookies{ padding-bottom:220px; }
 }
