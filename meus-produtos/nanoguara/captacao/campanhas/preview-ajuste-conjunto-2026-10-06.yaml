@@ -1,0 +1,21 @@
+etapa: ajuste_conjunto
+conjunto: {id: "120250381134760113", nome: "Manaus | Barbearias | Cliques landing page"}
+motivo: "0 contatos em 160 visitas; 65+ com 26% da verba; mulheres 65+ com 21% dos cliques. Otimização por clique entrega para quem clica, não para quem chama."
+antes:
+  optimization_goal: LINK_CLICKS
+  idade: {limite: [25, 65], sugestao: [25, 45]}
+  advantage_audience: 1
+depois:
+  optimization_goal: LANDING_PAGE_VIEWS
+  promoted_object: {pixel_id: "1129265532898131"}
+  idade: {limite: [25, 54], sugestao: null}
+  genders: [1]
+  advantage_audience: 0
+  local: {cidade: Manaus, key: "259014", location_types: [home, recent]}
+  posicionamentos: [facebook, instagram, messenger]   # Audience Network segue fora: uma variável a menos agora
+  tamanho_estimado: {mau_min: 1400000, mau_max: 1700000}
+nao_muda: [orçamento R$ 37,04/dia, período até 31/10, 7 anúncios, criativos, destino e UTMs]
+validacao_meta: "execution_options validate_only: success (2026-10-06)"
+efeito: "o conjunto volta para a fase de aprendizado"
+decisao: cancelado em 2026-10-06; APLICADO em 2026-10-07 a pedido ("vamos aplicar agora"), com gênero só homens (genders [1]) somado ao plano; promoted_object recusado pela Meta (1885014) e omitido, LPV em tráfego não precisa
+aplicado: {data: "2026-10-07", optimization_goal: LANDING_PAGE_VIEWS, idade: [25, 54], genders: [1], advantage_audience: 0, tamanho_estimado: {mau_min: 697500, mau_max: 820500}, status_pos: IN_PROCESS}

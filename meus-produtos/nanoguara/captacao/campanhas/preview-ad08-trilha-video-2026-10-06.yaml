@@ -1,0 +1,28 @@
+etapa: novo_anuncio
+decisao_usuario: "deixar pronto e pausado; ligar só depois da leitura de 48 h (7/10), com ATIVAR"
+campanha: {id: "120250381096980113", nome: "NG | guara.bot | Barbearias | Landing page | Manaus", status: ACTIVE}
+conjunto: {id: "120250381134760113", nome: "Manaus | Barbearias | Cliques landing page", status: ACTIVE, nao_muda: true}
+anuncio:
+  nome: "AD08 | Video 4:5 + 9:16 | Trilha"
+  status: PAUSED
+  modelo_de_criativo: "1798054441509315 (AD07, feed + story com asset_customization_rules)"
+  midia:
+    feed_4x5: {video_id: "1399576671827352", thumbnail_hash: "7c44e0766cc3870bb34f784a4f74dfcc", fonte: "videos/guara-bot-trilha-barbearia-feed/renders/guara-bot-trilha-barbearia-4x5.mp4"}
+    story_9x16: {video_id: "1159858733134257", thumbnail_hash: "984ff9b74886af4d2d80b1b46bf616e8", fonte: "videos/guara-bot-trilha-barbearia/renders/guara-bot-trilha-barbearia-9x16.mp4"}
+    duracao: "20,5 s, sem música, só sons de notificação da biblioteca do media-use"
+  texto_principal: "Do \"oi\" ao horário marcado, sem você largar a máquina: o guara.bot atende o WhatsApp da sua barbearia, mostra só horário livre, marca, remarca e lembra o cliente na véspera. Teste 15 dias grátis, sem cartão."
+  titulo: "Teste 15 dias grátis, sem cartão"
+  descricao: ""
+  cta: LEARN_MORE
+  link: "https://nanoguara.ia.br/guarabot/barbearias?utm_source=meta&utm_medium=paid&utm_campaign=barbearias-2026-10&utm_content=ad08"
+  regras_de_posicionamento: "iguais às do AD07 (story/reels verticais com o 9:16; feeds com o 4:5)"
+conferencia_marca: "Página 1272983785891547 (nanoguara.ia) e Instagram 17841414315265034 (@nanoguara.ia), iguais ao AD07"
+conferencia_copy:
+  numeros: "nenhum número de desempenho; '15 dias' é a oferta"
+  promessa: "nenhuma; descreve o que o produto faz"
+  prova_social: "nenhuma"
+  travessao: "zero"
+  cta: "único, saiba mais para a landing (mesmo padrão dos AD01 a AD07)"
+  destinatario: "fala com o dono da barbearia de forma genérica, sem afirmar dado dele"
+  direitos: "sem música; mascote e cenário são da nanoguará.ia; sons da biblioteca bundled do media-use"
+efeito_no_que_roda: "nenhum enquanto pausado; ao ativar, passa a 8 anúncios ativos/possíveis no conjunto (acima da regra de 5)"

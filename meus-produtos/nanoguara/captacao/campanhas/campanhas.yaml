@@ -18,9 +18,13 @@ campanhas:
     conjunto:
       id: "120250381134760113"
       nome: "Manaus | Barbearias | Cliques landing page"
-      otimizacao: LINK_CLICKS
+      otimizacao: LANDING_PAGE_VIEWS
       destino: "https://nanoguara.ia.br/guarabot/barbearias"
-      idade: {limite: [25, 65], sugestao: [25, 45], motivo: "Advantage+ público não aceita idade máxima menor que 65 como limite (erro 1870189)"}
+      idade: {limite: [25, 54]}
+      genero: homens
+      advantage_audience: 0
+      ajustes:
+        - {data: "2026-10-07", de: "LINK_CLICKS, 25 a 65 (sugestão 25 a 45), todos os gêneros, Advantage+ ligado", para: "LANDING_PAGE_VIEWS, 25 a 54, só homens, Advantage+ desligado", motivo: "384 cliques e 0 contatos; mulheres e 65+ dominando a entrega", preview: "preview-ajuste-conjunto-2026-10-06.yaml", efeito: "volta para aprendizado"}
       local: {cidade: Manaus, key: "259014", location_types_gravados: [frequently_in, home, recent]}
       posicionamentos: [facebook, instagram, messenger]
     anuncios:
@@ -31,6 +35,7 @@ campanhas:
       - {id: "120250381149030113", nome: "AD05 | Imagem 4:5 | Espelho recepcao", criativo: "1098557225869867", imagem: "v5", utm_content: ad05, status: ACTIVE, motivo: "clone da AD04; pausado em 2026-10-05, reativado a pedido em 2026-10-06 com feed+story (criativo 2462025414321469)"}
       - {id: "120250426921550113", nome: "AD06 | Imagem 4:5 | Falta lembrete", criativo: "2352254365515441", imagem: "falta-lembrete-v1", utm_content: ad06, entrou_em: "2026-10-05"}
       - {id: "120250426922710113", nome: "AD07 | Imagem 4:5 | Conversa prova", criativo: "1038783622512427", imagem: "conversa-prova-v1", utm_content: ad07, entrou_em: "2026-10-05"}
+      - {id: "120250450335940113", nome: "AD08 | Video 4:5 + 9:16 | Trilha", criativo: "974965428287455", video: "trilha 20,5 s sem música (feed 1399576671827352, story 1159858733134257)", utm_content: ad08, status: PAUSED, criado_em: "2026-10-07", motivo: "pronto e pausado a pedido; ligar só depois da leitura de 48 h, com ATIVAR; ao ligar o conjunto passa de 5 anúncios", preview: "preview-ad08-trilha-video-2026-10-06.yaml", preview_conferido: "feeds FB/IG com o 4:5; story e reels IG com o 9:16 (2026-10-07)"}
     revisao_meta: "5 anúncios aprovados e ACTIVE em 2026-10-05"
     formatos:
       desde: "2026-10-05"
