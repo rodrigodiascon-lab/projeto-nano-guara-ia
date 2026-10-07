@@ -100,7 +100,7 @@ cenarios:
   faixa:
     de: null
     ate: null
-  enquadramento: "2026-10-07: sem cenário; 0 conversas em R$ 82,63 (417 cliques, 254 visitas). Conjunto reconfigurado hoje, leitura recomeça em 10/10"
+  enquadramento: "2026-10-07: sem cenário; 0 conversas em R$ 82,63 (417 cliques, 254 visitas). Conjunto reconfigurado hoje, leitura recomeça em 9/10"
   status: "a medir até 15 conversas"
 avisos:
   - "Mês parcial: 27 dias (5 a 31/10), fora da checagem padrão de 28 a 31 dias."
