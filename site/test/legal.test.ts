@@ -147,7 +147,7 @@ describe("a política de privacidade identifica o controlador", () => {
   it("a data de atualização acompanhou a última edição do texto", () => {
     const data = privacidadeHtml.match(/Última atualização: ([^<.]+)/)?.[1];
     expect(data, "o carimbo de atualização sumiu").toBeTruthy();
-    expect(data, "a data ficou para trás da edição que incluiu o pixel da Meta")
-      .toBe("1 de outubro de 2026");
+    expect(data, "a data ficou para trás da edição que incluiu o formulário da landing de barbearias")
+      .toBe("8 de outubro de 2026");
   });
 });
