@@ -1,0 +1,21 @@
+etapa: troca_de_texto
+motivo: "landing /guarabot/barbearias mudou a oferta em 2026-10-08 (de '15 dias grátis, sem cartão' para pagamento único válido por 1 ano). AD08 é o único anúncio que ainda promete a oferta antiga, no texto, no título e na cena final do vídeo."
+levantamento_2026-10-08:
+  AD08: {id: "120250450335940113", status: ACTIVE, criativo_atual: "1776468233307902", conflito: "texto + título + cena final do vídeo"}
+  AD01_a_AD07: "sem menção a oferta, preço ou teste (texto e imagens conferidos); ficam como estão"
+proposta_ad08:
+  videos_novos:
+    story_9x16: "videos/guara-bot-trilha-barbearia/renders/guara-bot-trilha-barbearia-9x16-oferta-v2.mp4"
+    feed_4x5: "videos/guara-bot-trilha-barbearia-feed/renders/guara-bot-trilha-barbearia-4x5-oferta-v2.mp4"
+    cena_final: "Pagamento único, válido por 1 ano. Sem mensalidade."
+  opcao_A_sem_preco:
+    texto_principal: "Do \"oi\" ao horário marcado, sem você largar a máquina: o guara.bot atende o WhatsApp da sua barbearia, mostra só horário livre, marca, remarca e lembra o cliente na véspera. Condição exclusiva para barbeiros: pagamento único, válido por 1 ano, sem mensalidade."
+    titulo: "Pagamento único, válido por 1 ano"
+  opcao_B_com_preco:
+    texto_principal: "Do \"oi\" ao horário marcado, sem você largar a máquina: o guara.bot atende o WhatsApp da sua barbearia, mostra só horário livre, marca, remarca e lembra o cliente na véspera. Condição exclusiva para barbeiros: R$ 1.997 à vista, pagamento único, válido por 1 ano, sem mensalidade."
+    titulo: "R$ 1.997, válido por 1 ano"
+  cta: LEARN_MORE
+  link: "o mesmo do AD08 atual (landing com utm_content=ad08)"
+  execucao: "subir os 2 vídeos novos, criar criativo novo copiando o desenho do atual (feed 4:5 / story 9:16) e trocar o criativo do AD08; a troca de criativo reinicia a análise da Meta e o aprendizado desse anúncio"
+  enquanto_isso: "AD08 segue ativo com a oferta antiga até a troca; alternativa é pausar já"
+conferencia_copy: "sem número de desempenho, sem promessa, sem prova social, zero travessão, CTA único, oferta igual à da landing; R$ 1.997 é o preço da página (à vista, sem parcelamento citado, então não exige total)"
