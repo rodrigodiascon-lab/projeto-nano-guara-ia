@@ -200,7 +200,7 @@ form.addEventListener('submit', async (e) => {
   // origem própria. O email NÃO vai para o banco: a política de privacidade
   // ainda não o lista entre os dados coletados. Ele segue só na mensagem que a
   // própria pessoa envia. keepalive: o envio sobrevive à troca de página.
-  fetch('/api/lead', {
+  const envio = fetch('/api/lead', {
     method: 'POST',
     keepalive: true,
     headers: { 'Content-Type': 'application/json' },
@@ -213,6 +213,10 @@ form.addEventListener('submit', async (e) => {
       consentimento: true,
       turnstileToken: token,
     }),
+  }).then((res) => {
+    // Só um aviso, sem dado nenhum do quiz. Quem decide se vira evento Lead da
+    // Meta é o consentimento.js, e só com o pixel aceito.
+    if (res.status === 201) document.dispatchEvent(new CustomEvent('ng:lead'));
   }).catch(() => {});
 
   const msgWhats = [
@@ -235,7 +239,11 @@ form.addEventListener('submit', async (e) => {
   quiz.dataset.progress = '100';
   document.getElementById('avatarFinal').src = '/brand/guara-bot/05-confirmacao-128.webp';
 
-  setTimeout(() => { window.location.href = url; }, 700);
+  // Espera a resposta do /api/lead (o Lead da Meta sai dela) antes de trocar
+  // de página, mas nunca segura o WhatsApp mais que 2 s.
+  const minimo = new Promise((r) => setTimeout(r, 700));
+  const limite = new Promise((r) => setTimeout(r, 2000));
+  Promise.race([Promise.all([envio, minimo]), limite]).then(() => { window.location.href = url; });
 });
 
 mostraEtapa(1);

@@ -75,6 +75,16 @@ describe("pixel da Meta atrás do consentimento", () => {
     });
   }
 
+  it("o quiz /iaparaconsultorios carrega o consentimento e avisa o Lead sem dado do quiz", async () => {
+    const html = await (await SELF.fetch("https://site.local/iaparaconsultorios")).text();
+    expect(html).toContain('<script src="/consentimento.js" defer></script>');
+    expect(html).not.toContain("connect.facebook.net");
+    expect(html).toContain("data-preferencias-cookies");
+    const app = await (await SELF.fetch("https://site.local/app-iaparaconsultorios.js")).text();
+    expect(app).toContain("document.dispatchEvent(new CustomEvent('ng:lead'));");
+    expect(app).not.toContain("fbq");
+  });
+
   it("o WhatsApp do rodapé não conta como Contact", async () => {
     const s = await js();
     expect(s).toContain("!a.closest('footer')");
