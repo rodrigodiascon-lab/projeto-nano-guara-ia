@@ -1,0 +1,376 @@
+<!doctype html>
+<!-- Tema claro fixo (pedido do dono, 2026-10-10): fundo offwhite/nude mesmo
+     com o celular no modo escuro. styles.css já respeita data-theme="light". -->
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>guara.bot: assistente de WhatsApp para consultórios e clínicas de Manaus | nanoguará.ia</title>
+  <meta name="description" content="O guara.bot atende seus pacientes no WhatsApp enquanto você está em consulta: informa valores e endereço, mostra os horários livres de verdade, agenda, remarca e manda lembrete na véspera. Para consultórios e clínicas, com um ou mais profissionais.">
+  <link rel="canonical" href="https://nanoguara.ia.br/guarabot/clinicas">
+  <!-- Página de tráfego pago (Meta Ads). Mesma regra da /guarabot/barbearias:
+       noindex, mas segue os links do rodapé. Sem preço na página por decisão
+       do dono (2026-10-10): o valor é passado na conversa. -->
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/brand/favicon.png">
+  <link rel="preload" href="/fonts/outfit-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Geist 500 pinta o selo e os botões da primeira tela (auditoria web-perf 2026-10-10). -->
+  <link rel="preload" href="/fonts/geist-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/brand/guara-bot/clinica-hero-v2-940.webp" imagesrcset="/brand/guara-bot/clinica-hero-v2-640.webp 640w, /brand/guara-bot/clinica-hero-v2-940.webp 940w" imagesizes="540px" media="(min-width: 900px)" fetchpriority="high">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/guarabot-barbearias.css">
+  <link rel="stylesheet" href="/guarabot-clinicas.css">
+  <meta property="og:title" content="guara.bot: assistente de WhatsApp para consultórios e clínicas de Manaus">
+  <meta property="og:description" content="Enquanto você atende o paciente, ele atende o WhatsApp: responde, agenda e lembra a consulta na véspera.">
+  <meta property="og:image" content="https://nanoguara.ia.br/brand/og-guarabot-clinicas.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://nanoguara.ia.br/guarabot/clinicas">
+  <meta property="og:site_name" content="nanoguará.ia">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="/app-guarabot-barbearias.js" defer></script>
+</head>
+<body class="gb gc">
+<a class="gb-pular" href="#conteudo">Pular para o conteúdo</a>
+
+<nav id="topo"><div class="wrap nav-inner">
+  <a class="brand" href="/" aria-label="nanoguará.ia, ir para a página inicial">
+    <svg class="avatar" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="19" cy="22" r="14" fill="#2E7D32"/><circle cx="19" cy="22" r="11" fill="#D5382F"/><ellipse cx="19" cy="22" rx="6.5" ry="5" fill="#FDF9F0"/><ellipse cx="19" cy="22" rx="4.5" ry="3.4" fill="#17231B"/><path d="M19 8 C15 2 8 3 6 7 C12 6 15 8 19 8 Z" fill="#2E7D32"/><g stroke="#2E7D32" stroke-width="1.6" fill="none"><path d="M31 16 h4"/><path d="M32 22 h6"/><path d="M31 28 h4"/></g><circle cx="37" cy="16" r="1.6" fill="#2E7D32"/><circle cx="37" cy="28" r="1.6" fill="#2E7D32"/></svg>
+    <span>nano<em>guará.ia</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="#caminho">Como funciona</a><a href="#investimento">Proposta</a><a href="#perguntas">Perguntas</a>
+  </div>
+  <a class="btn btn-primario btn-sm gb-nav-cta" target="_blank" rel="noopener"
+     href="https://wa.me/5592981486875?text=Oi%2C%20tenho%20um%20consult%C3%B3rio%20e%20quero%20saber%20do%20guara.bot.">
+    <span class="btn-texto">Chamar no WhatsApp</span>
+    <span class="btn-seta" aria-hidden="true">Chamar no WhatsApp →</span>
+    <span class="gb-nav-curto" aria-hidden="true">WhatsApp</span>
+  </a>
+</div></nav>
+
+<main id="conteudo">
+
+<!-- 1. HERO -->
+<header class="gb-hero"><div class="wrap gb-hero-grid">
+  <div class="gb-hero-texto">
+    <span class="gb-selo">IA no WhatsApp para clínicas de Manaus</span>
+    <h1>Você atende o paciente. Ele atende o WhatsApp.</h1>
+    <p class="gb-sub">O guara.bot responde seus pacientes no WhatsApp enquanto você está em consulta: mostra os horários livres, marca, remarca e lembra a consulta na véspera.</p>
+    <div class="ctas">
+      <a class="btn btn-primario" target="_blank" rel="noopener"
+         href="https://wa.me/5592981486875?text=Oi%2C%20tenho%20um%20consult%C3%B3rio%20e%20quero%20saber%20do%20guara.bot.">
+        <span class="btn-texto">Chamar no WhatsApp</span>
+        <span class="btn-seta" aria-hidden="true">Chamar no WhatsApp →</span>
+      </a>
+      <a class="btn btn-secundario" href="#caminho">Ver como funciona</a>
+    </div>
+    <p class="gb-micro"><b>Para consultório com um profissional ou clínica com vários.</b> Instalação feita pela nossa equipe, no número que você já usa.</p>
+    <a class="gb-visita" target="_blank" rel="noopener"
+       href="https://wa.me/5592981486875?text=Oi%2C%20tenho%20um%20consult%C3%B3rio%20e%20quero%20agendar%20uma%20visita%20de%20um%20consultor%20da%20nanoguar%C3%A1.ia.">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      <span>Prefere conversar pessoalmente? Agende a visita de um consultor em Manaus</span>
+      <span class="gb-visita-seta" aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <figure class="gb-hero-foto">
+    <picture>
+      <img src="/brand/guara-bot/clinica-hero-v2-940.webp"
+           srcset="/brand/guara-bot/clinica-hero-v2-640.webp 640w, /brand/guara-bot/clinica-hero-v2-940.webp 940w"
+           sizes="(min-width: 900px) 540px, 100vw"
+           width="940" height="627"
+           alt="Médica sorrindo em consulta com uma paciente enquanto o guara.bot acena ao lado do celular sobre a mesa, com balões de conversa">
+    </picture>
+    <div class="gb-chat gb-chat-hero" data-chat role="group" aria-label="Exemplo de conversa no WhatsApp">
+      <span class="gb-exemplo">exemplo</span>
+      <p class="gb-msg in">Tem horário para consulta na quinta?</p>
+      <p class="gb-msg out">Tenho quinta às 9h, 10h30 e 15h. Qual fica melhor para você?</p>
+    </div>
+  </figure>
+</div></header>
+
+<!-- 2. PROBLEMA -->
+<section class="gb-dor"><div class="wrap gb-dor-grid">
+  <div>
+    <h2 class="sec-titulo">Paciente que espera resposta marca em outro lugar.</h2>
+    <p class="gb-dor-sub">Você está em atendimento, a mensagem chega, e quando alguém responde ele já marcou com outro profissional.</p>
+    <p class="gc-fonte"><b>62%</b> das pessoas desistem de comprar depois de uma experiência ruim no WhatsApp. <span>Opinion Box, 2025</span></p>
+    <p class="gc-fonte"><b>1 em cada 3</b> clínicas perde mais de 11% da agenda com faltas. <span>Doctoralia/Feegow, 2025</span></p>
+  </div>
+  <div class="gb-esperando" role="group" aria-label="Exemplo de mensagens sem resposta">
+    <span class="gb-exemplo">exemplo</span>
+    <p class="gb-msg in">Qual o valor da consulta? <time>há 5 min</time></p>
+    <p class="gb-msg in">Vocês atendem sábado? <time>há 40 min</time></p>
+    <p class="gb-msg in">Tudo bem, já marquei em outro lugar. <time>há 2 h</time></p>
+  </div>
+</div></section>
+
+<!-- 3. SOLUÇÃO: trilha + o que vem junto -->
+<section class="gb-trilha" id="caminho" aria-labelledby="trilha-titulo"><div class="wrap">
+  <div class="gb-trilha-head">
+    <span class="eyebrow">A solução</span>
+    <h2 class="sec-titulo" id="trilha-titulo">Com o guara.bot, seu paciente tem resposta na hora.</h2>
+    <p>O caminho de uma mensagem: do "oi" até a consulta marcada, sem você interromper o atendimento.</p>
+  </div>
+
+  <ol class="gb-fluxo">
+    <li class="gb-no gb-no-entrada">
+      <b>O paciente manda mensagem no WhatsApp</b>
+      <span>texto ou áudio, a qualquer hora</span>
+    </li>
+
+    <li class="gb-no gb-no-bot">
+      <img src="/brand/guara-bot/03-pensando-256.webp" width="256" height="256" loading="lazy" decoding="async" alt="">
+      <div><b>O guara.bot entende o pedido</b><span>e decide o que fazer</span></div>
+    </li>
+
+    <li class="gb-decisao">
+      <div class="gb-saida gb-saida-quieto">
+        <span class="gb-rotulo">propaganda ou conversa pessoal</span>
+        <div class="gb-no gb-no-cinza"><b>Não responde</b><span>a conversa é sua</span></div>
+      </div>
+      <div class="gb-no gb-no-pergunta"><b>É assunto do consultório?</b></div>
+      <div class="gb-saida gb-saida-voce">
+        <span class="gb-rotulo">dúvida de saúde ou pediu a equipe</span>
+        <div class="gb-no gb-no-vermelho"><b>Passa para a equipe</b><span>e avisa você</span></div>
+      </div>
+    </li>
+
+    <li class="gb-ramos-wrap">
+      <span class="gb-rotulo gb-rotulo-sim">sim</span>
+      <ul class="gb-ramos">
+        <li class="gb-ramo">
+          <div class="gb-no gb-no-titulo"><b>Quer saber algo</b></div>
+          <div class="gb-no"><span class="gb-forte">Valor, endereço, convênio, horário de atendimento</span><span>responde na hora, com as informações do seu consultório</span></div>
+        </li>
+        <li class="gb-ramo">
+          <div class="gb-no gb-no-titulo"><b>Quer marcar</b></div>
+          <div class="gb-no"><span class="gb-forte">Olha a agenda de verdade</span></div>
+          <div class="gb-no"><span class="gb-forte">Oferece só horário livre</span></div>
+          <div class="gb-no"><span class="gb-forte">Confere de novo e confirma com o paciente</span></div>
+          <div class="gb-no gb-no-verde"><b>Marca a consulta</b><span>agenda + Google Agenda + e-mail para você</span></div>
+        </li>
+        <li class="gb-ramo">
+          <div class="gb-no gb-no-titulo"><b>Quer remarcar ou cancelar</b></div>
+          <div class="gb-no"><span class="gb-forte">Confirma qual consulta</span></div>
+          <div class="gb-no gb-no-verde"><b>Muda ou cancela e avisa você</b><span>só a consulta dele</span></div>
+          <div class="gb-no"><span class="gb-forte">Oferece outro horário</span></div>
+        </li>
+      </ul>
+    </li>
+
+    <li class="gb-no gb-no-auto">
+      <img src="/brand/guara-bot/05-confirmacao-256.webp" width="256" height="256" loading="lazy" decoding="async" alt="">
+      <div><b>Na véspera: lembrete automático</b><span>com o horário e o endereço, para o paciente não esquecer da consulta</span></div>
+    </li>
+  </ol>
+
+  <ul class="gb-legenda" aria-label="Legenda">
+    <li><i class="gb-cor-verde" aria-hidden="true"></i>marca e avisa você</li>
+    <li><i class="gb-cor-vermelho" aria-hidden="true"></i>sai do automático e vai para a equipe</li>
+    <li><i class="gb-cor-cinza" aria-hidden="true"></i>ele não responde</li>
+    <li><i class="gb-cor-tracejado" aria-hidden="true"></i>acontece sozinho</li>
+  </ul>
+
+  <ul class="gb-recursos">
+    <li><b>No Google Agenda do seu celular</b><span>Toda consulta marcada aparece na sua agenda.</span></li>
+    <li><b>Um ou mais profissionais</b><span>Cada profissional com a sua agenda e os seus horários.</span></li>
+    <li><b>Seus pacientes numa planilha</b><span>Nome e telefone de cada paciente, organizados no Google.</span></li>
+    <li><b>Faz o atendimento inteiro</b><span>Informa valores, consulta a agenda, agenda, remarca e lembra o paciente um dia antes.</span></li>
+    <li><b>Conversa natural</b><span>Conversa de forma natural, se apresenta como assistente virtual e passa para a equipe quando o paciente pede.</span></li>
+    <li><b>O mesmo número</b><span>Atende no WhatsApp que o consultório já usa. Não precisa trocar de número.</span></li>
+    <li class="gb-recurso-destaque"><b>Ele cuida da agenda, não do diagnóstico.</b><span>Sintoma, dúvida sobre tratamento ou urgência não são respondidos por ele: vão direto para você ou para a sua equipe.</span></li>
+  </ul>
+</div></section>
+
+<!-- 4. QUANTO CUSTA UMA CONSULTA NÃO MARCADA (conta do próprio profissional, no lugar de métrica) -->
+<section class="gb-conta" id="conta"><div class="wrap gb-conta-grid">
+  <div>
+    <h2 class="sec-titulo">Quanto custa a mensagem que ficou sem resposta?</h2>
+    <p class="gb-conta-nota">Conta de exemplo. Coloque os números do seu consultório.</p>
+  </div>
+  <form class="gb-calc" id="calc" data-dias="22" data-dias-rotulo="atendimento" aria-label="Calculadora de consultas não marcadas">
+    <label>Mensagens que ficam sem resposta por dia<input type="number" id="calcMsgs" inputmode="numeric" min="0" max="50" step="1" value="2"></label>
+    <label>Valor médio da consulta (R$)<input type="number" id="calcValor" inputmode="decimal" min="0" max="5000" step="1" value="150"></label>
+    <p class="gb-calc-resultado" aria-live="polite" aria-atomic="true"><b id="calcTotal">R$ 6.600</b> por mês em consultas que podem estar ficando fora da agenda</p>
+    <p class="gb-calc-conta" id="calcConta">2 mensagens × R$ 150 × 22 dias de atendimento</p>
+    <a class="btn btn-primario gb-calc-cta" target="_blank" rel="noopener" href="https://wa.me/5592981486875?text=Oi%2C%20tenho%20um%20consult%C3%B3rio%20e%20quero%20saber%20do%20guara.bot."><span class="btn-texto">Chamar no WhatsApp</span><span class="btn-seta" aria-hidden="true">Chamar no WhatsApp →</span></a>
+  </form>
+</div></section>
+
+<!-- 5. DIFERENCIAIS -->
+<section class="gb-compara"><div class="wrap">
+  <h2 class="sec-titulo">O mesmo consultório, dois jeitos de atender.</h2>
+  <div class="gb-compara-grid">
+    <div class="gb-lado gb-lado-sem">
+      <h3>Sem guara.bot</h3>
+      <ul>
+        <li>Interrompe a consulta para responder</li>
+        <li>Paciente fica esperando</li>
+        <li>Ninguém tem tempo de lembrar a consulta</li>
+        <li>Recepção repete valor e horário o dia todo</li>
+        <li>Risco de marcar dois no mesmo horário</li>
+      </ul>
+    </div>
+    <div class="gb-lado gb-lado-com">
+      <h3>Com guara.bot</h3>
+      <ul>
+        <li>Atende sem interrupção</li>
+        <li>Resposta na hora, até à noite e no fim de semana</li>
+        <li>Lembrete automático na véspera</li>
+        <li>Recepção livre para quem está na sala de espera</li>
+        <li>Só oferece horário livre</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- 6. COMO FUNCIONA -->
+<section class="gb-funciona" id="como-funciona"><div class="wrap">
+  <h2 class="sec-titulo">Como funciona</h2>
+  <div class="gb-funciona-grid">
+    <div>
+      <h3>Instalação, feita pela gente</h3>
+      <ol class="gb-passos">
+        <li><span class="gb-marco" aria-hidden="true">1</span><p>Você chama a gente no WhatsApp.</p></li>
+        <li><span class="gb-marco" aria-hidden="true">2</span><p>A gente configura profissionais, procedimentos, valores, horários, Google Agenda e planilha.</p></li>
+        <li><span class="gb-marco" aria-hidden="true">3</span><p>Você conecta o número do consultório lendo um QR Code, como no WhatsApp Web.</p></li>
+      </ol>
+    </div>
+    <div>
+      <h3>No dia a dia</h3>
+      <p class="gb-dia">O paciente chama, o guara.bot responde, mostra os horários livres, marca na agenda do profissional certo, avisa você por e-mail e lembra o paciente na véspera. Se o paciente pedir para falar com alguém, ele passa a conversa.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 7. FUNDADORES (no lugar de depoimento: ainda não há clínica cliente) -->
+<section class="gb-fundadoras"><div class="wrap gb-fundadoras-grid">
+  <img class="gb-pose" src="/brand/guara-bot/01-boas-vindas-520.webp" width="520" height="520" loading="lazy" decoding="async" alt="guara.bot acenando">
+  <div>
+    <h2 class="sec-titulo">Seja um dos primeiros consultórios de Manaus com o guara.bot.</h2>
+    <p class="gb-fundadoras-texto">Os primeiros consultórios e clínicas têm a configuração acompanhada de perto pela nossa equipe, do primeiro atendimento em diante.</p>
+  </div>
+</div></section>
+
+<!-- 8. INVESTIMENTO (sem preço na página: proposta pelo WhatsApp) -->
+<section class="gb-preco" id="investimento"><div class="wrap gb-preco-grid">
+  <div>
+    <span class="gb-selo">Investimento</span>
+    <h2 class="sec-titulo">Um valor sob medida para o tamanho do seu consultório.</h2>
+    <ul class="gb-checks">
+      <li>Instalação e configuração feitas pela nossa equipe</li>
+      <li>Valor de acordo com o número de profissionais e o que a clínica precisa</li>
+      <li>Funciona no WhatsApp que você já usa</li>
+    </ul>
+  </div>
+  <div class="gb-cartao-preco gc-cartao">
+    <span class="gb-plano">Proposta pelo WhatsApp</span>
+    <p class="gc-cartao-texto">Conte quantos profissionais atendem e quais procedimentos você oferece. A gente passa o valor na conversa.</p>
+    <a class="btn btn-primario" target="_blank" rel="noopener"
+       href="https://wa.me/5592981486875?text=Oi%2C%20tenho%20um%20consult%C3%B3rio%20e%20quero%20saber%20o%20valor%20do%20guara.bot.">
+      <span class="btn-texto">Pedir minha proposta</span>
+      <span class="btn-seta" aria-hidden="true">Pedir minha proposta →</span>
+    </a>
+    <p class="gb-micro">Sem compromisso. Resposta pelo WhatsApp.</p>
+  </div>
+</div></section>
+
+<!-- 9. FORMULÁRIO (POST /api/lead, origem guarabot-clinicas) -->
+<section class="gb-form" id="contato"><div class="wrap gb-form-grid">
+  <div>
+    <h2 class="sec-titulo">Prefere que a gente chame você?</h2>
+    <p class="gb-form-sub">Deixe seu nome e WhatsApp. A gente chama você.</p>
+  </div>
+  <form id="gbForm" method="post" data-origem="guarabot-clinicas">
+    <label>Nome<input type="text" name="nome" required autocomplete="name" placeholder="Seu nome" maxlength="80"></label>
+    <label>Área de atuação<select name="profissao" required><option value="">Selecione</option><option>Consultório médico</option><option>Odontologia</option><option>Estética</option><option>Fisioterapia</option><option>Psicologia</option><option>Nutrição</option><option>Outra área da saúde</option></select></label>
+    <label>WhatsApp<input type="tel" name="whatsapp" required autocomplete="tel-national" inputmode="tel" placeholder="(92) 9 8888-7777" maxlength="25"></label>
+    <div class="consent">
+      <input type="checkbox" id="gbConsent" required>
+      <label for="gbConsent">Autorizo o contato da nanoguará.ia pelos dados informados.</label>
+      <a href="/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>
+    </div>
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAEDw_7_CrCwCFcs_" data-theme="light" data-size="compact"></div>
+    <button class="btn btn-primario" type="submit">
+      <span class="btn-texto">Quero que me chamem</span>
+      <span class="btn-seta" aria-hidden="true">Quero que me chamem →</span>
+    </button>
+    <p class="form-msg" id="gbMsg" role="status" aria-live="polite" hidden></p>
+  </form>
+</div></section>
+
+<!-- PERGUNTAS -->
+<section class="gb-faq" id="perguntas"><div class="wrap">
+  <h2 class="sec-titulo">Perguntas frequentes</h2>
+  <div class="gb-faq-grid">
+    <details>
+      <summary>Preciso trocar de número?</summary>
+      <p>Não. Ele atende no WhatsApp que o consultório já usa.</p>
+    </details>
+    <details>
+      <summary>Funciona com mais de um profissional?</summary>
+      <p>Sim. Cada profissional tem a sua agenda, e o guara.bot marca a consulta com quem o paciente escolher.</p>
+    </details>
+    <details>
+      <summary>Ele responde dúvida de saúde?</summary>
+      <p>Não. Sintoma, dúvida sobre tratamento ou urgência vão direto para você ou para a sua equipe.</p>
+    </details>
+    <details>
+      <summary>O paciente percebe que é um assistente?</summary>
+      <p>Ele conversa de forma natural e se apresenta como assistente virtual. Se o paciente pedir para falar com alguém, a conversa passa para a equipe.</p>
+    </details>
+    <details>
+      <summary>Funciona com o sistema de agenda que eu já uso?</summary>
+      <p>Hoje ele trabalha com o Google Agenda. Se a clínica usa outro sistema, conte para a gente na conversa.</p>
+    </details>
+    <details>
+      <summary>Quanto custa?</summary>
+      <p>Depende do número de profissionais e do que a clínica precisa. Chame a gente no WhatsApp e passamos o valor na conversa.</p>
+    </details>
+  </div>
+</div></section>
+
+<!-- CTA FINAL -->
+<section class="gb-final"><div class="wrap gb-final-grid">
+  <div>
+    <h2>Deixe o WhatsApp com ele. Você cuida do paciente.</h2>
+    <a class="btn gb-btn-claro" target="_blank" rel="noopener"
+       href="https://wa.me/5592981486875?text=Oi%2C%20tenho%20um%20consult%C3%B3rio%20e%20quero%20saber%20do%20guara.bot.">Chamar no WhatsApp</a>
+    <p class="gb-micro">Para consultórios e clínicas, com um ou mais profissionais.</p>
+  </div>
+  <img class="gb-pose" src="/brand/guara-bot/12-apontando-cta-520.webp" width="520" height="520" loading="lazy" decoding="async"
+       alt="guara.bot apontando para o botão de WhatsApp">
+</div></section>
+
+</main>
+
+<!-- Barra fixa só no celular: o botão fica sempre a um toque. -->
+<div class="gb-barra-whats">
+  <a class="btn btn-primario" target="_blank" rel="noopener"
+     href="https://wa.me/5592981486875?text=Oi%2C%20tenho%20um%20consult%C3%B3rio%20e%20quero%20saber%20do%20guara.bot.">Chamar no WhatsApp</a>
+</div>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div>
+      <span class="brand footer-brand"><span>nano<em class="footer-accent">guará.ia</em></span></span>
+      <p class="footer-desc">Agência brasileira de IA. De Manaus, Amazonas, atendendo todo o Brasil.</p>
+    </div>
+    <div><b class="footer-heading">Serviços</b><ul><li><a href="/servicos/sites-para-clinicas-de-estetica-em-manaus">Sites para clínica de estética</a></li><li><a href="/#assistente">Assistente Virtual</a></li></ul></div>
+    <div><b class="footer-heading">Contato</b><ul><li><a href="https://wa.me/5592981486875" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="/portfolio">Portfólio</a></li><li><a href="/privacidade">Política de Privacidade</a></li><li data-preferencias-cookies hidden><button type="button" class="link-cookies">Preferências de cookies</button></li></ul></div>
+  </div>
+  <div class="legal"><span>© 2026 nanoguará.ia. Todos os direitos reservados.</span><span>R D Pimentel Serviços · Manaus, AM · CNPJ 21.091.816/0001-48</span><span>Feito no Brasil, com guaraná.</span></div>
+</div></footer>
+
+<script src="/consentimento.js" defer></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d35e05a9bfff4c0c8a78b12cda265734"}'></script>
+</body>
+</html>

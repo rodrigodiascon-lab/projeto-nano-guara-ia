@@ -31,6 +31,7 @@ const PAGINAS = [
   // quando o quiz chega na última etapa, então não existe na primeira tela.
   { nome: "captura: iaparaconsultorios", url: "/iaparaconsultorios.html", temFormulario: false },
   { nome: "landing: guarabot barbearias", url: "/guarabot/barbearias.html", temFormulario: false },
+  { nome: "landing: guarabot clínicas", url: "/guarabot/clinicas.html", temFormulario: false },
 ];
 
 /**

@@ -8,6 +8,7 @@ import privacidadeHtml from "../public/privacidade.html?raw";
 import clinicasHtml from "../public/servicos/sites-para-clinicas-de-estetica-em-manaus.html?raw";
 import consultoriosHtml from "../public/iaparaconsultorios.html?raw";
 import barbeariasHtml from "../public/guarabot/barbearias.html?raw";
+import clinicasLandingHtml from "../public/guarabot/clinicas.html?raw";
 
 const RAZAO_SOCIAL = "R D Pimentel Serviços";
 const CNPJ = "21.091.816/0001-48";
@@ -21,6 +22,7 @@ const PAGINAS = {
   "servicos/sites-para-clinicas-de-estetica-em-manaus.html": clinicasHtml,
   "iaparaconsultorios.html": consultoriosHtml,
   "guarabot/barbearias.html": barbeariasHtml,
+  "guarabot/clinicas.html": clinicasLandingHtml,
 };
 
 /**

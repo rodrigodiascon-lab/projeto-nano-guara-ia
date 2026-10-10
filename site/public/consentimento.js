@@ -84,10 +84,12 @@ document.addEventListener('ng:lead', () => {
 
 // Clique em qualquer botão que abre o WhatsApp (wa.me). Evento Contact sem
 // parâmetros: nem o texto pronto da mensagem, nem a página de origem além da URL
-// que o próprio pixel já registra no PageView.
+// que o próprio pixel já registra no PageView. O link genérico do rodapé fica de
+// fora: é contato institucional, não resposta ao anúncio, e inflava o Contact
+// das landings (auditoria de conversões, 2026-10-10).
 document.addEventListener('click', (e) => {
   const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
-  if (a && pixelLigado && window.fbq) window.fbq('track', 'Contact');
+  if (a && !a.closest('footer') && pixelLigado && window.fbq) window.fbq('track', 'Contact');
 }, true);
 
 // ---------- Banner ----------

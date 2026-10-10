@@ -66,11 +66,18 @@ describe("pixel da Meta atrás do consentimento", () => {
     expect(s).not.toMatch(/track', 'Contact',/);
   });
 
-  it("a landing do guara.bot para barbearias carrega o consentimento, não o pixel direto", async () => {
-    const html = await (await SELF.fetch("https://site.local/guarabot/barbearias")).text();
-    expect(html).toContain('<script src="/consentimento.js" defer></script>');
-    expect(html).not.toContain("connect.facebook.net");
-    expect(html).toContain("data-preferencias-cookies");
+  for (const landing of ["barbearias", "clinicas"]) {
+    it(`a landing do guara.bot para ${landing} carrega o consentimento, não o pixel direto`, async () => {
+      const html = await (await SELF.fetch(`https://site.local/guarabot/${landing}`)).text();
+      expect(html).toContain('<script src="/consentimento.js" defer></script>');
+      expect(html).not.toContain("connect.facebook.net");
+      expect(html).toContain("data-preferencias-cookies");
+    });
+  }
+
+  it("o WhatsApp do rodapé não conta como Contact", async () => {
+    const s = await js();
+    expect(s).toContain("!a.closest('footer')");
   });
 
   it("o app.js avisa o envio do lead sem carregar dado do formulário", async () => {

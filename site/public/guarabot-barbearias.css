@@ -382,14 +382,15 @@
 .gb-recursos li{background:none;border:0;border-top:1px solid var(--borda);border-radius:0;padding:18px 0 0 38px}
 .gb-recursos li::before{left:0;top:20px;width:20px;height:20px;background-size:12px}
 .gb-recursos .gb-recurso-destaque{grid-column:1 / -1;border:0;border-radius:var(--raio-card);padding:24px 28px 24px 64px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
-.gb-recurso-destaque::before{left:26px;top:27px}
+/* Especificidade acima de .gb-recursos li::before, senão o ícone fica no canto. */
+.gb-recursos .gb-recurso-destaque::before{left:26px;top:27px}
 /* Conta: caixa à esquerda no desktop, para não repetir o esqueleto texto|caixa. */
 @media(min-width:901px){.gb-conta-grid{grid-template-columns:minmax(0,440px) minmax(0,1fr)}.gb-conta-grid>div{order:2}}
 /* Fundadoras: faixa curta, mascote menor; no celular sai (já aparece em outras seções). */
 .gb .gb-fundadoras{padding:56px 0}
 .gb-fundadoras-grid{grid-template-columns:minmax(0,170px) minmax(0,1fr);max-width:860px;margin-inline:auto}
 .gb-fundadoras .gb-pose{max-width:170px}
-@media(max-width:900px){.gb-fundadoras .gb-pose{display:none}}
+@media(max-width:900px){.gb-fundadoras .gb-pose{display:none}.gb-fundadoras-grid{grid-template-columns:minmax(0,1fr)}}
 /* Como funciona: a coluna "No dia a dia" ganha corpo. */
 .gb-funciona-grid>div:last-child{background:var(--creme);border:1px solid var(--borda);border-radius:var(--raio-card);padding:28px 30px;align-self:start}
 .gb-dia{color:var(--text);margin-top:12px}

@@ -1,4 +1,6 @@
-// /guarabot/barbearias. CSP estrita: nada de .style, só classes e atributos.
+// /guarabot/barbearias e /guarabot/clinicas. CSP estrita: nada de .style, só classes e atributos.
+// O que muda entre as páginas vem do HTML: data-origem no formulário,
+// data-dias / data-dias-rotulo e o max dos campos na calculadora.
 (function () {
   if (!('IntersectionObserver' in window)) return;
 
@@ -49,7 +51,8 @@
   }, 1500);
 })();
 
-// 3. Conta do cliente perdido: mensagens por dia × valor do corte × 26 dias.
+// 3. Conta do cliente perdido: mensagens por dia × valor médio × dias de trabalho
+//    (26 na barbearia, data-dias na calculadora sobrescreve).
 //    Sem JS, a página mostra a conta de exemplo já escrita no HTML.
 (function () {
   var msgs = document.getElementById('calcMsgs');
@@ -57,7 +60,10 @@
   var total = document.getElementById('calcTotal');
   var conta = document.getElementById('calcConta');
   if (!msgs || !valor || !total) return;
-  var DIAS = 26;
+  var calc = document.getElementById('calc');
+  var DIAS = parseInt(calc.getAttribute('data-dias'), 10) || 26;
+  var ROTULO = calc.getAttribute('data-dias-rotulo') || 'trabalho';
+  var MAX_M = +msgs.max || 50, MAX_V = +valor.max || 1000;
   var real = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
   function num(el, max) {
     var n = parseFloat(String(el.value).replace(',', '.'));
@@ -65,16 +71,16 @@
     return Math.min(n, max);
   }
   function atualiza() {
-    var m = num(msgs, 50), v = num(valor, 1000);
+    var m = num(msgs, MAX_M), v = num(valor, MAX_V);
     // Valor acima do limite: mostra no campo o número que entrou na conta.
-    if (+msgs.value > 50) msgs.value = 50;
-    if (+valor.value > 1000) valor.value = 1000;
+    if (+msgs.value > MAX_M) msgs.value = MAX_M;
+    if (+valor.value > MAX_V) valor.value = MAX_V;
     total.textContent = real.format(m * v * DIAS);
-    conta.textContent = m + (m === 1 ? ' mensagem' : ' mensagens') + ' × ' + real.format(v) + ' × ' + DIAS + ' dias de trabalho';
+    conta.textContent = m + (m === 1 ? ' mensagem' : ' mensagens') + ' × ' + real.format(v) + ' × ' + DIAS + ' dias de ' + ROTULO;
   }
   msgs.addEventListener('input', atualiza);
   valor.addEventListener('input', atualiza);
-  document.getElementById('calc').addEventListener('submit', function (e) { e.preventDefault(); });
+  calc.addEventListener('submit', function (e) { e.preventDefault(); });
   atualiza();
 })();
 
@@ -101,7 +107,7 @@
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nome: fd.get('nome'), profissao: fd.get('profissao'), whatsapp: fd.get('whatsapp'),
-          origem: 'guarabot-barbearias', consentimento: true,
+          origem: form.getAttribute('data-origem') || 'guarabot-barbearias', consentimento: true,
           turnstileToken: fd.get('cf-turnstile-response') || '',
         }),
       });
@@ -130,7 +136,7 @@
   if (!caixa) return;
   var carregado = false;
   window.gbTurnstilePronto = function () {
-    if (window.turnstile) window.turnstile.render(caixa, { sitekey: caixa.getAttribute('data-sitekey'), theme: 'auto', size: 'compact' });
+    if (window.turnstile) window.turnstile.render(caixa, { sitekey: caixa.getAttribute('data-sitekey'), theme: caixa.getAttribute('data-theme') || 'auto', size: 'compact' });
   };
   function carrega() {
     if (carregado) return;

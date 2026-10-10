@@ -1,0 +1,69 @@
+/* /guarabot/clinicas: mesma estrutura e classes .gb- da landing de barbearias
+   (/guarabot-barbearias.css), com fundo offwhite e nude de clínica. Verde e
+   vermelho guaraná continuam os da marca. Só o tema claro muda; o escuro volta
+   aos tokens do site. CSP estrita: nada inline. */
+
+.gc{
+  --bg:#FAF7F2; --surface:#FFFDF9; --creme:#F3EADF;
+  --borda:#E8DDD0; --chat-in:#FFFFFF;
+  --text-muted:#64584E;
+  --gc-nude-fundo:#EADCCB; --gc-nude-texto:#3B3029;
+  --gb-sombra:0 24px 48px -24px rgba(74,52,36,.28);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .gc{
+  --bg:#0E1A13; --surface:#16241B; --creme:#1E2C22; --borda:#25352B; --chat-in:#1C2B21;
+  --text-muted:#9DB0A3; --gc-nude-fundo:#12301F; --gc-nude-texto:#EDF3EE;
+  --gb-sombra:0 20px 40px -20px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"] .gc{
+  --bg:#0E1A13; --surface:#16241B; --creme:#1E2C22; --borda:#25352B; --chat-in:#1C2B21;
+  --text-muted:#9DB0A3; --gc-nude-fundo:#12301F; --gc-nude-texto:#EDF3EE;
+  --gb-sombra:0 20px 40px -20px rgba(0,0,0,.6);
+}
+
+/* Hero: nude suave descendo para o offwhite, sem faixa dura. */
+.gc .gb-hero{background:linear-gradient(180deg,var(--creme) 0%,var(--bg) 100%)}
+.gc .gb-hero-foto img{border-radius:28px}
+
+/* Problema: faixa nude escura no lugar do verde profundo. */
+.gc .gb-dor,
+:root[data-theme="dark"] .gc .gb-dor{background:var(--gc-nude-fundo);color:var(--gc-nude-texto)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .gc .gb-dor{background:var(--gc-nude-fundo)}}
+.gc .gb-dor .sec-titulo{color:var(--gc-nude-texto)}
+.gc .gb-dor-sub{color:var(--gc-nude-texto);opacity:.85}
+.gc .gb-esperando{background:rgba(255,255,255,.45);border-color:rgba(74,52,36,.12)}
+.gc .gb-esperando .gb-exemplo{color:var(--text-muted)}
+.gc .gb-esperando .gb-msg{box-shadow:0 2px 6px -3px rgba(74,52,36,.25)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .gc .gb-esperando{background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.08)}}
+:root[data-theme="dark"] .gc .gb-esperando{background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.08)}
+
+/* Número com fonte, abaixo do texto do problema. */
+.gc-fonte{margin-top:22px;padding-left:16px;border-left:3px solid var(--guarana);max-width:30rem;font-size:1rem;color:var(--gc-nude-texto)}
+.gc-fonte b{font-family:"Outfit","Outfit-fallback",ui-rounded,system-ui;font-size:1.5rem;color:var(--stat-num)}
+.gc-fonte span{display:block;font-size:.8rem;color:var(--text-muted);margin-top:4px}
+
+/* Caixa de visita: areia em vez do amarelo forte da barbearia. */
+.gc .gb-visita{background:#F5E6C8;border-color:#D8B878}
+.gc .gb-visita:hover{background:#F0DCB2}
+
+/* Investimento sem preço: cartão com texto em vez de valor. */
+.gc-cartao-texto{margin-top:14px;font-size:1.1rem;color:var(--text);line-height:1.5}
+.gc-cartao .gb-plano{font-family:"Outfit","Outfit-fallback",ui-rounded,system-ui;font-size:1.4rem;color:var(--verde-escuro)}
+
+/* Recursos: 6 itens + destaque, grade de 3 no desktop. */
+.gc .gb-recursos .gb-recurso-destaque{margin-top:6px}
+
+/* Auditoria 2026-10-10: contraste do link secundário sobre o degradê, bolha
+   apagada legível, títulos sem linha órfã no celular. */
+.gc .gb-hero .btn-secundario{color:var(--verde-escuro)}
+.gc .gb-esperando .gb-msg:last-child{opacity:.9}
+.gc h1,.gc h2{text-wrap:balance}
+
+/* Foto do topo v2 (criativo "Você atende. A IA responde no WhatsApp.", recorte
+   sem texto): horizontal, com guara.bot e celular à esquerda. O balão animado
+   vai para a direita, sobre as costas da paciente, para não cobrir os dois. */
+.gc .gb-chat-hero{position:absolute;left:auto;right:-24px;bottom:-56px}
+@media(max-width:900px){
+  .gc .gb-chat-hero{position:relative;right:auto;bottom:auto;left:auto;
+    width:min(320px,88%);margin:-28px 12px 0 auto}
+}

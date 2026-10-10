@@ -6,6 +6,7 @@ export function limpo(s: string): string {
 const PAGINA: Record<string, string> = {
   iaparaconsultorios: "quiz guara.bot",
   "guarabot-barbearias": "landing guara.bot barbearias",
+  "guarabot-clinicas": "landing guara.bot clínicas",
   form: "formulário da página inicial",
 };
 
