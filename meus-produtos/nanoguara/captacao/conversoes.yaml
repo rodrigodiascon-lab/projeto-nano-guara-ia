@@ -1,5 +1,5 @@
 ativo: nanoguara
-atualizado_em: "2026-09-30"
+atualizado_em: "2026-10-10"
 conta_anuncios: "act_1678023370148935"
 via: token
 site:
@@ -33,6 +33,20 @@ otimizacao:
     uso: medir_site_e_montar_publico_de_visitantes
     otimiza_campanha: false
     status: pendente_sem_pixel
+clinicas:                           # landing nova, criada em 2026-10-10, ainda sem campanha
+  destino: "https://nanoguara.ia.br/guarabot/clinicas"
+  publicada: true                   # deploy 7982cdc1 em 2026-10-10
+  eventos_no_codigo: [PageView, Contact (clique em wa.me, exceto rodapé), Lead (formulário, origem guarabot-clinicas)]
+  separacao_da_barbearia: "só pela URL: eventos saem sem parâmetro"
+  conversoes_personalizadas:        # criar no Gerenciador de Eventos antes de rodar tráfego
+    lead: pendente                  # regra: evento Lead + URL contém guarabot/clinicas
+    contact: pendente               # regra: evento Contact + URL contém guarabot/clinicas
+  testar_eventos:
+    pageview: nao_testado
+    contact: nao_testado
+    lead: nao_testado               # envio real com nome "TESTE 1"
+  checar_restricao_saude: pendente  # Gerenciador de Eventos pode restringir conjunto de dados de saúde
+  utm: "utm_campaign=clinicas-... e utm_content=adNN"
 validacao:
   status: passou                    # passou | falhou | pendente
   data: "2026-09-30"
