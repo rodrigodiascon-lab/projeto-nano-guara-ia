@@ -1,0 +1,216 @@
+{
+  "conta": "act_1678023370148935",
+  "data": "2026-10-10T22:50:16.617Z",
+  "itens": [
+    {
+      "id": "OBJ01",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-OBJ01-feed.png",
+      "sha256": "79d95cd42d5f99b6e79c196bff11d95910150dffa6afa4f512b1dde228b1d88a",
+      "hash": "0af95a0a1d56cd28569c372ebc9e13c7"
+    },
+    {
+      "id": "OBJ01",
+      "tipo": "stories_png",
+      "nome": "GB-Consultorios-OBJ01-stories_png.png",
+      "sha256": "3ffe510c95fb3566db7844687ce4badbe61525c00daebcedaba8d7bcf9fd356e",
+      "hash": "2a6dc67db1dc7f176aa67aecd634e539"
+    },
+    {
+      "id": "OBJ02",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-OBJ02-feed.png",
+      "sha256": "c3e22a70735dbdfae5653aad9e3b6376f37c6d608be67ec1fc4384f94be6b1a5",
+      "hash": "01de41a4e483b506686161a4e851302b"
+    },
+    {
+      "id": "OBJ02",
+      "tipo": "stories_png",
+      "nome": "GB-Consultorios-OBJ02-stories_png.png",
+      "sha256": "a086392412074d97621b951d5286bef5ee3cbf38018ebaf2715664cd68f54f61",
+      "hash": "0647a27e7293454f7a8b27303134af51"
+    },
+    {
+      "id": "OBJ07",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-OBJ07-feed.png",
+      "sha256": "a4b233cbf4bd8b89378899176553eecace717635cb8975de18f9de44276614ef",
+      "hash": "81df734e0e050dd0e8f1691899ee1341"
+    },
+    {
+      "id": "OBJ07",
+      "tipo": "stories_png",
+      "nome": "GB-Consultorios-OBJ07-stories_png.png",
+      "sha256": "ec808ddf19ff18736c35960693e5b5f15eb3599f29d835cdfd303a1e017af1a6",
+      "hash": "0051d5ed9bd3354f353149a74e425ef3"
+    },
+    {
+      "id": "OBJ08",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-OBJ08-feed.png",
+      "sha256": "055ab3c91791a47e16a6ae18d435901e21938120b15f31225110bd75ae157570",
+      "hash": "3f1606ac25bc4703dd20b6cf67da09ed"
+    },
+    {
+      "id": "OBJ08",
+      "tipo": "stories_png",
+      "nome": "GB-Consultorios-OBJ08-stories_png.png",
+      "sha256": "2ba2dea13e57f196cea70a26add2ff14f44af6d89bd1387204690f46440c8661",
+      "hash": "e7012e4b3f755e0eaf0db88f7a316fbc"
+    },
+    {
+      "id": "OBJ10",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-OBJ10-feed.png",
+      "sha256": "952b5d34896c8f896f6bca364be009f4d6df3818990afb30422c0b5ba8b1ba42",
+      "hash": "bb302c4634e5822ff658338d718704bd"
+    },
+    {
+      "id": "OBJ10",
+      "tipo": "stories_png",
+      "nome": "GB-Consultorios-OBJ10-stories_png.png",
+      "sha256": "34d040657d8eadf2925aee919b3f7a36f7972d02c94987e5e4bbca4cddd98d8e",
+      "hash": "e4e30bbae784a87d630e08c0eb43a109"
+    },
+    {
+      "id": "SUR01",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-SUR01-feed.png",
+      "sha256": "117b7f3944f165a08e975ddac6ccff18bed925646a5c701357388f8029699aeb",
+      "hash": "ac2ee3252069309a78dfafc8604b880f"
+    },
+    {
+      "id": "SUR01",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-SUR01-stories_video.mp4",
+      "sha256": "532fec0836ffd2e2de7ff271dc8424f34f510477d3f3037b54659a851dbc85f4",
+      "videoId": "1825705935254814"
+    },
+    {
+      "id": "SUR02",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-SUR02-feed.png",
+      "sha256": "d731edb59d90bb32408b07e0f65f9a521537e437257818ff26b98e07d858dcc6",
+      "hash": "e38c308f2149e7c536d2b50b7b361431"
+    },
+    {
+      "id": "SUR02",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-SUR02-stories_video.mp4",
+      "sha256": "938e91c2b824279e147af6de90a36d5568ebe17b558f3474cea3df201fb2eed0",
+      "videoId": "960644333259964"
+    },
+    {
+      "id": "SUR07",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-SUR07-feed.png",
+      "sha256": "4303f0669c0663fa61d5d9f593b03f8a24212845af8a98d6089c670e999d8be5",
+      "hash": "945c951fa1f9976c4f4f38e890bd482c"
+    },
+    {
+      "id": "SUR07",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-SUR07-stories_video.mp4",
+      "sha256": "c18874606758fa46a6362efb3f0fc958e315cf435d5ad467fe2d0d7f8530fcc4",
+      "videoId": "1653829963043153"
+    },
+    {
+      "id": "SUR09",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-SUR09-feed.png",
+      "sha256": "f6005a945c70d5929d4d3ea2bc6d254da51283ab941e685c0325041d4b6f88e7",
+      "hash": "c6cd7d01902d5d167e53f1ebee8c9ce3"
+    },
+    {
+      "id": "SUR09",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-SUR09-stories_video.mp4",
+      "sha256": "eb0a416c27ca68809e5759b7c9bff34fe23b43699473c7f23502abfce359e80d",
+      "videoId": "1409449534062674"
+    },
+    {
+      "id": "SUR10",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-SUR10-feed.png",
+      "sha256": "643b43baa3d03a75c09839465b52c0ccb55ff1db36a47b2b6a3147d5df288f02",
+      "hash": "574d6686d1cd7b3e850a8906d0cff498"
+    },
+    {
+      "id": "SUR10",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-SUR10-stories_video.mp4",
+      "sha256": "524634a059a721db089c3b2bcf5c502021ef17333b0516c69d86a3d3830e8c30",
+      "videoId": "29387817454155240"
+    },
+    {
+      "id": "PS01",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-PS01-feed.png",
+      "sha256": "c44dcf2368dd1ac336fdad7753c7e0d3e6dac1d3c98695113d17e7af122bde5b",
+      "hash": "74659eb1dd4ee6db83da2d96a5cc269e"
+    },
+    {
+      "id": "PS01",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-PS01-stories_video.mp4",
+      "sha256": "8e3112c9e5cda553851a711c4dea936021b226e8aa3b0e7e366934855dc233bb",
+      "videoId": "3262580257284334"
+    },
+    {
+      "id": "PS02",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-PS02-feed.png",
+      "sha256": "db11e02da559fef1fdc70a72215925fd074aee47d497406c3dd305c33fa32e55",
+      "hash": "a1fb137f248d9e625bc67b765b44cc3f"
+    },
+    {
+      "id": "PS02",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-PS02-stories_video.mp4",
+      "sha256": "56112ff565f4a53ff2701fde38a8334eacc2c7fbff762b4b9274450b73866e71",
+      "videoId": "1652314526242716"
+    },
+    {
+      "id": "PS06",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-PS06-feed.png",
+      "sha256": "eafbfe4cd869741f186d79f31b862c23c846cd9b425c98693428590f9b954933",
+      "hash": "4f99770aff8f2bd34be7eeadda724f29"
+    },
+    {
+      "id": "PS06",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-PS06-stories_video.mp4",
+      "sha256": "5373e07d278c81acdfbf2cdd1dff8b384ec767f4c210bb3ce42dc68cb7bab90c",
+      "videoId": "1138941021909298"
+    },
+    {
+      "id": "PS07",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-PS07-feed.png",
+      "sha256": "3f622341eaa19034d69a3cf7f302c24540ac814315b111e348096aa166a45cad",
+      "hash": "897398104ad7b5255eb3291d18c6dd6f"
+    },
+    {
+      "id": "PS07",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-PS07-stories_video.mp4",
+      "sha256": "542d31a89392e97f63ebf9ccb3f18f088de50ceda95e71ed739f55f3378d5787",
+      "videoId": "1999665107324971"
+    },
+    {
+      "id": "PS10",
+      "tipo": "feed",
+      "nome": "GB-Consultorios-PS10-feed.png",
+      "sha256": "c4f3c5c477e9119b7c5295d3eb06fb894804dae78b7daa8a26ec204e647adab8",
+      "hash": "bace1e141936d6301be340869235a682"
+    },
+    {
+      "id": "PS10",
+      "tipo": "stories_video",
+      "nome": "GB-Consultorios-PS10-stories_video.mp4",
+      "sha256": "064fd117886db331b85b2ce818c81c8533118ff61d97e3558658b788ffde1566",
+      "videoId": "1080782751537870"
+    }
+  ]
+}

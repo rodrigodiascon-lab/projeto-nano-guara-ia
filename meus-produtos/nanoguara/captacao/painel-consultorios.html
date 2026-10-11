@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel de Captação</title>
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--tx:#1b1f1c;--mu:#5d665f;--bd:#e3e1d9;--ac:#1f7a4d;--ok:#1f7a4d;--at:#a86a00;--rk:#b3261e}
+@media (prefers-color-scheme:dark){:root{--bg:#121513;--card:#1b201c;--tx:#eceee9;--mu:#9aa39b;--bd:#2c332d;--ac:#4cc38a;--ok:#4cc38a;--at:#e0a23a;--rk:#f0776f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:1.35rem;margin:8px 0 2px}
+h2{font-size:1.05rem;margin:0 0 10px}
+.sub{color:var(--mu);font-size:.9rem;margin:0 0 14px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.k{border:1px solid var(--bd);border-radius:10px;padding:10px}
+.k b{display:block;font-size:1.25rem}
+.k span{color:var(--mu);font-size:.82rem}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{text-align:left;padding:7px 4px;border-bottom:1px solid var(--bd);vertical-align:top}
+th{color:var(--mu);font-weight:600;font-size:.8rem}
+td.n,th.n{text-align:right;white-space:nowrap}
+.tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:99px;border:1px solid var(--at);color:var(--at)}
+.conta{color:var(--mu);font-size:.85rem;margin:6px 0 0}
+.bar{height:10px;border-radius:6px;background:var(--bd);overflow:hidden;margin:4px 0 10px}
+.bar i{display:block;height:100%;background:var(--ac)}
+.bar.rk i{background:var(--rk)}
+.ok{color:var(--ok)}.at{color:var(--at)}.rk{color:var(--rk)}
+ul{margin:0;padding-left:18px}
+.tw{overflow-x:auto}
+.hid{display:none}
+footer{color:var(--mu);font-size:.8rem;text-align:center;padding:8px 0 24px}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+/* ============================================================================
+   CONTRATO DE DADOS DO PAINEL
+   window.PAINEL_DATA = { plano, diario, meta, insights }
+   plano: mesma estrutura do plano.yaml (meta, teto, nichos, escala, funil, cenarios, referencia)
+   diario: [] no planejamento. Depois, uma linha por dia (e por nicho, se houver):
+           { dia, nicho, investimento, conversas, impressoes, cliques }  (os 3 ultimos opcionais)
+   meta: { gerado_em, fonte_investimento, aviso_dados }
+   insights: null ou { gerado_em, destaques:[{tipo,texto}], blocos:[{titulo,paragrafos:[],acoes:[{texto,comando}]}] }
+   O bloco entre os marcadores abaixo e trocado por scripts/montar-painel.py.
+   Arquivo autocontido: sem CDN, sem fetch, sem imagem remota.
+   ============================================================================ */
+/*DADOS_INICIO*/
+window.PAINEL_DATA = {
+  "plano": {
+    "versao": 1,
+    "atualizado_em": "2026-10-10",
+    "ativo": "nanoguara",
+    "marca": "nanoguará.ia",
+    "produto": "guara.bot para consultórios",
+    "mes_referencia": "2026-10",
+    "periodo": {
+      "inicio": "2026-10-12",
+      "fim": "2026-10-26",
+      "parcial": false
+    },
+    "dias_do_mes": 15,
+    "unidade_resultado": "lead do quiz",
+    "destino": "https://nanoguara.ia.br/iaparaconsultorios",
+    "conta": {
+      "id": "act_1678023370148935",
+      "nome": "Lucrec.ia PUBLI",
+      "moeda": "BRL",
+      "fuso": "America/Manaus"
+    },
+    "referencia": {
+      "custo_por_conversa": null,
+      "amostra_conversas": null,
+      "fragil": true,
+      "fonte": "a medir: página sem histórico de anúncio; Lead do quiz medido só a partir de 2026-10-10 (commit 7d1495c)"
+    },
+    "meta": {
+      "conversas_mes": null,
+      "custo_por_conversa_alvo": null,
+      "orcamento_mes": 1500.0,
+      "orcamento_dia": 100.0,
+      "fragil": true,
+      "caminho": "orçamento primeiro"
+    },
+    "teto": {
+      "gasto_mes": 2000.0,
+      "gasto_dia_total": 133.33,
+      "reserva_escala_mes": 500.0
+    },
+    "nichos": [
+      {
+        "id": "consultorios",
+        "nome": "Consultórios e clínicas (todas as especialidades do quiz)",
+        "peso": 1.0,
+        "status": "planejado",
+        "custo_por_conversa_alvo": null,
+        "meta_conversas_mes": null,
+        "orcamento_mes": 1500.0,
+        "orcamento_dia": 100.0
+      }
+    ],
+    "escala": {
+      "passo_pct": 20,
+      "intervalo_dias": 3,
+      "minimo_conversas_janela": 5,
+      "regra": "Só depois dos 15 primeiros leads, quando o custo real vira o custo alvo e a meta é recalculada. Sobe um passo de até 20% se o custo por lead estiver no alvo ou melhor, com pelo menos 5 leads nos últimos 3 dias e sem passar de R$ 133 por dia: na prática R$ 100, R$ 120, R$ 133. Nunca dobrar de uma vez. Custo acima do conservador com leads suficientes: volta um passo. Gasto zero ou quase zero por 2 dias seguidos: pausar e revisar público e criativo."
+    },
+    "funil": {
+      "taxas": {
+        "qualificacao": null,
+        "reuniao": null,
+        "fechamento": null
+      },
+      "definicao_qualificada": null,
+      "projecao": {
+        "qualificadas": null,
+        "reunioes": null,
+        "clientes": null
+      },
+      "custo_por_etapa": {
+        "qualificada": null,
+        "reuniao": null,
+        "cliente": null
+      }
+    },
+    "cenarios": {
+      "abertura": 0.3,
+      "itens": [
+        {
+          "id": "conservador",
+          "custo_por_conversa": null,
+          "orcamento_para_meta": null,
+          "conversas_com_orcamento": null
+        },
+        {
+          "id": "base",
+          "custo_por_conversa": null,
+          "orcamento_para_meta": null,
+          "conversas_com_orcamento": null
+        },
+        {
+          "id": "otimista",
+          "custo_por_conversa": null,
+          "orcamento_para_meta": null,
+          "conversas_com_orcamento": null
+        }
+      ],
+      "faixa": {
+        "de": null,
+        "ate": null
+      },
+      "enquadramento": null,
+      "status": "a medir até 15 leads"
+    },
+    "avisos": [
+      "Neste plano a unidade é o lead do quiz (evento Lead), não a conversa iniciada no WhatsApp. Onde o painel diz conversa, leia lead.",
+      "Sem referência de custo por lead: meta e cenários a medir até os 15 primeiros leads.",
+      "Lead do quiz confirmado na Meta em 2026-10-10, com envio real do dono.",
+      "Período de 12 a 26/10 (15 dias, R$ 100 por dia, total de R$ 1.500); plano separado do de barbearias, que segue em plano.yaml com teto próprio de R$ 1.000 em outubro.",
+      "Teto de R$ 2.000 só de consultórios: somado a barbearias, o gasto de outubro pode chegar a cerca de R$ 3.000."
+    ],
+    "entregavel": {
+      "painel": "meus-produtos/nanoguara/captacao/painel-consultorios.html",
+      "artefato_url": null
+    }
+  },
+  "diario": [],
+  "meta": {
+    "gerado_em": "2026-10-10",
+    "fonte_investimento": null,
+    "aviso_dados": "Plano de consultórios: a unidade é o lead do quiz."
+  },
+  "insights": null
+};
+/*DADOS_FIM*/
+
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function brl(v){return v==null||isNaN(v)?"a medir":"R$ "+Number(v).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2})}
+function num(v){return v==null||isNaN(v)?"a medir":Number(v).toLocaleString("pt-BR")}
+function pct(v){return v==null?"a medir":(Number(v)*100).toLocaleString("pt-BR",{maximumFractionDigits:1})+"%"}
+function dia(s){var p=String(s||"").split("-");return p.length===3?p[2]+"/"+p[1]:esc(s)}
+function nomeCen(id){return {conservador:"Conservador",base:"Base",otimista:"Otimista"}[id]||id}
+
+function resumo(p){
+  var m=p.meta||{},t=p.teto||{};
+  var frag=(m.fragil||(p.referencia&&p.referencia.fragil))?' <span class="tag">frágil</span>':"";
+  return '<section><h2>Resumo</h2><div class="grid">'+
+   '<div class="k"><b>'+num(m.conversas_mes)+'</b><span>conversas no mês</span></div>'+
+   '<div class="k"><b>'+brl(m.custo_por_conversa_alvo)+frag+'</b><span>custo por conversa alvo</span></div>'+
+   '<div class="k"><b>'+brl(m.orcamento_mes)+'</b><span>orçamento do mês ('+brl(m.orcamento_dia)+' por dia)</span></div>'+
+   '<div class="k"><b>'+brl(t.gasto_mes)+'</b><span>teto de gasto (folga '+brl(t.reserva_escala_mes)+')</span></div>'+
+   '</div>'+
+   (p.referencia&&p.referencia.custo_por_conversa==null?'<p class="conta">Referência: a medir. O custo por conversa sai das primeiras semanas de veiculação.</p>':p.referencia?'<p class="conta">Referência: '+brl(p.referencia.custo_por_conversa)+' por conversa, amostra de '+num(p.referencia.amostra_conversas)+' conversas. Ponto de partida, não garantia.</p>':"")+
+   '</section>';
+}
+function nichos(p){
+  var l=p.nichos||[];if(!l.length)return"";
+  var r=l.map(function(n){return '<tr><td>'+esc(n.nome)+(n.status==="em_espera"?' <span class="conta">(em espera)</span>':"")+'</td><td class="n">'+brl(n.orcamento_dia)+'</td><td class="n">'+brl(n.orcamento_mes)+'</td><td class="n">'+num(n.meta_conversas_mes)+'</td></tr>'}).join("");
+  return '<section><h2>Orçamento por nicho</h2><div class="tw"><table><tr><th>Nicho</th><th class="n">Por dia</th><th class="n">Por mês</th><th class="n">Conversas</th></tr>'+r+'</table></div>'+
+   '<p class="conta">Teto somado dos nichos: '+brl((p.teto||{}).gasto_dia_total)+' por dia.</p></section>';
+}
+function cenarios(p){
+  var c=p.cenarios;if(!c||!c.itens||!c.itens.length)return"";
+  var m=p.meta||{};
+  var r=c.itens.map(function(i){
+    return '<tr><td>'+nomeCen(i.id)+'</td><td class="n">'+brl(i.custo_por_conversa)+'</td><td class="n">'+brl(i.orcamento_para_meta)+'</td><td class="n">'+num(i.conversas_com_orcamento)+'</td></tr>';
+  }).join("");
+  return '<section><h2>Cenários</h2><div class="tw"><table><tr><th>Cenário</th><th class="n">Custo por conversa</th><th class="n">Orçamento para '+num(m.conversas_mes)+' conversas</th><th class="n">Conversas com '+brl(m.orcamento_mes)+'</th></tr>'+r+'</table></div>'+
+   (c.abertura==null?'<p class="conta">Cenários a medir: sem custo de partida, não há conta sem inventar número.'+(c.status?' Revisão: '+esc(c.status)+'.':"")+'</p>':'<p class="conta">Contas: conservador = alvo x (1 + '+esc(c.abertura)+'), otimista = alvo x (1 - '+esc(c.abertura)+'). Orçamento = conversas x custo. Conversas = orçamento / custo, arredondado para baixo.</p>')+
+   (c.faixa&&c.faixa.de!=null?'<p class="conta">Faixa do plano: de '+brl(c.faixa.de)+' a '+brl(c.faixa.ate)+' por conversa.</p>':"")+
+   (c.enquadramento?'<p class="conta">Leitura atual: '+esc(c.enquadramento)+'</p>':"")+'</section>';
+}
+function funil(p){
+  var f=p.funil;if(!f)return"";var t=f.taxas||{},pr=f.projecao||{},cs=f.custo_por_etapa||{};
+  var meta=(p.meta||{}).conversas_mes;
+  var rows=[["Conversas iniciadas",meta,null,null],["Conversas qualificadas",pr.qualificadas,t.qualificacao,cs.qualificada],["Reuniões",pr.reunioes,t.reuniao,cs.reuniao],["Clientes",pr.clientes,t.fechamento,cs.cliente]];
+  var r=rows.map(function(x){return '<tr><td>'+x[0]+'</td><td class="n">'+num(x[1])+'</td><td class="n">'+(x[2]===null&&x[0]!=="Conversas iniciadas"?"a medir":(x[2]===null?"":pct(x[2])))+'</td><td class="n">'+(x[3]==null?(x[0]==="Conversas iniciadas"?"":"a medir"):brl(x[3]))+'</td></tr>'}).join("");
+  return '<section><h2>Funil do mês</h2><div class="tw"><table><tr><th>Etapa</th><th class="n">Meta</th><th class="n">Taxa</th><th class="n">Custo por etapa</th></tr>'+r+'</table></div>'+
+   '<p class="conta">Etapa "a medir" fica sem projeção até você informar a taxa.'+(f.definicao_qualificada?' Qualificada: '+esc(f.definicao_qualificada):"")+'</p></section>';
+}
+function escala(p){
+  var e=p.escala;if(!e)return"";
+  if(e.passo_pct==null)return '<section><h2>Regra de escala e revisão</h2><p class="conta">'+esc(e.regra||"")+'</p></section>';
+  return '<section><h2>Regra de escala</h2><ul>'+
+   '<li>Sobe um passo de até <b>'+esc(e.passo_pct)+'%</b> por vez. Nunca dobra de uma vez.</li>'+
+   '<li>Espera <b>'+esc(e.intervalo_dias)+' dias</b> entre um passo e o seguinte.</li>'+
+   '<li>Só sobe com custo no alvo ou melhor e ao menos <b>'+esc(e.minimo_conversas_janela)+' conversas</b> na janela.</li>'+
+   '<li>Nunca passa do teto diário de '+brl((p.teto||{}).gasto_dia_total)+' somando os nichos.</li>'+
+   '<li>Custo acima do conservador com conversas suficientes: volta um passo. Gasto parado por 2 dias: pausa e revisa.</li></ul></section>';
+}
+function realizado(p,d){
+  if(!d||!d.length)return"";
+  var inv=0,conv=0;d.forEach(function(x){inv+=+x.investimento||0;conv+=+x.conversas||0});
+  var m=p.meta||{},t=p.teto||{};
+  var custo=conv>0?inv/conv:null;
+  var pg=t.gasto_mes>0?Math.min(100,inv/t.gasto_mes*100):0;
+  var pc=m.conversas_mes>0?Math.min(100,conv/m.conversas_mes*100):0;
+  var pos="";
+  var it=(p.cenarios||{}).itens||[];
+  if(custo!=null&&it.length===3){
+    var c=it[0].custo_por_conversa,b=it[1].custo_por_conversa,o=it[2].custo_por_conversa;
+    pos=custo<=o?['ok',"na faixa otimista"]:custo<=b?['ok',"entre otimista e base"]:custo<=c?['at',"entre base e conservador"]:['rk',"acima do conservador"];
+  }
+  var linhas=d.slice(-14).reverse().map(function(x,i){return '<tr><td>'+dia(x.dia)+(i===0?' <span class="tag">em andamento</span>':"")+(x.nicho?' '+esc(x.nicho):"")+'</td><td class="n">'+brl(x.investimento)+'</td><td class="n">'+num(x.conversas)+'</td><td class="n">'+(x.conversas>0?brl(x.investimento/x.conversas):"sem conversa")+'</td></tr>'}).join("");
+  return '<section><h2>Resultado até agora</h2>'+
+   '<div class="grid"><div class="k"><b>'+brl(inv)+'</b><span>investido</span></div><div class="k"><b>'+num(conv)+'</b><span>conversas iniciadas</span></div>'+
+   '<div class="k"><b>'+(custo==null?"sem conversa":brl(custo))+'</b><span>custo por conversa</span></div>'+
+   '<div class="k"><b class="'+(pos?pos[0]:"")+'">'+(pos?pos[1]:"sem leitura")+'</b><span>posição nos cenários</span></div></div>'+
+   '<p class="conta">Gasto contra o teto: '+pg.toFixed(0)+'%</p><div class="bar'+(pg>=90?" rk":"")+'"><i style="width:'+pg+'%"></i></div>'+
+   '<p class="conta">Conversas contra a meta: '+pc.toFixed(0)+'%</p><div class="bar"><i style="width:'+pc+'%"></i></div>'+
+   '<div class="tw"><table><tr><th>Dia</th><th class="n">Investido</th><th class="n">Conversas</th><th class="n">Custo</th></tr>'+linhas+'</table></div>'+
+   '<p class="conta">O dia mais recente está em andamento. '+esc((window.PAINEL_DATA.meta||{}).aviso_dados||"")+'</p></section>';
+}
+function insights(i){
+  if(!i||((!i.destaques||!i.destaques.length)&&(!i.blocos||!i.blocos.length)))return"";
+  var h='<section><h2>Leitura e próximos passos</h2>';
+  (i.destaques||[]).forEach(function(x){h+='<p class="'+(x.tipo==="ok"?"ok":x.tipo==="risco"?"rk":x.tipo==="atencao"?"at":"")+'">'+esc(x.texto)+'</p>'});
+  (i.blocos||[]).forEach(function(b){h+='<h2>'+esc(b.titulo)+'</h2>'+(b.paragrafos||[]).map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+
+    ((b.acoes&&b.acoes.length)?'<ul>'+b.acoes.map(function(a){return '<li>'+esc(a.texto)+(a.comando?' <code>'+esc(a.comando)+'</code>':"")+'</li>'}).join("")+'</ul>':"")});
+  return h+'</section>';
+}
+function render(){
+  var D=window.PAINEL_DATA||{},p=D.plano;
+  var app=document.getElementById("app");
+  if(!p){app.innerHTML='<section><h2>Sem plano</h2><p>Rode /trafego-pago-planejamento para montar o plano.</p></section>';return}
+  document.title="Captação "+(p.mes_referencia||"");
+  app.innerHTML='<h1>Captação no WhatsApp</h1><p class="sub">'+esc(p.marca||"")+' · '+esc(p.produto||"")+' · '+esc(p.mes_referencia||"")+'</p>'+
+    resumo(p)+realizado(p,D.diario)+nichos(p)+cenarios(p)+funil(p)+escala(p)+insights(D.insights)+
+    '<footer>Plano gerado em '+esc(p.atualizado_em||"")+(D.meta&&D.meta.gerado_em?' · dados de '+esc(D.meta.gerado_em):"")+'. O orçamento projetado é piso, não número fechado.</footer>';
+}
+window.PAINEL_onData=function(o){if(o)window.PAINEL_DATA=o;render()};
+render();
+</script>
+</body>
+</html>

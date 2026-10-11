@@ -1,0 +1,92 @@
+{
+  "profile_id": "meta-lucrecia-publi-1678023370148935-v2",
+  "version": 2,
+  "status": "approved",
+  "account_id": "1678023370148935",
+  "account_name": "Lucrec.ia PUBLI",
+  "business_id": "2096976521176335",
+  "currency": "BRL",
+  "timezone": "America/Manaus",
+  "scope": {
+    "brand": "nanoguara.ia",
+    "offers": [
+      {
+        "id": "barbearias",
+        "offer": "guara.bot para barbearias",
+        "objective": "conversas pelo WhatsApp"
+      },
+      {
+        "id": "consultorios",
+        "offer": "guara.bot para consultórios",
+        "objective": "leads do quiz no site",
+        "destination": "https://nanoguara.ia.br/iaparaconsultorios",
+        "plan": "meus-produtos/nanoguara/captacao/plano-consultorios.yaml"
+      }
+    ],
+    "region": "Manaus, Amazonas, Brasil"
+  },
+  "assets": {
+    "facebook_page_id": "1272983785891547",
+    "facebook_page_name": "nanoguara.ia",
+    "instagram_actor_id": "17841414315265034",
+    "instagram_name": "nanoguara.ia",
+    "whatsapp_number": "+55 92 8148-6875"
+  },
+  "connector": {
+    "type": "meta_ads_mcp_and_authenticated_browser_session",
+    "read_capability": "verified_on_exact_account_2026-10-10",
+    "write_capability": "verified_draft_editor_only",
+    "credentials": "not_stored",
+    "scopes": "not_exposed_by_connector"
+  },
+  "limits": {
+    "barbearias": {
+      "daily_budget_brl": 37.04,
+      "cap_brl_oct": 1000,
+      "source": "meus-produtos/nanoguara/captacao/plano.yaml"
+    },
+    "consultorios": {
+      "daily_budget_brl": 60,
+      "daily_cap_brl": 80,
+      "period": "2026-10-12 a 2026-10-26",
+      "campaign_cap_brl": 1200
+    },
+    "activation": "requires_separate_approval",
+    "pause": "requires_separate_approval",
+    "deletion": "prohibited"
+  },
+  "tracking": {
+    "barbearias": {
+      "conversion_location": "WhatsApp",
+      "optimization": "maximize_conversations"
+    },
+    "consultorios": {
+      "conversion_location": "website",
+      "pixel_dataset": "1129265532898131",
+      "event": "Lead",
+      "lead_verified": "2026-10-10, envio real do dono no quiz"
+    }
+  },
+  "rights_and_privacy": {
+    "creative_owner": "nanoguara.ia",
+    "contains_pii": false,
+    "custom_audience_allowed": false,
+    "customer_list_allowed": false
+  },
+  "root_authority": {
+    "type": "direct_user_in_authenticated_session",
+    "scope": "profile_activation_and_per_action_approvals"
+  },
+  "sources": [
+    "Meta Ads Manager exact account URL supplied by the user",
+    "Live Meta Ads Manager identity and draft editor state on 2026-09-17",
+    "docs/marketing/meta-ads/aprendizados.md",
+    "docs/marketing/meta-ads/campanha-barbearias-2026-09-17.md",
+    "Leitura da conta e do pixel pela Meta Ads MCP em 2026-10-10",
+    "Aprovação do dono na conversa de 2026-10-10"
+  ],
+  "approved_at": "2026-10-10T18:30:00-04:00",
+  "valid_until": "2026-11-09T23:59:59-04:00",
+  "external_mutation": "blocked_until_action_envelope",
+  "supersedes": "meta-lucrecia-publi-1678023370148935-v1"
+}

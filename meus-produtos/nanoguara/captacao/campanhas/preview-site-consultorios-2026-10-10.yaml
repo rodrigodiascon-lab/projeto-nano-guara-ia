@@ -1,0 +1,299 @@
+etapa: leads_site
+nicho: consultorios
+plano: ../plano-consultorios.yaml
+kit: output/marketing/kit-publicacao-guarabot-consultorios (CSV é a fonte da copy)
+estado: ATIVA desde 2026-10-10 com início programado para 2026-10-12 00:00 Manaus; R$ 100/dia até 26/10
+conta:
+  id: act_1678023370148935
+  nome: Lucrec.ia PUBLI
+  moeda: BRL
+  fuso: America/Manaus
+pagina:
+  id: '1272983785891547'
+  nome: nanoguara.ia
+instagram:
+  id: '17841414315265034'
+  username: nanoguara.ia
+pixel:
+  id: '1129265532898131'
+  lead_confirmado: 2026-10-10, envio real do quiz pelo dono (1 Lead, 2 Contact no bloco das 17h de Manaus)
+campanha:
+  name: NG | guara.bot | Consultórios | Site | Manaus
+  objective: OUTCOME_LEADS
+  status: PAUSED
+  special_ad_categories: []
+  daily_budget: 10000
+  bid_strategy: LOWEST_COST_WITHOUT_CAP
+conjunto:
+  name: Manaus | Consultórios | Lead do quiz
+  status: PAUSED
+  start_time: 2026-10-12T00:00:00-0400
+  end_time: 2026-10-27T00:00:00-0400
+  optimization_goal: OFFSITE_CONVERSIONS
+  billing_event: IMPRESSIONS
+  destination_type: WEBSITE
+  promoted_object:
+    pixel_id: '1129265532898131'
+    custom_event_type: LEAD
+  attribution_spec:
+  - event_type: CLICK_THROUGH
+    window_days: 7
+  - event_type: VIEW_THROUGH
+    window_days: 1
+  targeting:
+    age_min: 25
+    age_max: 65
+    geo_locations:
+      cities:
+      - key: '259014'
+      location_types:
+      - home
+      - recent
+    targeting_automation:
+      advantage_audience: 1
+    publisher_platforms:
+    - facebook
+    - instagram
+    facebook_positions:
+    - feed
+    - story
+    - facebook_reels
+    instagram_positions:
+    - stream
+    - story
+    - reels
+    - explore_home
+  publico_obs: sem lista de pacientes, sem público personalizado, sem interesse de saúde; Advantage+ parte de Manaus 25 a 65
+anuncios:
+  comum:
+    cta: LEARN_MORE
+    link: https://nanoguara.ia.br/iaparaconsultorios
+    url_tags_base: utm_source=meta&utm_medium=paid_social&utm_campaign=guarabot_consultorios
+    descricao: Assistente de IA para consultórios.
+    formato: feed PNG 4:5 + stories/reels 9:16 no mesmo anúncio (vídeo em SUR e PS, imagem em OBJ), asset_feed_spec + asset_customization_rules
+    melhorias_automaticas: degrees_of_freedom_spec todo OPT_OUT; sem expansão de imagem, sem texto gerado, sem música adicionada
+  itens:
+  - id: OBJ01
+    serie: objetos-estranhos
+    name: GB | Consultórios | OBJ01 | Ajuda no atendimento
+    titulo: Ajuda no atendimento
+    texto: Mensagens de agendamento chegam enquanto a recepção atende outras tarefas. O guara.bot responde dúvidas de rotina e ajuda a conferir horários no WhatsApp. Veja como funciona.
+    utm_content: obj01
+    feed:
+      arquivo: criativos/objetos-estranhos/01-peneira/feed-1080x1350.png
+      sha256_12: 79d95cd42d5f
+    stories_reels:
+      arquivo: criativos/objetos-estranhos/01-peneira/stories-1080x1920.png
+      sha256_12: 3ffe510c95fb
+      tipo: imagem
+  - id: OBJ02
+    serie: objetos-estranhos
+    name: GB | Consultórios | OBJ02 | Apoio para a recepção
+    titulo: Apoio para a recepção
+    texto: Telefone, balcão e WhatsApp dividem a atenção da recepção. O guara.bot pode assumir perguntas de rotina e apoiar o agendamento. Veja como funciona.
+    utm_content: obj02
+    feed:
+      arquivo: criativos/objetos-estranhos/02-esponja/feed-1080x1350.png
+      sha256_12: c3e22a70735d
+    stories_reels:
+      arquivo: criativos/objetos-estranhos/02-esponja/stories-1080x1920.png
+      sha256_12: a08639241207
+      tipo: imagem
+  - id: OBJ07
+    serie: objetos-estranhos
+    name: GB | Consultórios | OBJ07 | Dúvidas de rotina com IA
+    titulo: Dúvidas de rotina com IA
+    texto: Endereço, serviços e horários são dúvidas frequentes. O guara.bot responde com as informações configuradas pelo consultório. Veja como funciona.
+    utm_content: obj07
+    feed:
+      arquivo: criativos/objetos-estranhos/07-funil/feed-1080x1350.png
+      sha256_12: a4b233cbf4bd
+    stories_reels:
+      arquivo: criativos/objetos-estranhos/07-funil/stories-1080x1920.png
+      sha256_12: ec808ddf19ff
+      tipo: imagem
+  - id: OBJ08
+    serie: objetos-estranhos
+    name: GB | Consultórios | OBJ08 | Mais apoio para a equipe
+    titulo: Mais apoio para a equipe
+    texto: A recepção continua no centro do atendimento. O guara.bot ajuda com conversas de rotina e passa à equipe o que pede atenção humana. Veja como funciona.
+    utm_content: obj08
+    feed:
+      arquivo: criativos/objetos-estranhos/08-elastico/feed-1080x1350.png
+      sha256_12: 055ab3c91791
+    stories_reels:
+      arquivo: criativos/objetos-estranhos/08-elastico/stories-1080x1920.png
+      sha256_12: 2ba2dea13e57
+      tipo: imagem
+  - id: OBJ10
+    serie: objetos-estranhos
+    name: GB | Consultórios | OBJ10 | Primeiro contato no WhatsApp
+    titulo: Primeiro contato no WhatsApp
+    texto: Cada mensagem é um pedido de atendimento. O guara.bot acolhe dúvidas de rotina e ajuda a encontrar o próximo passo. Veja como funciona.
+    utm_content: obj10
+    feed:
+      arquivo: criativos/objetos-estranhos/10-sino/feed-1080x1350.png
+      sha256_12: 952b5d34896c
+    stories_reels:
+      arquivo: criativos/objetos-estranhos/10-sino/stories-1080x1920.png
+      sha256_12: 34d040657d8e
+      tipo: imagem
+  - id: SUR01
+    serie: surreal
+    name: GB | Consultórios | SUR01 | Recepção no WhatsApp
+    titulo: Recepção no WhatsApp
+    texto: O atendimento do consultório também pode começar no WhatsApp. O guara.bot responde dúvidas de rotina e ajuda no agendamento. Veja como funciona.
+    utm_content: sur01
+    feed:
+      arquivo: criativos/surreal/01-consultorio-no-celular/feed-1080x1350.png
+      sha256_12: 117b7f3944f1
+    stories_reels:
+      arquivo: criativos/surreal/01-consultorio-no-celular/video-stories-1080x1920.mp4
+      sha256_12: 532fec0836ff
+      tipo: video 5 s sem audio
+  - id: SUR02
+    serie: surreal
+    name: GB | Consultórios | SUR02 | Apoio à recepção
+    titulo: Apoio à recepção
+    texto: Responder mensagens e consultar horários ocupa parte da rotina da recepção. O guara.bot ajuda nessas tarefas pelo WhatsApp. Veja como funciona.
+    utm_content: sur02
+    feed:
+      arquivo: criativos/surreal/02-peso-da-agenda/feed-1080x1350.png
+      sha256_12: d731edb59d90
+    stories_reels:
+      arquivo: criativos/surreal/02-peso-da-agenda/video-stories-1080x1920.mp4
+      sha256_12: 938e91c2b824
+      tipo: video 5 s sem audio
+  - id: SUR07
+    serie: surreal
+    name: GB | Consultórios | SUR07 | Respostas de rotina
+    titulo: Respostas de rotina
+    texto: Perguntas sobre serviços, endereço e horários se repetem ao longo do dia. O guara.bot responde com os dados do consultório. Veja como funciona.
+    utm_content: sur07
+    feed:
+      arquivo: criativos/surreal/07-onda-de-duvidas/feed-1080x1350.png
+      sha256_12: 4303f0669c06
+    stories_reels:
+      arquivo: criativos/surreal/07-onda-de-duvidas/video-stories-1080x1920.mp4
+      sha256_12: c18874606758
+      tipo: video 5 s sem audio
+  - id: SUR09
+    serie: surreal
+    name: GB | Consultórios | SUR09 | IA com apoio humano
+    titulo: IA com apoio humano
+    texto: Algumas conversas precisam de uma pessoa. O guara.bot encaminha esses pedidos para a equipe do consultório. Veja como funciona.
+    utm_content: sur09
+    feed:
+      arquivo: criativos/surreal/09-passagem-para-equipe/feed-1080x1350.png
+      sha256_12: f6005a945c70
+    stories_reels:
+      arquivo: criativos/surreal/09-passagem-para-equipe/video-stories-1080x1920.mp4
+      sha256_12: eb0a416c27ca
+      tipo: video 5 s sem audio
+  - id: SUR10
+    serie: surreal
+    name: GB | Consultórios | SUR10 | Agenda antes de marcar
+    titulo: Agenda antes de marcar
+    texto: Antes de oferecer um horário, o guara.bot consulta a agenda configurada e apresenta as opções disponíveis. Veja como funciona.
+    utm_content: sur10
+    feed:
+      arquivo: criativos/surreal/10-horarios-viram-portas/feed-1080x1350.png
+      sha256_12: 643b43baa3d0
+    stories_reels:
+      arquivo: criativos/surreal/10-horarios-viram-portas/video-stories-1080x1920.mp4
+      sha256_12: 524634a059a7
+      tipo: video 5 s sem audio
+  - id: PS01
+    serie: promessa-simples
+    name: GB | Consultórios | PS01 | IA no WhatsApp do consultório
+    titulo: IA no WhatsApp do consultório
+    texto: Enquanto a consulta acontece, mensagens continuam chegando ao WhatsApp. O guara.bot ajuda a responder dúvidas de rotina e a consultar horários. Veja como funciona.
+    utm_content: ps01
+    feed:
+      arquivo: criativos/promessa-simples/01-medica-atendendo/feed-1080x1350.png
+      sha256_12: c44dcf2368dd
+    stories_reels:
+      arquivo: criativos/promessa-simples/01-medica-atendendo/video-stories-1080x1920.mp4
+      sha256_12: 8e3112c9e5cd
+      tipo: video 5 s sem audio
+  - id: PS02
+    serie: promessa-simples
+    name: GB | Consultórios | PS02 | Horários antes de marcar
+    titulo: Horários antes de marcar
+    texto: O horário precisa estar livre antes do agendamento. O guara.bot consulta a agenda configurada e apresenta opções pelo WhatsApp. Veja como funciona.
+    utm_content: ps02
+    feed:
+      arquivo: criativos/promessa-simples/02-horarios-antes-de-marcar/feed-1080x1350.png
+      sha256_12: db11e02da559
+    stories_reels:
+      arquivo: criativos/promessa-simples/02-horarios-antes-de-marcar/video-stories-1080x1920.mp4
+      sha256_12: 56112ff565f4
+      tipo: video 5 s sem audio
+  - id: PS06
+    serie: promessa-simples
+    name: GB | Consultórios | PS06 | A equipe entra quando precisa
+    titulo: A equipe entra quando precisa
+    texto: Quando um pedido exige atenção humana, o guara.bot encaminha a conversa à equipe do consultório. Veja como funciona.
+    utm_content: ps06
+    feed:
+      arquivo: criativos/promessa-simples/06-chama-equipe/feed-1080x1350.png
+      sha256_12: eafbfe4cd869
+    stories_reels:
+      arquivo: criativos/promessa-simples/06-chama-equipe/video-stories-1080x1920.mp4
+      sha256_12: 5373e07d278c
+      tipo: video 5 s sem audio
+  - id: PS07
+    serie: promessa-simples
+    name: GB | Consultórios | PS07 | Respostas para dúvidas de rotina
+    titulo: Respostas para dúvidas de rotina
+    texto: Dúvidas de rotina podem ser respondidas com as informações configuradas pelo consultório. Conheça o atendimento do guara.bot no WhatsApp.
+    utm_content: ps07
+    feed:
+      arquivo: criativos/promessa-simples/07-duvidas-de-rotina/feed-1080x1350.png
+      sha256_12: 3f622341eaa1
+    stories_reels:
+      arquivo: criativos/promessa-simples/07-duvidas-de-rotina/video-stories-1080x1920.mp4
+      sha256_12: 542d31a89392
+      tipo: video 5 s sem audio
+  - id: PS10
+    serie: promessa-simples
+    name: GB | Consultórios | PS10 | Apoio para a recepção
+    titulo: Apoio para a recepção
+    texto: A recepção ganha apoio para responder mensagens de rotina e encaminhar conversas que pedem uma pessoa. Conheça o guara.bot.
+    utm_content: ps10
+    feed:
+      arquivo: criativos/promessa-simples/10-apoio-recepcao/feed-1080x1350.png
+      sha256_12: c4f3c5c477e9
+    stories_reels:
+      arquivo: criativos/promessa-simples/10-apoio-recepcao/video-stories-1080x1920.mp4
+      sha256_12: 064fd117886d
+      tipo: video 5 s sem audio
+  selecao: '5 por série, mesmos ângulos nas três: recepção/apoio, agenda antes de marcar, dúvidas de rotina, equipe humana, primeiro contato. Fora: áudio, fora do expediente, lembretes (não prometidos na
+    landing).'
+conferencias:
+  hashes_vs_csv: 15 de 15 conceitos iguais ao CSV (feed e stories)
+  copy:
+    fonte: CSV do kit
+    numeros_sem_fonte: 0
+    preco: 0
+    depoimento: 0
+    travessao: 0
+    coerente_com_landing: true
+  identidade_visual: mascote guara.bot com o nome certo no peito nas 3 artes; faixa nanoguará.ia
+  pontos_de_qa:
+  - faixa clara no rodapé é padrão do kit (17 de 30 artes), não defeito; sobe como está
+  - OBJ tem a faixa verde no meio e cenário abaixo; SUR e PS01 dizem 'Agentes de IA', PS02/06/07/10 dizem 'Assistente de IA'
+  - pré-visualização por posicionamento na Meta antes de ativar (corte de texto nos Reels)
+riscos:
+- 'R$ 100 por dia otimizando por Lead com 15 anúncios: a Meta concentra a verba em poucos; leitura por série via utm_content, sem declarar vencedor antes de 7 dias'
+- Lead do pixel é compartilhado com a home e com /guarabot/clinicas; leitura por campanha e por utm_content resolve, conversão personalizada por URL fica como recomendação
+- Gerenciador de Eventos pode restringir o conjunto de dados por categoria de saúde; se a criação recusar o Lead, cair para LANDING_PAGE_VIEWS e avisar
+gates:
+- '1. Perfil da conta v3 em 2026-10-10 (consultórios, site, R$ 100/dia, teto R$ 2.000, válido até 09/11): FEITO'
+- '2. Upload de 30 arquivos (15 feed, 5 stories OBJ, 10 vídeos SUR e PS): FEITO em 2026-10-10, 20 imagens ACTIVE e 10 vídeos ready; hashes e IDs em upload-consultorios-2026-10-10.json'
+- 3. Campanha, conjunto, 15 criativos e 15 anúncios criados PAUSED em 2026-10-10 (Explorar trocado para explore_home, exigência da API v22). Meta colocou os anúncios em revisão automática; nenhum entregando.
+- 4. Ativado em 2026-10-10 com aprovação do dono (campanha, conjunto e 15 anúncios ACTIVE); entrega começa 12/10 00:00. Revisão da Meta ainda em andamento em 14 anúncios.
+ids:
+  campanha: '120250508582710113'
+  conjunto: '120250508583910113'
+  anuncios: criacao-consultorios-2026-10-10.json

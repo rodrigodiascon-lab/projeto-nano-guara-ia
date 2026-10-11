@@ -1,0 +1,91 @@
+versao: 1
+atualizado_em: "2026-10-10"
+ativo: "nanoguara"
+marca: "nanoguará.ia"
+produto: "guara.bot para consultórios"
+mes_referencia: "2026-10"
+periodo:
+  inicio: "2026-10-12"
+  fim: "2026-10-26"
+  parcial: false
+dias_do_mes: 15
+unidade_resultado: "lead do quiz"   # evento Lead do pixel em /iaparaconsultorios; no painel, "conversa" lê-se "lead"
+destino: "https://nanoguara.ia.br/iaparaconsultorios"
+conta:
+  id: "act_1678023370148935"
+  nome: "Lucrec.ia PUBLI"
+  moeda: "BRL"
+  fuso: "America/Manaus"
+referencia:
+  custo_por_conversa: null
+  amostra_conversas: null
+  fragil: true
+  fonte: "a medir: página sem histórico de anúncio; Lead do quiz medido só a partir de 2026-10-10 (commit 7d1495c)"
+meta:
+  conversas_mes: null
+  custo_por_conversa_alvo: null
+  orcamento_mes: 1500.0
+  orcamento_dia: 100.0
+  fragil: true
+  caminho: "orçamento primeiro"
+teto:
+  gasto_mes: 2000.0
+  gasto_dia_total: 133.33
+  reserva_escala_mes: 500.0
+nichos:
+  - id: "consultorios"
+    nome: "Consultórios e clínicas (todas as especialidades do quiz)"
+    peso: 1.0
+    status: "ativo"
+    custo_por_conversa_alvo: null
+    meta_conversas_mes: null
+    orcamento_mes: 1500.0
+    orcamento_dia: 100.0
+escala:
+  passo_pct: 20
+  intervalo_dias: 3
+  minimo_conversas_janela: 5
+  regra: "Só depois dos 15 primeiros leads, quando o custo real vira o custo alvo e a meta é recalculada. Sobe um passo de até 20% se o custo por lead estiver no alvo ou melhor, com pelo menos 5 leads nos últimos 3 dias e sem passar de R$ 133 por dia: na prática R$ 100, R$ 120, R$ 133. Nunca dobrar de uma vez. Custo acima do conservador com leads suficientes: volta um passo. Gasto zero ou quase zero por 2 dias seguidos: pausar e revisar público e criativo."
+funil:
+  taxas:
+    qualificacao: null
+    reuniao: null
+    fechamento: null
+  definicao_qualificada: null
+  projecao:
+    qualificadas: null
+    reunioes: null
+    clientes: null
+  custo_por_etapa:
+    qualificada: null
+    reuniao: null
+    cliente: null
+cenarios:
+  abertura: 0.30
+  itens:
+    - id: "conservador"
+      custo_por_conversa: null
+      orcamento_para_meta: null
+      conversas_com_orcamento: null
+    - id: "base"
+      custo_por_conversa: null
+      orcamento_para_meta: null
+      conversas_com_orcamento: null
+    - id: "otimista"
+      custo_por_conversa: null
+      orcamento_para_meta: null
+      conversas_com_orcamento: null
+  faixa:
+    de: null
+    ate: null
+  enquadramento: null
+  status: "a medir até 15 leads"
+avisos:
+  - "Neste plano a unidade é o lead do quiz (evento Lead), não a conversa iniciada no WhatsApp. Onde o painel diz conversa, leia lead."
+  - "Sem referência de custo por lead: meta e cenários a medir até os 15 primeiros leads."
+  - "Lead do quiz confirmado na Meta em 2026-10-10, com envio real do dono."
+  - "Período de 12 a 26/10 (15 dias, R$ 100 por dia, total de R$ 1.500); plano separado do de barbearias, que segue em plano.yaml com teto próprio de R$ 1.000 em outubro."
+  - "Teto de R$ 2.000 só de consultórios: somado a barbearias, o gasto de outubro pode chegar a cerca de R$ 3.000."
+entregavel:
+  painel: "meus-produtos/nanoguara/captacao/painel-consultorios.html"
+  artefato_url: null

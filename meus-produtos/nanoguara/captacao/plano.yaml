@@ -106,6 +106,7 @@ avisos:
   - "Mês parcial: 27 dias (5 a 31/10), fora da checagem padrão de 28 a 31 dias."
   - "Sem referência de custo: meta e cenários a medir até a primeira revisão."
   - "Três nichos em espera com verba zero: estética, médicos, odonto. Médicos e odonto exigem copy dentro das regras do CFM e do CFO."
+  - "Consultórios (todas as especialidades) ganhou plano próprio em plano-consultorios.yaml: 12 a 26/10, R$ 100/dia, teto R$ 2.000, destino /iaparaconsultorios, unidade lead do quiz."
 entregavel:
   painel: "meus-produtos/nanoguara/captacao/painel.html"
   artefato_url: "https://claude.ai/artifact/GrjDVPozKQ3qtHZax785Tw"
