@@ -443,11 +443,20 @@ body > section.aviso-cookies{ padding:20px; }
 .link-cookies:hover{ color:#fff; }
 .link-cookies:focus-visible{ outline:2px solid #EDF3EE; outline-offset:2px; }
 [data-preferencias-cookies][hidden]{ display:none; }
+.aviso-texto-curto{ display:none; }
+/* Celular: faixa compacta (~100px) para não cobrir o conteúdo da página, em
+   especial as opções do quiz de /iaparaconsultorios. Texto curto com as mesmas
+   informações essenciais e o link da política; o título sai da tela mas fica
+   para o leitor de tela, porque é ele que dá nome à região (aria-labelledby). */
 @media (max-width:479px){
-  .aviso-cookies{ left:8px; right:8px; bottom:8px; padding:12px 14px; gap:6px; }
-  body > section.aviso-cookies{ padding:12px 14px; }
-  .aviso-cookies h2{ font-size:.95rem; }
-  .aviso-cookies p{ font-size:.76rem; line-height:1.4; }
-  .aviso-cookies-acoes .btn{ flex:1; min-width:0; min-height:42px; padding-block:8px; }
-  body.com-aviso-cookies{ padding-bottom:220px; }
+  .aviso-cookies{ left:8px; right:8px; bottom:8px; padding:10px 12px; gap:8px; }
+  body > section.aviso-cookies{ padding:10px 12px; }
+  .aviso-cookies h2{ position:absolute; width:1px; height:1px; overflow:hidden;
+    clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; }
+  .aviso-cookies p{ font-size:.74rem; line-height:1.35; }
+  .aviso-texto-longo{ display:none; }
+  .aviso-texto-curto{ display:inline; }
+  .aviso-cookies-acoes{ flex-wrap:nowrap; }
+  .aviso-cookies-acoes .btn{ flex:1; min-width:0; min-height:40px; padding-block:6px; }
+  body.com-aviso-cookies{ padding-bottom:130px; }
 }

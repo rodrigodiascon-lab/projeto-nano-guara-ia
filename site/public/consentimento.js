@@ -20,7 +20,7 @@ const PIXEL_ID = '1129265532898131';
 
 // Muda junto com o texto do banner ou com a lista do que o pixel faz: uma
 // escolha feita sobre outro texto deixa de valer e o banner volta a perguntar.
-const VERSAO_BANNER = '2026-10-01-pixel-meta';
+const VERSAO_BANNER = '2026-10-11-pixel-meta-curto';
 const CHAVE = 'ng-consentimento-marketing';
 
 function leEscolha() {
@@ -123,10 +123,19 @@ function abreBanner(foco) {
   titulo.id = 'avisoCookiesTitulo';
   titulo.textContent = 'Cookies de marketing';
 
+  // Dois textos com as mesmas informações essenciais (pixel da Meta, para que
+  // serve, dados fora do Brasil, link da política): o longo no desktop e o
+  // curto no celular, onde o longo cobria 30% da tela e escondia o quiz de
+  // /iaparaconsultorios (medido num iPhone em 2026-10-11). O CSS escolhe qual
+  // aparece; os dois estão no DOM para não depender de JS de largura.
   const texto = document.createElement('p');
-  texto.append(
-    'Com a sua permissão, usamos o pixel da Meta para saber quais anúncios trazem visitas e contatos pelo WhatsApp e para mostrar nossos anúncios a quem já passou por aqui. A Meta trata esses dados em servidores fora do Brasil. O pixel só é ativado se você aceitar, e recusar não muda nada na navegação. '
-  );
+  const longo = document.createElement('span');
+  longo.className = 'aviso-texto-longo';
+  longo.textContent = 'Com a sua permissão, usamos o pixel da Meta para saber quais anúncios trazem visitas e contatos pelo WhatsApp e para mostrar nossos anúncios a quem já passou por aqui. A Meta trata esses dados em servidores fora do Brasil. O pixel só é ativado se você aceitar, e recusar não muda nada na navegação. ';
+  const curto = document.createElement('span');
+  curto.className = 'aviso-texto-curto';
+  curto.textContent = 'Com sua permissão, o pixel da Meta (servidores fora do Brasil) mede nossos anúncios e os mostra a quem passou por aqui. ';
+  texto.append(longo, curto);
   const saiba = document.createElement('a');
   saiba.href = '/privacidade#cookies';
   saiba.textContent = 'Saiba mais';

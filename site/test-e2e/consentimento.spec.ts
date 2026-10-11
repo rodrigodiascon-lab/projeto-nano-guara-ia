@@ -206,3 +206,22 @@ test("o aviso tem respiro lateral também na landing de barbearias", async ({ pa
     expect(pad[1], url).toBeLessThanOrEqual(24);
   }
 });
+
+test("no celular o aviso é compacto e não esconde as opções do quiz", async ({ page }) => {
+  await prepara(page);
+  await page.setViewportSize({ width: 375, height: 664 });
+  await page.goto("/iaparaconsultorios.html");
+  const b = banner(page);
+  await expect(b).toBeVisible();
+  const caixa = (await b.boundingBox())!;
+  // Antes da mudança de 2026-10-11 o aviso tinha 200px e deixava só "Medicina" à vista.
+  expect(caixa.height).toBeLessThanOrEqual(130);
+  const visiveis = await page.evaluate((topo) =>
+    [...document.querySelectorAll(".etapa:not([hidden]) label")].filter((l) => l.getBoundingClientRect().bottom <= topo).length,
+    caixa.y);
+  expect(visiveis).toBeGreaterThanOrEqual(3);
+  // O texto curto mantém o essencial do consentimento e o link da política.
+  await expect(b).toContainText("pixel da Meta");
+  await expect(b).toContainText("fora do Brasil");
+  await expect(b.getByRole("link", { name: "Saiba mais" })).toBeVisible();
+});
