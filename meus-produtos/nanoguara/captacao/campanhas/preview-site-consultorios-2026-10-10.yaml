@@ -296,9 +296,13 @@ gates:
 - '5. 2026-10-11: Reels da série PS cobria o rodapé da arte (Saiba mais sobre ''Assistente de IA''; título do PS10 sob o rótulo Reels). Com aprovação do dono: conjunto novo 120250510047860113 sem Reels
   (FB feed/story, IG stream/story/explore_home), 5 PS recriados e ativos nele, 5 PS antigos pausados (pausa publicada a partir de rascunho do conector). Orçamento segue único na campanha, R$ 100/dia.'
 - '6. 2026-10-11 08:18: dono pediu para liberar agora; start_time dos dois conjuntos adiantado para agora e end_time para 26/10 00:00, mantendo 15 dias e R$ 1.500.'
+- '7. 2026-10-11: dono pediu para corrigir e ativar os PS com Reels. 5 vídeos de Reels refeitos localmente com ffmpeg (arte a 70% sobre fundo desfocado do próprio vídeo, offset 162x200, título abaixo do
+  rótulo Reels e faixa verde acima do Saiba mais), salvos no kit como video-reels-1080x1920.mp4 e enviados (upload-consultorios-reels-2026-10-11.json). PS01/02/06/07/10 ''Reels v2'' criados no conjunto
+  principal com 3 peças (feed PNG, stories vídeo original, reels vídeo novo), prévias conferidas e ativados. Conjunto ''PS sem Reels'' 120250510047860113 pausado para não duplicar.'
 ids:
   campanha: '120250508582710113'
   conjunto: '120250508583910113'
   anuncios: criacao-consultorios-2026-10-10.json
   conjunto_ps_sem_reels: '120250510047860113'
   anuncios_ps_sem_reels: criacao-consultorios-ps-sem-reels-2026-10-11.json
+  anuncios_ps_reels_v2: criacao-consultorios-ps-reels-v2-2026-10-11.json
