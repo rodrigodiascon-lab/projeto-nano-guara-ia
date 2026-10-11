@@ -54,5 +54,39 @@ campanhas:
         preview_conferido: "feed do Facebook mostra a imagem; reels do Instagram carrega o vídeo"
     falhas:
       - {nivel: conjunto, motivo: "idade 25 a 45 como limite recusada com Advantage+; refeito com 25 a 65 e sugestão 25 a 45"}
+  - id: "120250479258540113"
+    nome: "NG | guara.bot | Barbearias | WhatsApp | Manaus"
+    etapa: conversas_whatsapp
+    nicho: barbearias
+    objetivo: OUTCOME_ENGAGEMENT
+    status: PAUSED
+    orcamento_diario_centavos: 3704
+    periodo: {inicio: "na ativação", fim: "2026-11-01T00:00:00-0400"}
+    preview: "preview-whatsapp-barbearias-2026-10-08.yaml"
+    previews_imagem: "previews-whatsapp-2026-10-08.png"
+    decisao: "opção A da proposta-whatsapp-barbearias-2026-10-08.yaml; no ATIVAR, ligar esta e pausar a da landing (120250381096980113)"
+    criado_em: "2026-10-08"
+    via: token
+    conjunto:
+      id: "120250479261760113"
+      nome: "Manaus | Barbearias | Conversas WhatsApp"
+      otimizacao: CONVERSATIONS
+      destino: WHATSAPP
+      promoted_object: {page_id: "1272983785891547"}
+      idade: {limite: [25, 54]}
+      genero: homens
+      advantage_audience: 0
+      local: {cidade: Manaus, key: "259014", location_types: [frequently_in, home, recent]}
+      posicionamentos: [facebook, instagram]
+    mensagem_pronta: "Oi, tenho uma barbearia e quero saber do guara.bot. (asset_feed_spec.additional_data.page_welcome_message, autofill_message)"
+    anuncios:
+      - {id: "120250479267580113", nome: "AD01 | Video 4:5 + 9:16 | Trilha", criativo: "2022152948481544", criativo_descartado: "927803560129743 (sem mensagem pronta)"}
+      - {id: "120250479281420113", nome: "AD02 | Imagem 4:5 | Beneficio corte", criativo: "1041632248921282"}
+      - {id: "120250479282040113", nome: "AD03 | Imagem 4:5 | Espelho recepcao", criativo: "1676436437428620"}
+      - {id: "120250479282490113", nome: "AD04 | Imagem 4:5 + Video 9:16 | Conversa prova", criativo: "2597087717459972"}
+      - {id: "120250479283340113", nome: "AD05 | Imagem 4:5 | Falta lembrete", criativo: "1093421183293746"}
+    payload: "tmp/whats/ (afs1m..afs5m.json, oss.json, dof.json), sem token"
+    falhas:
+      - {nivel: conjunto, motivo: "promoted_object com whatsapp_phone_number (+5592981486875 e 5592981486875) recusado: 'This WhatsApp phone number is not linked to your account' (subcode 1487246). Criado só com page_id; prévias mostram botão WhatsApp da Página."}
 nao_usado:
   - {id: "120250176391320113", nome: "NG | guara.bot | Barbearias | WhatsApp | Manaus | 7 dias", situacao: "rascunho antigo de 17/09, arquivado em 2026-10-05 a pedido (exclusão definitiva fica com o usuário no Gerenciador)"}

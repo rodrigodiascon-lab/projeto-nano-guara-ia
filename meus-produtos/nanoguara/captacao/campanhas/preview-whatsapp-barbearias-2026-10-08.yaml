@@ -1,0 +1,58 @@
+etapa: conversas_whatsapp
+nicho: barbearias
+decisao: "opção A (substituir). Dono pediu 'cria a A ou B, o que vc achar melhor' em 2026-10-08; escolhida A porque a landing segue com 0 conversa e dividir a verba atrasa o aprendizado das duas."
+proposta: "proposta-whatsapp-barbearias-2026-10-08.yaml"
+conta: {id: act_1678023370148935, nome: "Lucrec.ia PUBLI"}
+pagina: {id: "1272983785891547", nome: nanoguara.ia}
+instagram: {id: "17841414315265034", username: nanoguara.ia}
+whatsapp: "+5592981486875 (vinculado à Página, confirmado pelo dono em 2026-10-08)"
+campanha:
+  name: "NG | guara.bot | Barbearias | WhatsApp | Manaus"
+  objective: OUTCOME_ENGAGEMENT
+  status: PAUSED
+  special_ad_categories: []
+  daily_budget: 3704
+  bid_strategy: LOWEST_COST_WITHOUT_CAP
+  stop_time: "2026-11-01T00:00:00-0400"
+conjunto:
+  name: "Manaus | Barbearias | Conversas WhatsApp"
+  status: ACTIVE
+  optimization_goal: CONVERSATIONS
+  billing_event: IMPRESSIONS
+  destination_type: WHATSAPP
+  promoted_object: {page_id: "1272983785891547", whatsapp_phone_number: "+5592981486875"}
+  targeting:
+    age_min: 25
+    age_max: 54
+    genders: [1]
+    geo_locations: {cities: [{key: "259014"}], location_types: [frequently_in, home, recent]}
+    targeting_automation: {advantage_audience: 0}
+    publisher_platforms: [facebook, instagram]
+  origem_publico: "cópia do conjunto da landing (120250381134760113) depois do ajuste de 2026-10-07; messenger fora porque o destino é WhatsApp"
+mensagem_pronta: "Oi, tenho uma barbearia e quero saber do guara.bot."
+mensagem_pronta_obs: "é o texto que já aparece digitado para o cliente enviar, o mesmo dos botões da landing. A saudação da agência fica na resposta rápida do WhatsApp Business do dono."
+cta: WHATSAPP_MESSAGE
+titulo: "Fale com a gente no WhatsApp"
+oferta: "Condição exclusiva para barbeiros: R$ 1.997 à vista, pagamento único, válido por 1 ano, sem mensalidade."
+anuncios:
+  - nome: "AD01 | Video 4:5 + 9:16 | Trilha"
+    midia: {feed_video: "1099764022783503", feed_thumb: "7c44e0766cc3870bb34f784a4f74dfcc", story_video: "2901573386884136", story_thumb: "984ff9b74886af4d2d80b1b46bf616e8", origem: "AD08 da landing, cena final com a oferta nova"}
+    texto: "Do \"oi\" ao horário marcado, sem você largar a máquina: o guara.bot atende o WhatsApp da sua barbearia, mostra só horário livre, marca, remarca e lembra o cliente na véspera. Condição exclusiva para barbeiros: R$ 1.997 à vista, pagamento único, válido por 1 ano, sem mensalidade. Chame no WhatsApp e veja como funciona."
+  - nome: "AD02 | Imagem 4:5 | Beneficio corte"
+    midia: {feed: "52a3ef9d3925ab39cecdf625375dcb96", story: "e05edb47674d71f05060f58f45623a16", origem: "AD02 da landing"}
+    texto: "Cada corte pede atenção. Enquanto você atende na cadeira, o guara.bot responde quem chama no WhatsApp da sua barbearia, mostra só horário livre e marca na sua agenda. Condição exclusiva para barbeiros: R$ 1.997 à vista, pagamento único, válido por 1 ano, sem mensalidade. Chame no WhatsApp e veja como funciona."
+  - nome: "AD03 | Imagem 4:5 | Espelho recepcao"
+    midia: {feed: "4ee4c411ca0e38da5028fefc2ea7874a", story: "130fb74521102864508165018ff0b871", origem: "AD05 da landing"}
+    texto: "Sua barbearia com recepção no WhatsApp: o guara.bot responde na hora, consulta a agenda, marca e remarca enquanto você corta. Condição exclusiva para barbeiros: R$ 1.997 à vista, pagamento único, válido por 1 ano, sem mensalidade. Chame no WhatsApp e veja como funciona."
+  - nome: "AD04 | Imagem 4:5 | Conversa prova"
+    midia: {feed: "ccf8741031b716f31904612a2722c7a9", story_video: "1749500373849096", story_thumb: "dc0e5cbf707f07afba098a6f4e544361", origem: "AD07 da landing (feed imagem, stories e reels vídeo)"}
+    texto: "Veja como fica a conversa: o cliente pede horário, o guara.bot mostra os livres e marca na sua agenda. Tudo no WhatsApp que você já usa. Condição exclusiva para barbeiros: R$ 1.997 à vista, pagamento único, válido por 1 ano, sem mensalidade. Chame no WhatsApp e veja como funciona."
+  - nome: "AD05 | Imagem 4:5 | Falta lembrete"
+    midia: {feed: "9cd5ddf15bf3d282fdb81ea1be51b942", story: "bac37ee5812ee02d1625ece0adf28e60", origem: "AD06 da landing"}
+    texto: "Cliente que esquece o horário deixa a cadeira vazia. O guara.bot lembra cada cliente na véspera, pelo WhatsApp, sem você digitar nada. Condição exclusiva para barbeiros: R$ 1.997 à vista, pagamento único, válido por 1 ano, sem mensalidade. Chame no WhatsApp e veja como funciona."
+formato: "feed 4:5 + stories/reels 9:16 no mesmo anúncio (asset_feed_spec + asset_customization_rules), degrees_of_freedom_spec todo OPT_OUT (tmp/ad08/dof.json)"
+landing_na_ativacao: "no ATIVAR: ligar a campanha de WhatsApp e pausar a campanha da landing (120250381096980113) na mesma hora. Gasto total continua R$ 37,04/dia."
+conferencias:
+  copy: {numeros_sem_fonte: 0, promessa_resultado: 0, prova_social: 0, travessao: 0, emoji: 0, cta_unico: true, oferta_igual_landing: true}
+  preco: "R$ 1.997 à vista, sem citar parcelamento, então não exige total parcelado"
+medicao: "custo por conversa iniciada (a Meta conta sozinha). Ler em 48 h e 7 dias."

@@ -1,10 +1,14 @@
 etapa: proposta_conversas_whatsapp
-status: PROPOSTA (nada criado). Decidir na leitura de 2026-10-09, como recomenda o relatório de 2026-10-07.
+status: "CRIADA PAUSADA em 2026-10-08 pela opção A (campanha 120250479258540113). Falta o ATIVAR do dono."
 gatilho_para_executar: "em 9/10, campanha de landing seguir sem conversa contada à mão e sem evento Contact, mesmo com o conjunto já reconfigurado em 7/10 (só homens 25 a 54, visualização da página)"
 por_que:
   - "A campanha de landing otimiza por clique ou visita: a Meta entrega para quem clica, não para quem conversa (0 conversas em ~R$ 84 e ~420 cliques até 7/10)."
   - "Clique para WhatsApp otimiza direto por conversa iniciada e a Meta conta a conversa sozinha, sem depender do pixel nem do aceite de cookies."
   - "Tira um passo do funil: anúncio abre o WhatsApp, sem passar pela landing."
+respostas_do_dono_2026-10-08:
+  numero_vinculado: "sim, +55 92 98148-6875 está vinculado à Página como WhatsApp Business e já recebe os contatos do tráfego pago"
+  quem_responde: "o próprio dono, por enquanto"
+  falta_decidir: "opção A (substituir) ou B (comparar), na leitura de 9/10"
 pre_requisito_bloqueante:
   numero: "+55 92 98148-6875 (o WhatsApp da landing)"
   verificar: "o número precisa estar vinculado à Página nanoguara.ia (1272983785891547) como WhatsApp Business. Sem isso a API recusa o promoted_object e a campanha não nasce. Conferência é do dono, no Meta Business Suite > Configurações > WhatsApp."
@@ -28,12 +32,12 @@ anuncios_ate_5:
   - "AD03 | Imagem 4:5 | Espelho recepcao"
   - "AD04 | Imagem 4:5 | Conversa prova"
   - "AD05 | Imagem 4:5 | Falta lembrete"
-  copy_base:
-    texto: "Do \"oi\" ao horário marcado, sem você largar a máquina: o guara.bot atende o WhatsApp da sua barbearia, mostra só horário livre, marca, remarca e lembra o cliente na véspera. Condição exclusiva para barbeiros: R$ 1.997 à vista, pagamento único, válido por 1 ano, sem mensalidade. Chame no WhatsApp e veja como funciona."
-    titulo: "Fale com a gente no WhatsApp"
-    cta: WHATSAPP_MESSAGE
-    saudacao: "Olá! Que bom receber você. Quer conhecer o guara.bot para o atendimento da sua barbearia? Conte para a gente o nome da sua barbearia."
-    observacao: "saudação de 17/09 sem o emoji; texto de cada imagem ajustado ao ângulo dela no preview final"
+copy_base:
+  texto: "Do \"oi\" ao horário marcado, sem você largar a máquina: o guara.bot atende o WhatsApp da sua barbearia, mostra só horário livre, marca, remarca e lembra o cliente na véspera. Condição exclusiva para barbeiros: R$ 1.997 à vista, pagamento único, válido por 1 ano, sem mensalidade. Chame no WhatsApp e veja como funciona."
+  titulo: "Fale com a gente no WhatsApp"
+  cta: WHATSAPP_MESSAGE
+  saudacao: "Olá! Que bom receber você. Quer conhecer o guara.bot para o atendimento da sua barbearia? Conte para a gente o nome da sua barbearia."
+  observacao: "saudação de 17/09 sem o emoji; texto de cada imagem ajustado ao ângulo dela no preview final"
 o_que_acontece_com_a_landing:
   opcao_A_substituir: "pausar a campanha de landing e ligar a de WhatsApp com os mesmos R$ 37,04/dia. Gasto total igual. Recomendada se 9/10 seguir zerado."
   opcao_B_comparar: "rodar as duas por 5 a 7 dias com R$ 18,52/dia cada (total igual). Mede qual caminho gera conversa mais barata, mas cada uma aprende mais devagar."
