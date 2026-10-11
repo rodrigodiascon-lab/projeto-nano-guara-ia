@@ -2,7 +2,7 @@ etapa: leads_site
 nicho: consultorios
 plano: ../plano-consultorios.yaml
 kit: output/marketing/kit-publicacao-guarabot-consultorios (CSV é a fonte da copy)
-estado: ATIVA desde 2026-10-10 com início programado para 2026-10-12 00:00 Manaus; R$ 100/dia até 26/10
+estado: ATIVA e entregando desde 2026-10-11 08:18 Manaus; R$ 100/dia até 25/10 (fim 26/10 00:00)
 conta:
   id: act_1678023370148935
   nome: Lucrec.ia PUBLI
@@ -27,8 +27,8 @@ campanha:
 conjunto:
   name: Manaus | Consultórios | Lead do quiz
   status: PAUSED
-  start_time: 2026-10-12T00:00:00-0400
-  end_time: 2026-10-27T00:00:00-0400
+  start_time: 2026-10-11T08:18:13-0400
+  end_time: 2026-10-26T00:00:00-0400
   optimization_goal: OFFSITE_CONVERSIONS
   billing_event: IMPRESSIONS
   destination_type: WEBSITE
@@ -295,6 +295,7 @@ gates:
 - 4. Ativado em 2026-10-10 com aprovação do dono (campanha, conjunto e 15 anúncios ACTIVE); entrega começa 12/10 00:00. Revisão da Meta ainda em andamento em 14 anúncios.
 - '5. 2026-10-11: Reels da série PS cobria o rodapé da arte (Saiba mais sobre ''Assistente de IA''; título do PS10 sob o rótulo Reels). Com aprovação do dono: conjunto novo 120250510047860113 sem Reels
   (FB feed/story, IG stream/story/explore_home), 5 PS recriados e ativos nele, 5 PS antigos pausados (pausa publicada a partir de rascunho do conector). Orçamento segue único na campanha, R$ 100/dia.'
+- '6. 2026-10-11 08:18: dono pediu para liberar agora; start_time dos dois conjuntos adiantado para agora e end_time para 26/10 00:00, mantendo 15 dias e R$ 1.500.'
 ids:
   campanha: '120250508582710113'
   conjunto: '120250508583910113'

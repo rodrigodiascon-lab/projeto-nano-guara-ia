@@ -5,8 +5,8 @@ marca: "nanoguará.ia"
 produto: "guara.bot para consultórios"
 mes_referencia: "2026-10"
 periodo:
-  inicio: "2026-10-12"
-  fim: "2026-10-26"
+  inicio: "2026-10-11"
+  fim: "2026-10-25"
   parcial: false
 dias_do_mes: 15
 unidade_resultado: "lead do quiz"   # evento Lead do pixel em /iaparaconsultorios; no painel, "conversa" lê-se "lead"
@@ -84,7 +84,7 @@ avisos:
   - "Neste plano a unidade é o lead do quiz (evento Lead), não a conversa iniciada no WhatsApp. Onde o painel diz conversa, leia lead."
   - "Sem referência de custo por lead: meta e cenários a medir até os 15 primeiros leads."
   - "Lead do quiz confirmado na Meta em 2026-10-10, com envio real do dono."
-  - "Período de 12 a 26/10 (15 dias, R$ 100 por dia, total de R$ 1.500); plano separado do de barbearias, que segue em plano.yaml com teto próprio de R$ 1.000 em outubro."
+  - "Período de 11 a 25/10 (início adiantado pelo dono em 11/10, 08:18) (15 dias, R$ 100 por dia, total de R$ 1.500); plano separado do de barbearias, que segue em plano.yaml com teto próprio de R$ 1.000 em outubro."
   - "Teto de R$ 2.000 só de consultórios: somado a barbearias, o gasto de outubro pode chegar a cerca de R$ 3.000."
 entregavel:
   painel: "meus-produtos/nanoguara/captacao/painel-consultorios.html"
