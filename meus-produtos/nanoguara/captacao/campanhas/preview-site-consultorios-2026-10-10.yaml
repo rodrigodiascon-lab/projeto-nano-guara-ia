@@ -293,7 +293,11 @@ gates:
 - '2. Upload de 30 arquivos (15 feed, 5 stories OBJ, 10 vídeos SUR e PS): FEITO em 2026-10-10, 20 imagens ACTIVE e 10 vídeos ready; hashes e IDs em upload-consultorios-2026-10-10.json'
 - 3. Campanha, conjunto, 15 criativos e 15 anúncios criados PAUSED em 2026-10-10 (Explorar trocado para explore_home, exigência da API v22). Meta colocou os anúncios em revisão automática; nenhum entregando.
 - 4. Ativado em 2026-10-10 com aprovação do dono (campanha, conjunto e 15 anúncios ACTIVE); entrega começa 12/10 00:00. Revisão da Meta ainda em andamento em 14 anúncios.
+- '5. 2026-10-11: Reels da série PS cobria o rodapé da arte (Saiba mais sobre ''Assistente de IA''; título do PS10 sob o rótulo Reels). Com aprovação do dono: conjunto novo 120250510047860113 sem Reels
+  (FB feed/story, IG stream/story/explore_home), 5 PS recriados e ativos nele, 5 PS antigos pausados (pausa publicada a partir de rascunho do conector). Orçamento segue único na campanha, R$ 100/dia.'
 ids:
   campanha: '120250508582710113'
   conjunto: '120250508583910113'
   anuncios: criacao-consultorios-2026-10-10.json
+  conjunto_ps_sem_reels: '120250510047860113'
+  anuncios_ps_sem_reels: criacao-consultorios-ps-sem-reels-2026-10-11.json
