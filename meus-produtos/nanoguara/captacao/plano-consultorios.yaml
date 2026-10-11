@@ -81,6 +81,7 @@ cenarios:
   enquadramento: null
   status: "a medir até 15 leads"
 avisos:
+  - "Testes do dono fora da contagem: leads id 2 (15/09) e id 5 (11/10 09:07); o Lead atribuído pela Meta ao OBJ02 em 11/10 é o teste id 5."
   - "Neste plano a unidade é o lead do quiz (evento Lead), não a conversa iniciada no WhatsApp. Onde o painel diz conversa, leia lead."
   - "Sem referência de custo por lead: meta e cenários a medir até os 15 primeiros leads."
   - "Lead do quiz confirmado na Meta em 2026-10-10, com envio real do dono."
