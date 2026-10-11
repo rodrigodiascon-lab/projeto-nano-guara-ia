@@ -1,6 +1,7 @@
 import { jsonSeguro, metodoNaoPermitido } from "./http";
 import { handleLead } from "./lead-route";
 import { handleChat } from "./chat-route";
+import { handleQuizEtapa } from "./quiz-route";
 import { expurgaLeadsVencidos } from "./leads";
 
 /**
@@ -37,6 +38,8 @@ export default {
         return request.method === "POST" ? await handleLead(request, env, ctx) : metodoNaoPermitido();
       if (url.pathname === "/api/chat")
         return request.method === "POST" ? await handleChat(request, env) : metodoNaoPermitido();
+      if (url.pathname === "/api/quiz-etapa")
+        return request.method === "POST" ? await handleQuizEtapa(request, env) : metodoNaoPermitido();
       if (url.pathname.startsWith("/api/")) return jsonSeguro({ ok: false, erro: "Não encontrado" }, 404);
       return await paginaNaoEncontrada(env, url);
     } catch (e) {

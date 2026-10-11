@@ -47,7 +47,25 @@ function trilhaTotal() {
   return respostas.integrar === 'Não' ? 5 : 6;
 }
 
+// Funil do quiz: conta quantas pessoas chegam a cada etapa, por anúncio de
+// origem. Só o nome da etapa e o utm_content vão para o servidor, uma vez por
+// etapa e por carregamento da página; nada de resposta, nome ou telefone.
+// Melhor esforço: se o beacon falhar, o quiz segue igual.
+const etapasRegistradas = new Set();
+const utmAnuncio = (new URLSearchParams(location.search).get('utm_content') || '').slice(0, 30);
+function registraEtapa(etapa) {
+  if (etapasRegistradas.has(etapa)) return;
+  etapasRegistradas.add(etapa);
+  try {
+    const corpo = new Blob([JSON.stringify({ etapa, utm: utmAnuncio })], { type: 'application/json' });
+    if (!navigator.sendBeacon || !navigator.sendBeacon('/api/quiz-etapa', corpo)) {
+      fetch('/api/quiz-etapa', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' }, body: corpo }).catch(() => {});
+    }
+  } catch { /* sem registro, sem problema */ }
+}
+
 function mostraEtapa(n) {
+  registraEtapa(String(n));
   document.querySelectorAll('.etapa').forEach((e) => { e.hidden = Number(e.dataset.etapa) !== n; });
   quiz.dataset.etapa = String(n);
   const total = trilhaTotal();
@@ -179,6 +197,7 @@ form.addEventListener('submit', async (e) => {
   camposValidados.forEach((c) => c.removeAttribute('aria-invalid'));
 
   enviando = true;
+  registraEtapa('envio');
   const btn = document.getElementById('btnFinalizar');
   btn.disabled = true;
   btn.querySelector('.btn-texto').textContent = 'Enviando...';
@@ -216,7 +235,10 @@ form.addEventListener('submit', async (e) => {
   }).then((res) => {
     // Só um aviso, sem dado nenhum do quiz. Quem decide se vira evento Lead da
     // Meta é o consentimento.js, e só com o pixel aceito.
-    if (res.status === 201) document.dispatchEvent(new CustomEvent('ng:lead'));
+    if (res.status === 201) {
+      document.dispatchEvent(new CustomEvent('ng:lead'));
+      registraEtapa('lead_ok');
+    }
   }).catch(() => {});
 
   const msgWhats = [
