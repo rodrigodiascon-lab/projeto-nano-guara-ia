@@ -1,9 +1,21 @@
-import { insertLead, VERSAO_CONSENTIMENTO } from "./leads";
+import { insertLead, gerarCodigoSdr, ehColisaoCodigoSdr, VERSAO_CONSENTIMENTO } from "./leads";
 import { verifyTurnstile } from "./turnstile";
 import { renderLeadEmail } from "./email";
 import { jsonSeguro, mesmaOrigem, lerCorpoLimitado } from "./http";
 
 const LIMITE_BODY = 10_000;
+
+/**
+ * Secrets do SDR Guarabot (n8n). Opcionais: sem eles o formulário funciona como
+ * antes e só não avisa o SDR. Ficam fora do worker-configuration.d.ts, que é
+ * gerado pelo `wrangler types`.
+ */
+type EnvSdr = Env & { SDR_WEBHOOK_URL?: string; SDR_WEBHOOK_TOKEN?: string };
+
+/** Só esta origem entra no SDR (allowlist, repetida no n8n): clínicas e home nunca. */
+const ORIGEM_SDR = "guarabot-barbearias";
+/** Novas tentativas quando o código sorteado já existe; a 4ª colisão vira 503. */
+const SORTEIOS_EXTRA = 3;
 
 function texto(v: unknown, max: number): string | null {
   if (typeof v !== "string") return null;
@@ -63,20 +75,51 @@ export async function handleLead(request: Request, env: Env, ctx: ExecutionConte
   );
   if (!humano) return jsonSeguro({ ok: false, erro: "Verificação anti-spam falhou" }, 403);
 
-  let id: number;
-  try {
-    id = await insertLead(env.DB, {
-      nome,
-      profissao,
-      whatsapp,
-      dor,
-      origem,
-      consentimento: body.consentimento === true,
-      consentimentoVersao: VERSAO_CONSENTIMENTO,
-    });
-  } catch (e) {
-    console.error(JSON.stringify({ evt: "lead_d1_erro", err: String(e) }));
-    return jsonSeguro({ ok: false, erro: "Não consegui salvar agora. Tente pelo WhatsApp." }, 503);
+  const ehBarbearias = origem === ORIGEM_SDR;
+  let id = 0;
+  let codigo: string | null = null;
+  for (let tentativa = 0; ; tentativa += 1) {
+    codigo = ehBarbearias ? gerarCodigoSdr() : null;
+    try {
+      id = await insertLead(env.DB, {
+        nome,
+        profissao,
+        whatsapp,
+        dor,
+        origem,
+        consentimento: body.consentimento === true,
+        consentimentoVersao: VERSAO_CONSENTIMENTO,
+        codigoSdr: codigo,
+      });
+      break;
+    } catch (e) {
+      if (ehBarbearias && ehColisaoCodigoSdr(e) && tentativa < SORTEIOS_EXTRA) continue;
+      console.error(JSON.stringify({ evt: "lead_d1_erro", err: String(e) }));
+      return jsonSeguro({ ok: false, erro: "Não consegui salvar agora. Tente pelo WhatsApp." }, 503);
+    }
+  }
+
+  // SDR Guarabot: só registra o cadastro e a prova do consentimento. O bot nunca
+  // chama este número; quem inicia a conversa é o titular, mandando o código.
+  // Falha ou demora do n8n não atrasa nem quebra a resposta (waitUntil + timeout).
+  const sdr = env as EnvSdr;
+  if (ehBarbearias && codigo && sdr.SDR_WEBHOOK_URL && sdr.SDR_WEBHOOK_TOKEN) {
+    const corpo = {
+      codigo, nome, whatsapp, origem, consentimentoVersao: VERSAO_CONSENTIMENTO,
+      recebidoEm: new Date().toISOString(), siteId: id,
+    };
+    ctx.waitUntil(
+      fetch(sdr.SDR_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-SDR-Token": sdr.SDR_WEBHOOK_TOKEN },
+        body: JSON.stringify(corpo),
+        signal: AbortSignal.timeout(5000),
+      })
+        .then((r) => {
+          if (!r.ok) console.error(JSON.stringify({ evt: "lead_sdr_falhou", leadId: id, status: r.status }));
+        })
+        .catch(() => console.error(JSON.stringify({ evt: "lead_sdr_falhou", leadId: id, status: 0 })))
+    );
   }
 
   // Falha no email não bloqueia a resposta: o lead já está no D1.
@@ -88,5 +131,5 @@ export async function handleLead(request: Request, env: Env, ctx: ExecutionConte
     })
   );
 
-  return jsonSeguro({ ok: true }, 201);
+  return jsonSeguro(codigo ? { ok: true, codigo } : { ok: true }, 201);
 }

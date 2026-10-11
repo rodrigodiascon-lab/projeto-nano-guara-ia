@@ -112,7 +112,25 @@
         }),
       });
       if (res.status === 201) {
-        mostra('Recebido! Vamos te chamar no WhatsApp em breve.', 'sucesso');
+        // Barbearias: o servidor devolve um código e quem inicia a conversa é a pessoa,
+        // pelo botão (o bot nunca chama o número digitado). Sem código: como antes.
+        var ok = await res.json().catch(function () { return {}; });
+        var anterior = document.getElementById('gbWhats');
+        if (anterior) anterior.remove();
+        if (ok && typeof ok.codigo === 'string' && /^GB-[0-9A-Z]{6}$/.test(ok.codigo)) {
+          var link = document.createElement('a');
+          link.id = 'gbWhats';
+          link.className = 'btn btn-primario';
+          link.setAttribute('href', 'https://wa.me/5592981486875?text=' +
+            encodeURIComponent('Oi! Acabei de preencher o formulário do site. Meu código é ' + ok.codigo + '.'));
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener');
+          link.textContent = 'Chamar no WhatsApp';
+          msg.insertAdjacentElement('afterend', link);
+          mostra('Recebido! Toque no botão abaixo para falar com a gente no WhatsApp.', 'sucesso');
+        } else {
+          mostra('Recebido! Vamos te chamar no WhatsApp em breve.', 'sucesso');
+        }
         form.reset();
         // Só um aviso sem dado nenhum; o consentimento.js decide se vira Lead da Meta.
         document.dispatchEvent(new CustomEvent('ng:lead'));

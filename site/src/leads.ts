@@ -14,7 +14,31 @@ export type LeadInput = {
   /** Valor que o titular de fato enviou, nunca uma constante do servidor. */
   consentimento: boolean;
   consentimentoVersao: string;
+  /** Código "GB-XXXXXX" do SDR Guarabot; só a página de barbearias recebe, as outras origens mandam null. */
+  codigoSdr?: string | null;
 };
+
+/** Crockford base32: sem I, L, O e U, que se confundem ao digitar. */
+const ALFABETO_SDR = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+
+/**
+ * Código que o titular manda pelo WhatsApp para o SDR ligar a conversa ao
+ * cadastro. 6 símbolos de 32 (30 bits) sorteados pelo gerador criptográfico;
+ * cada byte & 31 cai em 0..31 sem viés, porque 256 é múltiplo de 32. Não é
+ * segredo (a pessoa o envia por mensagem), mas não pode ser sequencial nem
+ * adivinhável a partir do id.
+ */
+export function gerarCodigoSdr(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(6));
+  let c = "";
+  for (const b of bytes) c += ALFABETO_SDR[b & 31];
+  return `GB-${c}`;
+}
+
+/** O código já existe no D1 (índice único parcial da migration 0004). */
+export function ehColisaoCodigoSdr(e: unknown): boolean {
+  return /UNIQUE constraint failed: leads\.codigo_sdr/.test(String(e));
+}
 
 /** Retenção declarada na política de privacidade (privacidade.html). */
 export const MESES_RETENCAO = 12;
@@ -37,7 +61,7 @@ export async function insertLead(db: D1Database, lead: LeadInput): Promise<numbe
   // não pode afirmar um consentimento que ela não observou.
   const r = await db
     .prepare(
-      "INSERT INTO leads (nome, profissao, whatsapp, dor, origem, consentimento, consentimento_versao) VALUES (?, ?, ?, ?, ?, ?, ?)"
+      "INSERT INTO leads (nome, profissao, whatsapp, dor, origem, consentimento, consentimento_versao, codigo_sdr) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
     )
     .bind(
       lead.nome,
@@ -46,7 +70,8 @@ export async function insertLead(db: D1Database, lead: LeadInput): Promise<numbe
       lead.dor,
       lead.origem,
       lead.consentimento ? 1 : 0,
-      lead.consentimentoVersao
+      lead.consentimentoVersao,
+      lead.codigoSdr ?? null
     )
     .run();
   return Number(r.meta.last_row_id);

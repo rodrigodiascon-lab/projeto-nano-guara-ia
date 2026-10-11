@@ -110,3 +110,139 @@ describe("POST /api/lead", () => {
     expect((await post(bodyValido, {}, ip)).status).toBe(429);
   });
 });
+
+// --- SDR Guarabot (T16): código do formulário de barbearias e aviso ao n8n -----------------------------------------
+import { env as envTeste, createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
+import { vi } from "vitest";
+import { handleLead } from "../src/lead-route";
+import { gerarCodigoSdr } from "../src/leads";
+
+const URL_SDR = "https://n8n.test/webhook/sdr-guarabot/lead-site";
+const TOKEN_SDR = "token-de-teste-vitest";
+const PADRAO = /^GB-[0-9A-HJKMNP-TV-Z]{6}$/;
+const barbearia = { ...bodyValido, profissao: "Barbearia", origem: "guarabot-barbearias" };
+const envSdr = () => ({ ...envTeste, SDR_WEBHOOK_URL: URL_SDR, SDR_WEBHOOK_TOKEN: TOKEN_SDR }) as unknown as Env;
+
+function req(body: unknown) {
+  return new Request("https://site.local/api/lead", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "CF-Connecting-IP": crypto.randomUUID() },
+    body: JSON.stringify(body),
+  });
+}
+
+/** Interceptor do n8n que guarda cabeçalhos e corpo recebidos. */
+function sdrRecebe(responder: (i: ReturnType<ReturnType<typeof fetchMock.get>["intercept"]>) => unknown = (i) => i.reply(200, "ok")) {
+  const visto: { headers?: Record<string, string>; body?: string } = {};
+  responder(fetchMock.get("https://n8n.test").intercept({
+    path: "/webhook/sdr-guarabot/lead-site", method: "POST",
+    headers: (h: Record<string, string>) => { visto.headers = h; return true; },
+    body: (b: string) => { visto.body = b; return true; },
+  }));
+  return visto;
+}
+
+/** Consome um interceptor que o Worker não deveria ter usado (o afterEach exige zero pendentes). */
+async function consomeSobra() {
+  expect(fetchMock.pendingInterceptors().length).toBe(1);
+  await fetch(URL_SDR, { method: "POST", headers: { "X-SDR-Token": "x" }, body: "{}" });
+}
+
+describe("SDR Guarabot (T16)", () => {
+  it("barbearias: 201 com codigo, 1 POST ao n8n com o token e as 7 chaves, codigo gravado no D1", async () => {
+    turnstileOk();
+    const visto = sdrRecebe();
+    const ctx = createExecutionContext();
+    const res = await handleLead(req(barbearia), envSdr(), ctx);
+    await waitOnExecutionContext(ctx);
+    expect(res.status).toBe(201);
+    const r = await res.json<{ ok: boolean; codigo: string }>();
+    expect(r.ok).toBe(true);
+    expect(r.codigo).toMatch(PADRAO);
+    expect(visto.headers?.["x-sdr-token"] ?? visto.headers?.["X-SDR-Token"]).toBe(TOKEN_SDR);
+    const corpo = JSON.parse(visto.body!);
+    expect(Object.keys(corpo).sort()).toEqual(["codigo", "consentimentoVersao", "nome", "origem", "recebidoEm", "siteId", "whatsapp"]);
+    expect(corpo.whatsapp).toBe("92988887777");
+    expect(corpo.codigo).toBe(r.codigo);
+    expect(typeof corpo.siteId).toBe("number");
+    const row = await envTeste.DB.prepare("SELECT codigo_sdr FROM leads WHERE id = ?").bind(corpo.siteId).first<{ codigo_sdr: string }>();
+    expect(row!.codigo_sdr).toBe(r.codigo);
+  });
+
+  it("outra origem nao recebe codigo nem vai ao SDR (allowlist)", async () => {
+    turnstileOk();
+    sdrRecebe();
+    const ctx = createExecutionContext();
+    const res = await handleLead(req(bodyValido), envSdr(), ctx);
+    await waitOnExecutionContext(ctx);
+    expect(res.status).toBe(201);
+    expect(await res.json()).toEqual({ ok: true });
+    await consomeSobra();
+  });
+
+  it("falha do n8n nao quebra o cadastro; n8n lento nao atrasa a resposta", async () => {
+    turnstileOk();
+    sdrRecebe((i) => i.replyWithError(new Error("rede caiu")));
+    const ctx1 = createExecutionContext();
+    const r1 = await handleLead(req(barbearia), envSdr(), ctx1);
+    await waitOnExecutionContext(ctx1);
+    expect(r1.status).toBe(201);
+    const { codigo } = await r1.json<{ codigo: string }>();
+    expect(await envTeste.DB.prepare("SELECT 1 AS x FROM leads WHERE codigo_sdr = ?").bind(codigo).first()).not.toBeNull();
+
+    turnstileOk();
+    sdrRecebe((i) => i.reply(200, "ok").delay(3000));
+    const ctx2 = createExecutionContext();
+    const t0 = Date.now();
+    const r2 = await handleLead(req(barbearia), envSdr(), ctx2);
+    const ms = Date.now() - t0;
+    expect(r2.status).toBe(201);
+    expect(ms).toBeLessThan(1000);
+    await waitOnExecutionContext(ctx2);
+  });
+
+  it("sem os secrets do SDR: 201 com codigo e nenhuma chamada", async () => {
+    turnstileOk();
+    sdrRecebe();
+    const ctx = createExecutionContext();
+    const res = await handleLead(req(barbearia), envTeste as unknown as Env, ctx);
+    await waitOnExecutionContext(ctx);
+    expect(res.status).toBe(201);
+    expect((await res.json<{ codigo: string }>()).codigo).toMatch(PADRAO);
+    await consomeSobra();
+  });
+
+  it("colisao de codigo: 3 colisoes e depois codigo livre -> 201; 4 colisoes -> 503", async () => {
+    await envTeste.DB.prepare("INSERT INTO leads (nome, profissao, whatsapp, dor, origem, consentimento, consentimento_versao, codigo_sdr) VALUES ('x','x','92900000000','','guarabot-barbearias',1,'v','GB-777777')").run();
+    const real = crypto.getRandomValues.bind(crypto);
+    let colisoes = 3;
+    const espiao = vi.spyOn(crypto, "getRandomValues").mockImplementation(<T extends ArrayBufferView | null>(a: T): T => {
+      if (a instanceof Uint8Array && a.length === 6 && colisoes > 0) { colisoes -= 1; a.fill(7); return a; }
+      return real(a as never) as T;
+    });
+    try {
+      turnstileOk();
+      const ctx = createExecutionContext();
+      const ok = await handleLead(req(barbearia), envTeste as unknown as Env, ctx);
+      await waitOnExecutionContext(ctx);
+      expect(ok.status).toBe(201);
+      expect((await ok.json<{ codigo: string }>()).codigo).not.toBe("GB-777777");
+
+      colisoes = 4;
+      turnstileOk();
+      const ctx2 = createExecutionContext();
+      const ruim = await handleLead(req(barbearia), envTeste as unknown as Env, ctx2);
+      await waitOnExecutionContext(ctx2);
+      expect(ruim.status).toBe(503);
+      expect(await ruim.json()).toEqual({ ok: false, erro: "Não consegui salvar agora. Tente pelo WhatsApp." });
+    } finally {
+      espiao.mockRestore();
+    }
+  });
+
+  it("gerarCodigoSdr: 200 codigos casam o padrao e sao distintos", () => {
+    const vistos = new Set(Array.from({ length: 200 }, () => gerarCodigoSdr()));
+    expect(vistos.size).toBe(200);
+    for (const c of vistos) expect(c).toMatch(PADRAO);
+  });
+});
