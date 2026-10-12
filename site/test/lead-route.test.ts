@@ -169,15 +169,25 @@ describe("SDR Guarabot (T16)", () => {
     expect(row!.codigo_sdr).toBe(r.codigo);
   });
 
-  it("outra origem nao recebe codigo nem vai ao SDR (allowlist)", async () => {
+  it.each(["form", "guarabot-clinicas", "guarabot-barbearias-teste"])("outra origem (%s) nao recebe codigo nem vai ao SDR (allowlist)", async (origem) => {
     turnstileOk();
     sdrRecebe();
     const ctx = createExecutionContext();
-    const res = await handleLead(req(bodyValido), envSdr(), ctx);
+    const res = await handleLead(req({ ...bodyValido, origem }), envSdr(), ctx);
     await waitOnExecutionContext(ctx);
     expect(res.status).toBe(201);
     expect(await res.json()).toEqual({ ok: true });
     await consomeSobra();
+  });
+
+  it("0 de discagem antes do DDD sai: (092) 98888-7777 vai ao SDR como 92988887777", async () => {
+    turnstileOk();
+    const visto = sdrRecebe();
+    const ctx = createExecutionContext();
+    const res = await handleLead(req({ ...barbearia, whatsapp: "(092) 98888-7777" }), envSdr(), ctx);
+    await waitOnExecutionContext(ctx);
+    expect(res.status).toBe(201);
+    expect(JSON.parse(visto.body!).whatsapp).toBe("92988887777");
   });
 
   it("falha do n8n nao quebra o cadastro; n8n lento nao atrasa a resposta", async () => {

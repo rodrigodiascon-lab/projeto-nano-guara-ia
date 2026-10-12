@@ -7,12 +7,15 @@ import { test, expect, type Page } from "@playwright/test";
  * aqui), o Turnstile é bloqueado e o consentimento.js vira vazio para o aviso de
  * cookies não ficar por cima do botão.
  */
+const origens: string[] = [];
 async function prepara(page: Page, respostas: string[]) {
   await page.route("https://challenges.cloudflare.com/**", (route) => route.abort());
   await page.route("**/consentimento.js", (route) => route.fulfill({ contentType: "application/javascript", body: "" }));
   let i = 0;
-  await page.route("**/api/lead", (route) =>
-    route.fulfill({ status: 201, contentType: "application/json", body: respostas[Math.min(i++, respostas.length - 1)] }));
+  await page.route("**/api/lead", (route) => {
+    origens.push(route.request().postDataJSON().origem);
+    return route.fulfill({ status: 201, contentType: "application/json", body: respostas[Math.min(i++, respostas.length - 1)] });
+  });
   await page.goto("/guarabot/barbearias.html");
   const form = page.locator("#gbForm");
   await form.getByLabel("Nome").fill("TESTE 1");
@@ -39,6 +42,7 @@ test("com código: um único botão com o código na mensagem; reenviar troca o 
   await expect(page.locator("#gbWhats")).toHaveAttribute("rel", "noopener");
   await expect(page.locator("#gbWhats")).toHaveText("Chamar no WhatsApp");
   await expect(page.locator("#gbMsg")).toHaveText("Recebido! Toque no botão abaixo para falar com a gente no WhatsApp.");
+  await expect(page.locator("#gbWhats")).toBeFocused();
 
   await form.getByLabel("Nome").fill("TESTE 1");
   await form.getByLabel("Segmento do negócio").selectOption("Barbearia");
@@ -48,6 +52,7 @@ test("com código: um único botão com o código na mensagem; reenviar troca o 
   await expect(page.locator("#gbWhats")).toHaveCount(1);
   await expect(page.locator("#gbWhats")).toHaveAttribute("href", href("GB-AAAAAA"));
   await expect(page.locator("#gbWhats")).not.toHaveAttribute("style", /.*/); // CSP: nada de style inline
+  expect(origens.at(-1)).toBe("guarabot-barbearias"); // a origem vem do HTML, não do padrão do JS
 });
 
 test("controle: 201 sem código não cria botão e mantém a mensagem antiga", async ({ page }) => {

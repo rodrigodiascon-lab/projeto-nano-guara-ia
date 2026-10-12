@@ -107,7 +107,7 @@
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nome: fd.get('nome'), profissao: fd.get('profissao'), whatsapp: fd.get('whatsapp'),
-          origem: form.getAttribute('data-origem') || 'guarabot-barbearias', consentimento: true,
+          origem: form.getAttribute('data-origem') || 'form', consentimento: true,
           turnstileToken: fd.get('cf-turnstile-response') || '',
         }),
       });
@@ -127,6 +127,7 @@
           link.setAttribute('rel', 'noopener');
           link.textContent = 'Chamar no WhatsApp';
           msg.insertAdjacentElement('afterend', link);
+          link.focus(); // o botão nasce longe do olho de quem acabou de tocar em Enviar
           mostra('Recebido! Toque no botão abaixo para falar com a gente no WhatsApp.', 'sucesso');
         } else {
           mostra('Recebido! Vamos te chamar no WhatsApp em breve.', 'sucesso');

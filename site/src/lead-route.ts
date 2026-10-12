@@ -23,9 +23,9 @@ function texto(v: unknown, max: number): string | null {
   return t.length > 0 && t.length <= max ? t : null;
 }
 
-/** Aceita "+" só como primeiro caractere; 10 a 13 dígitos. */
+/** Aceita "+" só como primeiro caractere; 10 a 13 dígitos. O 0 de discagem antes do DDD ("(092) …") sai. */
 function normalizaWhatsapp(bruto: string): string | null {
-  const limpo = bruto.replace(/[\s\-().]/g, "");
+  const limpo = bruto.replace(/[\s\-().]/g, "").replace(/^0(?=\d{10,11}$)/, "");
   return /^\+?\d{10,13}$/.test(limpo) ? limpo : null;
 }
 
