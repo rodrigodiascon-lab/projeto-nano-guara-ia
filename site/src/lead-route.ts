@@ -123,7 +123,7 @@ export async function handleLead(request: Request, env: Env, ctx: ExecutionConte
   }
 
   // Falha no email não bloqueia a resposta: o lead já está no D1.
-  const { subject, text } = renderLeadEmail({ id, nome, profissao, whatsapp, dor, origem, recebidoEm: new Date() });
+  const { subject, text } = renderLeadEmail({ id, nome, profissao, whatsapp, dor, origem, recebidoEm: new Date(), codigo });
   ctx.waitUntil(
     env.NOTIFY.send({ to: env.LEAD_TO, from: env.LEAD_FROM, subject, text }).catch((e: unknown) => {
       const code = (e as { code?: string })?.code ?? "";

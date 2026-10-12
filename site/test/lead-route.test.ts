@@ -149,6 +149,19 @@ async function consomeSobra() {
 }
 
 describe("SDR Guarabot (T16)", () => {
+  it("barbearias: o email ao Rodrigo traz o código e não o link para o número digitado", async () => {
+    turnstileOk();
+    const enviados: { text: string }[] = [];
+    const env = { ...envTeste, NOTIFY: { send: async (m: { text: string }) => { enviados.push(m); } } } as unknown as Env;
+    const ctx = createExecutionContext();
+    const res = await handleLead(req(barbearia), env, ctx);
+    await waitOnExecutionContext(ctx);
+    const r = await res.json<{ codigo: string }>();
+    expect(enviados).toHaveLength(1);
+    expect(enviados[0].text).toContain(`Código: ${r.codigo}`);
+    expect(enviados[0].text).not.toContain("wa.me");
+  });
+
   it("barbearias: 201 com codigo, 1 POST ao n8n com o token e as 7 chaves, codigo gravado no D1", async () => {
     turnstileOk();
     const visto = sdrRecebe();

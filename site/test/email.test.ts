@@ -66,6 +66,22 @@ describe("renderLeadEmail", () => {
     expect(text).toMatch(/https:\/\/wa\.me\/\d+$/m);
   });
 
+  // SDR Guarabot: quem inicia a conversa é o titular, mandando o código no WhatsApp da
+  // empresa; o email não convida a chamar o número digitado (R9.4).
+  it("lead de barbearias: mostra o código e não tem link para chamar o número digitado", () => {
+    const { text } = renderLeadEmail({ ...QUIZ, origem: "guarabot-barbearias", dor: "", codigo: "GB-7K2M9P" });
+    expect(text).toMatch(/^Código: GB-7K2M9P$/m);
+    expect(text).not.toContain("Responder agora");
+    expect(text).not.toContain("wa.me");
+    expect(text).toContain("WhatsApp: (92) 98148-6875");
+  });
+
+  it("código fora do formato não entra no email", () => {
+    const { text } = renderLeadEmail({ ...QUIZ, origem: "guarabot-barbearias", dor: "", codigo: "GB-1\nBcc: x" });
+    expect(text).not.toContain("Bcc");
+    expect(text).not.toContain("Responder agora");
+  });
+
   it("não emite campo html", () => {
     expect(renderLeadEmail(QUIZ)).not.toHaveProperty("html");
   });

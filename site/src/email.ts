@@ -28,6 +28,9 @@ function formataFone(digitos: string): string {
   return `+${digitos}`;
 }
 
+/** Formato do código do SDR Guarabot (igual ao `gerarCodigoSdr` e ao validador do n8n). */
+const CODIGO_SDR = /^GB-[0-9A-HJKMNP-TV-Z]{6}$/;
+
 const HORA_MANAUS = new Intl.DateTimeFormat("pt-BR", {
   timeZone: "America/Manaus",
   day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit",
@@ -41,6 +44,9 @@ const HORA_MANAUS = new Intl.DateTimeFormat("pt-BR", {
  * declarada em privacidade.html.
  * Sem campo `html`: texto puro elimina a classe inteira de injeção de
  * HTML/phishing pela caixa de entrada.
+ * Lead de barbearias (SDR Guarabot): traz o código e não traz link para chamar
+ * o número digitado. Quem inicia a conversa é o titular, mandando o código no
+ * WhatsApp da empresa (R9.4 do SDR).
  */
 export function renderLeadEmail(dados: {
   id: number;
@@ -50,12 +56,18 @@ export function renderLeadEmail(dados: {
   dor: string;
   origem: string;
   recebidoEm: Date;
+  codigo?: string | null;
 }): { subject: string; text: string } {
   const nome = limpo(dados.nome);
   const profissao = limpo(dados.profissao);
   const origem = limpo(dados.origem);
   const pagina = PAGINA[origem] ?? origem;
   const digitos = comDDI(dados.whatsapp);
+  const ehSdr = origem === "guarabot-barbearias";
+  const codigo = dados.codigo && CODIGO_SDR.test(dados.codigo) ? dados.codigo : null;
+  const contato = ehSdr
+    ? (codigo ? [`Código: ${codigo}`] : [])
+    : [`Responder agora: https://wa.me/${digitos}`];
   const hora = HORA_MANAUS.format(dados.recebidoEm).replace(",", "");
 
   const detalhes = origem === ORIGEM_COM_RESPOSTAS
@@ -75,7 +87,7 @@ export function renderLeadEmail(dados: {
       "",
       `Nome: ${nome}`,
       `WhatsApp: ${formataFone(digitos)}`,
-      `Responder agora: https://wa.me/${digitos}`,
+      ...contato,
       "",
       ...detalhes,
     ].join("\n"),
