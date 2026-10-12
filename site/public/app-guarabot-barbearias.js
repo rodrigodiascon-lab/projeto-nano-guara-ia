@@ -126,11 +126,12 @@
           link.setAttribute('target', '_blank');
           link.setAttribute('rel', 'noopener');
           link.textContent = 'Chamar no WhatsApp';
+          link.setAttribute('aria-label', 'Chamar no WhatsApp (abre em nova aba)');
           msg.insertAdjacentElement('afterend', link);
           link.focus(); // o botão nasce longe do olho de quem acabou de tocar em Enviar
           mostra('Recebido! Toque no botão abaixo para falar com a gente no WhatsApp.', 'sucesso');
         } else {
-          mostra('Recebido! Vamos te chamar no WhatsApp em breve.', 'sucesso');
+          mostra('Recebido! Fale com a gente pelo WhatsApp (92) 98148-6875.', 'sucesso');
         }
         form.reset();
         // Só um aviso sem dado nenhum; o consentimento.js decide se vira Lead da Meta.

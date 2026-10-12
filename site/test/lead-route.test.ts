@@ -114,7 +114,7 @@ describe("POST /api/lead", () => {
 // --- SDR Guarabot (T16): código do formulário de barbearias e aviso ao n8n -----------------------------------------
 import { env as envTeste, createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
 import { vi } from "vitest";
-import { handleLead } from "../src/lead-route";
+import { handleLead, whatsappBrasileiro } from "../src/lead-route";
 import { gerarCodigoSdr } from "../src/leads";
 
 const URL_SDR = "https://n8n.test/webhook/sdr-guarabot/lead-site";
@@ -223,6 +223,55 @@ describe("SDR Guarabot (T16)", () => {
     expect(ms).toBeLessThan(1000);
     await waitOnExecutionContext(ctx2);
   });
+
+  // --- revisão geral de 12/10 ---------------------------------------------------------------------------
+  it.each(["+1 212 555 0123", "(11) 1234-5678", "92 1888-7777", "(92) 98888 77777"])(
+    "barbearias: número que o SDR recusa (%s) volta 400 e não grava; controle: mesma entrada em clínicas passa", async (w) => {
+      const res = await handleLead(req({ ...barbearia, whatsapp: w }), envSdr(), createExecutionContext());
+      expect(res.status).toBe(400);
+      expect(await envTeste.DB.prepare("SELECT 1 AS x FROM leads WHERE whatsapp = ?").bind(w.replace(/[\s\-().]/g, "")).first()).toBeNull();
+    });
+
+  it("barbearias: números brasileiros válidos passam (fixo, celular, +55, 0 antes do DDD)", () => {
+    expect(["(92) 3233-4455", "92 98888-7777", "+55 92 98888-7777", "(092) 98888-7777"].map((w) => whatsappBrasileiro(w.replace(/[\s\-().]/g, "").replace(/^0(?=\d{10,11}$)/, ""))))
+      .toEqual(["559232334455", "5592988887777", "5592988887777", "5592988887777"]);
+  });
+
+  it("sem config ou com URL sem https: não chama o n8n e loga lead_sdr_sem_config sem dado pessoal", async () => {
+    const logs: string[] = [];
+    const esp = vi.spyOn(console, "error").mockImplementation((m: string) => { logs.push(String(m)); });
+    try {
+      for (const env of [envTeste as unknown as Env, { ...envSdr(), SDR_WEBHOOK_URL: "http://n8n.test/webhook/sdr-guarabot/lead-site" } as unknown as Env]) {
+        turnstileOk();
+        const ctx = createExecutionContext();
+        expect((await handleLead(req(barbearia), env, ctx)).status).toBe(201);
+        await waitOnExecutionContext(ctx);
+      }
+    } finally { esp.mockRestore(); }
+    const sem = logs.filter((l) => l.includes("lead_sdr_sem_config"));
+    expect(sem).toHaveLength(2);
+    for (const l of sem) expect(Object.keys(JSON.parse(l)).sort()).toEqual(["evt", "leadId"]);
+  });
+
+  it("n8n responde 500 ou demora mais que 5 s: o cadastro fica e o log traz só leadId e status", async () => {
+    const logs: string[] = [];
+    const esp = vi.spyOn(console, "error").mockImplementation((m: string) => { logs.push(String(m)); });
+    try {
+      turnstileOk();
+      sdrRecebe((i) => i.reply(500, "erro"));
+      const c1 = createExecutionContext();
+      expect((await handleLead(req(barbearia), envSdr(), c1)).status).toBe(201);
+      await waitOnExecutionContext(c1);
+      turnstileOk();
+      sdrRecebe((i) => i.reply(200, "ok").delay(6000));
+      const c2 = createExecutionContext();
+      expect((await handleLead(req(barbearia), envSdr(), c2)).status).toBe(201);
+      await waitOnExecutionContext(c2);
+    } finally { esp.mockRestore(); }
+    const falhas = logs.filter((l) => l.includes("lead_sdr_falhou")).map((l) => JSON.parse(l));
+    expect(falhas.map((f) => f.status)).toEqual([500, 0]); // 0 = abortado pelo timeout de 5 s
+    for (const l of logs) { expect(l).not.toContain(barbearia.nome); expect(l).not.toContain("98888"); }
+  }, 15000);
 
   it("sem os secrets do SDR: 201 com codigo e nenhuma chamada", async () => {
     turnstileOk();

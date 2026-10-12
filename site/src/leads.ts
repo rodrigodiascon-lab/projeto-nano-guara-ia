@@ -3,6 +3,8 @@
  * label do checkbox #consent). MUDE ISTO junto com o texto: é o que permite
  * provar, depois, a que exatamente cada titular consentiu.
  */
+// Tem de estar em VERSOES_ACEITAS do SDR (sdr-guarabot/lib/planilha.js). Ao trocar o texto do consentimento,
+// publique primeiro o n8n com a versão nova aceita e só depois o site (senão o SDR recusa os leads novos).
 export const VERSAO_CONSENTIMENTO = "2026-08-01-contato";
 
 export type LeadInput = {

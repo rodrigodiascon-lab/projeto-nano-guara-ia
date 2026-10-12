@@ -20,13 +20,13 @@ async function prepara(page: Page, respostas: string[]) {
   const form = page.locator("#gbForm");
   await form.getByLabel("Nome").fill("TESTE 1");
   await form.getByLabel("Segmento do negócio").selectOption("Barbearia");
-  await form.getByLabel("WhatsApp").fill("92988887777");
+  await form.getByLabel("WhatsApp", { exact: true }).fill("92988887777");
   await form.locator("#gbConsent").check();
   return form;
 }
 
 const enviar = (form: ReturnType<Page["locator"]>) =>
-  form.getByRole("button", { name: /Enviar e abrir o WhatsApp/ }).first().click();
+  form.getByRole("button", { name: /Enviar e pegar meu código/ }).first().click();
 
 const href = (codigo: string) =>
   "https://wa.me/5592981486875?text=" + encodeURIComponent(`Oi! Acabei de preencher o formulário do site. Meu código é ${codigo}.`);
@@ -41,12 +41,13 @@ test("com código: um único botão com o código na mensagem; reenviar troca o 
   await expect(page.locator("#gbWhats")).toHaveAttribute("target", "_blank");
   await expect(page.locator("#gbWhats")).toHaveAttribute("rel", "noopener");
   await expect(page.locator("#gbWhats")).toHaveText("Chamar no WhatsApp");
+  await expect(page.locator("#gbWhats")).toHaveAttribute("aria-label", "Chamar no WhatsApp (abre em nova aba)");
   await expect(page.locator("#gbMsg")).toHaveText("Recebido! Toque no botão abaixo para falar com a gente no WhatsApp.");
   await expect(page.locator("#gbWhats")).toBeFocused();
 
   await form.getByLabel("Nome").fill("TESTE 1");
   await form.getByLabel("Segmento do negócio").selectOption("Barbearia");
-  await form.getByLabel("WhatsApp").fill("92988887777");
+  await form.getByLabel("WhatsApp", { exact: true }).fill("92988887777");
   await form.locator("#gbConsent").check();
   await enviar(form);
   await expect(page.locator("#gbWhats")).toHaveCount(1);

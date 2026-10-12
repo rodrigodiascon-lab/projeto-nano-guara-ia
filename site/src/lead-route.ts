@@ -29,6 +29,28 @@ function normalizaWhatsapp(bruto: string): string | null {
   return /^\+?\d{10,13}$/.test(limpo) ? limpo : null;
 }
 
+/**
+ * Mesma regra do SDR (sdr-guarabot/lib/normaliza.js): número brasileiro com DDD válido, celular com o 9.
+ * Só para barbearias: o código só vale se o SDR aceitar o número (senão o código fica órfão).
+ */
+export function whatsappBrasileiro(bruto: string): string | null {
+  let d = bruto.replace(/\D/g, "");
+  if (d.length === 10) d = `55${d}`;
+  else if (d.length === 11) {
+    if (d[2] !== "9") return null;
+    d = `55${d}`;
+  }
+  if (!d.startsWith("55")) return null;
+  if (d.length === 12) {
+    const p = d[4];
+    if (p >= "6" && p <= "9") d = `${d.slice(0, 4)}9${d.slice(4)}`;
+    else if (!(p >= "2" && p <= "5")) return null;
+  } else if (d.length === 13) {
+    if (d[4] !== "9") return null;
+  } else return null;
+  return Number(d.slice(2, 4)) < 11 ? null : d;
+}
+
 export async function handleLead(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   if (!mesmaOrigem(request)) return jsonSeguro({ ok: false, erro: "Origem não permitida" }, 403);
 
@@ -66,6 +88,8 @@ export async function handleLead(request: Request, env: Env, ctx: ExecutionConte
 
   const whatsapp = normalizaWhatsapp(whatsappBruto);
   if (!whatsapp) return jsonSeguro({ ok: false, erro: "WhatsApp inválido" }, 400);
+  if (origem === ORIGEM_SDR && !whatsappBrasileiro(whatsapp))
+    return jsonSeguro({ ok: false, erro: "Confira o WhatsApp: número do Brasil com DDD" }, 400);
 
   const humano = await verifyTurnstile(
     env.TURNSTILE_SECRET_KEY,
@@ -103,13 +127,17 @@ export async function handleLead(request: Request, env: Env, ctx: ExecutionConte
   // chama este número; quem inicia a conversa é o titular, mandando o código.
   // Falha ou demora do n8n não atrasa nem quebra a resposta (waitUntil + timeout).
   const sdr = env as EnvSdr;
-  if (ehBarbearias && codigo && sdr.SDR_WEBHOOK_URL && sdr.SDR_WEBHOOK_TOKEN) {
+  const urlSdr = sdr.SDR_WEBHOOK_URL ?? "";
+  if (ehBarbearias && codigo && (!urlSdr.startsWith("https://") || !sdr.SDR_WEBHOOK_TOKEN)) {
+    // sem os dois secrets (ou URL sem https) o lead não vai ao SDR; o log avisa, sem dado pessoal
+    console.error(JSON.stringify({ evt: "lead_sdr_sem_config", leadId: id }));
+  } else if (ehBarbearias && codigo && sdr.SDR_WEBHOOK_TOKEN) {
     const corpo = {
       codigo, nome, whatsapp, origem, consentimentoVersao: VERSAO_CONSENTIMENTO,
       recebidoEm: new Date().toISOString(), siteId: id,
     };
     ctx.waitUntil(
-      fetch(sdr.SDR_WEBHOOK_URL, {
+      fetch(urlSdr, {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-SDR-Token": sdr.SDR_WEBHOOK_TOKEN },
         body: JSON.stringify(corpo),
@@ -117,6 +145,7 @@ export async function handleLead(request: Request, env: Env, ctx: ExecutionConte
       })
         .then((r) => {
           if (!r.ok) console.error(JSON.stringify({ evt: "lead_sdr_falhou", leadId: id, status: r.status }));
+          return r.body?.cancel();
         })
         .catch(() => console.error(JSON.stringify({ evt: "lead_sdr_falhou", leadId: id, status: 0 })))
     );
