@@ -115,9 +115,17 @@
         // Barbearias: o servidor devolve um código e quem inicia a conversa é a pessoa,
         // pelo botão (o bot nunca chama o número digitado). Sem código: como antes.
         var ok = await res.json().catch(function () { return {}; });
-        var anterior = document.getElementById('gbWhats');
+        var anterior = document.getElementById('gbPasso');
         if (anterior) anterior.remove();
         if (ok && typeof ok.codigo === 'string' && /^GB-[0-9A-Z]{6}$/.test(ok.codigo)) {
+          // R9.4 (refinado no T19): o formulário some e fica um único botão; o código vai
+          // escondido na mensagem pronta e não aparece na tela.
+          var passo = document.createElement('div');
+          passo.id = 'gbPasso';
+          passo.className = 'gb-passo';
+          passo.setAttribute('role', 'status');
+          var frase = document.createElement('p');
+          frase.textContent = 'Falta só um passo: toque aqui e envie a mensagem que já vai pronta.';
           var link = document.createElement('a');
           link.id = 'gbWhats';
           link.className = 'btn btn-primario';
@@ -125,11 +133,16 @@
             encodeURIComponent('Oi! Acabei de preencher o formulário do site. Meu código é ' + ok.codigo + '.'));
           link.setAttribute('target', '_blank');
           link.setAttribute('rel', 'noopener');
-          link.textContent = 'Chamar no WhatsApp';
-          link.setAttribute('aria-label', 'Chamar no WhatsApp (abre em nova aba)');
-          msg.insertAdjacentElement('afterend', link);
-          link.focus(); // o botão nasce longe do olho de quem acabou de tocar em Enviar
-          mostra('Recebido! Toque no botão abaixo para falar com a gente no WhatsApp.', 'sucesso');
+          link.textContent = 'Abrir o WhatsApp e enviar';
+          link.setAttribute('aria-label', 'Abrir o WhatsApp e enviar (abre em nova aba)');
+          passo.appendChild(frase);
+          passo.appendChild(link);
+          form.insertAdjacentElement('afterend', passo);
+          form.hidden = true;
+          link.focus(); // leva o olho (e a rolagem) direto ao único próximo passo
+          form.reset();
+          document.dispatchEvent(new CustomEvent('ng:lead'));
+          return;
         } else {
           mostra('Recebido! Fale com a gente pelo WhatsApp (92) 98148-6875.', 'sucesso');
         }
