@@ -51,9 +51,9 @@
 
 .quiz-progresso{display:flex;align-items:center;gap:12px;margin-bottom:22px}
 /* Largura fixa do rótulo e espaço do Voltar sempre reservado: sem isso a
-   barra encolhia ao trocar "4 de 6" por "Último passo" (e ao surgir o Voltar),
+   barra encolhia ao trocar "Pergunta 4 de 6" por "Último passo" (e ao surgir o Voltar),
    e o verde diminuía justo quando o progresso subia. */
-.quiz-progresso .contagem{font-size:.82rem;color:var(--text-muted);white-space:nowrap;order:3;min-width:6.6em;text-align:right}
+.quiz-progresso .contagem{font-size:.82rem;color:var(--text-muted);white-space:nowrap;order:3;min-width:8.6em;text-align:right}
 .barra-fundo{flex:1;min-width:24px;height:6px;background:var(--borda);border-radius:999px;overflow:hidden;order:2}
 .barra-preenchida{display:block;height:100%;background:var(--verde);border-radius:999px;width:0%}
 
@@ -81,6 +81,10 @@
 .etapa{border:none;padding:0;margin:0;min-width:0}
 .etapa[hidden]{display:none}
 
+.quiz-intro{font-size:.9rem;line-height:1.45;color:var(--text-muted);margin:0 0 14px}
+.quiz-intro strong{color:var(--text)}
+.quiz:not([data-etapa="1"]) .quiz-intro{display:none}
+.sub-curto{display:none}
 .pergunta{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding:0;width:100%}
 .pergunta img{width:52px;height:52px;flex:none}
 .pergunta h2{font-size:1.2rem;line-height:1.32;margin:0;min-width:0}
@@ -183,6 +187,10 @@ body > footer{margin-top:56px}
   .badge-produto{display:none}
   .hero-captura h1{margin-bottom:10px}
   .hero-captura .sub{font-size:1rem}
+  /* Celular: subtítulo curto com a promessa da demo no lugar da linha de
+     abertura do quiz, que empurrava as opções para baixo do aviso de cookies. */
+  .sub-longo,.quiz-intro{display:none}
+  .sub-curto{display:inline}
   .layout-captura{gap:20px}
   .opcao-radio{padding-block:12px}
   .quiz-progresso{margin-bottom:16px}

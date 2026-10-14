@@ -45,7 +45,10 @@
   <div class="hero-captura">
     <span class="badge-produto">guara.bot · IA para consultórios</span>
     <h1>Paciente sem resposta no WhatsApp marca em outro lugar.</h1>
-    <p class="sub">O guara.bot atende, agenda e confirma consulta no WhatsApp a qualquer hora. Assunto delicado ele passa para a sua equipe.</p>
+    <!-- Dois textos (como o aviso de cookies): no celular não cabia subtítulo
+         + linha de abertura do quiz sem empurrar as opções para baixo do aviso
+         de cookies; lá o subtítulo curto leva a promessa da demo (2026-10-14). -->
+    <p class="sub"><span class="sub-longo">O guara.bot atende, agenda e confirma consulta no WhatsApp a qualquer hora. Assunto delicado ele passa para a sua equipe.</span><span class="sub-curto">O guara.bot atende e agenda no WhatsApp. Em menos de 1 minuto, você pede a demo.</span></p>
     <!-- Mascote oficial (docs/marketing/brand/guara-bot, v3 aprovado). Só no
          desktop: no celular o quiz precisa subir para perto da dobra. O
          <source> com media faz o desktop carregar na hora e o celular ficar no
@@ -66,13 +69,17 @@
         Voltar
       </button>
       <span class="barra-fundo"><span class="barra-preenchida"></span></span>
-      <span class="contagem" id="contagem">1 de 6</span>
+      <span class="contagem" id="contagem">Pergunta 1 de 6</span>
     </div>
 
     <form id="quizForm" novalidate>
 
+      <!-- Só na 1ª pergunta (CSS esconde nas outras): 85% saíam aqui sem tocar
+           em nada, sem saber quanto dura nem o que ganham no fim (2026-10-14). -->
+      <p class="quiz-intro"><strong>Poucas perguntas, menos de 1 minuto.</strong> No fim, você conversa com a gente no WhatsApp e vê como o guara.bot atenderia o seu consultório.</p>
+
       <fieldset class="etapa" data-etapa="1" id="etapa1">
-        <legend class="pergunta"><img src="/brand/guara-bot/01-boas-vindas-128.webp" width="52" height="52" alt="" aria-hidden="true"><h2>Qual o segmento da sua clínica?</h2></legend>
+        <legend class="pergunta"><img src="/brand/guara-bot/01-boas-vindas-128.webp" width="52" height="52" alt="" aria-hidden="true"><h2>Vamos começar: qual é a área do seu consultório?</h2></legend>
         <div class="opcoes">
           <label class="opcao-radio"><input type="radio" name="segmento" value="Medicina"><span>Medicina</span></label>
           <label class="opcao-radio"><input type="radio" name="segmento" value="Odontologia"><span>Odontologia</span></label>

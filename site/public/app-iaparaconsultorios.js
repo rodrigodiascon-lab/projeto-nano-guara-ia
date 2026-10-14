@@ -75,7 +75,7 @@ function mostraEtapa(n) {
   quiz.dataset.progress = String(Math.min(100, Math.max(0, pct)));
   // Na última etapa o total já é certo, mas "5 de 5" logo depois de "4 de 6"
   // confunde; "Último passo" diz o que importa.
-  contagem.textContent = n === 6 ? 'Último passo' : `${posicao} de ${total}`;
+  contagem.textContent = n === 6 ? 'Último passo' : `Pergunta ${posicao} de ${total}`;
   btnVoltar.hidden = historico.length <= 1;
   if (n === 6) renderizaTurnstile();
 }
