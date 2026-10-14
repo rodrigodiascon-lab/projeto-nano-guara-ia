@@ -1,0 +1,11 @@
+{
+  "data": "2026-10-14T01:10:34-04:00",
+  "acao": "pausar campanha (aprovado pelo dono em 14/10: '4. pause a campanha')",
+  "conta": "act_1678023370148935",
+  "campanha": "120250381096980113",
+  "nome": "NG | guara.bot | Barbearias | Landing page | Manaus",
+  "antes": "ACTIVE",
+  "depois": "PAUSED (verificado por leitura após a chamada)",
+  "motivo": "Outubro até 13/10: R$ 346 gastos, 1.025 visitas à página, nenhum lead real e nenhum Contact medido pelo pixel. Otimização por visita não vira contato.",
+  "reverter": "status ACTIVE na mesma campanha (aprovação separada)"
+}

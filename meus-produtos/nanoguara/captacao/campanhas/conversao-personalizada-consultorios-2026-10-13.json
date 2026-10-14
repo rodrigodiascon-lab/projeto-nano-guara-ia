@@ -1,0 +1,12 @@
+{
+  "data": "2026-10-13T09:53:18-04:00",
+  "acao": "criar conversão personalizada (aprovada pelo dono em 13/10)",
+  "conta": "act_1678023370148935",
+  "id": "28874602885493232",
+  "nome": "NG | Lead quiz consultórios (/iaparaconsultorios)",
+  "pixel": "1129265532898131",
+  "custom_event_type": "LEAD",
+  "regra": {"and": [{"event": {"eq": "Lead"}}, {"url": {"i_contains": "nanoguara.ia.br/iaparaconsultorios"}}]},
+  "motivo": "Em 12/10 a Meta atribuiu à campanha de consultórios 4 Leads que eram testes do formulário de barbearias (leads 6 a 9 do banco, 23h12 a 23h49), porque as duas páginas usam o mesmo pixel.",
+  "pendente": "Trocar a otimização do conjunto 120250508583910113 do Lead geral do pixel para esta conversão: aprovação separada."
+}
