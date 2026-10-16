@@ -47,6 +47,18 @@ clinicas:                           # landing nova, criada em 2026-10-10, ainda 
     lead: nao_testado               # envio real com nome "TESTE 1"
   checar_restricao_saude: pendente  # Gerenciador de Eventos pode restringir conjunto de dados de saúde
   utm: "utm_campaign=clinicas-... e utm_content=adNN"
+oftalmologia:                       # landing criada em 2026-10-16, ainda sem campanha
+  destino: "https://nanoguara.ia.br/guarabot/oftalmologia"
+  publicada: true                   # deploy 08d8ae19 em 2026-10-16
+  eventos_no_codigo: [PageView, Contact (clique em wa.me, exceto rodapé), Lead (formulário, origem guarabot-oftalmologia)]
+  separacao: "só pela URL: eventos saem sem parâmetro"
+  conversoes_personalizadas:
+    lead: pendente                  # regra: evento Lead + URL contém guarabot/oftalmologia
+    contact: pendente               # regra: evento Contact + URL contém guarabot/oftalmologia
+  testar_eventos:
+    pageview: nao_testado
+    contact: nao_testado
+    lead: nao_testado               # envio real com nome "TESTE 1"
 validacao:
   status: passou                    # passou | falhou | pendente
   data: "2026-09-30"
