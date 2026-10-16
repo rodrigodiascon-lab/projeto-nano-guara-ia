@@ -32,6 +32,7 @@ const PAGINAS = [
   { nome: "captura: iaparaconsultorios", url: "/iaparaconsultorios.html", temFormulario: false },
   { nome: "landing: guarabot barbearias", url: "/guarabot/barbearias.html", temFormulario: false },
   { nome: "landing: guarabot clínicas", url: "/guarabot/clinicas.html", temFormulario: false },
+  { nome: "landing: guarabot oftalmologia", url: "/guarabot/oftalmologia.html", temFormulario: false },
 ];
 
 /**

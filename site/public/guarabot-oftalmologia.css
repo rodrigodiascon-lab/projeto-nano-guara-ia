@@ -1,0 +1,179 @@
+/* /guarabot/oftalmologia: carrega depois de guarabot-barbearias.css e
+   guarabot-clinicas.css (classes .gb- e tema nude .gc). Aqui só as seções
+   novas, com prefixo .go-: grade "Feito para oftalmologia", faixa de alerta e
+   chips de sistemas. CSP estrita: nada inline. */
+
+.go section{padding:96px 0}
+@media(max-width:600px){.go section{padding:64px 0}}
+
+/* Topo enxuto (selo, título, subtítulo, um botão + visita): sem o link
+   secundário, a caixa de visita encosta no botão. */
+.go .gb-hero .ctas{margin-bottom:0}
+
+/* Sequência de fundos: duas vizinhas nunca com a mesma cor. */
+.go .go-feito-sec{background:var(--surface)}
+.go .gb-trilha{background:var(--bg)}
+.go .go-sistemas-sec{background:var(--creme)}
+.go .gb-conta{background:var(--surface);border-block:1px solid var(--borda)}
+
+/* ---------- Feito para oftalmologia: grade irregular de 5 células ---------- */
+.go-feito-sub{color:var(--text-muted);font-size:1.1rem;margin-top:12px}
+.go-feito{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:18px;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr);
+  grid-template-areas:"grande b c" "grande d pose"}
+.go-cel{background:var(--bg);border:1px solid var(--borda);border-radius:var(--raio-card);padding:24px 24px 26px;display:grid;gap:8px;align-content:start}
+.go-cel h3{font-size:1.15rem;line-height:1.25;color:var(--text)}
+.go-cel p{color:var(--text-muted);font-size:.98rem;line-height:1.5;margin:0}
+.go-cel:nth-child(2){grid-area:b}
+.go-cel:nth-child(3){grid-area:c}
+.go-cel:nth-child(4){grid-area:d}
+/* Célula grande: tom verde da marca e o guara.bot confirmando. */
+.go-cel-grande{grid-area:grande;align-content:end;padding:28px;
+  background:color-mix(in srgb,var(--verde) 9%,var(--surface));border-color:color-mix(in srgb,var(--verde) 28%,transparent)}
+.go-cel-grande img{width:150px;height:150px;margin:-8px 0 auto -10px}
+.go-cel-grande h3{font-size:1.5rem;color:var(--verde-escuro)}
+.go-cel-grande p{font-size:1.05rem;color:var(--text)}
+/* Célula com pose empática: nude, imagem ao lado do texto. */
+.go-cel-pose{grid-area:pose;background:var(--creme);display:flex;align-items:center;gap:14px;padding:18px 22px 18px 12px}
+.go-cel-pose img{width:104px;height:104px;flex:none}
+.go-cel-pose div{display:grid;gap:6px}
+
+/* Faixa de largura total: o que ele NÃO faz. */
+.go-alerta{margin:18px 0 0;padding:22px 28px 22px 64px;border-radius:var(--raio-card);position:relative;
+  background:var(--surface-deep);color:#CBDCCF;font-size:1.05rem;line-height:1.5}
+.go-alerta b{display:block;color:#fff;font-family:"Outfit","Outfit-fallback",ui-rounded,system-ui;font-size:1.25rem;margin-bottom:4px}
+.go-alerta::before{content:"";position:absolute;left:24px;top:26px;width:24px;height:24px;border-radius:50%;
+  background:var(--guarana) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 7v6M12 17h.01'/%3E%3C/svg%3E") center/16px no-repeat}
+
+@media(max-width:900px){
+  .go-feito{grid-template-columns:minmax(0,1fr);grid-template-areas:none}
+  /* Especificidade acima de .go-cel:nth-child(n): sem isso as células pedem
+     áreas que não existem e o grid cria colunas extras (rolagem lateral). */
+  .go .go-feito .go-cel{grid-area:auto}
+  .go-cel-grande{align-content:start}
+  .go-cel-grande img{width:110px;height:110px;margin:-4px 0 0 -8px}
+  .go-alerta{padding:20px 20px 20px 58px}
+  .go-alerta::before{left:20px;top:24px}
+}
+
+/* ---------- Integrações: chips de texto (sem logos de terceiros) ---------- */
+.go-sistemas-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.go-sistemas-nota{color:var(--text-muted);font-size:1.02rem;line-height:1.55;margin-top:14px;max-width:34rem}
+.go-sistemas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.go-sistemas li{background:var(--surface);border:1px solid var(--borda);border-radius:999px;padding:10px 18px;
+  font-weight:600;font-size:.98rem;color:var(--text);white-space:nowrap}
+.go-sistemas .go-sistema-pronto{background:color-mix(in srgb,var(--verde) 12%,var(--surface));border-color:color-mix(in srgb,var(--verde) 40%,transparent);color:var(--verde-escuro)}
+.go-sistemas .go-sistema-pronto::after{content:" · pronto"}
+@media(max-width:900px){
+  .go-sistemas-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  /* Celular: uma linha que rola de lado, com encaixe; a página não rola. */
+  .go-sistemas{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 10px;
+    margin-inline:-2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+  .go-sistemas li{scroll-snap-align:start;flex:none}
+}
+.go-sistemas:focus-visible{outline:2px solid var(--verde);outline-offset:4px;border-radius:12px}
+
+/* Auditoria 2026-10-16 (design, conversão, celular). */
+.go-sistemas-marcas{font-size:.82rem;color:var(--text-muted);margin-top:18px;max-width:34rem}
+/* Célula grande: imagem no topo, texto embaixo, sem vão no meio. */
+.go-cel-grande{align-content:space-between}
+.go-cel-grande img{margin:-8px 0 0 -10px}
+@media(max-width:900px){
+  /* A lista rola de lado: o fade na borda mostra que tem mais. */
+  .go-sistemas{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+  .go .gb-rotulo{font-size:.8rem}
+}
+@media(max-width:420px){
+  .go-cel-pose{flex-direction:column;align-items:flex-start;padding:22px}
+  .go-cel-pose img{width:88px;height:88px}
+}
+
+/* ---------- Polish (impeccable, 2026-10-16) ---------- */
+/* Números com fonte sem faixa colorida à esquerda: o peso do número já marca. */
+.go .gc-fonte{border-left:0;padding-left:0}
+/* Tablet: a grade vira 2 colunas (célula grande em cima, 4 em pares). */
+@media(min-width:601px) and (max-width:900px){
+  .go-feito{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .go .go-feito .go-cel-grande{grid-column:1 / -1;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:20px}
+  .go .go-feito .go-cel-grande img{grid-row:1 / span 2;margin:0}
+  /* Mascote ao lado do texto: a célula não fica mais alta que a vizinha. */
+  .go-cel-pose{flex-direction:row;align-items:center;padding:18px 20px 18px 10px}
+  .go-cel-pose img{width:84px;height:84px}
+  /* Tablet tem largura para todos os chips: quebra linha, sem rolagem nem fade. */
+  .go-sistemas{flex-wrap:wrap;overflow-x:visible;-webkit-mask-image:none;mask-image:none}
+}
+/* Superfícies do navegador na cor da marca. */
+.go ::selection{background:color-mix(in srgb,var(--verde) 22%,transparent);color:var(--text)}
+.go input,.go select{caret-color:var(--verde)}
+.go-sistemas{scrollbar-color:color-mix(in srgb,var(--verde) 45%,transparent) transparent}
+/* Rótulo vermelho do fluxograma sobre o offwhite: tom mais escuro para 4,5:1. */
+.go .gb-saida-voce .gb-rotulo{color:var(--guarana-hover)}
+/* Selo do topo no celular: 12,5px no mínimo (era 11,8px). */
+@media(max-width:600px){.go .gb-selo{font-size:.78rem;padding:4px 10px}}
+
+/* ======================================================================
+   Detalhes de oftalmologia (2026-10-16). Um momento por seção, discretos.
+   ====================================================================== */
+
+/* ---------- 1. Tabela de Snellen ---------- */
+.go .go-snellen-sec{background:var(--surface);padding:88px 0 92px;border-bottom:1px solid var(--borda)}
+.go-snellen{margin:0 auto;max-width:640px;display:grid;justify-items:center;gap:.5em;font-family:"Outfit","Outfit-fallback",ui-rounded,system-ui;font-weight:700;color:var(--text)}
+.go-sn{margin:0;display:grid;grid-template-columns:3.6rem auto;align-items:baseline;column-gap:18px;line-height:1}
+/* Acuidade à esquerda, como na tabela de verdade; some no celular. */
+.go-sn-n{font-family:"Geist",system-ui,sans-serif;font-weight:500;font-size:.72rem;color:var(--text-muted);letter-spacing:0;text-align:right;justify-self:end}
+.go-sn-t{letter-spacing:.32em;margin-right:-.32em}
+.go-sn-1 .go-sn-t{font-size:clamp(4.5rem,11vw,7rem)}
+.go-sn-2 .go-sn-t{font-size:clamp(2.6rem,6vw,3.8rem)}
+.go-sn-3 .go-sn-t{font-size:clamp(1.6rem,3.8vw,2.4rem)}
+.go-sn-4 .go-sn-t{font-size:clamp(1.25rem,2.8vw,1.75rem)}
+.go-sn-5 .go-sn-t{font-size:clamp(1rem,2vw,1.3rem)}
+/* A linha vermelha das tabelas de consultório, na cor do guaraná. */
+.go-sn-5{padding-bottom:14px;border-bottom:2px solid var(--guarana);margin-bottom:6px}
+.go-sn-6 .go-sn-t{font-family:"Geist",system-ui,sans-serif;font-weight:500;font-size:.82rem;letter-spacing:.02em;margin-right:0;color:var(--text-muted)}
+@media(max-width:600px){
+  .go .go-snellen-sec{padding:64px 0 68px}
+  .go-sn{grid-template-columns:auto}
+  .go-sn-n{display:none}
+  .go-sn-t{letter-spacing:.24em;margin-right:-.24em}
+  .go-sn-6 .go-sn-t{letter-spacing:0;text-align:center;max-width:24ch}
+}
+
+/* ---------- 2. Pupila que dilata ---------- */
+.go-iris{display:block;margin-bottom:4px}
+.go-pupila{transform-box:fill-box;transform-origin:center}
+.go-cel-iris.dilata .go-pupila{animation:go-dilata 1.6s cubic-bezier(.16,1,.3,1) .2s both}
+@keyframes go-dilata{from{transform:scale(1)}to{transform:scale(1.75)}}
+
+/* ---------- 3. Qual fica mais nítido: 1 ou 2? ---------- */
+.go-compara-sub{color:var(--text-muted);font-size:1.1rem;margin-top:10px}
+.go-lente{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px;
+  border:6px solid #17231B;box-shadow:inset 0 0 0 3px #FDF9F0,inset 0 0 0 4px color-mix(in srgb,#17231B 30%,transparent);
+  font-family:"Outfit","Outfit-fallback",ui-rounded,system-ui;font-weight:700;font-size:2.8rem;line-height:1;color:#17231B;background:#FDF9F0}
+/* Lente 1 desfoca só o número: a lista de baixo continua nítida para ler. */
+.go-lente-1 span{filter:blur(3.5px);opacity:.8}
+.go-lente-2{border-color:#FDF9F0;background:#1A3D29;color:#FDF9F0;box-shadow:inset 0 0 0 3px #123B26,inset 0 0 0 4px rgba(253,249,240,.35)}
+@media(max-width:600px){.go-lente{width:76px;height:76px;font-size:2.2rem;border-width:5px}}
+
+/* ---------- 4. Guaraná que é um olho ---------- */
+.go .go-olho-sec .gb-fundadoras-grid{grid-template-columns:minmax(0,190px) minmax(0,1fr)}
+.go-olho{width:100%;max-width:190px;height:auto;display:block;margin-inline:auto;overflow:visible}
+.go-olho-globo{transform-box:fill-box;transform-origin:center}
+.go-olho.pisca .go-olho-globo{animation:go-pisca .42s ease-in-out .5s 1}
+@keyframes go-pisca{0%,100%{transform:scaleY(1)}45%,55%{transform:scaleY(.08)}}
+.go-olho-pupila{transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.go-olho-lenda{font-size:1rem;color:var(--verde-escuro);font-weight:500;margin:0 0 10px;max-width:40rem}
+@media(max-width:900px){
+  .go .go-olho-sec .gb-fundadoras-grid{grid-template-columns:minmax(0,1fr)}
+  .go-olho{max-width:120px;margin-inline:0}
+}
+@media (prefers-reduced-motion: reduce){
+  .go-cel-iris.dilata .go-pupila,.go-olho.pisca .go-olho-globo{animation:none}
+  .go-olho-pupila{transition:none}
+}
+/* Snellen: letras centradas num eixo só; a acuidade fica pendurada à esquerda. */
+.go-sn{display:block;position:relative;text-align:center}
+.go-sn-n{position:absolute;right:calc(100% + 22px);bottom:.15em;white-space:nowrap}
+.go-sn-5{padding-inline:12px}
+.go-sn-t{white-space:nowrap}
+.go-sn-6 .go-sn-t{white-space:normal}
+@media(max-width:600px){.go-sn-6 .go-sn-t{display:inline-block;max-width:26ch}}

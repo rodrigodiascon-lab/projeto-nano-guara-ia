@@ -149,50 +149,56 @@ test("clique no WhatsApp da landing de barbearias vira Contact só com o pixel a
   expect(chamadas).toContainEqual(["track", "Contact"]);
 });
 
-test("landing de clínicas: WhatsApp vira Contact e o rodapé não", async ({ page }) => {
-  await prepara(page);
-  await page.route("https://wa.me/**", (route) => route.fulfill({ body: "ok" }));
-  await page.goto("/guarabot/clinicas.html");
-  await banner(page).getByRole("button", { name: "Aceitar" }).click();
-  await expect.poll(() => page.evaluate(() => (window as any).__fbq)).toBeTruthy();
-  const contatos = () => page.evaluate(() =>
-    (window as any).__fbq.filter((c: unknown[]) => c[0] === "track" && c[1] === "Contact").length);
-  const clica = (sel: string) => page.evaluate((s) => {
-    const a = document.querySelector(s) as HTMLAnchorElement;
-    a.addEventListener("click", (e) => e.preventDefault());
-    a.click();
-  }, sel);
+// Landings de saúde: mesmo formulário e mesma regra de Contact, origem própria.
+for (const [pagina, nome, area] of [
+  ["clinicas", "clínicas", "Odontologia"],
+  ["oftalmologia", "oftalmologia", "Clínica de oftalmologia"],
+]) {
+  test(`landing de ${nome}: WhatsApp vira Contact e o rodapé não`, async ({ page }) => {
+    await prepara(page);
+    await page.route("https://wa.me/**", (route) => route.fulfill({ body: "ok" }));
+    await page.goto(`/guarabot/${pagina}.html`);
+    await banner(page).getByRole("button", { name: "Aceitar" }).click();
+    await expect.poll(() => page.evaluate(() => (window as any).__fbq)).toBeTruthy();
+    const contatos = () => page.evaluate(() =>
+      (window as any).__fbq.filter((c: unknown[]) => c[0] === "track" && c[1] === "Contact").length);
+    const clica = (sel: string) => page.evaluate((s) => {
+      const a = document.querySelector(s) as HTMLAnchorElement;
+      a.addEventListener("click", (e) => e.preventDefault());
+      a.click();
+    }, sel);
 
-  await clica('footer a[href^="https://wa.me/"]');
-  expect(await contatos()).toBe(0);
-  await clica('.gb-hero a[href^="https://wa.me/"]');
-  expect(await contatos()).toBe(1);
-});
-
-test("landing de clínicas: formulário aceito pelo /api/lead vira Lead, com origem própria", async ({ page }) => {
-  await prepara(page);
-  await page.route("https://challenges.cloudflare.com/**", (route) => route.abort());
-  let corpo: Record<string, unknown> = {};
-  await page.route("**/api/lead", async (route) => {
-    corpo = route.request().postDataJSON();
-    await route.fulfill({ status: 201, contentType: "application/json", body: '{"ok":true}' });
+    await clica('footer a[href^="https://wa.me/"]');
+    expect(await contatos()).toBe(0);
+    await clica('.gb-hero a[href^="https://wa.me/"]');
+    expect(await contatos()).toBe(1);
   });
-  await page.goto("/guarabot/clinicas.html");
-  await banner(page).getByRole("button", { name: "Aceitar" }).click();
-  await expect.poll(() => page.evaluate(() => (window as any).__fbq)).toBeTruthy();
 
-  const form = page.locator("#gbForm");
-  await form.getByLabel("Nome").fill("TESTE 1");
-  await form.getByLabel("Área de atuação").selectOption("Odontologia");
-  await form.getByLabel("WhatsApp").fill("92988887777");
-  await form.locator("#gbConsent").check();
-  await form.getByRole("button", { name: /Quero que me chamem/ }).first().click();
+  test(`landing de ${nome}: formulário aceito pelo /api/lead vira Lead, com origem própria`, async ({ page }) => {
+    await prepara(page);
+    await page.route("https://challenges.cloudflare.com/**", (route) => route.abort());
+    let corpo: Record<string, unknown> = {};
+    await page.route("**/api/lead", async (route) => {
+      corpo = route.request().postDataJSON();
+      await route.fulfill({ status: 201, contentType: "application/json", body: '{"ok":true}' });
+    });
+    await page.goto(`/guarabot/${pagina}.html`);
+    await banner(page).getByRole("button", { name: "Aceitar" }).click();
+    await expect.poll(() => page.evaluate(() => (window as any).__fbq)).toBeTruthy();
 
-  await expect(page.locator("#gbMsg")).toHaveClass(/sucesso/);
-  expect(corpo.origem).toBe("guarabot-clinicas");
-  const chamadas = await page.evaluate(() => (window as any).__fbq);
-  expect(chamadas).toContainEqual(["track", "Lead"]);
-});
+    const form = page.locator("#gbForm");
+    await form.getByLabel("Nome").fill("TESTE 1");
+    await form.getByLabel("Área de atuação").selectOption(area);
+    await form.getByLabel("WhatsApp").fill("92988887777");
+    await form.locator("#gbConsent").check();
+    await form.getByRole("button", { name: /Quero que me chamem/ }).first().click();
+
+    await expect(page.locator("#gbMsg")).toHaveClass(/sucesso/);
+    expect(corpo.origem).toBe(`guarabot-${pagina}`);
+    const chamadas = await page.evaluate(() => (window as any).__fbq);
+    expect(chamadas).toContainEqual(["track", "Lead"]);
+  });
+}
 
 test("o aviso tem respiro lateral também na landing de barbearias", async ({ page }) => {
   await prepara(page);

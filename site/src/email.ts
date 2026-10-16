@@ -7,6 +7,7 @@ const PAGINA: Record<string, string> = {
   iaparaconsultorios: "quiz guara.bot",
   "guarabot-barbearias": "landing guara.bot barbearias",
   "guarabot-clinicas": "landing guara.bot clínicas",
+  "guarabot-oftalmologia": "landing guara.bot oftalmologia",
   form: "formulário da página inicial",
 };
 

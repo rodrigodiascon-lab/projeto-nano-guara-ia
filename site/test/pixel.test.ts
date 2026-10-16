@@ -66,7 +66,7 @@ describe("pixel da Meta atrás do consentimento", () => {
     expect(s).not.toMatch(/track', 'Contact',/);
   });
 
-  for (const landing of ["barbearias", "clinicas"]) {
+  for (const landing of ["barbearias", "clinicas", "oftalmologia"]) {
     it(`a landing do guara.bot para ${landing} carrega o consentimento, não o pixel direto`, async () => {
       const html = await (await SELF.fetch(`https://site.local/guarabot/${landing}`)).text();
       expect(html).toContain('<script src="/consentimento.js" defer></script>');
