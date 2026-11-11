@@ -10,6 +10,7 @@ import consultoriosHtml from "../public/iaparaconsultorios.html?raw";
 import barbeariasHtml from "../public/guarabot/barbearias.html?raw";
 import clinicasLandingHtml from "../public/guarabot/clinicas.html?raw";
 import oftalmologiaHtml from "../public/guarabot/oftalmologia.html?raw";
+import bonusScriptsHtml from "../public/bonus/100scripts.html?raw";
 
 const RAZAO_SOCIAL = "R D Pimentel Serviços";
 const CNPJ = "21.091.816/0001-48";
@@ -25,6 +26,7 @@ const PAGINAS = {
   "guarabot/barbearias.html": barbeariasHtml,
   "guarabot/clinicas.html": clinicasLandingHtml,
   "guarabot/oftalmologia.html": oftalmologiaHtml,
+  "bonus/100scripts.html": bonusScriptsHtml,
 };
 
 /**
