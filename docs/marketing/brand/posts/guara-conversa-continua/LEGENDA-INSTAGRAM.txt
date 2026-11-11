@@ -1,0 +1,11 @@
+“Só amanhã” pode deixar uma intenção de agendar esperando até o dia seguinte.
+
+Quando alguém pergunta por um horário, a primeira conversa já pode acolher, entender a especialidade procurada e encaminhar o próximo passo.
+
+O guara.bot, da nanoguará.ia, apoia esse atendimento pelo WhatsApp conforme as informações e o fluxo do consultório. Dúvidas administrativas e agendamentos recebem apoio; assuntos clínicos seguem para a equipe.
+
+Deslize para ver um exemplo ilustrativo dessa conversa.
+
+Quer conhecer o guara.bot na rotina da sua clínica? Mande uma mensagem no direct.
+
+#guarabot #AssistenteVirtual #Consultorios #AtendimentoNoWhatsApp #nanoguaraia

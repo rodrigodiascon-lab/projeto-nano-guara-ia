@@ -1,0 +1,26 @@
+TODOS OS CRIATIVOS PARA FEED — NANOGUARÁ.IA
+
+Este pacote reúne todos os conceitos finais de Feed disponíveis para consultórios e clínicas.
+
+CONTEÚDO
+- 23 conceitos criativos finais.
+- 29 imagens prontas para Feed.
+- Formatos 4:5 em 1080 x 1350 px.
+- Alternativas 1:1 em 1080 x 1080 px quando disponíveis.
+- Uma legenda em TXT associada a cada conceito.
+
+COMO USAR
+1. Entre na pasta da campanha desejada.
+2. Escolha a imagem 4x5 como formato principal.
+3. Copie o texto do arquivo com o mesmo número e a palavra LEGENDA.
+4. Quando houver uma imagem 1x1, ela usa a mesma legenda da versão 4x5.
+
+ORGANIZAÇÃO
+01 — Assistente virtual para consultórios
+02 — Cinco ângulos de Meta Ads para consultórios
+03 — Dentistas
+04 — Nutricionistas
+05 — Clínicas de estética
+06 — Clínicas de fisioterapia
+
+Não foram incluídos: Stories, Reels, vídeos, grades de prévia, arquivos-fonte e versões rejeitadas durante a criação.

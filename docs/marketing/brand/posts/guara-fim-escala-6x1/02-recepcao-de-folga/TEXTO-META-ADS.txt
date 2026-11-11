@@ -1,0 +1,15 @@
+TEXTO PRINCIPAL
+Fim da escala 6x1: sua recepção de folga. E as novas mensagens?
+
+O guara.bot apoia o primeiro atendimento no WhatsApp, responde dúvidas administrativas e ajuda no agendamento. A conversa segue para sua equipe quando precisa de atenção humana.
+
+Conheça esse fluxo para o seu consultório.
+
+TÍTULO
+Sua equipe descansa. E as mensagens?
+
+DESCRIÇÃO
+Primeiro atendimento com IA
+
+BOTÃO NATIVO
+Saiba mais

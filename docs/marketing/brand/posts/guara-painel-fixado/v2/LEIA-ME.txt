@@ -1,0 +1,26 @@
+PAINEL FIXADO — VERSÃO 2
+Especialistas · Funcionalidades · Manaus
+
+ORDEM FINAL NO PERFIL, DA ESQUERDA PARA A DIREITA
+01-ESQUERDA-ESPECIALISTAS.png
+02-CENTRO-FUNCOES.png
+03-DIREITA-MANAUS.png
+
+Três arquivos PNG separados, 1080 × 1440 px, proporção 3:4.
+Cada arquivo tem uma legenda TXT correspondente.
+
+Publique como três posts independentes, não como carrossel.
+Se a grade seguir a ordem das publicações mais recentes, publique 03, depois 02, depois 01.
+Fixe e confira a ordem no seu perfil. Ajuste a ordem ou a fixação conforme as opções da conta.
+Mantenha o mesmo enquadramento das três imagens e evite zoom individual.
+A linha verde atravessa os três posts; os textos e as ilustrações ficam dentro dos limites de cada imagem.
+
+PREVIA-PAINEL-COMPLETO.png é a montagem do conjunto; não é um quarto post.
+PREVIA-GRADE.html mostra os três posts com pequenos espaços entre eles.
+
+Textos de especialidade, as quatro funções e suporte local seguem o briefing do usuário.
+“Analisa” foi mantido sem adicionar promessas de métricas, relatórios, diagnóstico ou resultados.
+O Teatro Amazonas é uma referência ilustrativa a Manaus, não uma sede da empresa.
+Mascote oficial v3, sem logomarca adicional.
+A versão anterior permanece preservada na pasta principal.
+Nenhum post foi publicado no Instagram.

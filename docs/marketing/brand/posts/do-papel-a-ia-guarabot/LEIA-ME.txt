@@ -1,0 +1,13 @@
+DO PAPEL À IA — POST PARA O FEED
+
+Arquivo: DO-PAPEL-A-IA-GUARABOT.png
+Post vertical individual (4:5), referência visual de duas épocas reinterpretada para a recepção de uma clínica.
+Legenda pronta em LEGENDA-FEED.txt
+
+Mascote baseado na identidade visual oficial guara.bot v3.
+Sem logomarca adicional. O aparelho mostra conversa genérica, sem reproduzir a interface ou o logo do WhatsApp.
+Funções descritas de acordo com a página do guara.bot para clínicas:
+https://nanoguara.ia.br/guarabot/clinicas
+
+Arte é um criativo ilustrativo; a cena antiga não é um caso real.
+

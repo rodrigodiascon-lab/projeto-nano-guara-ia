@@ -1,0 +1,17 @@
+TEXTO PRINCIPAL
+No segundo dia de folga da recepção, quem recebe as novas mensagens?
+
+O guara.bot faz o primeiro atendimento pelo WhatsApp: acolhe, responde dúvidas administrativas e ajuda no agendamento, mesmo fora do horário.
+
+Quando a conversa precisa de atenção humana, ela segue para a equipe.
+
+Veja como funciona no seu consultório.
+
+TÍTULO
+Sua recepção de folga. E o WhatsApp?
+
+DESCRIÇÃO
+Primeiro atendimento com IA
+
+BOTÃO NATIVO
+Saiba mais

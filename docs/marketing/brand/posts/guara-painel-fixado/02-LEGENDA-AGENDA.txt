@@ -1,0 +1,9 @@
+Do “tem horário?” à consulta marcada.
+
+O guara.bot consulta os horários disponíveis, agenda e ajuda a remarcar pelo WhatsApp. Cada profissional mantém sua própria agenda.
+
+A integração apresentada é com o Google Agenda. Usa outro sistema? Fale com a nanoguará.ia para avaliar o seu caso.
+
+Quer ver como funciona? Chame no direct.
+
+#GuaraBot #NanoGuaraIA #AgendamentoOnline #GestaoDeClinicas

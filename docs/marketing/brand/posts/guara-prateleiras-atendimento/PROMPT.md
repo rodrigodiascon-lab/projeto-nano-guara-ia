@@ -1,0 +1,22 @@
+Método: imagegen integrado. Referências: composição com três prateleiras enviada pelo usuário e guara.bot v3 oficial. Sem logomarca de rodapé.
+
+Prompt utilizado:
+
+Use case: ads-marketing. Create one finished Instagram feed portrait post 4:5, ideally 1080x1350. Image1 is a COMPOSITION reference only: three warmly illuminated shelves of objects ranked by big elegant cream placards and individual small labels on shelf edges. Image2 is the MANDATORY official guara.bot identity reference. Adapt the comparison into administrative WhatsApp reception for Brazilian clinics. Use exactly three clear horizontal shelves with three meaningful objects per shelf. Photoreal 3D editorial display, elegant pale sage-green painted shelving, warm ivory plaster backdrop, discreet plants at edges, warm under-shelf lighting. The scene should feel like a beautiful clinic reception display, NEVER a kitchen. No pans, pots, cookware, food or product brands. High-quality tactile physical objects, believable shadows, premium typography, generous space. No nanoguará.ia logo/footer, no watermark, no carousel dots/arrows or social UI.
+
+LAYOUT AND ALL EXACT TEXT, correct Portuguese accents, perfectly legible:
+TOP THIRD: broad cream rounded sign with fine forest-green border, headline large dark-green serif "ISSO TRAVA". Below sign, three separate objects aligned left to right:
+1. Smartphone upright with a few muted unread-message bubbles, subtle red notification circle but NO numerical claim and no real app logo. Label on shelf lip: "Sem resposta".
+2. Messy overlapping small paper agendas, notes and notebook, visual scattered appointments. Label: "Agenda espalhada".
+3. Yellow sticky note with a crooked generic reminder symbol and pencil. Label: "Retorno esquecido".
+MIDDLE THIRD: broad matching cream sign, headline "ISSO AJUDA". Below, three separate objects aligned:
+1. Upright phone with one generic out-of-office message bubble, little moon icon; no legible fake patient data. Label: "Mensagem de ausência".
+2. Three clean physical cream message cards stacked, with green speech bubble marks. Label: "Respostas prontas".
+3. Neatly open appointment book with subtle ruled columns and green check, no visible invented result. Label: "Agenda organizada".
+BOTTOM THIRD: broad matching cream sign, headline "ISSO FUNCIONA JUNTO". This headline can be slightly smaller than other two to fit but still prominent and readable. Below, three separate objects aligned:
+1. Official guara.bot large enough to be recognizable, FULL legless floating body above the shelf, gentle greeting gesture, satin textures and exact canonical colors/design. Small soft levitation shadow on shelf. Label "guara.bot" lowercase with visible dot.
+2. Elegant physical upright miniature display of organized connected chat + calendar symbols (cream background, forest-green nodes), no extra words. Label "Fluxo configurado".
+3. A tasteful dark-green PHOTO FRAME holding a generic friendly Brazilian clinic team portrait of an adult woman receptionist and adult man healthcare professional, normal natural anatomy, clothed, no patient, no logos. Frame resting on shelf. Label "Sua equipe".
+Individual labels are cream rounded plaques with thin green borders and dark-green serif or humanist type, all at least 24px equivalent. Break long labels into two lines as needed; no overlap, all fully within canvas. Nine labels total, three headlines total, no duplicated objects. Keep rows equally balanced and well separated. Shelf lips clearly carry the labels directly below the matching object. No standalone extra tagline, explanation, CTA or footer signature. Safe margins at least 35px, bottom row not cropped.
+
+MANDATORY mascot invariants: match reference2, circular guaraná head with single green leaf, green outer casing #2E7D32, red face disk #D5382F, cream inner ring #FDF9F0, graphite expressive visor #17231B, friendly cream smile/eyes. Cream floating seed-shaped legless body, short rounded arms, canonical proportions, satin materials, no feet/hips/legs/antennas or generic robot replacement. Chest name "guara.bot" centered once with clear dot, no uppercase. No blue/cyan on character. Do not turn into a toy with legs, do not alter silhouette or identity. No performance statistics, testimonials or claims of replacing human judgment. The bottom shelf should communicate assistant + configured workflow + human team working together. Look like the provided comparison format with a sophisticated clinic-reception visual world.

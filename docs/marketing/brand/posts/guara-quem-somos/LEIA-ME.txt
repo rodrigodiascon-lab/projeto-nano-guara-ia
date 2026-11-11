@@ -1,0 +1,23 @@
+QUEM SOMOS — nanoguará.ia + guara.bot
+9 telas, na ordem 01 a 09.
+
+FEED: 9 PNGs 1080x1350, para carrossel ou publicações individuais.
+STORIES: 9 PNGs 1080x1920, com a mesma arte centralizada e margens adicionais de fundo para preservar texto e personagem.
+LEGENDAS: um texto por tela para publicação avulsa.
+LEGENDA-CARROSSEL.txt: texto para publicar a sequência completa no feed.
+PROMPTS.md: prompts de todas as gerações integradas imagegen.
+
+A sequência foi reorganizada: apresentação, contexto, rotina, solução, método, continuidade, aplicações, equipe, convite.
+Correspondência com anexos do usuário: 8, 9, 5, 2, 1, 7, 3, 4, 6.
+
+AJUSTES DE VERACIDADE
+Não foram transferidos os cases, +470 clínicas, percentuais de agendamento, 54 contratos, 300 agendamentos, preços R$0,04/R$0,34, economia de R$45mil ou exclusividade comercial da referência.
+Não foi atribuída parceria/credencial Tech Provider da Meta à nanoguará.ia.
+Não foi prometida agenda cheia, resposta em segundos ou disponibilidade garantida.
+Integrações, retomadas e automações dependem do projeto e das autorizações.
+O número 5 da tela 07 apenas enumera as cinco aplicações mostradas.
+Nenhuma arte contém logomarca adicional; nomes aparecem como texto e assinatura do mascote.
+
+Mascote revisado segundo docs/marketing/brand/guara-bot/README.md.
+Não publicar diagnóstico, orientação clínica ou promessa de resultado médico.
+

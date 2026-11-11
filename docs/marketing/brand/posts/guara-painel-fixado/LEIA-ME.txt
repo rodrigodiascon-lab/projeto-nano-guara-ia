@@ -1,0 +1,33 @@
+PAINEL FIXADO — GUARA.BOT PARA CLÍNICAS
+
+Três publicações independentes, formando uma composição contínua no perfil.
+Visual minimalista: fundo claro, tipografia grande, uma função por imagem e linha verde conectando o conjunto. Mascote oficial v3; sem logomarca extra.
+
+ARQUIVOS PARA POSTAR
+01-ESQUERDA-RESPONDE.png — 1080 × 1440 px
+02-CENTRO-AGENDA.png — 1080 × 1440 px
+03-DIREITA-LEMBRA.png — 1080 × 1440 px
+As legendas correspondentes estão nos três arquivos TXT numerados.
+
+ORDEM FINAL NO PERFIL
+ESQUERDA: Responde. | CENTRO: Agenda. | DIREITA: Lembra.
+
+COMO PUBLICAR
+1. Publique as três imagens SEPARADAMENTE. Não publique como um único carrossel: ele ocuparia apenas uma posição na grade.
+2. Para uma grade ordenada pelas publicações mais recentes, publique primeiro 03-LEMBRA, depois 02-AGENDA e por último 01-RESPONDE.
+3. Fixe as três publicações e confira a disposição final no perfil. Se necessário, ajuste a ordem usando as opções disponíveis na sua conta ou desafixe e fixe novamente.
+4. Mantenha a proporção original e confira a prévia da grade. Os três recortes precisam usar o mesmo enquadramento, sem zoom diferente.
+5. A linha verde continua entre os posts; pequenos espaços entre as miniaturas são normais. Textos e objetos ficam dentro de cada imagem.
+
+PRÉVIAS — NÃO PUBLICAR COMO POST INDIVIDUAL
+PREVIA-PAINEL-COMPLETO.png — montagem panorâmica, 3240 × 1440 px.
+PREVIA-GRADE.html — visualização dos três arquivos com espaço entre eles.
+
+CONTEÚDO E LIMITES
+Funções baseadas na página do produto consultada em 16/10/2026:
+https://nanoguara.ia.br/guarabot/clinicas
+Respostas administrativas no WhatsApp, consulta de horários livres, agendamento, remarcação e lembrete na véspera.
+Não foram usados preços, números de clientes, resultados garantidos ou credenciais de terceiros.
+Os exemplos visuais são ilustrativos; não são capturas da interface do produto.
+Os arquivos foram preparados para uma grade vertical 3:4. A aparência e as opções do perfil devem ser conferidas na própria conta antes de finalizar as fixações.
+Nada foi publicado no Instagram por este trabalho.

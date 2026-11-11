@@ -1,0 +1,10 @@
+A recepção lida com pessoas e com uma fila de pequenas tarefas.
+
+O guara.bot apoia o primeiro contato pelo WhatsApp, orienta sobre informações administrativas e ajuda a organizar o encaminhamento da conversa.
+
+A clínica define os fluxos. A equipe assume o que pede atenção humana. Assuntos clínicos ficam com os profissionais responsáveis.
+
+Para conhecer uma aplicação à rotina da sua clínica, fale com a nanoguará.ia no direct.
+
+#guarabot #nanoguaraia #AssistenteVirtual #Consultorios #AtendimentoNoWhatsApp
+

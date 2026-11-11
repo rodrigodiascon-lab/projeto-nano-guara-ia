@@ -1,0 +1,10 @@
+POST PARA INSTAGRAM — GUARA.BOT PARA CLÍNICAS
+
+Arquivo principal: FEED/01-guarabot-atendimento-agenda-lembrete.png
+Formato: imagem vertical, 1080 × 1350 px (4:5), pronta para publicação no feed.
+PREVIA: abra o PNG para conferir a arte completa em tamanho original.
+LEGENDA.txt: texto sugerido para acompanhar a publicação.
+
+A composição explica quatro etapas: mensagem, resposta do guara.bot, agendamento/remarcação e lembrete na véspera.
+Os horários exibidos no cartão da agenda são exemplos visuais, não disponibilidade real.
+O mascote utiliza a pose oficial “04-explicando”, derivada da identidade aprovada v3.

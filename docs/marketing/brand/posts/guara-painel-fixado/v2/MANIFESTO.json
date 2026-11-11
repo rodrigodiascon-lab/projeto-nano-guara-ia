@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "date": "2026-10-16",
+  "size": [
+    1080,
+    1440
+  ],
+  "exactRecomposition": true,
+  "order": [
+    "01-ESQUERDA-ESPECIALISTAS.png",
+    "02-CENTRO-FUNCOES.png",
+    "03-DIREITA-MANAUS.png"
+  ],
+  "files": [
+    {
+      "name": "01-ESQUERDA-ESPECIALISTAS.png",
+      "sha256": "092d05695654b917e7341179f28468023645473aeda570ff45f9cb3b005efc2f"
+    },
+    {
+      "name": "01-LEGENDA-ESPECIALISTAS.txt",
+      "sha256": "965d267eba6ea8362ee3509b162f8b1f0250f31b969a6020a0ed0216e221c35d"
+    },
+    {
+      "name": "02-CENTRO-FUNCOES.png",
+      "sha256": "ab705c79cdaf947d2ab348e613d95859c06f7adde38c898301493d95837f1dae"
+    },
+    {
+      "name": "02-LEGENDA-FUNCOES.txt",
+      "sha256": "fe400d081335cee7c07dce07e5f6b0471431cf7f42f1140ea85c9f0e2ae3c97b"
+    },
+    {
+      "name": "03-DIREITA-MANAUS.png",
+      "sha256": "14fd86ec8e432f7fa11151163dad7d955f61582c17a5a42a0920a92d39caae69"
+    },
+    {
+      "name": "03-LEGENDA-MANAUS.txt",
+      "sha256": "de14175eed4884f6a9a7afa984e26e00fb9f89c5d38c090b71521aae5ea366a2"
+    },
+    {
+      "name": "LEIA-ME.txt",
+      "sha256": "ec714c3956a06b162954a081dd6cf255225c7d215651841e74b747bc4953da76"
+    },
+    {
+      "name": "PREVIA-GRADE.html",
+      "sha256": "75be4156052a040c6307641ef460ce27ee552207d88b25601f7c0c6037c67dcc"
+    },
+    {
+      "name": "PREVIA-PAINEL-COMPLETO.png",
+      "sha256": "b29d356effd95c75b440064f278de411d969dde0648a9c5bd7cbe63a76839a71"
+    },
+    {
+      "name": "PROMPT.md",
+      "sha256": "3a32a1af6382df9efcf4a37ebbfdd55f5ba40243d3ca19ac87ec807a945e720a"
+    },
+    {
+      "name": "exportar.cjs",
+      "sha256": "3cd9c1eb6fd7f8c82fb978b92f0a506ef34ede2269eb766e384b1a0acf2c2d71"
+    }
+  ]
+}

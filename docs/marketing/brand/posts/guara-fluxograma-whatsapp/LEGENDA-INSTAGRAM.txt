@@ -1,0 +1,9 @@
+Tem pergunta que pede um horário. Tem pergunta que pede um profissional de saúde.
+
+O guara.bot apoia a rotina administrativa do consultório pelo WhatsApp: responde dúvidas sobre atendimento, ajuda no agendamento e confirma consultas conforme o fluxo configurado.
+
+Quando o assunto é clínico, a conversa segue para sua equipe. Cada pessoa recebe atenção de quem pode ajudar naquela situação.
+
+Quer ver como a nanoguará.ia organiza esse fluxo para o seu consultório? Mande uma mensagem no direct.
+
+#guarabot #AssistenteVirtual #Consultorios #AtendimentoNoWhatsApp #nanoguaraia

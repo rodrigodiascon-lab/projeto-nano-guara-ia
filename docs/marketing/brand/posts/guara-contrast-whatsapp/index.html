@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1080, initial-scale=1">
+  <title>1 WhatsApp, 1 guara.bot</title>
+  <style>
+    @font-face {
+      font-family: "Outfit";
+      src: url("../dentistas-agendamento/assets/fonts/outfit-700.woff2") format("woff2");
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: "Geist";
+      src: url("../dentistas-agendamento/assets/fonts/geist-500.woff2") format("woff2");
+      font-weight: 500;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: #fdf9f0;
+    }
+    body { font-family: "Geist", sans-serif; }
+    .post {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 9%, rgba(46,125,50,.065) 0 2px, transparent 3px) 0 0 / 26px 26px,
+        #fdfbf6;
+      color: #111713;
+    }
+    .brand {
+      position: absolute;
+      top: 34px;
+      right: 48px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #2e7d32;
+      font: 700 20px/1 "Outfit", sans-serif;
+      letter-spacing: .4px;
+    }
+    .brand::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #d5382f;
+      box-shadow: 0 0 0 5px rgba(213,56,47,.12);
+    }
+    .row {
+      position: absolute;
+      left: 0;
+      width: 1080px;
+    }
+    .row.top { top: 88px; height: 550px; }
+    .row.bottom { top: 675px; height: 620px; }
+    .heading {
+      margin: 0;
+      text-align: center;
+      color: #111713;
+      font: 700 62px/.95 "Outfit", sans-serif;
+      letter-spacing: -2.4px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .heading .gap { margin: 0 15px; }
+    .heading .dot { color: #d5382f; }
+    .top-content {
+      position: absolute;
+      top: 104px;
+      left: 88px;
+      right: 76px;
+      height: 400px;
+    }
+    .mascot {
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 400px;
+      height: 400px;
+      object-fit: contain;
+      filter: drop-shadow(0 17px 17px rgba(23,35,27,.18));
+    }
+    .chat-stack {
+      position: absolute;
+      right: 0;
+      top: 52px;
+      width: 480px;
+      height: 290px;
+    }
+    .bubble {
+      position: absolute;
+      padding: 22px 28px;
+      border-radius: 28px;
+      font: 700 28px/1.15 "Outfit", sans-serif;
+      box-shadow: 0 13px 28px rgba(23,35,27,.12);
+    }
+    .bubble.in {
+      left: 0;
+      top: 0;
+      width: 385px;
+      color: #17231b;
+      background: #fff;
+      border: 2px solid #d9ded9;
+    }
+    .bubble.out {
+      right: 0;
+      bottom: 34px;
+      width: 410px;
+      color: #fff;
+      background: #2e7d32;
+    }
+    .bubble-time {
+      display: block;
+      margin-top: 10px;
+      opacity: .72;
+      font: 500 17px/1 "Geist", sans-serif;
+    }
+    .check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-left: 8px;
+      border-radius: 50%;
+      color: #2e7d32;
+      background: #fff;
+      vertical-align: -3px;
+    }
+    .divider {
+      position: absolute;
+      left: 70px;
+      right: 70px;
+      top: 638px;
+      height: 4px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, transparent, #d9ded9 10%, #d9ded9 90%, transparent);
+    }
+    .clutter {
+      position: absolute;
+      left: 55px;
+      right: 55px;
+      top: 106px;
+      height: 455px;
+    }
+    .object {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 2px solid rgba(23,35,27,.09);
+      box-shadow: 0 15px 30px rgba(23,35,27,.13);
+    }
+    .phone {
+      left: 12px;
+      top: 60px;
+      width: 175px;
+      height: 330px;
+      border: 13px solid #17231b;
+      border-radius: 34px;
+      background: linear-gradient(155deg, #2e7d32, #12461d);
+      transform: rotate(-7deg);
+    }
+    .phone::before {
+      content: "47";
+      position: absolute;
+      top: 28px;
+      right: 19px;
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: #d5382f;
+      font: 700 21px/1 "Outfit", sans-serif;
+      box-shadow: 0 5px 12px rgba(0,0,0,.2);
+    }
+    .phone .mini-bubble {
+      width: 108px;
+      height: 48px;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 62px 0 rgba(255,255,255,.8), 0 124px 0 rgba(255,255,255,.6);
+    }
+    .calendar {
+      left: 195px;
+      top: 22px;
+      width: 215px;
+      height: 185px;
+      border-radius: 18px;
+      transform: rotate(4deg);
+      background: linear-gradient(#d5382f 0 42px, #fff 42px);
+    }
+    .calendar::before {
+      content: "18";
+      color: #17231b;
+      font: 700 78px/1 "Outfit", sans-serif;
+      transform: translateY(18px);
+    }
+    .sheet {
+      left: 425px;
+      top: 35px;
+      width: 310px;
+      height: 205px;
+      border-radius: 12px;
+      transform: rotate(-3deg);
+      background:
+        linear-gradient(#2e7d32 0 42px, transparent 42px),
+        repeating-linear-gradient(0deg, transparent 0 31px, #d7ddd8 32px 34px),
+        repeating-linear-gradient(90deg, transparent 0 66px, #d7ddd8 67px 69px),
+        #fff;
+    }
+    .sheet::after {
+      content: "PLANILHA_FINAL_v7";
+      position: absolute;
+      left: 17px;
+      top: 11px;
+      color: #fff;
+      font: 700 17px/1 "Outfit", sans-serif;
+    }
+    .notes {
+      right: 4px;
+      top: 18px;
+      width: 240px;
+      height: 168px;
+      border: 0;
+      box-shadow: none;
+      background: transparent;
+    }
+    .notes::before,
+    .notes::after {
+      content: "retornar\A paciente";
+      white-space: pre;
+      position: absolute;
+      width: 112px;
+      height: 120px;
+      padding: 24px 12px;
+      color: #594c1f;
+      background: #ffdf62;
+      box-shadow: 0 10px 18px rgba(23,35,27,.12);
+      font: 700 17px/1.15 "Outfit", sans-serif;
+      text-align: center;
+    }
+    .notes::before { left: 0; top: 32px; transform: rotate(-8deg); content: "retornar\A paciente"; }
+    .notes::after { right: 0; top: 0; transform: rotate(8deg); background: #ffc96a; content: "confirmar\A 14h"; }
+    .coffee {
+      left: 230px;
+      bottom: 15px;
+      width: 180px;
+      height: 160px;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .cup {
+      position: relative;
+      width: 110px;
+      height: 105px;
+      border-radius: 10px 10px 34px 34px;
+      background: #fdf9f0;
+      border: 8px solid #17231b;
+      box-shadow: 0 12px 24px rgba(23,35,27,.16);
+    }
+    .cup::before {
+      content: "";
+      position: absolute;
+      right: -48px;
+      top: 17px;
+      width: 48px;
+      height: 58px;
+      border: 8px solid #17231b;
+      border-left: 0;
+      border-radius: 0 30px 30px 0;
+    }
+    .cup::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      top: -20px;
+      height: 10px;
+      border-radius: 50%;
+      background: #7c4a2a;
+      box-shadow: 20px -30px 0 -3px rgba(124,74,42,.42), 45px -55px 0 -4px rgba(124,74,42,.28);
+    }
+    .clock {
+      left: 438px;
+      bottom: 5px;
+      width: 180px;
+      height: 180px;
+      border: 12px solid #17231b;
+      border-radius: 50%;
+      transform: rotate(7deg);
+    }
+    .clock::before,
+    .clock::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 10px;
+      border-radius: 8px;
+      background: #d5382f;
+      transform-origin: 50% 100%;
+    }
+    .clock::before { height: 58px; transform: translate(-50%, -100%) rotate(6deg); }
+    .clock::after { height: 43px; transform: translate(-50%, -100%) rotate(112deg); background: #17231b; }
+    .headset {
+      right: 120px;
+      bottom: 0;
+      width: 205px;
+      height: 180px;
+      border: 20px solid #17231b;
+      border-bottom: 0;
+      border-radius: 110px 110px 20px 20px;
+      transform: rotate(-8deg);
+      background: transparent;
+      box-shadow: none;
+    }
+    .headset::before,
+    .headset::after {
+      content: "";
+      position: absolute;
+      bottom: -24px;
+      width: 47px;
+      height: 83px;
+      border-radius: 22px;
+      background: #2e7d32;
+      border: 7px solid #17231b;
+    }
+    .headset::before { left: -31px; }
+    .headset::after { right: -31px; }
+    .notebook {
+      right: 10px;
+      top: 190px;
+      width: 180px;
+      height: 220px;
+      border-radius: 12px;
+      transform: rotate(7deg);
+      background:
+        linear-gradient(90deg, #d5382f 0 22px, transparent 22px),
+        repeating-linear-gradient(0deg, transparent 0 29px, #cbd4cc 30px 32px),
+        #fff;
+    }
+    .notebook::after {
+      content: "HORÁRIOS";
+      color: #17231b;
+      font: 700 19px/1 "Outfit", sans-serif;
+      transform: rotate(-2deg);
+    }
+    .footer {
+      position: absolute;
+      left: 50px;
+      right: 50px;
+      bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #2e7d32;
+      font: 700 18px/1 "Outfit", sans-serif;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .footer span:last-child { color: #17231b; text-transform: none; font-family: "Geist"; }
+  </style>
+</head>
+<body>
+  <main class="post" aria-label="Comparação entre atendimento com guara.bot e atendimento com várias ferramentas">
+    <div class="brand">nanoguará.ia</div>
+
+    <section class="row top">
+      <h1 class="heading">1 WhatsApp<span class="dot gap">·</span>1 guara.bot</h1>
+      <div class="top-content">
+        <img class="mascot" src="../../guara-bot/poses/08-digitando.png" alt="guara.bot digitando">
+        <div class="chat-stack">
+          <div class="bubble in">Tem horário hoje?<span class="bubble-time">Paciente • agora</span></div>
+          <div class="bubble out">Consegui às 14h. Posso confirmar? <span class="check">✓</span><span class="bubble-time">guara.bot • agora</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="row bottom">
+      <h2 class="heading">1 WhatsApp<span class="dot gap">·</span>8 abas abertas</h2>
+      <div class="clutter">
+        <div class="object phone"><div class="mini-bubble"></div></div>
+        <div class="object calendar"></div>
+        <div class="object sheet"></div>
+        <div class="object notes"></div>
+        <div class="object coffee"><div class="cup"></div></div>
+        <div class="object clock"></div>
+        <div class="object headset"></div>
+        <div class="object notebook"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Assistente virtual para consultórios</span>
+      <span>o paciente só quer saber se tem horário</span>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,13 @@
+1
+00:00:00,000 --> 00:00:04,800
+Com o debate sobre o fim da escala 6x1,
+sua clínica pode se preparar.
+
+2
+00:00:04,810 --> 00:00:10,800
+guara.bot acolhe pacientes, responde dúvidas
+e encaminha o primeiro contato online.
+
+3
+00:00:10,840 --> 00:00:14,800
+Mais tempo para cuidar. Conheça o guara.bot.

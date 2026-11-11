@@ -1,0 +1,10 @@
+CARROSSEL PARA INSTAGRAM — GUARA.BOT
+
+Tema: pedido de remarcação recebido à noite e continuidade do atendimento pelo WhatsApp.
+Formato: 5 imagens PNG, 1080 × 1350 px (proporção 4:5), na ordem numérica dos arquivos.
+Pasta FEED: imagens prontas para publicar em sequência como carrossel.
+PREVIA-CARROSSEL.jpg: visão geral das cinco telas.
+LEGENDA.txt: texto sugerido para a publicação.
+
+A conversa exibida é ilustrativa. Não representa um paciente, depoimento ou resultado real.
+A arte final usa o mascote oficial guara.bot, baseado na referência visual flutuante v3.

@@ -1,0 +1,141 @@
+{
+  "created": "2026-10-15",
+  "mode": "imagegen integrado",
+  "slides": [
+    {
+      "order": 1,
+      "theme": "apresentacao",
+      "source": "/Users/rodri/.codex/generated_images/01a090d5-1a4b-7e33-8707-40d0f88cae35/exec-4daeca6b-4edc-4cb0-9b44-c2875f9f291a.png",
+      "feed": "FEED/01-apresentacao.png",
+      "stories": "STORIES/01-apresentacao.png",
+      "feedSize": [
+        1080,
+        1350
+      ],
+      "storiesSize": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "order": 2,
+      "theme": "do-contato-a-conversa",
+      "source": "/Users/rodri/.codex/generated_images/01a090d5-1a4b-7e33-8707-40d0f88cae35/exec-3466cf7a-cbce-4db1-82b6-bd0a6020c4d3.png",
+      "feed": "FEED/02-do-contato-a-conversa.png",
+      "stories": "STORIES/02-do-contato-a-conversa.png",
+      "feedSize": [
+        1080,
+        1350
+      ],
+      "storiesSize": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "order": 3,
+      "theme": "rotina-da-recepcao",
+      "source": "/Users/rodri/.codex/generated_images/01a090d5-1a4b-7e33-8707-40d0f88cae35/exec-b31a1b23-ec48-41f7-9b24-0a9df777ba98.png",
+      "feed": "FEED/03-rotina-da-recepcao.png",
+      "stories": "STORIES/03-rotina-da-recepcao.png",
+      "feedSize": [
+        1080,
+        1350
+      ],
+      "storiesSize": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "order": 4,
+      "theme": "o-que-fazemos",
+      "source": "/Users/rodri/.codex/generated_images/01a090d5-1a4b-7e33-8707-40d0f88cae35/exec-c1fbe426-e4ff-47a6-81b0-3f3a3644c7cd.png",
+      "feed": "FEED/04-o-que-fazemos.png",
+      "stories": "STORIES/04-o-que-fazemos.png",
+      "feedSize": [
+        1080,
+        1350
+      ],
+      "storiesSize": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "order": 5,
+      "theme": "ciclo-do-atendimento",
+      "source": "/Users/rodri/.codex/generated_images/01a090d5-1a4b-7e33-8707-40d0f88cae35/exec-45a35710-f68c-487b-b8ea-aeb76b9254ba.png",
+      "feed": "FEED/05-ciclo-do-atendimento.png",
+      "stories": "STORIES/05-ciclo-do-atendimento.png",
+      "feedSize": [
+        1080,
+        1350
+      ],
+      "storiesSize": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "order": 6,
+      "theme": "continuidade",
+      "source": "/Users/rodri/.codex/generated_images/01a090d5-1a4b-7e33-8707-40d0f88cae35/exec-133f8f0d-34c6-4fb9-a244-289dc5423f19.png",
+      "feed": "FEED/06-continuidade.png",
+      "stories": "STORIES/06-continuidade.png",
+      "feedSize": [
+        1080,
+        1350
+      ],
+      "storiesSize": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "order": 7,
+      "theme": "cinco-momentos",
+      "source": "/Users/rodri/.codex/generated_images/01a090d5-1a4b-7e33-8707-40d0f88cae35/exec-669ca63b-81a8-4825-8527-452fb5e2f511.png",
+      "feed": "FEED/07-cinco-momentos.png",
+      "stories": "STORIES/07-cinco-momentos.png",
+      "feedSize": [
+        1080,
+        1350
+      ],
+      "storiesSize": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "order": 8,
+      "theme": "tecnologia-com-equipe",
+      "source": "/Users/rodri/.codex/generated_images/01a090d5-1a4b-7e33-8707-40d0f88cae35/exec-0bb91b3f-e6b2-4f84-b97a-1b859560993b.png",
+      "feed": "FEED/08-tecnologia-com-equipe.png",
+      "stories": "STORIES/08-tecnologia-com-equipe.png",
+      "feedSize": [
+        1080,
+        1350
+      ],
+      "storiesSize": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "order": 9,
+      "theme": "convite",
+      "source": "/Users/rodri/.codex/generated_images/01a090d5-1a4b-7e33-8707-40d0f88cae35/exec-225460e8-1926-4294-a88e-b9ffe5b069b9.png",
+      "feed": "FEED/09-convite.png",
+      "stories": "STORIES/09-convite.png",
+      "feedSize": [
+        1080,
+        1350
+      ],
+      "storiesSize": [
+        1080,
+        1920
+      ]
+    }
+  ]
+}

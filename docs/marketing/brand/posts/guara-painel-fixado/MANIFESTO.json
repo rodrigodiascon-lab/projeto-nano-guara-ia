@@ -1,0 +1,71 @@
+{
+  "created": "2026-10-16",
+  "format": "3:4",
+  "postDimensions": [
+    1080,
+    1440
+  ],
+  "orderLeftToRight": [
+    "01-ESQUERDA-RESPONDE.png",
+    "02-CENTRO-AGENDA.png",
+    "03-DIREITA-LEMBRA.png"
+  ],
+  "exactRecomposition": true,
+  "files": [
+    {
+      "name": "01-ESQUERDA-RESPONDE.png",
+      "bytes": 1243513,
+      "sha256": "1743bbff4f7ae87120aae77935f040b5c4278fdaabbdec4fca815da20b6035d9"
+    },
+    {
+      "name": "01-LEGENDA-RESPONDE.txt",
+      "bytes": 434,
+      "sha256": "e74075b1a4afa80d423a62bcc6b156b0fb127734fefe3a476c271e60f46830b2"
+    },
+    {
+      "name": "02-CENTRO-AGENDA.png",
+      "bytes": 1193417,
+      "sha256": "3bf6669e51d2b9a73ff046265e493dad5fcbdd6887453ae9c6c27a332e1ee280"
+    },
+    {
+      "name": "02-LEGENDA-AGENDA.txt",
+      "bytes": 405,
+      "sha256": "1a107ca20c3e95d91d00a69861046efbcbe6e1707eb7f284fea2a9de0d067eb7"
+    },
+    {
+      "name": "03-DIREITA-LEMBRA.png",
+      "bytes": 1083391,
+      "sha256": "e939fc3a3b8476c49785115dafd0ebc3be126f128ba0a8eabdee3a061f9fff85"
+    },
+    {
+      "name": "03-LEGENDA-LEMBRA.txt",
+      "bytes": 437,
+      "sha256": "620d582cb5ebb327e189a4ffdc53e62906f768fc5005fe3322c872ba6e11714c"
+    },
+    {
+      "name": "LEIA-ME.txt",
+      "bytes": 2166,
+      "sha256": "c74e3ef9c6eb910b92110df4f6e38bc4a27469408622a3c50efc2a303ea54d61"
+    },
+    {
+      "name": "PREVIA-GRADE.html",
+      "bytes": 1279,
+      "sha256": "01fa1dc5fde669fb263b2cc1f384a4d63426d1cb5c82dc341e36a1a45f995b58"
+    },
+    {
+      "name": "PREVIA-PAINEL-COMPLETO.png",
+      "bytes": 3324232,
+      "sha256": "137950b6566f7b87a13f5505f0fbbd47239d224475c5239b465cac8c8e4fc55f"
+    },
+    {
+      "name": "PROMPTS.md",
+      "bytes": 5195,
+      "sha256": "373699ed8dd0706225cb513dc76992831b1b11802a49fd88bb08c674162c056b"
+    },
+    {
+      "name": "exportar.cjs",
+      "bytes": 1643,
+      "sha256": "36873738cfb7d4f78cc78abd866789a43b3707859df100cfa92e0e9c6b63ef4d"
+    }
+  ]
+}
