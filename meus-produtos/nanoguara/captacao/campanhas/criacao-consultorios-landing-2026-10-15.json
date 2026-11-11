@@ -1,0 +1,97 @@
+{
+ "data": "2026-10-15",
+ "acao": "criar conjunto e 15 anúncios PAUSADOS com destino na landing /guarabot/clinicas (opção A aprovada pelo dono: 'manda tudo pra landing')",
+ "conta": "act_1678023370148935",
+ "campanha": "120250508582710113",
+ "conjunto_novo": "120250579675410113",
+ "conjunto_quiz": "120250508583910113",
+ "destino": "https://nanoguara.ia.br/guarabot/clinicas",
+ "url_tags": "iguais aos anúncios do quiz (utm_content = código do anúncio)",
+ "otimizacao": "Lead do pixel 1129265532898131 (na landing: formulário 'Quero que me chamem')",
+ "aprimoramentos": "mesmos dos anúncios atuais (aplicados pelo dono em 11-12/10), sem o campo agregado standard_enhancements, que a API não aceita mais",
+ "site": "versão d3678cf8: mensagem pronta do WhatsApp na landing leva '(ref <utm_content>)'",
+ "anuncios": {
+  "PS10": {
+   "creative_id": "1515725440397675",
+   "ad_id": "120250579678960113",
+   "nome": "GB | Consultórios LP | PS10 | Apoio para a recepção | Reels v2"
+  },
+  "PS06": {
+   "creative_id": "2101964213858945",
+   "ad_id": "120250579681220113",
+   "nome": "GB | Consultórios LP | PS06 | A equipe entra quando precisa | Reels v2"
+  },
+  "SUR01": {
+   "creative_id": "2151146322149740",
+   "ad_id": "120250579682390113",
+   "nome": "GB | Consultórios LP | SUR01 | Recepção no WhatsApp"
+  },
+  "SUR10": {
+   "creative_id": "1426556390536377",
+   "ad_id": "120250579683900113",
+   "nome": "GB | Consultórios LP | SUR10 | Agenda antes de marcar"
+  },
+  "SUR07": {
+   "creative_id": "3006987246328811",
+   "ad_id": "120250579687300113",
+   "nome": "GB | Consultórios LP | SUR07 | Respostas de rotina"
+  },
+  "PS07": {
+   "creative_id": "1808883867096092",
+   "ad_id": "120250579691010113",
+   "nome": "GB | Consultórios LP | PS07 | Respostas para dúvidas de rotina | Reels v2"
+  },
+  "PS02": {
+   "creative_id": "1569099878584533",
+   "ad_id": "120250579692630113",
+   "nome": "GB | Consultórios LP | PS02 | Horários antes de marcar | Reels v2"
+  },
+  "OBJ02": {
+   "creative_id": "1660446205422937",
+   "ad_id": "120250579693000113",
+   "nome": "GB | Consultórios LP | OBJ02 | Apoio para a recepção"
+  },
+  "OBJ10": {
+   "creative_id": "4555754017975993",
+   "ad_id": "120250579693600113",
+   "nome": "GB | Consultórios LP | OBJ10 | Primeiro contato no WhatsApp"
+  },
+  "SUR09": {
+   "creative_id": "2327776441373062",
+   "ad_id": "120250579695120113",
+   "nome": "GB | Consultórios LP | SUR09 | IA com apoio humano"
+  },
+  "OBJ08": {
+   "creative_id": "1101864212436485",
+   "ad_id": "120250579695630113",
+   "nome": "GB | Consultórios LP | OBJ08 | Mais apoio para a equipe"
+  },
+  "OBJ07": {
+   "creative_id": "3316363998554135",
+   "ad_id": "120250579696590113",
+   "nome": "GB | Consultórios LP | OBJ07 | Dúvidas de rotina com IA"
+  },
+  "SUR02": {
+   "creative_id": "2547591665752610",
+   "ad_id": "120250579697980113",
+   "nome": "GB | Consultórios LP | SUR02 | Apoio à recepção"
+  },
+  "PS01": {
+   "creative_id": "1771480227465570",
+   "ad_id": "120250579699190113",
+   "nome": "GB | Consultórios LP | PS01 | IA no WhatsApp do consultório | Reels v2"
+  },
+  "OBJ01": {
+   "creative_id": "883150484793095",
+   "ad_id": "120250579700340113",
+   "nome": "GB | Consultórios LP | OBJ01 | Ajuda no atendimento"
+  }
+ },
+ "pendente": null,
+ "ativacao": {
+  "aprovado_pelo_dono": "2026-10-15 ~20h40 Manaus ('sim')",
+  "conjunto_landing_ativo": "2026-10-16T00:42:21Z",
+  "quiz_pausado": "2026-10-16T00:42:37Z (os 15 anúncios da landing já estavam ACTIVE na primeira checagem)",
+  "reverter": "reativar 120250508583910113 e pausar 120250579675410113"
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "data": "2026-10-16",
+ "acao": "criar conjunto PAUSADO com os 5 vídeos do diagnóstico (versão site) na campanha do site, sem ligar nada (pedido do dono: 'Rota principal pelo site: refaz o final dos 5 vídeos sem no WhatsApp e deixa prontos para a campanha do site, sem ligar nada')",
+ "conta": "act_1678023370148935",
+ "campanha": "120250508582710113 (NG | guara.bot | Consultórios | Site | Manaus, ATIVA, R$ 100/dia na campanha; não alterada)",
+ "conjunto_novo": {
+  "id": "120250583235540113",
+  "nome": "Manaus | Consultórios | Landing clínicas | Vídeos diagnóstico",
+  "status": "ACTIVE",
+  "copiado_de": "120250579675410113 (mesma otimização Lead do pixel 1129265532898131, destino WEBSITE, Manaus 25 a 65, Advantage+, posições feed/story/reels do Facebook e stream/story/reels/explore_home do Instagram, atribuição 7d clique e 1d visualização)"
+ },
+ "destino": "https://nanoguara.ia.br/guarabot/clinicas",
+ "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=guarabot_consultorios&utm_content=vd01..vd05",
+ "aprimoramentos": "degrees_of_freedom_spec copiado do criativo PS10 (1515725440397675): pac_relaxation e video_filtering OPT_IN, resto OPT_OUT; contextual_multi_ads OPT_OUT",
+ "anuncios": {
+  "VD01": {
+   "ad_id": "120250583244860113",
+   "creative_id": "4059809774312792",
+   "nome": "GB | Consultórios LP | VD01 | 21h40 | Vídeo diagnóstico",
+   "videos": {
+    "story": "2063273957655613",
+    "feed": "2294109781411266"
+   }
+  },
+  "VD02": {
+   "ad_id": "120250583245990113",
+   "creative_id": "1881086596601536",
+   "nome": "GB | Consultórios LP | VD02 | Demora | Vídeo diagnóstico",
+   "videos": {
+    "story": "1434156215569208",
+    "feed": "2160716674654742"
+   }
+  },
+  "VD03": {
+   "ad_id": "120250583246920113",
+   "creative_id": "39390562280559550",
+   "nome": "GB | Consultórios LP | VD03 | De cabeça | Vídeo diagnóstico",
+   "videos": {
+    "story": "1391181179440497",
+    "feed": "1751528389291770"
+   }
+  },
+  "VD04": {
+   "ad_id": "120250583247620113",
+   "creative_id": "2680447135805870",
+   "nome": "GB | Consultórios LP | VD04 | 62% Opinion Box | Vídeo diagnóstico",
+   "videos": {
+    "story": "2062376094481690",
+    "feed": "1799765734559471"
+   }
+  },
+  "VD05": {
+   "ad_id": "120250583248500113",
+   "creative_id": "1419830253057670",
+   "nome": "GB | Consultórios LP | VD05 | Conversa 21h40 | Vídeo diagnóstico",
+   "videos": {
+    "story": "1661593938803947",
+    "feed": "1159966256368920"
+   }
+  }
+ },
+ "payloads": "tmp/site-clinicas (afs-vd0N.json, oss.json, dof.json, ids.json, textos.json), sem token",
+ "previews_conferidos": "VD01 MOBILE_FEED_STANDARD (Página nanoguara.ia, título, botão Saiba mais) e VD05 INSTAGRAM_STORY (vídeo 9:16, Saiba mais): tmp/site-clinicas/prev-site.png",
+ "ativacao": {
+  "como": "ligar o conjunto 120250583235540113; a campanha é CBO, então o total por dia continua R$ 100 e passa a ser dividido com o conjunto da landing",
+  "exige": "palavra ATIVAR do dono depois de ver o total",
+  "ativado_em": "2026-10-16T11:33:56-0400",
+  "aprovado_pelo_dono": "palavra ATIVAR digitada pelo dono, depois de ver o total (R$ 100 por dia na campanha, sem aumento) e o aviso do limite de gasto (R$ 271,83 restantes)",
+  "conferido": "conjunto 120250583235540113 ACTIVE com 5 anúncios ACTIVE; conjunto da landing 120250579675410113 ACTIVE com 15; conjuntos do quiz seguem pausados"
+ },
+ "pendente": "limite de gasto da conta: R$ 1.100 com R$ 821,85 gastos em 16/10"
+}

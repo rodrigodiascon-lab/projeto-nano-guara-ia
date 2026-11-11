@@ -1,0 +1,39 @@
+{
+ "data": "2026-10-19 ~23h31 Manaus",
+ "acao": "pausar todas as campanhas da conta (pedido do dono: \"pausa todas as campanhas\")",
+ "conta": "act_1678023370148935",
+ "campanhas": [
+  {
+   "id": "120250631489800113",
+   "nome": "Post do Instagram: Em qual prateleira está o...",
+   "antes": "ACTIVE",
+   "depois": "PAUSED/PAUSED",
+   "hora": "2026-10-20T03:31:07+0000"
+  },
+  {
+   "id": "120250599522670113",
+   "nome": "Post do Instagram: E quando acabar a escala 6x1?...",
+   "antes": "ACTIVE",
+   "depois": "PAUSED/PAUSED",
+   "hora": "2026-10-20T03:31:08+0000"
+  },
+  {
+   "id": "120250582748990113",
+   "nome": "NG | guara.bot | Consultórios | WhatsApp | Manaus",
+   "ja_estava": "PAUSED/PAUSED"
+  },
+  {
+   "id": "120250508582710113",
+   "nome": "NG | guara.bot | Consultórios | Site | Manaus",
+   "antes": "ACTIVE",
+   "depois": "PAUSED/PAUSED",
+   "hora": "2026-10-20T03:31:09+0000"
+  },
+  {
+   "id": "120250381096980113",
+   "nome": "NG | guara.bot | Barbearias | Landing page | Manaus",
+   "ja_estava": "PAUSED/PAUSED"
+  }
+ ],
+ "reverter": "reativar cada campanha individualmente (aprovação separada)"
+}

@@ -1,0 +1,59 @@
+# Preview técnico (seção 5.1 da /trafego-pago-campanhas). Sem access_token.
+data: "2026-10-16"
+etapa: conversas_whatsapp
+nicho: consultorios
+tema: diagnostico pelo WhatsApp (estudo docs/marketing/meta-ads/analise-referencias-tolki-2026-10-16.md)
+autorizacao: "dono: 'faça tudo... tá tudo autorizado... amanhã quero receber pronto' (2026-10-16, madrugada). Vale como SIM para CRIAR pausado. Ativação continua exigindo ATIVAR (5.5)."
+conta: {id: "act_1678023370148935", nome: "Lucrec.ia PUBLI", spend_cap_centavos: 110000, gasto_centavos: 82185, aviso: "faltam cerca de R$ 278 para o limite de gasto da conta"}
+campanha:
+  nome: "NG | guara.bot | Consultórios | WhatsApp | Manaus"
+  objective: OUTCOME_ENGAGEMENT
+  status: PAUSED
+  buying_type: AUCTION
+  special_ad_categories: []
+  daily_budget_centavos: 3000
+  bid_strategy: LOWEST_COST_WITHOUT_CAP
+  convivio: "campanha 'NG | guara.bot | Consultórios | Site | Manaus' (120250508582710113) ATIVA a R$ 100/dia; decisão de convívio fica com o dono"
+conjunto:
+  nome: "Manaus | Consultórios | Conversas WhatsApp"
+  optimization_goal: CONVERSATIONS
+  billing_event: IMPRESSIONS
+  destination_type: WHATSAPP
+  promoted_object: {page_id: "1272983785891547"}
+  promoted_object_nota: "sem whatsapp_phone_number, como no conjunto de barbearias de 2026-10-08 (a API recusou o número com subcode 1487246; as prévias mostram o botão de WhatsApp da Página)"
+  status: ACTIVE   # a campanha pausada segura a entrega
+  targeting:
+    geo_locations: {cities: [{key: "259014"}], location_types: [home, recent]}
+    age_min: 25
+    age_max: 65
+    targeting_automation: {advantage_audience: 1}
+  posicionamentos: Advantage+ (não enumerados)
+criativos:
+  modelo: "asset_feed_spec do criativo 2022152948481544 (WhatsApp com mensagem pronta), vídeo 4:5 no Feed e 9:16 em Stories/Reels"
+  object_story_spec: {page_id: "1272983785891547", instagram_user_id: "17841414315265034"}
+  degrees_of_freedom_spec: "todos os recursos automáticos de criativo OPT_OUT (cópia de tmp/whats/dof.json)"
+  contextual_multi_ads: OPT_OUT
+  titulo: "Seu WhatsApp responde às 21h40?"
+  descricao: "Assistente de IA para consultórios de Manaus"
+  saudacao: "Olá! Que bom receber você. São 4 perguntas rápidas e no final você recebe a conta do seu consultório."
+  payloads: "tmp/whats-clinicas/afs-ad01.json ... afs-ad05.json, oss.json, dof.json, ids.json, textos.json"
+anuncios:
+  - {nome: "AD01 | Video 4:5 + 9:16 | 21h40", videos: {story: "4210051022630037", feed: "3649921451822132"}, mensagem_pronta: "Oi! Vi o anúncio das 21h40 e quero a conta do meu consultório."}
+  - {nome: "AD02 | Video 4:5 + 9:16 | Demora", videos: {story: "981806141631662", feed: "2279111579556528"}, mensagem_pronta: "Oi! Vi o anúncio sobre a demora e quero a conta do meu consultório."}
+  - {nome: "AD03 | Video 4:5 + 9:16 | De cabeca", videos: {story: "2663016010836756", feed: "1833976484407102"}, mensagem_pronta: "Oi! Vi o anúncio das perguntas de cabeça e quero a conta do meu consultório."}
+  - {nome: "AD04 | Video 4:5 + 9:16 | 62 Opinion Box", videos: {story: "2050494932316754", feed: "1805698450451186"}, mensagem_pronta: "Oi! Vi o anúncio dos 62% e quero a conta do meu consultório."}
+  - {nome: "AD05 | Video 4:5 + 9:16 | Conversa 21h40", videos: {story: "2281060852731765", feed: "1106816975544094"}, mensagem_pronta: "Oi! Vi a conversa do guara.bot e quero a conta do meu consultório."}
+conferencia_marca:
+  pagina: "nanoguara.ia (1272983785891547)"
+  instagram: "@nanoguara.ia (17841414315265034)"
+  whatsapp: "+55 92 8148-6875 (botão de WhatsApp da Página)"
+  textos: "falam de guara.bot e nanoguará.ia; nada da Lucréc.ia"
+conferencia_copy:
+  numeros: "só 62% (Opinion Box, 2025) no AD04, com fonte na mesma peça; R$ 6.600 nos vídeos é a conta de exemplo da landing, rotulada"
+  promessa: "nenhuma; 'pode estar deixando sem resposta' é condicional"
+  prova_social: "nenhuma"
+  travessao: "nenhum (conferido por busca)"
+  cta: "único, Enviar mensagem no WhatsApp"
+  destinatario: "perguntas e afirmações genéricas; nada afirma saber algo do destinatário"
+  marca: "coerente"
+  direitos: "mascote próprio, sons da biblioteca local, sem música"

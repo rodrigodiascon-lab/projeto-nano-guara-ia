@@ -88,5 +88,44 @@ campanhas:
     payload: "tmp/whats/ (afs1m..afs5m.json, oss.json, dof.json), sem token"
     falhas:
       - {nivel: conjunto, motivo: "promoted_object com whatsapp_phone_number (+5592981486875 e 5592981486875) recusado: 'This WhatsApp phone number is not linked to your account' (subcode 1487246). Criado só com page_id; prévias mostram botão WhatsApp da Página."}
+  - id: "120250582748990113"
+    nome: "NG | guara.bot | Consultórios | WhatsApp | Manaus"
+    etapa: conversas_whatsapp
+    nicho: consultorios
+    tema: "diagnóstico pelo WhatsApp (4 perguntas e a conta do consultório), estudo analise-referencias-tolki-2026-10-16.md"
+    objetivo: OUTCOME_ENGAGEMENT
+    otimizacao: CONVERSATIONS
+    torre: 1
+    de_torres: 1
+    status: PAUSED
+    via: token
+    orcamento_diario_centavos: 3000
+    preview: "preview-conversas_whatsapp-consultorios-diagnostico-2026-10-16.yaml"
+    payload: "payload-conversas_whatsapp-consultorios-t1-2026-10-16.yaml"
+    criado_em: "2026-10-16"
+    autorizacao: "dono: 'faça tudo... tá tudo autorizado' (madrugada de 16/10); criado pausado. Ativar só com ATIVAR (5.5)."
+    convivio: "campanha 'NG | guara.bot | Consultórios | Site | Manaus' (120250508582710113) ATIVA a R$ 100/dia; dono decide se pausa a do site, divide ou espera"
+    conjunto:
+      id: "120250582749710113"
+      nome: "Manaus | Consultórios | Conversas WhatsApp"
+      otimizacao: CONVERSATIONS
+      destino: WHATSAPP
+      promoted_object: {page_id: "1272983785891547"}
+      idade: {limite: [25, 65]}
+      advantage_audience: 1
+      local: {cidade: Manaus, key: "259014", location_types_gravados: [frequently_in, home, recent]}
+      posicionamentos: Advantage+
+    marca_conferida: true
+    copy_conferida: true
+    mensagem_pronta: "uma por anúncio (asset_feed_spec.additional_data.page_welcome_message, autofill_message), para contar a origem da conversa"
+    anuncios:
+      - {id: "120250582767280113", nome: "AD01 | Video 4:5 + 9:16 | 21h40", criativo: "1775148863720454", videos: {feed: "3649921451822132", story: "4210051022630037"}, pronta: "Oi! Vi o anúncio das 21h40 e quero a conta do meu consultório."}
+      - {id: "120250582767840113", nome: "AD02 | Video 4:5 + 9:16 | Demora", criativo: "1411344207824381", videos: {feed: "2279111579556528", story: "981806141631662"}, pronta: "Oi! Vi o anúncio sobre a demora e quero a conta do meu consultório."}
+      - {id: "120250582768130113", nome: "AD03 | Video 4:5 + 9:16 | De cabeca", criativo: "2154848585448517", videos: {feed: "1833976484407102", story: "2663016010836756"}, pronta: "Oi! Vi o anúncio das perguntas de cabeça e quero a conta do meu consultório."}
+      - {id: "120250582768470113", nome: "AD04 | Video 4:5 + 9:16 | 62 Opinion Box", criativo: "3163104614033487", videos: {feed: "1805698450451186", story: "2050494932316754"}, pronta: "Oi! Vi o anúncio dos 62% e quero a conta do meu consultório."}
+      - {id: "120250582769100113", nome: "AD05 | Video 4:5 + 9:16 | Conversa 21h40", criativo: "1925748798399089", videos: {feed: "1106816975544094", story: "2281060852731765"}, pronta: "Oi! Vi a conversa do guara.bot e quero a conta do meu consultório."}
+    previews_conferidos: "AD01 MOBILE_FEED_STANDARD (vídeo 4:5, botão WhatsApp, Página nanoguara.ia) e AD05 INSTAGRAM_STORY (vídeo 9:16, botão Converse no WhatsApp); imagens em tmp/whats-clinicas/prev-*.png"
+    revisao_meta: "5 anúncios IN_PROCESS em 2026-10-16 ~02h Manaus"
+    falhas: []
 nao_usado:
   - {id: "120250176391320113", nome: "NG | guara.bot | Barbearias | WhatsApp | Manaus | 7 dias", situacao: "rascunho antigo de 17/09, arquivado em 2026-10-05 a pedido (exclusão definitiva fica com o usuário no Gerenciador)"}
