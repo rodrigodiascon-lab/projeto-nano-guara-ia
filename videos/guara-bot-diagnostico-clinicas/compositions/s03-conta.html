@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s03-root { position: absolute; inset: 0; overflow: hidden; font-family: Geist, sans-serif; color: #fdf9f0; background: #123b26; }
+        .s03-brilho { position: absolute; border-radius: 50%; }
+        #s03-brilho1 { left: -440px; top: -300px; width: 1250px; height: 1250px;
+                       background: radial-gradient(closest-side, rgba(46, 125, 50, .5), rgba(46, 125, 50, 0)); }
+        #s03-brilho2 { right: -420px; top: 900px; width: 1100px; height: 1100px;
+                       background: radial-gradient(closest-side, rgba(213, 56, 47, .24), rgba(213, 56, 47, 0)); }
+        #s03-palco { position: absolute; inset: 40px 0 0 0; }
+        #s03-titulo { position: absolute; top: 262px; left: 84px; width: 912px; font: 700 84px/1.04 Outfit; letter-spacing: -2px; }
+        #s03-titulo span { display: block; }
+        #s03-t3 { color: #ff8a7a; }
+        #s03-cartao { position: absolute; top: 600px; left: 70px; right: 70px; background: #fdf9f0; color: #17231b;
+                      border-radius: 48px; padding: 42px 52px 46px; box-shadow: 0 40px 80px rgba(0, 0, 0, .42); }
+        #s03-rot { font: 500 30px/1 Geist; letter-spacing: 3px; color: #55655b; margin-bottom: 18px; }
+        .s03-linha { display: grid; grid-template-columns: 250px 1fr; align-items: center; min-height: 104px;
+                     border-bottom: 3px solid #efe9df; }
+        .s03-linha b { font: 700 64px/1 Outfit; letter-spacing: -1px; }
+        .s03-linha span { font: 500 36px/1.15 Geist; color: #55655b; }
+        #s03-regua { height: 7px; border-radius: 7px; background: #17231b; margin: 26px 0 22px; }
+        #s03-total { display: flex; align-items: baseline; gap: 22px; }
+        #s03-valor { display: inline-block; min-width: 560px; font: 700 132px/1 Outfit; letter-spacing: -4px; color: #d5382f;
+                     font-variant-numeric: tabular-nums; transform-origin: 0% 100%; }
+        #s03-mes { display: inline-block; font: 700 54px/1 Outfit; color: #17231b; }
+        #s03-legenda { position: absolute; top: 1290px; left: 84px; width: 912px; font: 500 44px/1.25 Geist; color: #fdf9f0; }
+      </style>
+
+      <div id="s03-root" data-composition-id="s03" data-width="1080" data-height="1920">
+        <div id="s03-brilho1" class="s03-brilho" data-layout-allow-overflow></div>
+        <div id="s03-brilho2" class="s03-brilho" data-layout-allow-overflow></div>
+        <div id="s03-palco">
+          <h1 id="s03-titulo"><span id="s03-t1">Quanto custa</span><span id="s03-t2">a mensagem que</span><span id="s03-t3">ficou sem resposta?</span></h1>
+          <div id="s03-cartao">
+            <div id="s03-rot">CONTA DE EXEMPLO</div>
+            <div id="s03-l1" class="s03-linha"><b>2</b><span>mensagens sem resposta por dia</span></div>
+            <div id="s03-l2" class="s03-linha"><b>× R$ 150</b><span>valor da consulta</span></div>
+            <div id="s03-l3" class="s03-linha"><b>× 22</b><span>dias de atendimento</span></div>
+            <div id="s03-regua"></div>
+            <div id="s03-total"><span id="s03-valor">R$ 6.600</span><span id="s03-mes">por mês</span></div>
+          </div>
+          <div id="s03-legenda">em consultas que podem estar ficando fora da agenda.</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const valor = document.getElementById("s03-valor");
+          function reais(n) { return "R$ " + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+          tl.fromTo("#s03-brilho1", { scale: 0.92 }, { scale: 1.06, duration: 2.75, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          tl.fromTo("#s03-brilho2", { scale: 1.06 }, { scale: 0.94, duration: 2.75, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          tl.fromTo("#s03-palco", { y: 280, filter: "blur(18px)" }, { y: 0, filter: "blur(0px)", duration: 0.42, ease: "power3.out" }, 0);
+          ["#s03-t1", "#s03-t2", "#s03-t3"].forEach(function (s, i) {
+            tl.fromTo(s, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.1 + i * 0.15);
+          });
+          tl.fromTo("#s03-cartao", { y: 170, opacity: 0, rotation: -2 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5, ease: "power3.out" }, 0.45);
+          // Uma linha da conta por batida.
+          [["#s03-l1", 0.95], ["#s03-l2", 1.45], ["#s03-l3", 1.95]].forEach(function (l) {
+            tl.fromTo(l[0], { x: -70, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, l[1]);
+          });
+          tl.fromTo("#s03-regua", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 2.35);
+          // Total contando: valor e escala com o mesmo tempo e a mesma curva.
+          const conta = { v: 0 };
+          tl.set(valor, { textContent: reais(0) }, 0);
+          tl.to(conta, { v: 6600, duration: 1.4, ease: "power3.out", onUpdate: function () { valor.textContent = reais(conta.v); } }, 2.5);
+          tl.fromTo(valor, { scale: 0.55, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.4, ease: "power3.out" }, 2.5);
+          tl.fromTo("#s03-mes", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 3.9);
+          tl.fromTo("#s03-cartao", { y: 0 }, { y: 10, duration: 0.07, ease: "power1.out", yoyo: true, repeat: 1, immediateRender: false }, 3.9);
+          tl.fromTo("#s03-legenda", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 4.0);
+          tl.to("#s03-palco", { y: -280, filter: "blur(18px)", duration: 0.28, ease: "power2.in" }, 5.22);
+          window.__timelines["s03"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s01-root { position: absolute; inset: 0; overflow: hidden; font-family: Geist, sans-serif; color: #fdf9f0; background: #123b26; }
+        .s01-brilho { position: absolute; border-radius: 50%; }
+        #s01-brilho1 { left: -420px; top: -360px; width: 1300px; height: 1300px;
+                       background: radial-gradient(closest-side, rgba(46, 125, 50, .55), rgba(46, 125, 50, 0)); }
+        #s01-brilho2 { right: -460px; bottom: -420px; width: 1200px; height: 1200px;
+                       background: radial-gradient(closest-side, rgba(213, 56, 47, .26), rgba(213, 56, 47, 0)); }
+        #s01-palco { position: absolute; inset: 40px 0 0 0; }
+        #s01-rotulo { position: absolute; top: 268px; left: 84px; display: flex; align-items: center; gap: 16px;
+                      background: #fdf9f0; color: #17231b; border-radius: 999px; padding: 18px 32px 18px 24px;
+                      font: 500 38px/1 Geist; box-shadow: 0 16px 34px rgba(0, 0, 0, .3); }
+        #s01-rotulo i { display: block; width: 20px; height: 20px; border-radius: 50%; background: #2e7d32; }
+        #s01-hora { position: absolute; top: 380px; left: 70px; font: 700 280px/1 Outfit; letter-spacing: -10px; }
+        #s01-frase { position: absolute; top: 700px; left: 84px; width: 912px; font: 700 100px/1.04 Outfit; letter-spacing: -2px; }
+        #s01-frase span { display: block; }
+        #s01-veja { position: absolute; top: 960px; left: 84px; width: 912px; font: 700 100px/1.04 Outfit; letter-spacing: -2px; color: #8fd19a; }
+      </style>
+      <div id="s01-root" data-composition-id="s01" data-width="1080" data-height="1920">
+        <div id="s01-brilho1" class="s01-brilho" data-layout-allow-overflow></div>
+        <div id="s01-brilho2" class="s01-brilho" data-layout-allow-overflow></div>
+        <div id="s01-palco">
+          <div id="s01-rotulo"><i></i>Consultório em Manaus</div>
+          <div id="s01-hora">21h40.</div>
+          <h1 id="s01-frase"><span id="s01-f1">Um paciente chama</span><span id="s01-f2">o consultório.</span></h1>
+          <div id="s01-veja">Veja quem responde.</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s01-brilho1", { scale: 0.9 }, { scale: 1.08, duration: 1.75, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          tl.fromTo("#s01-brilho2", { scale: 1.08 }, { scale: 0.92, duration: 1.75, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          tl.fromTo("#s01-rotulo", { scale: 0.4, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, 0.1);
+          tl.fromTo("#s01-hora", { scale: 1.2, opacity: 0, filter: "blur(18px)", transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" }, 0.25);
+          tl.fromTo("#s01-f1", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.9);
+          tl.fromTo("#s01-f2", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 1.1);
+          tl.fromTo("#s01-veja", { scale: 1.3, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, 1.9);
+          tl.to("#s01-palco", { y: -280, filter: "blur(18px)", duration: 0.28, ease: "power2.in" }, 3.22);
+          window.__timelines["s01"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

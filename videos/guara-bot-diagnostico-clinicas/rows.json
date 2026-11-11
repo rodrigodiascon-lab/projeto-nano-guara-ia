@@ -1,0 +1,8 @@
+{
+  "rows": [
+    { "name": "guara-bot-clinicas-A1-2140", "gancho": "2140" },
+    { "name": "guara-bot-clinicas-A2-demora", "gancho": "demora" },
+    { "name": "guara-bot-clinicas-A3-de-cabeca", "gancho": "de-cabeca" },
+    { "name": "guara-bot-clinicas-A4-62", "gancho": "62" }
+  ]
+}

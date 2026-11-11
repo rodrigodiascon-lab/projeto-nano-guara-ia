@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s02-root { position: absolute; inset: 0; overflow: hidden; font-family: Geist, sans-serif; color: #fdf9f0; background: #123b26; }
+        .s02-brilho { position: absolute; border-radius: 50%; }
+        #s02-brilho1 { right: -420px; top: -380px; width: 1250px; height: 1250px;
+                       background: radial-gradient(closest-side, rgba(46, 125, 50, .5), rgba(46, 125, 50, 0)); }
+        #s02-brilho2 { left: -480px; bottom: -440px; width: 1200px; height: 1200px;
+                       background: radial-gradient(closest-side, rgba(213, 56, 47, .22), rgba(213, 56, 47, 0)); }
+        #s02-palco { position: absolute; inset: 40px 0 0 0; }
+        #s02-titulo { position: absolute; top: 270px; left: 84px; width: 912px; font: 700 88px/1.04 Outfit; letter-spacing: -2px; }
+        #s02-titulo span { display: block; }
+        #s02-t2 { color: #ff8a7a; }
+        #s02-cel { position: absolute; left: 130px; top: 500px; width: 820px; height: 980px; background: #0d2c1c;
+                   border-radius: 72px; padding: 18px; box-shadow: 0 50px 100px rgba(0, 0, 0, .45); }
+        #s02-tela { position: relative; width: 100%; height: 100%; border-radius: 56px; overflow: hidden; background: #efe9df; }
+        #s02-alerta { position: absolute; inset: 0; background: rgba(213, 56, 47, .14); opacity: 0; }
+        #s02-cab { height: 150px; background: #2e7d32; display: flex; align-items: center; gap: 22px; padding: 26px 36px 0; color: #fdf9f0; }
+        #s02-av { display: grid; place-items: center; width: 78px; height: 78px; border-radius: 50%; background: #fdf9f0;
+                  font: 700 52px/1 Outfit; color: #2e7d32; }
+        #s02-cab b { font: 700 44px/1 Outfit; }
+        #s02-cab span { margin-left: auto; font: 500 34px/1 Geist; }
+        #s02-ex { position: absolute; top: 172px; right: 28px; background: #fdf9f0; color: #55655b; border-radius: 999px;
+                  padding: 8px 18px; font: 500 26px/1 Geist; }
+        #s02-msgs { position: absolute; left: 30px; right: 30px; top: 236px; display: flex; flex-direction: column; gap: 28px; align-items: flex-start; }
+        .s02-b { max-width: 640px; background: #ffffff; color: #17231b; border-radius: 34px 34px 34px 10px;
+                 padding: 22px 30px 16px; box-shadow: 0 8px 18px rgba(23, 35, 27, .12); }
+        .s02-b p { font: 500 46px/1.18 Geist; }
+        .s02-b small { display: block; text-align: right; margin-top: 10px; font: 500 28px/1 Geist; color: #7c837e; }
+        #s02-b3 { outline: 6px solid #d5382f; outline-offset: 0; }
+        #s02-b3 small { color: #d5382f; }
+        #s02-barra { position: absolute; left: 30px; right: 30px; bottom: 30px; height: 92px; border-radius: 999px; background: #fdf9f0;
+                     display: flex; align-items: center; padding-left: 36px; font: 500 36px/1 Geist; color: #7c837e; }
+      </style>
+
+      <div id="s02-root" data-composition-id="s02" data-width="1080" data-height="1920">
+        <div id="s02-brilho1" class="s02-brilho" data-layout-allow-overflow></div>
+        <div id="s02-brilho2" class="s02-brilho" data-layout-allow-overflow></div>
+        <div id="s02-palco">
+          <h1 id="s02-titulo"><span id="s02-t1">Você em consulta.</span><span id="s02-t2">Ele, sem resposta.</span></h1>
+          <div id="s02-cel">
+            <div id="s02-tela">
+              <div id="s02-cab"><div id="s02-av">+</div><b>Seu consultório</b><span>21:40</span></div>
+              <div id="s02-ex">exemplo</div>
+              <div id="s02-msgs">
+                <div id="s02-b1" class="s02-b"><p>Qual o valor da consulta?</p><small>há 5 min</small></div>
+                <div id="s02-b2" class="s02-b"><p>Vocês atendem sábado?</p><small>há 40 min</small></div>
+                <div id="s02-b3" class="s02-b"><p>Tudo bem, já marquei em outro lugar.</p><small>há 2 h</small></div>
+              </div>
+              <div id="s02-barra">Mensagem</div>
+              <div id="s02-alerta"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s02-brilho1", { scale: 0.92 }, { scale: 1.06, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          tl.fromTo("#s02-brilho2", { scale: 1.06, opacity: 0.7 }, { scale: 0.94, opacity: 1, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          // Entrada casada com a saída do gancho.
+          tl.fromTo("#s02-palco", { y: 280, filter: "blur(18px)" }, { y: 0, filter: "blur(0px)", duration: 0.42, ease: "power3.out" }, 0);
+          tl.fromTo("#s02-t1", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.1);
+          tl.fromTo("#s02-cel", { y: 200, opacity: 0, rotation: -3 }, { y: 0, opacity: 1, rotation: 0, duration: 0.55, ease: "power3.out" }, 0.2);
+          // Balões chegando, nenhum respondido.
+          [["#s02-b1", 0.55], ["#s02-b2", 1.3], ["#s02-b3", 2.3]].forEach(function (b) {
+            tl.fromTo(b[0], { scale: 0.75, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.24, ease: "back.out(2)" }, b[1]);
+          });
+          tl.fromTo("#s02-t2", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 1.65);
+          // O último pesa: tela pisca em vermelho e o celular treme.
+          tl.fromTo("#s02-alerta", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, 2.38);
+          tl.fromTo("#s02-cel", { x: 0 }, { x: 14, duration: 0.05, ease: "power1.inOut", yoyo: true, repeat: 3, immediateRender: false }, 2.4);
+          tl.fromTo("#s02-b3", { scale: 1 }, { scale: 1.03, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 3.1);
+          // Saída em chicote para cima.
+          tl.to("#s02-palco", { y: -280, filter: "blur(18px)", duration: 0.28, ease: "power2.in" }, 4.72);
+          window.__timelines["s02"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

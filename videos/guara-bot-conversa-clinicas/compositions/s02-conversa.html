@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s02-root { position: absolute; inset: 0; overflow: hidden; font-family: Geist, sans-serif; color: #fdf9f0; background: #123b26; }
+        .s02-brilho { position: absolute; border-radius: 50%; }
+        #s02-brilho1 { left: -380px; top: -360px; width: 1300px; height: 1300px;
+                       background: radial-gradient(closest-side, rgba(46, 125, 50, .6), rgba(46, 125, 50, 0)); }
+        #s02-brilho2 { right: -380px; bottom: -300px; width: 1100px; height: 1100px;
+                       background: radial-gradient(closest-side, rgba(143, 209, 154, .22), rgba(143, 209, 154, 0)); }
+        #s02-palco { position: absolute; inset: 40px 0 0 0; }
+        .s02-titulo { position: absolute; top: 262px; left: 84px; width: 912px; font: 700 64px/1.06 Outfit; letter-spacing: -1px; }
+        #s02-tB { color: #ff8a7a; }
+        #s02-tB span { display: block; }
+        #s02-ex { margin-left: auto; background: #fdf9f0; color: #55655b; border-radius: 999px; padding: 8px 18px; font: 500 26px/1 Geist; }
+        #s02-cel { position: absolute; left: 60px; top: 430px; width: 960px; height: 1110px; background: #0d2c1c;
+                   border-radius: 72px; padding: 18px; box-shadow: 0 50px 100px rgba(0, 0, 0, .45); }
+        #s02-tela { position: relative; width: 100%; height: 100%; border-radius: 56px; overflow: hidden; background: #efe9df; }
+        #s02-cab { position: relative; z-index: 2; height: 140px; background: #2e7d32; display: flex; align-items: center; gap: 22px;
+                   padding: 24px 36px 0; color: #fdf9f0; }
+        #s02-av { display: grid; place-items: center; width: 76px; height: 76px; border-radius: 50%; background: #fdf9f0;
+                  font: 700 50px/1 Outfit; color: #2e7d32; }
+        #s02-cab b { font: 700 44px/1 Outfit; }
+        #s02-cab span { margin-left: 18px; font: 500 34px/1 Geist; }
+        #s02-col { position: absolute; z-index: 1; left: 30px; right: 30px; top: 170px; display: flex; flex-direction: column; gap: 24px; }
+        .s02-b { position: relative; box-sizing: border-box; max-width: 680px; border-radius: 34px; padding: 20px 30px 14px; color: #17231b;
+                 box-shadow: 0 8px 18px rgba(23, 35, 27, .12); }
+        .s02-b p { font: 500 42px/50px Geist; }
+        .s02-b small { display: block; text-align: right; margin-top: 8px; font: 500 26px/1 Geist; color: #7c837e; }
+        .l1 { height: 118px; } .l2 { height: 168px; } .l3 { height: 218px; }
+        .s02-pac { align-self: flex-start; background: #ffffff; border-bottom-left-radius: 10px; }
+        .s02-slot { position: relative; align-self: flex-end; }
+        .s02-bot { background: #dff3d8; border-bottom-right-radius: 10px; }
+        #s02-b4 { outline: 6px solid #d5382f; }
+        .s02-dig { position: absolute; bottom: 0; right: 0; display: flex; gap: 12px; align-items: center; height: 80px;
+                   padding: 0 28px; border-radius: 34px; background: #dff3d8; }
+        .s02-dig i { display: block; width: 17px; height: 17px; border-radius: 50%; background: #2e7d32; }
+        #s02-carimbo { position: absolute; left: 160px; top: -100px; background: #ffffff; color: #2e7d32; border: 7px solid #2e7d32;
+                       border-radius: 18px; padding: 8px 20px; font: 700 42px/1 Outfit; box-shadow: 0 14px 30px rgba(0, 0, 0, .25); }
+      </style>
+      <div id="s02-root" data-composition-id="s02" data-width="1080" data-height="1920">
+        <div id="s02-brilho1" class="s02-brilho" data-layout-allow-overflow></div>
+        <div id="s02-brilho2" class="s02-brilho" data-layout-allow-overflow></div>
+        <div id="s02-palco">
+          <h1 id="s02-tA" class="s02-titulo">Às 21h40, com o guara.bot:</h1>
+          <h1 id="s02-tB" class="s02-titulo"><span>Dúvida de saúde?</span><span>Vai para a equipe.</span></h1>
+          <div id="s02-cel">
+            <div id="s02-tela">
+              <div id="s02-cab"><div id="s02-av">+</div><b>Seu consultório</b><div id="s02-ex">exemplo</div><span>21:40</span></div>
+              <div id="s02-col">
+                <div id="s02-p1" class="s02-b s02-pac l2"><p>Boa noite! Quanto é a consulta?</p><small>21:40</small></div>
+                <div class="s02-slot"><div id="s02-d1" class="s02-dig"><i></i><i></i><i></i></div>
+                  <div id="s02-b1" class="s02-b s02-bot l3"><p>Boa noite! A consulta particular é R$ 150. Quer marcar um horário?</p><small>21:40</small></div></div>
+                <div id="s02-p2" class="s02-b s02-pac l1"><p>Quero. Tem quinta?</p><small>21:40</small></div>
+                <div class="s02-slot"><div id="s02-d2" class="s02-dig"><i></i><i></i><i></i></div>
+                  <div id="s02-b2" class="s02-b s02-bot l3"><p>Tenho quinta às 9h, 10h30 e 15h. Qual fica melhor para você?</p><small>21:40</small></div></div>
+                <div id="s02-p3" class="s02-b s02-pac l1"><p>10h30</p><small>21:41</small></div>
+                <div class="s02-slot"><div id="s02-d3" class="s02-dig"><i></i><i></i><i></i></div>
+                  <div id="s02-b3" class="s02-b s02-bot l2"><p>Pronto: quinta, 10h30. Na véspera eu te lembro.</p><small>21:41</small>
+                    <div id="s02-carimbo">Marcado</div></div></div>
+                <div id="s02-p4" class="s02-b s02-pac l2"><p>Ah, e estou com dor no dente desde ontem.</p><small>21:42</small></div>
+                <div class="s02-slot"><div id="s02-d4" class="s02-dig"><i></i><i></i><i></i></div>
+                  <div id="s02-b4" class="s02-b s02-bot l3"><p>Isso eu passo para a equipe do consultório, que vai falar com você.</p><small>21:42</small></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s02-brilho1", { scale: 0.9 }, { scale: 1.08, duration: 3.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          tl.fromTo("#s02-brilho2", { scale: 1.08, opacity: 0.7 }, { scale: 0.92, opacity: 1, duration: 3.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          tl.fromTo("#s02-palco", { y: 280, filter: "blur(18px)" }, { y: 0, filter: "blur(0px)", duration: 0.42, ease: "power3.out" }, 0);
+          tl.set("#s02-tB", { opacity: 0 }, 0);
+          tl.fromTo("#s02-tA", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.1);
+          tl.fromTo("#s02-cel", { y: 200, opacity: 0, rotation: 2 }, { y: 0, opacity: 1, rotation: 0, duration: 0.55, ease: "power3.out" }, 0.25);
+          tl.set(["#s02-p1", "#s02-b1", "#s02-p2", "#s02-b2", "#s02-p3", "#s02-b3", "#s02-p4", "#s02-b4", "#s02-d1", "#s02-d2", "#s02-d3", "#s02-d4", "#s02-carimbo"], { opacity: 0 }, 0);
+          function pac(sel, t) {
+            tl.fromTo(sel, { scale: 0.75, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.24, ease: "back.out(2)" }, t);
+          }
+          function bot(dig, sel, t0, t1) {
+            tl.fromTo(dig, { scale: 0.6, opacity: 0, transformOrigin: "100% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, t0);
+            tl.fromTo(dig + " i", { y: 0 }, { y: -10, duration: 0.14, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.08 }, t0 + 0.08);
+            tl.set(dig, { opacity: 0 }, t1);
+            tl.fromTo(sel, { scale: 0.75, opacity: 0, transformOrigin: "100% 100%" }, { scale: 1, opacity: 1, duration: 0.24, ease: "back.out(2)" }, t1);
+          }
+          // A conversa sobe como no WhatsApp: deslocamentos calculados das alturas fixas dos balões (l1 118, l2 168, l3 218, espaço 24).
+          function rola(y, t) { tl.to("#s02-col", { y: y, duration: 0.3, ease: "power2.out" }, t); }
+          // Balão que sobe para baixo do cabeçalho some junto com a rolagem (como recortado pelo app).
+          function some(sel, t) { tl.to(sel, { opacity: 0, duration: 0.2, ease: "power1.out" }, t); }
+          pac("#s02-p1", 0.8);
+          bot("#s02-d1", "#s02-b1", 1.25, 1.85);
+          pac("#s02-p2", 3.0);
+          bot("#s02-d2", "#s02-b2", 3.4, 4.0);
+          rola(-62, 5.15); some("#s02-p1", 5.15); pac("#s02-p3", 5.45);
+          rola(-254, 5.85); some("#s02-b1", 5.85); bot("#s02-d3", "#s02-b3", 5.95, 6.5);
+          tl.fromTo("#s02-carimbo", { scale: 2.6, rotation: -30, opacity: 0 }, { scale: 1, rotation: -10, opacity: 1, duration: 0.2, ease: "power4.in" }, 7.0);
+          tl.fromTo("#s02-cel", { y: 0 }, { y: 10, duration: 0.07, ease: "power1.out", yoyo: true, repeat: 1, immediateRender: false }, 7.2);
+          rola(-446, 8.55); pac("#s02-p4", 8.7);
+          // Título troca: a dúvida de saúde vai para a equipe.
+          tl.to("#s02-tA", { opacity: 0, duration: 0.15 }, 9.0);
+          tl.fromTo("#s02-tB", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 9.1);
+          rola(-688, 9.85); some(["#s02-p2", "#s02-b2"], 9.85); bot("#s02-d4", "#s02-b4", 9.45, 10.0);
+          tl.fromTo("#s02-b4", { scale: 1 }, { scale: 1.03, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 10.6);
+          tl.to("#s02-palco", { y: -280, filter: "blur(18px)", duration: 0.28, ease: "power2.in" }, 12.22);
+          window.__timelines["s02"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

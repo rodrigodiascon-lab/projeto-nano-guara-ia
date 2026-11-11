@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-composition-variables='[{"id":"gancho","type":"enum","label":"Gancho","default":"2140","options":[{"value":"2140","label":"Sábado, 21h40"},{"value":"demora","label":"O paciente não reclama da demora"},{"value":"de-cabeca","label":"Responda de cabeça"},{"value":"62","label":"62% desistem (Opinion Box, 2025)"}]}]'>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="assets/gsap.min.js"></script>
+    <!--
+      guara.bot clínicas: vídeo-modelo A do diagnóstico. Meta Ads Reels/Stories 9:16, 30,5 s, sem narração.
+      Plano: BRIEF.md + STORYBOARD.md. Identidade: frame.md.
+      Só o gancho (0 a 5 s) muda, pela variável "gancho"; o gancho fica aqui no index para ler a variável.
+      Grade de batidas do gancho, igual nas quatro versões (os sons servem para todas):
+      0,10 rótulo · 0,25 batida A · 1,45 batida B · 2,60 batida C · 3,30 batida D · 4,72 saída.
+      Zona segura do Reels: conteúdo importante entre y=250 e y=1540. Tudo desce 40 px para caber também no recorte 4:5 do Feed (y 285 a 1635).
+    -->
+    <style>
+      @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+      @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #123b26; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #123b26; }
+      #root > div[data-composition-src] { position: absolute; inset: 0; }
+
+      /* ---------- Cena 1: gancho ---------- */
+      #g-cena { position: absolute; inset: 0; overflow: hidden; background: #123b26; font-family: Geist, sans-serif; color: #fdf9f0; }
+      .g-brilho { position: absolute; border-radius: 50%; }
+      #g-brilho1 { left: -420px; top: -360px; width: 1300px; height: 1300px;
+                   background: radial-gradient(closest-side, rgba(46, 125, 50, .55), rgba(46, 125, 50, 0)); }
+      #g-brilho2 { right: -460px; bottom: -420px; width: 1200px; height: 1200px;
+                   background: radial-gradient(closest-side, rgba(213, 56, 47, .26), rgba(213, 56, 47, 0)); }
+      #g-palco { position: absolute; inset: 40px 0 0 0; }
+      #g-rotulo { position: absolute; top: 268px; left: 84px; display: flex; align-items: center; gap: 16px;
+                  background: #fdf9f0; color: #17231b; border-radius: 999px; padding: 18px 32px 18px 24px;
+                  font: 500 38px/1 Geist; box-shadow: 0 16px 34px rgba(0, 0, 0, .3); }
+      #g-rotulo i { display: block; width: 20px; height: 20px; border-radius: 50%; background: #2e7d32; }
+      .g-var { position: absolute; inset: 0; }
+      .g-titulo { position: absolute; left: 84px; width: 912px; font-family: Outfit; font-weight: 700; letter-spacing: -2px; }
+      .g-titulo span { display: block; }
+      .g-alerta { color: #ff8a7a; }
+      .g-verde { color: #8fd19a; }
+
+      /* Versão 2140 */
+      #g1-dia { position: absolute; top: 400px; left: 90px; font: 500 46px/1 Geist; letter-spacing: 6px; color: #8fd19a; }
+      #g1-hora { position: absolute; top: 456px; left: 70px; font: 700 300px/1 Outfit; letter-spacing: -10px; color: #fdf9f0; }
+      #g1-notif { position: absolute; top: 830px; left: 70px; right: 70px; background: #fdf9f0; color: #17231b;
+                  border-radius: 40px; padding: 32px 40px 40px; box-shadow: 0 40px 80px rgba(0, 0, 0, .42); }
+      .g1-topo { display: flex; align-items: center; gap: 18px; font: 500 34px/1 Geist; color: #55655b; }
+      .g1-topo b { font: 700 40px/1 Outfit; color: #17231b; }
+      .g1-topo span { margin-left: auto; }
+      .g1-ico { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: #2e7d32; }
+      .g1-ico svg { width: 32px; height: 32px; }
+      .g1-msg { margin-top: 22px; font: 700 62px/1.1 Outfit; letter-spacing: -1px; }
+      #g1-perg { top: 1150px; font-size: 150px; line-height: 1; }
+
+      /* Versão demora */
+      #g2-t1 { top: 400px; font-size: 112px; line-height: 1.02; }
+      #g2-bolha { position: absolute; top: 820px; left: 84px; max-width: 780px; background: #ffffff; color: #17231b;
+                  border-radius: 36px 36px 36px 10px; padding: 26px 34px 20px; box-shadow: 0 26px 50px rgba(0, 0, 0, .35); }
+      #g2-bolha p { font: 700 56px/1.1 Outfit; letter-spacing: -1px; }
+      #g2-hora { position: relative; height: 34px; margin-top: 12px; }
+      #g2-hora span { position: absolute; right: 0; top: 0; font: 500 30px/34px Geist; color: #7c837e; white-space: nowrap; opacity: 0; }
+      #g2-hora #g2-h4 { opacity: 1; }
+      #g2-t2 { top: 1100px; font-size: 112px; line-height: 1.02; }
+
+      /* Versão de-cabeca */
+      #g3-rot { position: absolute; top: 400px; left: 84px; font: 700 84px/1 Outfit; letter-spacing: -2px; color: #8fd19a; }
+      #g3-cartao { position: absolute; top: 540px; left: 70px; right: 70px; background: #fdf9f0; color: #17231b;
+                   border-radius: 48px; padding: 50px 56px 56px; box-shadow: 0 40px 80px rgba(0, 0, 0, .42); }
+      .g3-linha + .g3-linha { margin-top: 44px; }
+      .g3-q { font: 700 62px/1.1 Outfit; letter-spacing: -1px; }
+      .g3-caixa { position: relative; margin-top: 22px; height: 118px; border-radius: 26px; border: 5px dashed #7c837e;
+                  display: flex; align-items: center; padding-left: 34px; }
+      .g3-caixa b { font: 700 70px/1 Outfit; color: #7c837e; }
+      .g3-cursor { display: block; width: 7px; height: 70px; margin-left: 14px; border-radius: 4px; background: #2e7d32; }
+      .g3-cor { position: absolute; inset: -5px; border-radius: 26px; border: 5px solid #d5382f; }
+
+      /* Versão 62 */
+      #g4-numero { position: absolute; top: 340px; left: 70px; width: 940px; display: flex; align-items: baseline;
+                   font: 700 380px/1 Outfit; letter-spacing: -12px; color: #ff8a7a; }
+      #g4-n { display: inline-block; font-variant-numeric: tabular-nums; transform-origin: 0% 100%; }
+      #g4-pct { display: inline-block; }
+      #g4-txt { position: absolute; top: 760px; left: 84px; width: 912px; font: 700 66px/1.12 Outfit; letter-spacing: -1px; }
+      #g4-fonte { position: absolute; top: 1090px; left: 84px; font: 500 34px/1 Geist; color: #8fd19a; }
+      #g4-perg { top: 1190px; font-size: 92px; line-height: 1.04; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30.5" data-width="1080" data-height="1920">
+
+      <div id="g-cena" class="clip" data-start="0" data-duration="5" data-track-index="1">
+        <div id="g-brilho1" class="g-brilho" data-layout-allow-overflow></div>
+        <div id="g-brilho2" class="g-brilho" data-layout-allow-overflow></div>
+        <div id="g-palco">
+          <div id="g-rotulo"><i></i>Consultório em Manaus</div>
+
+          <div id="g-v2140" class="g-var">
+            <div id="g1-dia">SÁBADO</div>
+            <div id="g1-hora">21h40</div>
+            <div id="g1-notif">
+              <div class="g1-topo">
+                <i class="g1-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fdf9f0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v10H9l-5 4z" /></svg></i>
+                <b>Paciente</b><span>agora</span>
+              </div>
+              <div class="g1-msg">Qual o valor da limpeza?</div>
+            </div>
+            <h1 id="g1-perg" class="g-titulo"><span id="g1-p1">Quem</span><span id="g1-p2" class="g-alerta">responde?</span></h1>
+          </div>
+
+          <div id="g-vdemora" class="g-var">
+            <h1 id="g2-t1" class="g-titulo"><span id="g2-l1">O paciente</span><span id="g2-l2">não reclama</span><span id="g2-l3">da demora.</span></h1>
+            <div id="g2-bolha">
+              <p>Tem horário amanhã?</p>
+              <div id="g2-hora"><span id="g2-h1">agora</span><span id="g2-h2">há 5 min</span><span id="g2-h3">há 20 min</span><span id="g2-h4">há 40 min</span></div>
+            </div>
+            <h1 id="g2-t2" class="g-titulo"><span id="g2-a">Ele marca</span><span id="g2-b" class="g-alerta">em outro lugar.</span></h1>
+          </div>
+
+          <div id="g-vdecabeca" class="g-var">
+            <div id="g3-rot">Responda de cabeça:</div>
+            <div id="g3-cartao">
+              <div class="g3-linha">
+                <div id="g3-q1" class="g3-q">Quantos pacientes chamaram seu WhatsApp este mês?</div>
+                <div id="g3-c1" class="g3-caixa"><div id="g3-r1" class="g3-cor"></div><b id="g3-x1">?</b><i id="g3-k1" class="g3-cursor"></i></div>
+              </div>
+              <div class="g3-linha">
+                <div id="g3-q2" class="g3-q">Quantos marcaram?</div>
+                <div id="g3-c2" class="g3-caixa"><div id="g3-r2" class="g3-cor"></div><b id="g3-x2">?</b><i id="g3-k2" class="g3-cursor"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="g-v62" class="g-var">
+            <div id="g4-numero"><span id="g4-n">62</span><span id="g4-pct">%</span></div>
+            <div id="g4-txt">das pessoas desistem de comprar depois de uma experiência ruim no WhatsApp.</div>
+            <div id="g4-fonte">Opinion Box, 2025</div>
+            <h1 id="g4-perg" class="g-titulo"><span id="g4-a">E o WhatsApp do</span><span id="g4-b" class="g-verde">seu consultório?</span></h1>
+          </div>
+        </div>
+      </div>
+
+      <div id="el-s02" data-composition-id="s02" data-composition-src="compositions/s02-espera.html" data-start="5" data-duration="5" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-s03" data-composition-id="s03" data-composition-src="compositions/s03-conta.html" data-start="10" data-duration="5.5" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-s04" data-composition-id="s04" data-composition-src="compositions/s04-resposta.html" data-start="15.5" data-duration="7" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-s05" data-composition-id="s05" data-composition-src="compositions/s05-inteiro.html" data-start="22.5" data-duration="3.5" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-s06" data-composition-id="s06" data-composition-src="compositions/s06-chamada.html" data-start="26" data-duration="4.5" data-track-index="1" data-width="1080" data-height="1920"></div>
+
+      <!-- Sons (biblioteca local). Cena 1: grade de batidas comum às quatro versões do gancho. -->
+      <audio id="sfx-g-rotulo" src="assets/sfx/click-soft.mp3" data-start="0.1" data-duration="0.37" data-track-index="10" data-volume="0.7"></audio>
+      <audio id="sfx-g-b" src="assets/sfx/pop.mp3" data-start="1.45" data-duration="0.72" data-track-index="11" data-volume="0.6"></audio>
+      <audio id="sfx-g-c" src="assets/sfx/whoosh-short.mp3" data-start="2.6" data-duration="0.57" data-track-index="12" data-volume="0.6"></audio>
+      <audio id="sfx-g-d" src="assets/sfx/impact-bass-1.mp3" data-start="3.3" data-duration="1.4" data-track-index="13" data-volume="0.45"></audio>
+      <audio id="sfx-g-saida" src="assets/sfx/whoosh.mp3" data-start="4.72" data-duration="0.57" data-track-index="14" data-volume="0.7"></audio>
+      <!-- Cena 2: uma notificação por balão, peso grave no "já marquei em outro lugar". -->
+      <audio id="sfx-2-ping1" src="assets/sfx/ping.mp3" data-start="5.55" data-duration="1.3" data-track-index="10" data-volume="0.55"></audio>
+      <audio id="sfx-2-ping2" src="assets/sfx/ping.mp3" data-start="6.3" data-duration="1.3" data-track-index="11" data-volume="0.55"></audio>
+      <audio id="sfx-2-ping3" src="assets/sfx/ping.mp3" data-start="7.3" data-duration="1.3" data-track-index="12" data-volume="0.6"></audio>
+      <audio id="sfx-2-peso" src="assets/sfx/impact-bass-1.mp3" data-start="7.35" data-duration="1.4" data-track-index="13" data-volume="0.4"></audio>
+      <audio id="sfx-2-saida" src="assets/sfx/whoosh-short.mp3" data-start="9.72" data-duration="0.57" data-track-index="14" data-volume="0.6"></audio>
+      <!-- Cena 3: um clique por linha da conta, impacto no total. -->
+      <audio id="sfx-3-l1" src="assets/sfx/click-soft.mp3" data-start="10.95" data-duration="0.37" data-track-index="10" data-volume="0.7"></audio>
+      <audio id="sfx-3-l2" src="assets/sfx/click-soft.mp3" data-start="11.45" data-duration="0.37" data-track-index="11" data-volume="0.7"></audio>
+      <audio id="sfx-3-l3" src="assets/sfx/click-soft.mp3" data-start="11.95" data-duration="0.37" data-track-index="12" data-volume="0.7"></audio>
+      <audio id="sfx-3-total" src="assets/sfx/impact-bass-2.mp3" data-start="13.9" data-duration="2" data-track-index="13" data-volume="0.6"></audio>
+      <audio id="sfx-3-saida" src="assets/sfx/whoosh-short.mp3" data-start="15.22" data-duration="0.57" data-track-index="14" data-volume="0.6"></audio>
+      <!-- Cena 4: mascote entra, conversa, carimbo. -->
+      <audio id="sfx-4-guara" src="assets/sfx/pop.mp3" data-start="15.85" data-duration="0.72" data-track-index="10" data-volume="0.55"></audio>
+      <audio id="sfx-4-p1" src="assets/sfx/ping.mp3" data-start="16.4" data-duration="1.3" data-track-index="11" data-volume="0.5"></audio>
+      <audio id="sfx-4-b1" src="assets/sfx/pop.mp3" data-start="17.3" data-duration="0.72" data-track-index="12" data-volume="0.6"></audio>
+      <audio id="sfx-4-p2" src="assets/sfx/ping.mp3" data-start="18.5" data-duration="1.3" data-track-index="13" data-volume="0.5"></audio>
+      <audio id="sfx-4-b2" src="assets/sfx/pop.mp3" data-start="19.3" data-duration="0.72" data-track-index="14" data-volume="0.6"></audio>
+      <audio id="sfx-4-chime" src="assets/sfx/chime.mp3" data-start="19.9" data-duration="1.8" data-track-index="10" data-volume="0.7"></audio>
+      <audio id="sfx-4-carimbo" src="assets/sfx/impact-bass-1.mp3" data-start="19.95" data-duration="1.4" data-track-index="11" data-volume="0.5"></audio>
+      <audio id="sfx-4-saida" src="assets/sfx/whoosh.mp3" data-start="22.22" data-duration="0.57" data-track-index="12" data-volume="0.7"></audio>
+      <!-- Cena 5: um clique por selo. -->
+      <audio id="sfx-5-s1" src="assets/sfx/click-soft.mp3" data-start="23" data-duration="0.37" data-track-index="13" data-volume="0.7"></audio>
+      <audio id="sfx-5-s2" src="assets/sfx/click-soft.mp3" data-start="23.22" data-duration="0.37" data-track-index="14" data-volume="0.7"></audio>
+      <audio id="sfx-5-s3" src="assets/sfx/click-soft.mp3" data-start="23.44" data-duration="0.37" data-track-index="10" data-volume="0.7"></audio>
+      <audio id="sfx-5-s4" src="assets/sfx/click-soft.mp3" data-start="23.66" data-duration="0.37" data-track-index="11" data-volume="0.7"></audio>
+      <audio id="sfx-5-saida" src="assets/sfx/whoosh-short.mp3" data-start="25.72" data-duration="0.57" data-track-index="12" data-volume="0.6"></audio>
+      <!-- Cena 6: íris e mascote. -->
+      <audio id="sfx-6-iris" src="assets/sfx/impact-bass-2.mp3" data-start="26.05" data-duration="2.5" data-track-index="13" data-volume="0.7"></audio>
+      <audio id="sfx-6-guara" src="assets/sfx/pop.mp3" data-start="26.6" data-duration="0.72" data-track-index="14" data-volume="0.5"></audio>
+    </div>
+
+    <script>
+      (function () {
+        const vars = window.__hyperframes && window.__hyperframes.getVariables ? window.__hyperframes.getVariables() : {};
+        const versoes = { "2140": "g-v2140", "demora": "g-vdemora", "de-cabeca": "g-vdecabeca", "62": "g-v62" };
+        const ativa = versoes[String(vars.gancho || "2140")] || "g-v2140";
+        Object.keys(versoes).forEach(function (k) {
+          document.getElementById(versoes[k]).style.display = versoes[k] === ativa ? "block" : "none";
+        });
+
+        const tl = gsap.timeline({ paused: true });
+        const A = 0.25, B = 1.45, C = 2.6, D = 3.3, SAIDA = 4.72;
+
+        // Fundo vivo: os dois brilhos respiram em contrafase.
+        tl.fromTo("#g-brilho1", { scale: 0.9, opacity: 0.8 }, { scale: 1.08, opacity: 1, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+        tl.fromTo("#g-brilho2", { scale: 1.08 }, { scale: 0.92, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+        // Rótulo do público no primeiro segundo.
+        tl.fromTo("#g-rotulo", { scale: 0.4, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, 0.1);
+
+        if (ativa === "g-v2140") {
+          tl.fromTo("#g1-dia", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, A);
+          tl.fromTo("#g1-hora", { scale: 1.2, opacity: 0, filter: "blur(18px)", transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" }, A + 0.05);
+          tl.fromTo("#g1-notif", { y: -240, opacity: 0, rotation: -3 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, B);
+          tl.fromTo("#g1-notif", { scale: 1 }, { scale: 1.02, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, B + 0.6);
+          tl.fromTo("#g1-p1", { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.38, ease: "power3.out" }, C);
+          tl.fromTo("#g1-p2", { scale: 1.3, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, D);
+          tl.fromTo("#g1-notif", { x: 0 }, { x: 12, duration: 0.05, ease: "power1.inOut", yoyo: true, repeat: 3, immediateRender: false }, D + 0.05);
+        } else if (ativa === "g-vdemora") {
+          ["#g2-l1", "#g2-l2", "#g2-l3"].forEach(function (s, i) {
+            tl.fromTo(s, { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, A + i * 0.3);
+          });
+          tl.fromTo("#g2-bolha", { scale: 0.7, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, B);
+          // O tempo de espera passa: agora, há 5 min, há 20 min, há 40 min (troca seca, segura no seek).
+          tl.set(["#g2-h2", "#g2-h3", "#g2-h4"], { opacity: 0 }, 0);
+          tl.set("#g2-h1", { opacity: 1 }, 0);
+          tl.set("#g2-h1", { opacity: 0 }, B + 0.45); tl.set("#g2-h2", { opacity: 1 }, B + 0.45);
+          tl.set("#g2-h2", { opacity: 0 }, B + 0.75); tl.set("#g2-h3", { opacity: 1 }, B + 0.75);
+          tl.set("#g2-h3", { opacity: 0 }, B + 1.05); tl.set("#g2-h4", { opacity: 1 }, B + 1.05);
+          tl.fromTo("#g2-a", { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.38, ease: "power3.out" }, C);
+          tl.fromTo("#g2-b", { scale: 1.3, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, D);
+          tl.to("#g2-bolha", { opacity: 0.45, duration: 0.3, ease: "power2.out" }, D + 0.1);
+        } else if (ativa === "g-vdecabeca") {
+          tl.fromTo("#g3-rot", { x: -70, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, A);
+          tl.fromTo("#g3-cartao", { y: 170, opacity: 0, rotation: -2 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5, ease: "power3.out" }, A + 0.3);
+          tl.set(["#g3-q1", "#g3-c1", "#g3-q2", "#g3-c2", "#g3-r1", "#g3-r2"], { opacity: 0 }, 0);
+          tl.fromTo("#g3-q1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, B);
+          tl.fromTo("#g3-c1", { scaleX: 0.2, opacity: 0, transformOrigin: "0% 50%" }, { scaleX: 1, opacity: 1, duration: 0.35, ease: "power3.out" }, B + 0.2);
+          tl.fromTo("#g3-q2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, C);
+          tl.fromTo("#g3-c2", { scaleX: 0.2, opacity: 0, transformOrigin: "0% 50%" }, { scaleX: 1, opacity: 1, duration: 0.35, ease: "power3.out" }, C + 0.2);
+          // Cursor piscando nas caixas vazias (repetição finita).
+          tl.fromTo(["#g3-k1", "#g3-k2"], { opacity: 1 }, { opacity: 0, duration: 0.25, ease: "steps(1)", yoyo: true, repeat: 6 }, B + 0.5);
+          // Batida D: as interrogações acendem em vermelho.
+          tl.to(["#g3-r1", "#g3-r2"], { opacity: 1, duration: 0.12 }, D);
+          tl.to(["#g3-x1", "#g3-x2"], { color: "#d5382f", duration: 0.12 }, D);
+          tl.fromTo(["#g3-c1", "#g3-c2"], { scale: 1.08 }, { scale: 1, duration: 0.35, ease: "back.out(3)", immediateRender: false }, D);
+        } else {
+          const n = document.getElementById("g4-n");
+          const conta = { v: 0 };
+          tl.set(n, { textContent: "0" }, 0);
+          tl.to(conta, { v: 62, duration: 1.2, ease: "power3.out", onUpdate: function () { n.textContent = String(Math.round(conta.v)); } }, A);
+          tl.fromTo(n, { scale: 0.55 }, { scale: 1, duration: 1.2, ease: "power3.out" }, A);
+          tl.fromTo("#g4-pct", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, B);
+          tl.fromTo("#g4-txt", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, B);
+          tl.fromTo("#g4-fonte", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, B + 0.3);
+          tl.fromTo("#g4-a", { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.38, ease: "power3.out" }, C);
+          tl.fromTo("#g4-b", { scale: 1.3, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, D);
+        }
+
+        // Saída em chicote para cima, casada com a entrada da cena 2.
+        tl.to("#g-palco", { y: -280, filter: "blur(18px)", duration: 0.28, ease: "power2.in" }, SAIDA);
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>

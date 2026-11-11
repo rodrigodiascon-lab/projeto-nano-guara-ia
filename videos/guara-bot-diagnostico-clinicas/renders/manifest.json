@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "batchPath": "/Users/rodri/projeto-nano-guara-ia/videos/guara-bot-diagnostico-clinicas/rows-site.json",
+  "manifestPath": "/Users/rodri/projeto-nano-guara-ia/videos/guara-bot-diagnostico-clinicas/renders/manifest.json",
+  "total": 4,
+  "completed": 4,
+  "failed": 0,
+  "skipped": 0,
+  "rows": [
+    {
+      "index": 0,
+      "outputPath": "/Users/rodri/projeto-nano-guara-ia/videos/guara-bot-diagnostico-clinicas/renders/guara-bot-clinicas-A1-2140-site.mp4",
+      "status": "completed",
+      "durationMs": 30500,
+      "renderTimeMs": 41196,
+      "error": null,
+      "startedAt": "2026-10-16T06:25:12.416Z",
+      "completedAt": "2026-10-16T06:25:53.830Z",
+      "variables": {
+        "name": "guara-bot-clinicas-A1-2140-site",
+        "gancho": "2140"
+      }
+    },
+    {
+      "index": 1,
+      "outputPath": "/Users/rodri/projeto-nano-guara-ia/videos/guara-bot-diagnostico-clinicas/renders/guara-bot-clinicas-A2-demora-site.mp4",
+      "status": "completed",
+      "durationMs": 30500,
+      "renderTimeMs": 39873,
+      "error": null,
+      "startedAt": "2026-10-16T06:25:53.830Z",
+      "completedAt": "2026-10-16T06:26:33.864Z",
+      "variables": {
+        "name": "guara-bot-clinicas-A2-demora-site",
+        "gancho": "demora"
+      }
+    },
+    {
+      "index": 2,
+      "outputPath": "/Users/rodri/projeto-nano-guara-ia/videos/guara-bot-diagnostico-clinicas/renders/guara-bot-clinicas-A3-de-cabeca-site.mp4",
+      "status": "completed",
+      "durationMs": 30500,
+      "renderTimeMs": 38715,
+      "error": null,
+      "startedAt": "2026-10-16T06:26:33.865Z",
+      "completedAt": "2026-10-16T06:27:12.719Z",
+      "variables": {
+        "name": "guara-bot-clinicas-A3-de-cabeca-site",
+        "gancho": "de-cabeca"
+      }
+    },
+    {
+      "index": 3,
+      "outputPath": "/Users/rodri/projeto-nano-guara-ia/videos/guara-bot-diagnostico-clinicas/renders/guara-bot-clinicas-A4-62-site.mp4",
+      "status": "completed",
+      "durationMs": 30500,
+      "renderTimeMs": 39592,
+      "error": null,
+      "startedAt": "2026-10-16T06:27:12.720Z",
+      "completedAt": "2026-10-16T06:27:52.451Z",
+      "variables": {
+        "name": "guara-bot-clinicas-A4-62-site",
+        "gancho": "62"
+      }
+    }
+  ]
+}

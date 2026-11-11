@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s05-root { position: absolute; inset: 0; overflow: hidden; font-family: Geist, sans-serif; color: #fdf9f0; background: #123b26; }
+        .s05-brilho { position: absolute; border-radius: 50%; }
+        #s05-brilho1 { right: -400px; top: -320px; width: 1250px; height: 1250px;
+                       background: radial-gradient(closest-side, rgba(46, 125, 50, .55), rgba(46, 125, 50, 0)); }
+        #s05-brilho2 { left: -460px; bottom: -380px; width: 1150px; height: 1150px;
+                       background: radial-gradient(closest-side, rgba(213, 56, 47, .18), rgba(213, 56, 47, 0)); }
+        #s05-palco { position: absolute; inset: 40px 0 0 0; }
+        #s05-titulo { position: absolute; top: 270px; left: 84px; width: 912px; font: 700 100px/1.02 Outfit; letter-spacing: -2px; }
+        #s05-titulo span { display: block; }
+        #s05-t2 { color: #8fd19a; }
+        #s05-selos { position: absolute; top: 560px; left: 70px; display: flex; flex-direction: column; gap: 24px; }
+        .s05-selo { display: flex; align-items: center; gap: 20px; width: max-content; border-radius: 999px; padding: 18px 36px 18px 18px;
+                    background: #1e4a30; border: 4px solid #2e7d32; color: #edf3ee; font: 500 46px/1 Geist; }
+        .s05-selo i { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: #8fd19a; }
+        .s05-selo i svg { width: 36px; height: 36px; }
+        #s05-s4 { background: #3a1714; border-color: #d5382f; color: #ff8a7a; }
+        #s05-s4 i { background: #ff8a7a; }
+        #s05-rodape { position: absolute; top: 1110px; left: 84px; width: 540px; font: 500 44px/1.25 Geist; color: #fdf9f0; }
+        #s05-guara { position: absolute; left: 600px; top: 1040px; width: 460px; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .45)); }
+      </style>
+
+      <div id="s05-root" data-composition-id="s05" data-width="1080" data-height="1920">
+        <div id="s05-brilho1" class="s05-brilho" data-layout-allow-overflow></div>
+        <div id="s05-brilho2" class="s05-brilho" data-layout-allow-overflow></div>
+        <div id="s05-palco">
+          <h1 id="s05-titulo"><span id="s05-t1">Faz o atendimento</span><span id="s05-t2">inteiro.</span></h1>
+          <div id="s05-selos">
+            <div id="s05-s1" class="s05-selo"><i><svg viewBox="0 0 24 24" fill="none" stroke="#123b26" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7" /></svg></i>Responde valor e convênio</div>
+            <div id="s05-s2" class="s05-selo"><i><svg viewBox="0 0 24 24" fill="none" stroke="#123b26" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7" /></svg></i>Mostra só horário livre</div>
+            <div id="s05-s3" class="s05-selo"><i><svg viewBox="0 0 24 24" fill="none" stroke="#123b26" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7" /></svg></i>Marca e lembra na véspera</div>
+            <div id="s05-s4" class="s05-selo"><i><svg viewBox="0 0 24 24" fill="none" stroke="#3a1714" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M13 6l6 6-6 6" /></svg></i>Saúde vai para a sua equipe</div>
+          </div>
+          <div id="s05-rodape">No WhatsApp que o consultório já usa.</div>
+          <img id="s05-guara" src="assets/guara-04-explicando.png" alt="guara.bot apresenta o que faz">
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s05-brilho1", { scale: 0.92 }, { scale: 1.06, duration: 1.75, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          tl.fromTo("#s05-brilho2", { scale: 1.06 }, { scale: 0.94, duration: 1.75, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+          tl.fromTo("#s05-palco", { y: 280, filter: "blur(18px)" }, { y: 0, filter: "blur(0px)", duration: 0.42, ease: "power3.out" }, 0);
+          tl.fromTo("#s05-t1", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.1);
+          tl.fromTo("#s05-t2", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.28);
+          // Selos chegando em cascata, um clique por selo.
+          ["#s05-s1", "#s05-s2", "#s05-s3", "#s05-s4"].forEach(function (s, i) {
+            tl.fromTo(s, { x: -170, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, 0.5 + i * 0.22);
+          });
+          tl.fromTo("#s05-guara", { y: 280, opacity: 0, rotation: -6 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.8)" }, 0.45);
+          tl.fromTo("#s05-guara", { y: 0 }, { y: -14, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 1.6);
+          tl.fromTo("#s05-rodape", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 1.5);
+          tl.to("#s05-palco", { y: -280, filter: "blur(18px)", duration: 0.28, ease: "power2.in" }, 3.22);
+          window.__timelines["s05"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

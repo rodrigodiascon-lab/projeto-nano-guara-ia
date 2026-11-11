@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head><meta charset="UTF-8"></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: Outfit; src: url(assets/outfit-700.woff2) format("woff2"); font-weight: 700; }
+        @font-face { font-family: Geist; src: url(assets/geist-500.woff2) format("woff2"); font-weight: 500; }
+        #s06-root { position: absolute; inset: 0; overflow: hidden; background: #123b26; color: #ffffff; font-family: Geist, sans-serif; }
+        /* Íris: o vermelho guaraná abre de baixo, de onde fica o botão do anúncio. */
+        #s06-iris { position: absolute; inset: 0;
+                    background: radial-gradient(900px 900px at 85% 8%, rgba(255, 255, 255, .12), transparent 60%), #d5382f; }
+        #s06-titulo { position: absolute; top: 330px; left: 84px; width: 912px; font: 700 96px/1.04 Outfit; letter-spacing: -2px; }
+        #s06-titulo span { display: block; }
+        #s06-sub { position: absolute; top: 680px; left: 84px; width: 900px; font: 700 56px/1.14 Outfit; letter-spacing: -1px; color: #fdf9f0; }
+        #s06-guara { position: absolute; left: 0; top: 840px; width: 600px; filter: drop-shadow(0 40px 50px rgba(58, 23, 20, .5)); }
+        #s06-texto { position: absolute; left: 600px; top: 1040px; width: 420px; }
+        #s06-desc { font: 700 44px/1.14 Outfit; color: #fdf9f0; }
+        #s06-traco { width: 120px; height: 10px; border-radius: 10px; background: #ffffff; margin-top: 30px; }
+        #s06-marca { margin-top: 30px; font: 700 84px/1 Outfit; letter-spacing: -1px; }
+        #s06-empresa { margin-top: 14px; font: 500 34px/1 Geist; color: #fdf9f0; }
+      </style>
+
+      <div id="s06-root" data-composition-id="s06" data-width="1080" data-height="1920">
+        <div id="s06-iris">
+          <h1 id="s06-titulo"><span id="s06-t1">Quanto o seu</span><span id="s06-t2">consultório deixa</span><span id="s06-t3">sem resposta?</span></h1>
+          <div id="s06-sub">Coloque os números do seu consultório e veja a conta.</div>
+          <img id="s06-guara" src="assets/guara-12-apontando-cta.png" alt="guara.bot aponta para o botão do anúncio">
+          <div id="s06-texto">
+            <div id="s06-desc">Assistente de IA para consultórios e clínicas de Manaus.</div>
+            <div id="s06-traco"></div>
+            <div id="s06-marca">guara.bot</div>
+            <div id="s06-empresa">nanoguará.ia</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s06-iris", { clipPath: "circle(0% at 50% 100%)" }, { clipPath: "circle(150% at 50% 100%)", duration: 0.55, ease: "power3.inOut" }, 0);
+          ["#s06-t1", "#s06-t2", "#s06-t3"].forEach(function (s, i) {
+            tl.fromTo(s, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" }, 0.35 + i * 0.12);
+          });
+          tl.fromTo("#s06-sub", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 0.75);
+          tl.fromTo("#s06-guara", { x: -220, opacity: 0, rotation: -6 }, { x: 0, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, 0.6);
+          tl.fromTo("#s06-texto", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 0.9);
+          tl.fromTo("#s06-traco", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 1.05);
+          // Um empurrão do mascote para baixo, na direção do botão; depois o quadro fica parado.
+          tl.fromTo("#s06-guara", { y: 0 }, { y: 18, duration: 0.22, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 1.7);
+          window.__timelines["s06"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
