@@ -1,6 +1,24 @@
 // /guarabot/barbearias e /guarabot/clinicas. CSP estrita: nada de .style, só classes e atributos.
 // O que muda entre as páginas vem do HTML: data-origem no formulário,
 // data-dias / data-dias-rotulo e o max dos campos na calculadora.
+// 0. Página sempre abre no topo (2026-10-16): no celular, quem tocava no anúncio
+//    caía no meio da landing. O navegador embutido do Instagram/Facebook devolve a
+//    rolagem de uma visita anterior à mesma página; sem âncora (#) no endereço,
+//    não há motivo para abrir em outro lugar que não o início.
+(function () {
+  if (location.hash) return;
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) { /* segue */ }
+  // Só antes do primeiro toque: depois disso a rolagem é da pessoa, não do navegador.
+  var mexeu = false;
+  ['touchstart', 'wheel', 'keydown', 'mousedown'].forEach(function (ev) {
+    window.addEventListener(ev, function () { mexeu = true; }, { once: true, passive: true });
+  });
+  var topo = function () { if (!mexeu && !location.hash && window.scrollY > 0) window.scrollTo(0, 0); };
+  topo();
+  window.addEventListener('pageshow', topo);
+  window.addEventListener('load', topo);
+})();
+
 (function () {
   if (!('IntersectionObserver' in window)) return;
 
@@ -186,4 +204,25 @@
   io.observe(document.getElementById('contato'));
   // Quem foca o formulário pelo teclado ou por âncora também dispara.
   document.getElementById('gbForm').addEventListener('focusin', carrega, { once: true });
+})();
+
+// 6. Anúncio de origem na mensagem pronta do WhatsApp: "(ref obj01)" no fim do
+//    texto, vindo do utm_content do anúncio. Sem cookie e sem pixel, cada conversa
+//    que chega diz de qual anúncio veio. Mesmo formato aceito pelo /api/quiz-etapa;
+//    qualquer outra coisa é ignorada. O link genérico do rodapé fica como está.
+(function () {
+  var ref = '';
+  try { ref = (new URLSearchParams(location.search).get('utm_content') || '').toLowerCase(); } catch (e) { return; }
+  if (!/^[a-z0-9_-]{1,30}$/.test(ref)) return;
+  document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function (a) {
+    if (a.closest('footer')) return;
+    try {
+      var u = new URL(a.getAttribute('href'));
+      var texto = u.searchParams.get('text');
+      if (!texto) return;
+      // encodeURIComponent e não searchParams.set: este troca espaço por "+",
+      // e o "+" pode chegar literal na mensagem do WhatsApp.
+      a.setAttribute('href', u.origin + u.pathname + '?text=' + encodeURIComponent(texto + ' (ref ' + ref + ')'));
+    } catch (e) { /* link fora do padrão: fica como está */ }
+  });
 })();
